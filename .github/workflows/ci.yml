@@ -5,6 +5,8 @@ jobs:
     steps:
     - name: Checkout the repository
       uses: actions/checkout@v4
+      with:
+        submodules: recursive
     - name: Install ARM compiler
       run: sudo apt install gcc-arm-none-eabi
     - name: Configure CMake

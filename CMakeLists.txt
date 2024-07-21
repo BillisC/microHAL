@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(drivers VERSION 0.1)
 
+enable_language(C ASM)
+
 # Folder that includes CMSIS etc.
 set(VENDOR "external")
 
@@ -8,6 +10,7 @@ set(VENDOR "external")
 set(C_WARNS "-Wall -Wextra -Werror")
 set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb -DSTM32F446xx")
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
+set(CMAKE_ASM_COMPILER ${CMAKE_C_COMPILER})
 set(CMAKE_C_FLAGS "-g ${MCU_FLAGS} ${C_WARNS} -nostdlib -Wl,-Map=${PROJECT_NAME}.map")
 
 # Linker flags
@@ -18,7 +21,8 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -T ${LINKER_SCRIPT}")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # ARM Compilation
-set(C_FILES "src/main.c" 
+set(C_FILES "src/main.c"
+            "src/startup_stm32f446xx.S"
             "${VENDOR}/CMSIS/Device/ST/STM32F4/Source/Templates/system_stm32f4xx.c")
 
 add_executable(${PROJECT_NAME}.elf ${C_FILES})

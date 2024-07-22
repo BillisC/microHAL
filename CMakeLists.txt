@@ -7,7 +7,7 @@ enable_language(C ASM)
 set(VENDOR "external")
 
 # GCC ARM compiler flags
-set(C_WARNS "-Wall -Wextra -Werror")
+set(C_WARNS "-Wall -Wextra -Werror -Wno-unused-but-set-variable")
 set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb -DSTM32F446xx")
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
 set(CMAKE_ASM_COMPILER ${CMAKE_C_COMPILER})
@@ -23,12 +23,14 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # ARM Compilation
 set(C_FILES "src/main.c"
             "src/startup_stm32f446xx.S"
+            "src/drivers/mcu_init.c"
             "${VENDOR}/CMSIS/Device/ST/STM32F4/Source/Templates/system_stm32f4xx.c")
 
 add_executable(${PROJECT_NAME}.elf ${C_FILES})
 
 target_include_directories(${PROJECT_NAME}.elf PUBLIC
                            "src/"
+                           "src/drivers/"
                            "${VENDOR}/CMSIS/CMSIS/Core/Include/"
                            "${VENDOR}/CMSIS/Device/ST/STM32F4/Include/")
 set_target_properties(${PROJECT_NAME}.elf PROPERTIES LINK_DEPENDS ${LINKER_SCRIPT})

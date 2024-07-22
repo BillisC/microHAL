@@ -1,5 +1,8 @@
+#include "drivers/mcu_init.h"
+
 int main() {
-  // MAIN CODE GOES HERE
+  mcu_init();
+  /* MAIN CODE GOES HERE */
 
   return 0;
 }

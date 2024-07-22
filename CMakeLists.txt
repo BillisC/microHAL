@@ -39,6 +39,20 @@ add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
     COMMAND cp ${CMAKE_BINARY_DIR}/compile_commands.json ${CMAKE_SOURCE_DIR}/compile_commands.json
 )
 
+# Static Analysis
+set(ALZ cppcheck)
+set(ALZ_TARGET ${CMAKE_SOURCE_DIR}/src/)
+set(ALZ_FLAGS --enable=all 
+              --error-exitcode=1 
+              --suppress=missingInclude 
+              -I ${CMAKE_SOURCE_DIR}/src/ 
+              -I ${CMAKE_SOURCE_DIR}/src/drivers/)
+
+add_custom_target(analysis
+  COMMAND ${ALZ} ${ALZ_FLAGS} ${ALZ_TARGET}
+  COMMENT "Performing static analysis"
+)
+
 # Flashing MCU
 set(PROG openocd)
 set(PROG_TARGET "target/stm32f4x.cfg")

@@ -43,12 +43,9 @@ defined in linker script */
 .word  _sbss
 /* end address for the .bss section. defined in linker script */
 .word  _ebss
-/* stack used for SystemInit_ExtMemCtl; always internal RAM used */
-
-#define SRAM_START (0x20000000U)
-#define SRAM_SIZE (128U * 1024U)
-#define SRAM_END (SRAM_START + SRAM_SIZE)
-_estack: .word SRAM_END
+/* end address fot the stack. defined in linker script */
+.word _estack
+  /* stack used for SystemInit_ExtMemCtl; always internal RAM used */
 
 /**
  * @brief  This is the code that gets called when the processor first

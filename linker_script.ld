@@ -1,5 +1,8 @@
 ENTRY(Reset_Handler)
 
+/* Highest address in SRAM */
+_estack = ORIGIN(SRAM) + LENGTH(SRAM);
+
 MEMORY
 {
     FLASH (rx): ORIGIN = 0x08000000, LENGTH = 512K

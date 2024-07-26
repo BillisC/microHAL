@@ -26,13 +26,16 @@ set(C_FILES "src/main.c"
             "src/drivers/mcu_init.c"
             "${VENDOR}/CMSIS/Device/ST/STM32F4/Source/Templates/system_stm32f4xx.c")
 
+set(C_INCLUDES "src/"
+               "src/drivers/"
+               "src/common/"
+               "${VENDOR}/CMSIS/CMSIS/Core/Include/"
+               "${VENDOR}/CMSIS/Device/ST/STM32F4/Include/")
+
 add_executable(${PROJECT_NAME}.elf ${C_FILES})
 
-target_include_directories(${PROJECT_NAME}.elf PUBLIC
-                           "src/"
-                           "src/drivers/"
-                           "${VENDOR}/CMSIS/CMSIS/Core/Include/"
-                           "${VENDOR}/CMSIS/Device/ST/STM32F4/Include/")
+target_include_directories(${PROJECT_NAME}.elf PUBLIC ${C_INCLUDES})
+
 set_target_properties(${PROJECT_NAME}.elf PROPERTIES LINK_DEPENDS ${LINKER_SCRIPT})
 
 add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD

@@ -78,7 +78,7 @@ void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupdr_t poopdr) {
 }
 
 void gp_set_val(const char bank, const uint8_t pin, const uint8_t value) {
-  if ((value != TRUE) || (value != FALSE)) {
+  if ((value != TRUE) && (value != FALSE)) {
     return;
   } else {
     /* Set output pin state */

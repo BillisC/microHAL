@@ -80,15 +80,14 @@ void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupdr_t poopdr) {
 void gp_set_val(const char bank, const uint8_t pin, const uint8_t value) {
   if ((value != TRUE) || (value != FALSE)) {
     return;
+  } else {
+    /* Set output pin state */
+    struct gpio *regs = GPIO(bank);
+    regs->BSSR = (0b1 << (pin + (16U * (1 - value))));
   }
-
-  /* Set output pin state */
-  struct gpio *regs = GPIO(bank);
-  regs->ODR &= ~(0b1 << pin); // Clear first
-  regs->ODR |= ((0b1 & value) << pin);
 }
 
 uint8_t gp_read_val(const char bank, const uint8_t pin) {
   struct gpio *regs = GPIO(bank);
-  return (regs->IDR << pin);
+  return (0b1 & (regs->IDR >> pin));
 }

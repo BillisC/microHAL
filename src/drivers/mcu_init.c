@@ -1,11 +1,6 @@
+/* Includes */
 #include "mcu_init.h"
-
-// Common
-#include "../common/defines.h"
-
-// Drivers
 #include "stm32f4xx.h"
-
 #include <stdint.h>
 
 static void clock_init(void) {
@@ -13,14 +8,19 @@ static void clock_init(void) {
   RCC->CR |= RCC_CR_HSEBYP_Msk | RCC_CR_HSEON_Msk;
   while (! (RCC->CR & RCC_CR_HSERDY_Msk)) { ASM_NOP; };
 
-  /* Enable power controller and change voltage
-   * regulator scaling to 1. */
-  RCC->APB1ENR |= RCC_APB1ENR_PWREN_Msk;
+  /* Enable peripherals */
+  uint32_t apb1enr = RCC_APB1ENR_PWREN_Msk;
+  #if PWR_GPIO == TRUE
+    apb1enr |= RCC_AHB1ENR_GPIOAEN_Msk;
+  #endif
+
+  RCC->APB1ENR |= apb1enr;
   /* Do some dummy reads */
   volatile uint32_t dummy_read;
   dummy_read = RCC->APB1ENR;
   dummy_read = RCC->APB1ENR;
 
+  /* Set voltage regulator scaling to 1 */
   PWR->CR |= (0b11 << PWR_CR_VOS_Pos);
 
   /* Configure flash controller for 3V3 and 180 MHz
@@ -41,15 +41,15 @@ static void clock_init(void) {
   RCC->CR |= RCC_CR_PLLON_Msk;
   while (! (RCC->CR & RCC_CR_PLLRDY_Msk)) { ASM_NOP; };
 
-  #if EN_OVERDRIVE == 1
-  /* Enable overdrive mode */
-  PWR->CR |= (PWR_CR_ODEN_Msk);
-  while (! (PWR->CSR & PWR_CSR_ODRDY)) { ASM_NOP; };
+  #if EN_OVERDRIVE == TRUE
+    /* Enable overdrive mode */
+    PWR->CR |= (PWR_CR_ODEN_Msk);
+    while (! (PWR->CSR & PWR_CSR_ODRDY)) { ASM_NOP; };
 
-  /* Switch internal voltage regulator to
-   * overdrive mode. */
-  PWR->CR |= (PWR_CR_ODSWEN_Msk);
-  while (! (PWR->CSR & PWR_CSR_ODSWRDY)) { ASM_NOP; };
+    /* Switch internal voltage regulator to
+     * overdrive mode. */
+    PWR->CR |= (PWR_CR_ODSWEN_Msk);
+    while (! (PWR->CSR & PWR_CSR_ODSWRDY)) { ASM_NOP; };
   #endif
 
   /* Select PLL as the system clock source */

@@ -5,6 +5,12 @@
 #ifndef MCU_INIT_H
 #define MCU_INIT_H
 
+/* Includes */
+#include "../common/defines.h"
+
+/* Peripherals */
+#define PWR_GPIO TRUE
+
 /* Clock Configuration
  * 8MHz (HSE) / 4 (PLLM) = 2MHz
  * 2MHz * 180 (PLLN) = 360MHz
@@ -14,7 +20,7 @@
 #define PLLSRC_VAL 1
 
 /* Power Regulation */
-#define EN_OVERDRIVE 1
+#define EN_OVERDRIVE TRUE
 
 /**
  * MCU initialization function.

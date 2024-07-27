@@ -28,6 +28,9 @@ struct __attribute__((packed)) gpio {
   volatile uint32_t AFR[2];
 };
 
+_Static_assert((sizeof(struct gpio)) == (sizeof(uint32_t) * 10U), 
+               "GPIO struct size mismatch. Is it aligned?");
+
 #define GPIO(bank) (struct gpio*) (0x40020000U + (0x400U * ((uint8_t)bank - (uint8_t)'A')))
 
 /* -- Enums -- */

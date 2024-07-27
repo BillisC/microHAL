@@ -1,9 +1,8 @@
-// Common
-#include "common/defines.h"
-
-// Drivers
+/* Includes */
 #include "stm32f4xx.h"
+#include "common/defines.h"
 #include "drivers/mcu_init.h"
+#include "drivers/gpio.h"
 
 int main() {
   mcu_init();

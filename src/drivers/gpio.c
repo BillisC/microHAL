@@ -10,6 +10,7 @@
 
 /* -- Includes -- */
 #include "gpio.h"
+#include "../common/defines.h"
 
 void gp_set_direction(const char bank, const uint8_t pin, const gp_dir_t dir) {
   /* Check that the direction is valid */
@@ -74,4 +75,20 @@ void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupdr_t poopdr) {
   struct gpio *regs = GPIO(bank);
   regs->PUPDR &= ~(0b11 << (pin * 2)); // Clear first
   regs->PUPDR |= ((0b11 & poopdr) << (pin * 2));
+}
+
+void gp_set_val(const char bank, const uint8_t pin, const uint8_t value) {
+  if ((value != TRUE) || (value != FALSE)) {
+    return;
+  }
+
+  /* Set output pin state */
+  struct gpio *regs = GPIO(bank);
+  regs->ODR &= ~(0b1 << pin); // Clear first
+  regs->ODR |= ((0b1 & value) << pin);
+}
+
+uint8_t gp_read_val(const char bank, const uint8_t pin) {
+  struct gpio *regs = GPIO(bank);
+  return (regs->IDR << pin);
 }

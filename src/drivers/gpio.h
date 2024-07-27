@@ -109,4 +109,26 @@ void gp_set_speed(const char bank, const uint8_t pin, const gp_speed_t speed);
   */
 void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupdr_t poopdr);
 
+/**
+  * @brief Sets the GPIO output pin to the desired value.
+  * 
+  * Allowed values are either TRUE(1) or FALSE(0). Any other
+  * value will be ignored.
+  *
+  * @param bank The GPIO bank
+  * @param pin The GPIO pin
+  * @param value The pin value
+  * @return None
+  */
+void gp_set_val(const char bank, const uint8_t pin, const uint8_t value);
+
+/**
+  * @brief Reads the GPIO input pin value.
+  *
+  * @param bank The GPIO bank
+  * @param pin The GPIO pin
+  * @return The current state of the pin
+  */
+uint8_t gp_read_val(const char bank, const uint8_t pin);
+
 #endif /* GPIO_H */

@@ -24,6 +24,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(C_FILES "src/main.c"
             "src/startup_stm32f446xx.S"
             "src/drivers/mcu_init.c"
+            "src/drivers/gpio.c"
             "${VENDOR}/CMSIS/Device/ST/STM32F4/Source/Templates/system_stm32f4xx.c")
 
 set(C_INCLUDES "src/"
@@ -47,7 +48,8 @@ set(ALZ cppcheck)
 set(ALZ_TARGET ${CMAKE_SOURCE_DIR}/src/)
 set(ALZ_FLAGS --enable=all 
               --error-exitcode=1 
-              --suppress=missingInclude 
+              --suppress=missingInclude
+              --suppress=unusedFunction
               -I ${CMAKE_SOURCE_DIR}/src/ 
               -I ${CMAKE_SOURCE_DIR}/src/drivers/)
 

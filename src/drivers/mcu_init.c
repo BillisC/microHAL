@@ -8,12 +8,8 @@ static void clock_init(void) {
   RCC->CR |= RCC_CR_HSEBYP_Msk | RCC_CR_HSEON_Msk;
   while (! (RCC->CR & RCC_CR_HSERDY_Msk)) { ASM_NOP; };
 
-  /* Enable peripherals */
+  /* Enable power controller */
   uint32_t apb1enr = RCC_APB1ENR_PWREN_Msk;
-  #if PWR_GPIO == TRUE
-    apb1enr |= RCC_AHB1ENR_GPIOAEN_Msk;
-  #endif
-
   RCC->APB1ENR |= apb1enr;
   /* Do some dummy reads */
   volatile uint32_t dummy_read;
@@ -60,9 +56,24 @@ static void clock_init(void) {
   SystemCoreClockUpdate();
 }
 
+static void peripheral_init(void) {
+  /* Enable peripherals */
+  uint32_t ahb1enr = 0U;
+  #if PWR_GPIO == TRUE
+    ahb1enr |= RCC_AHB1ENR_GPIOAEN_Msk;
+  #endif
+  RCC->AHB1ENR |= ahb1enr;
+
+  /* dummy reads */
+  volatile uint32_t dummy_read;
+  dummy_read = RCC->AHB1ENR;
+  dummy_read = RCC->AHB1ENR;
+}
+
 void mcu_init(void) {
   clock_init();
   /* Set interrupt rate to 1 KHz (/180 MHZ) and enable interrupts */
   SysTick_Config(180000);
   __enable_irq();
+  peripheral_init();
 }

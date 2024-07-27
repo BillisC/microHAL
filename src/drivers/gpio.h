@@ -28,7 +28,7 @@ struct __attribute__((packed)) gpio {
   volatile uint32_t AFR[2];
 };
 
-#define GPIOA (struct gpio*) (0x40020000U)
+#define GPIO(bank) (struct gpio*) (0x40020000U + (0x400U * ((uint8_t)bank - (uint8_t)'A')))
 
 /* -- Enums -- */
 typedef enum gp_dir {

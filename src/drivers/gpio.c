@@ -46,7 +46,7 @@ void gp_set_output_type(const char bank, const uint8_t pin, const gp_otype_t typ
 
 void gp_set_speed(const char bank, const uint8_t pin, const gp_speed_t speed) {
   /* Check that the speed is valid */
-  switch(speed) {
+  switch (speed) {
     case low:
     case med:
     case fas:
@@ -63,7 +63,7 @@ void gp_set_speed(const char bank, const uint8_t pin, const gp_speed_t speed) {
 
 void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupdr_t poopdr) {
   /* Check that the state value is valid */
-  switch(poopdr) {
+  switch (poopdr) {
     case no:
     case pu:
     case pd: break;
@@ -78,6 +78,7 @@ void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupdr_t poopdr) {
 }
 
 void gp_set_val(const char bank, const uint8_t pin, const uint8_t value) {
+  /* Check that the value is valid */
   if ((value != TRUE) && (value != FALSE)) {
     return;
   } else {
@@ -90,4 +91,17 @@ void gp_set_val(const char bank, const uint8_t pin, const uint8_t value) {
 uint8_t gp_read_val(const char bank, const uint8_t pin) {
   struct gpio *regs = GPIO(bank);
   return (0b1 & (regs->IDR >> pin));
+}
+
+void gp_set_af(const char bank, const uint8_t pin, const uint8_t af) {
+  /* Check that the value is valid */
+  if (!(af <= 15U)) {
+    return;
+  } else {
+    /* Set the alternate function to the correct register */
+    struct gpio *regs = GPIO(bank);
+    uint8_t sel = (pin <= 7U) ? 0 : 1; 
+    regs->AFR[sel] &= ~(0b1111 << ((pin - (8U * sel)) * 4)); // Clear first
+    regs->AFR[sel] |= ((0b1111 & af) << ((pin - (8U * sel)) * 4));
+  }
 }

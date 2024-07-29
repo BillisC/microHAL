@@ -134,4 +134,14 @@ void gp_set_val(const char bank, const uint8_t pin, const uint8_t value);
   */
 uint8_t gp_read_val(const char bank, const uint8_t pin);
 
+/**
+  * @brief Sets the alternate function of the GPIO pin
+  *
+  * @param bank The GPIO bank
+  * @param pin The GPIO pin
+  * @param The alternate function number
+  * @return None
+  */
+void gp_set_af(const char bank, const uint8_t pin, const uint8_t af);
+
 #endif /* GPIO_H */

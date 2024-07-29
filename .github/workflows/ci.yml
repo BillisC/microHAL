@@ -9,8 +9,8 @@ jobs:
       with:
         submodules: recursive
     - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build
+      run: cmake -B build/
     - name: Compile source
-      run: cmake --build ${{github.workspace}}/build
+      run: cmake --build build/
     - name: Static analysis
-      run: cmake --build ${{github.workspace}}/build --target analysis 
+      run: cmake --build build/ --target analysis 

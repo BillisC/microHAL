@@ -5,7 +5,7 @@
 
 static void clock_init(void) {
   /* Enable 8 MHz HSE oscillator (Source: STLINK) */
-  RCC->CR |= RCC_CR_HSEBYP_Msk | RCC_1CR_HSEON_Msk;
+  RCC->CR |= RCC_CR_HSEBYP_Msk | RCC_CR_HSEON_Msk;
   while (! (RCC->CR & RCC_CR_HSERDY_Msk)) { ASM_NOP; };
 
   /* Enable power controller */

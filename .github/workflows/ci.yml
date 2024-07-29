@@ -2,15 +2,12 @@ on: [push]
 jobs:
   build_analyze:
     runs-on: ubuntu-latest
+    container: billisch/cortexm_dev:v1.0
     steps:
     - name: Checkout the repository
       uses: actions/checkout@v4
       with:
         submodules: recursive
-    - name: Install ARM compiler
-      run: sudo apt install gcc-arm-none-eabi
-    - name: Install static analyzer
-      run: sudo apt install cppcheck
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build
     - name: Compile source

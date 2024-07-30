@@ -1,0 +1,15 @@
+FROM debian:12
+
+# Always update
+RUN apt-get update
+
+# Install necessary tools
+RUN apt-get install -y git cmake
+RUN apt-get install -y gcc-arm-none-eabi clang cppcheck
+
+# Create a user named "debian_ci"
+# GitHub actions requires permissions to create tmp files.
+RUN useradd -rm -d /home/debian_ci -s /bin/bash -g root -G sudo \
+    -u 1001 debian_ci
+USER debian_ci
+WORKDIR /home/debian_ci

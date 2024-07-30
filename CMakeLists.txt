@@ -7,12 +7,10 @@ enable_language(C ASM)
 set(VENDOR "external")
 
 # GCC ARM compiler flags
-set(C_WARNS "-Wall -Wextra -Werror -Wno-unused-but-set-variable")
+set(C_WARNS "-Wall -Wextra -Werror -Wno-unused-but-set-variable -pedantic")
 set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb -DSTM32F446xx")
-set(CMAKE_C_COMPILER arm-none-eabi-gcc)
-set(CMAKE_CXX_COMPILER ${CMAKE_C_COMPILER})
-set(CMAKE_ASM_COMPILER ${CMAKE_C_COMPILER})
-set(CMAKE_C_FLAGS "-g ${MCU_FLAGS} ${C_WARNS} -nostdlib -Wl,-Map=${PROJECT_NAME}.map")
+set(CMAKE_C_FLAGS "-g -Og ${MCU_FLAGS} ${C_WARNS} -nostdlib -std=gnu17 -Wl,-Map=${PROJECT_NAME}.map")
+set(CMAKE_CXX_FLAGS "-g -Og ${MCU_FLAGS} ${C_WARNS} -nostdlib -std=gnu++17 -Wl,-Map=${PROJECT_NAME}.map")
 
 # Linker flags
 set(LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/linker_script.ld")
@@ -35,11 +33,10 @@ set(C_INCLUDES "src/"
                "${VENDOR}/CMSIS/Device/ST/STM32F4/Include/")
 
 add_executable(${PROJECT_NAME}.elf ${C_FILES})
-
 target_include_directories(${PROJECT_NAME}.elf PUBLIC ${C_INCLUDES})
-
 set_target_properties(${PROJECT_NAME}.elf PROPERTIES LINK_DEPENDS ${LINKER_SCRIPT})
 
+# Copy compile_commands file back to source, otherwise it won't be detected
 add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
     COMMAND cp ${CMAKE_BINARY_DIR}/compile_commands.json ${CMAKE_SOURCE_DIR}/compile_commands.json
 )

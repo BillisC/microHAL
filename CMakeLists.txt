@@ -10,6 +10,7 @@ set(VENDOR "external")
 set(C_WARNS "-Wall -Wextra -Werror -Wno-unused-but-set-variable")
 set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb -DSTM32F446xx")
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
+set(CMAKE_CXX_COMPILER ${CMAKE_C_COMPILER})
 set(CMAKE_ASM_COMPILER ${CMAKE_C_COMPILER})
 set(CMAKE_C_FLAGS "-g ${MCU_FLAGS} ${C_WARNS} -nostdlib -Wl,-Map=${PROJECT_NAME}.map")
 

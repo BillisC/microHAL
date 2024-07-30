@@ -1,6 +1,13 @@
-/* ------------------
- * MCU INITIALIZATION
- * ------------------ */
+/** @file mcu_init.h
+ *  @brief Function prototypes for the MCU initializer.
+ *
+ *  This file contains all of the enums, macros, and
+ *  function prototypes required for a proper peripheral
+ *  and clock initialization.
+ *  
+ *  @author Vasileios Ch. (BillisC)
+ *  @bug None, yet.
+ */
 
 #ifndef MCU_INIT_H
 #define MCU_INIT_H
@@ -23,7 +30,9 @@
 #define EN_OVERDRIVE TRUE
 
 /**
- * MCU initialization function.
+ * @brief MCU initialization function.
+ * 
+ * @return None
 */
 void mcu_init(void);
 

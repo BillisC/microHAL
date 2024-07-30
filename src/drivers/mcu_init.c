@@ -1,3 +1,13 @@
+/** @file mcu_init.c
+ *  @brief Function definitions for the MCU initializer.
+ *
+ *  This file contains all of the function definitions 
+ *  declared in mcu_init.h.
+ *  
+ *  @author Vasileios Ch. (BillisC)
+ *  @bug None, yet.
+ */
+
 /* Includes */
 #include "mcu_init.h"
 #include "stm32f4xx.h"

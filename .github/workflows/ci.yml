@@ -2,7 +2,7 @@ on: [push]
 jobs:
   build_analyze:
     runs-on: ubuntu-latest
-    container: billisch/cortexm_dev:v1.0
+    container: billisch/cortexm_dev:v1.1
     steps:
     - name: Checkout the repository
       uses: actions/checkout@v4

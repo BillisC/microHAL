@@ -22,8 +22,7 @@ git submodule update
 ### Compile and flash
 Initialize cmake configuration:
 ```
-mkdir build/
-cmake -B build/ .
+cmake -B build/ . -DCMAKE_TOOLCHAIN_FILE=arm-toolchain.cmake
 ```
 Finally compile and flash the project:
 ```

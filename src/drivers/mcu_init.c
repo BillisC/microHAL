@@ -17,7 +17,7 @@ static void clock_init(void) {
   dummy_read = RCC->APB1ENR;
 
   /* Set voltage regulator scaling to 1 */
-  PWR->CR |= (0b11 << PWR_CR_VOS_Pos);
+  PWR->CR |= (3U << PWR_CR_VOS_Pos);
 
   /* Configure flash controller for 3V3 and 180 MHz
    * system clock (5 wait states). */

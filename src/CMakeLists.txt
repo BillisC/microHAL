@@ -1,13 +1,12 @@
 file(GLOB C_SRCS "*.c"
                  "*.S"
                  "drivers/*.c"
-                 "${VENDOR}/CMSIS/Device/ST/STM32F4/Source/Templates/system_stm32f4xx.c")
+                 "${EXTERNAL}/CMSIS/Device/ST/STM32F4/Source/Templates/system_stm32f4xx.c")
 
-set(C_INCL "src/"
-           "src/drivers/"
+set(C_INCL "src/drivers/"
            "src/common/"
-           "${VENDOR}/CMSIS/CMSIS/Core/Include/"
-           "${VENDOR}/CMSIS/Device/ST/STM32F4/Include/")
+           "${EXTERNAL}/CMSIS/CMSIS/Core/Include/"
+           "${EXTERNAL}/CMSIS/Device/ST/STM32F4/Include/")
 
 # Target build
 add_executable(${PROJECT_NAME} ${C_SRCS})

@@ -4,7 +4,7 @@ project(drivers C)
 enable_language(ASM)
 
 # Folder that includes CMSIS etc.
-set(VENDOR "${CMAKE_SOURCE_DIR}/external")
+set(EXTERNAL "${CMAKE_SOURCE_DIR}/external")
 
 # GCC ARM compiler flags
 set(C_WARNS "-Wall -Wextra -Werror -Wno-unused-but-set-variable -pedantic")

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
-project(drivers VERSION 0.1)
+project(drivers C)
 
-enable_language(C ASM)
+enable_language(ASM)
 
 # Folder that includes CMSIS etc.
 set(VENDOR "${CMAKE_SOURCE_DIR}/external")
@@ -10,7 +10,6 @@ set(VENDOR "${CMAKE_SOURCE_DIR}/external")
 set(C_WARNS "-Wall -Wextra -Werror -Wno-unused-but-set-variable -pedantic")
 set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb -DSTM32F446xx")
 set(CMAKE_C_FLAGS "-g -Og ${MCU_FLAGS} ${C_WARNS} -nostdlib -std=gnu17 -Wl,-Map=${PROJECT_NAME}.map")
-set(CMAKE_CXX_FLAGS "-g -Og ${MCU_FLAGS} ${C_WARNS} -nostdlib -std=gnu++17 -Wl,-Map=${PROJECT_NAME}.map")
 
 # Linker flags
 set(LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/linker_script.ld")

@@ -2,9 +2,9 @@
  *  @brief Function prototypes for the GPIO driver.
  *
  *  This file contains all of the enums, macros, and
- *  function prototypes required for a functional GPIO 
+ *  function prototypes required for a functional GPIO
  *  driver.
- *  
+ *
  *  @author Vasileios Ch. (BillisC)
  *  @bug None, yet.
  */
@@ -14,6 +14,7 @@
 
 /* -- Includes -- */
 #include <stdint.h>
+#include "stm32f4xx.h"
 
 /* -- Structs -- */
 struct __attribute__((packed)) gpio {
@@ -28,10 +29,10 @@ struct __attribute__((packed)) gpio {
   volatile uint32_t AFR[2];
 };
 
-_Static_assert((sizeof(struct gpio)) == (sizeof(uint32_t) * 10U), 
+_Static_assert((sizeof(struct gpio)) == (sizeof(uint32_t) * 10U),
                "GPIO struct size mismatch. Is it aligned?");
 
-#define GPIO(bank) (struct gpio*) (0x40020000U + (0x400U * ((uint8_t)bank - (uint8_t)'A')))
+#define GPIO(bank) (struct gpio*) (GPIOA_BASE + (0x400U * ((uint8_t)bank - (uint8_t)'A')))
 
 /* -- Enums -- */
 typedef enum gp_dir {
@@ -61,7 +62,7 @@ typedef enum gp_pupdr {
 
 /**
   * @brief Sets the GPIO pin to the desired mode.
-  * 
+  *
   * The available directions for the GPIO pins are specified
   * in the gp_dir_t enum. Any other value will be ignored.
   *
@@ -74,7 +75,7 @@ void gp_set_direction(const char bank, const uint8_t pin, const gp_dir_t dir);
 
 /**
   * @brief Sets the GPIO output pin to the desired type.
-  * 
+  *
   * The available output types for the GPIO pins are specified
   * in the gp_otype_t enum. Any other value will be ignored.
   *
@@ -87,7 +88,7 @@ void gp_set_output_type(const char bank, const uint8_t pin, const gp_otype_t typ
 
 /**
   * @brief Sets the GPIO output pin to the desired speed.
-  * 
+  *
   * The available speeds for the GPIO output pins are specified
   * in the gp_speed_t enum. Any other value will be ignored.
   *
@@ -100,9 +101,9 @@ void gp_set_speed(const char bank, const uint8_t pin, const gp_speed_t speed);
 
 /**
   * @brief Sets the GPIO input pin to the desired state.
-  * 
-  * The available pull-up/pull-down states for the GPIO pins 
-  * are specified in the gp_pupdr_t enum. Any other value will 
+  *
+  * The available pull-up/pull-down states for the GPIO pins
+  * are specified in the gp_pupdr_t enum. Any other value will
   * be ignored.
   *
   * @param bank The GPIO bank
@@ -114,7 +115,7 @@ void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupdr_t poopdr);
 
 /**
   * @brief Sets the GPIO output pin to the desired value.
-  * 
+  *
   * Allowed values are either TRUE(1) or FALSE(0). Any other
   * value will be ignored.
   *

@@ -6,7 +6,7 @@
 #define MCU_INIT_H
 
 /* Includes */
-#include "../common/defines.h"
+#include "defines.h"
 
 /* Peripherals */
 #define PWR_GPIO TRUE

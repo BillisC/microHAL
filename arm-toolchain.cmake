@@ -14,12 +14,24 @@ get_filename_component(ARM_TOOLCHAIN_DIR ${BINUTILS_PATH} DIRECTORY)
 # Disable simple tests that fail
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
-# Set compiler flags
+# Set compiler paths
 set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc)
 set(CMAKE_CXX_COMPILER ${TOOLCHAIN_PREFIX}g++)
 set(CMAKE_ASM_COMPILER ${CMAKE_C_COMPILER})
 set(CMAKE_AR ${TOOLCHAIN_PREFIX}gcc-ar)
 set(CMAKE_RANLIB ${TOOLCHAIN_PREFIX}gcc-ranlib)
+
+# Default C compiler flags
+set(CMAKE_C_FLAGS_DEBUG_INIT "-g -Og -DDEBUG")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG_INIT}" CACHE STRING "C compiler flags for debug" FORCE)
+set(CMAKE_C_FLAGS_RELEASE_INIT "-Os")
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE_INIT}" CACHE STRING "C compiler flags for release" FORCE)
+
+# Default C++ compiler flags
+set(CMAKE_CXX_FLAGS_DEBUG_INIT "-g -Og -DDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG_INIT}" CACHE STRING "C++ compiler flags for debug" FORCE)
+set(CMAKE_CXX_FLAGS_RELEASE_INIT "-Os")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE_INIT}" CACHE STRING "C++ compiler flags for release" FORCE)
 
 # Find SYSROOT path
 execute_process(COMMAND ${CMAKE_C_COMPILER} -print-sysroot

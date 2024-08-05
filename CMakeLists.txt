@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 3.20)
-project(release C)
+cmake_minimum_required(VERSION 3.21)
+
+set(CMAKE_BUILD_TYPE Debug)
+project(exec C)
 
 enable_language(ASM)
 
@@ -9,7 +11,7 @@ set(EXTERNAL "${CMAKE_SOURCE_DIR}/external")
 # GCC ARM compiler flags
 set(C_WARNS "-Wall -Wextra -Werror -Wno-unused-but-set-variable -pedantic")
 set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb -DSTM32F446xx")
-set(CMAKE_C_FLAGS "-g -Og ${MCU_FLAGS} ${C_WARNS} -nostdlib -std=gnu17 -Wl,-Map=${PROJECT_NAME}.map")
+set(CMAKE_C_FLAGS "${MCU_FLAGS} ${C_WARNS} -nostdlib -std=gnu17 -Wl,-Map=${PROJECT_NAME}.map")
 
 # Linker flags
 set(LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/linker_script.ld")
@@ -29,6 +31,7 @@ set(ALZ_FLAGS --enable=all
               --suppress=missingInclude
               --suppress=unusedFunction
               -I ${CMAKE_SOURCE_DIR}/src/
+              -I ${CMAKE_SOURCE_DIR}/src/common/
               -I ${CMAKE_SOURCE_DIR}/src/drivers/)
 
 add_custom_target(analysis

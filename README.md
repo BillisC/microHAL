@@ -2,7 +2,16 @@
 
 ![CI](https://github.com/BillisC/stm32f446xx-drivers/actions/workflows/ci.yml/badge.svg)
 
-*This repository serves mostly as template, but tests will be included.*
+What's this repo about?
+- Provides a simple HAL
+- Provides simple driver implementations
+- Uses CMSIS where needed
+- Tries to be MISRA C (2023) compliant *can't be sure though*
+- Attempts to be cross-compatible *cough*
+- Serves as a template for future projects
+
+Can I use it for **any** STM32 F4 series MCU?
+- Probably, but its designed for F446RE so don't blame me if anything burns
 
 ### Preparation
 Install the required tools (CMake **must** be >= 3.21):

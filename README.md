@@ -1,5 +1,7 @@
 ## STM32F446xx Drivers
 
+![CI](https://github.com/BillisC/stm32f446xx-drivers/actions/workflows/ci.yml/badge.svg)
+
 *This repository serves mostly as template, but tests will be included.*
 
 ### Preparation

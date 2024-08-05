@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(drivers C)
+project(release C)
 
 enable_language(ASM)
 

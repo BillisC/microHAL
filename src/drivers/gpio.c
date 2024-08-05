@@ -3,14 +3,14 @@
  *
  *  This file contains all of the function definitions
  *  declared in gpio.h.
- *  
+ *
  *  @author Vasileios Ch. (BillisC)
  *  @bug None, yet.
  */
 
 /* -- Includes -- */
 #include "gpio.h"
-#include "../common/defines.h"
+#include "defines.h"
 
 void gp_set_direction(const char bank, const uint8_t pin, const gp_dir_t dir) {
   /* Check that the direction is valid */
@@ -100,7 +100,7 @@ void gp_set_af(const char bank, const uint8_t pin, const uint8_t af) {
   } else {
     /* Set the alternate function to the correct register */
     struct gpio *regs = GPIO(bank);
-    uint8_t sel = (pin <= 7U) ? 0 : 1; 
+    uint8_t sel = (pin <= 7U) ? 0 : 1;
     regs->AFR[sel] &= ~(15U << ((pin - (8U * sel)) * 4)); // Clear first
     regs->AFR[sel] |= ((15U & af) << ((pin - (8U * sel)) * 4));
   }

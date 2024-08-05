@@ -30,7 +30,7 @@ struct __attribute__((packed)) gpio {
 };
 
 _Static_assert((sizeof(struct gpio)) == (sizeof(uint32_t) * 10U),
-               "GPIO struct size mismatch. Is it aligned?");
+               "GPIO register struct size mismatch. Is it aligned?");
 
 #define GPIO(bank) (struct gpio*) (GPIOA_BASE + (0x400U * ((uint8_t)bank - (uint8_t)'A')))
 

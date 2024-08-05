@@ -3,9 +3,9 @@
 *This repository serves mostly as template, but tests will be included.*
 
 ### Preparation
-Install the required tools:
+Install the required tools (CMake **must** be >= 3.21):
 
-**Debian** `sudo apt install gcc-arm-none-eabi gdb-multiarch cmake openocd -y`
+**Debian** `sudo apt install gcc-arm-none-eabi gdb-multiarch git cmake openocd cppcheck -y`
 
 **Other distros** `Not available yet`
 
@@ -20,19 +20,21 @@ git submodule update
 ```
 
 ### Compile and flash
+Available configurations: Debug / Release
+
 Initialize cmake configuration:
 ```
-cmake -B build/ . -DCMAKE_TOOLCHAIN_FILE=arm-toolchain.cmake
+cmake -B build/{config}/ . --toolchain arm-toolchain.cmake
 ```
 Finally compile and flash the project:
 ```
-cmake --build build/ --target flash
+cmake --build build/{config}/ --target flash
 ```
 
 ### Debugging
 The following will launch a GDB server at port **3333**:
 ```
-cmake --build build/ --target debug
+cmake --build build/{config}/ --target debug
 ```
 To connect to it launch another GDB instance:
 ```

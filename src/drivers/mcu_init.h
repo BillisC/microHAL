@@ -4,7 +4,7 @@
  *  This file contains all of the enums, macros, and
  *  function prototypes required for a proper peripheral
  *  and clock initialization.
- *  
+ *
  *  @author Vasileios Ch. (BillisC)
  *  @bug None, yet.
  */
@@ -17,6 +17,9 @@
 
 /* Peripherals */
 #define PWR_GPIO TRUE
+#define PWR_ADC1 TRUE
+#define PWR_ADC2 FALSE
+#define PWR_ADC3 FALSE
 
 /* Clock Configuration
  * 8MHz (HSE) / 4 (PLLM) = 2MHz
@@ -31,7 +34,7 @@
 
 /**
  * @brief MCU initialization function.
- * 
+ *
  * @return None
 */
 void mcu_init(void);

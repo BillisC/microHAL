@@ -10,6 +10,7 @@
 
 /* -- Includes -- */
 #include "adc.h"
+#include "defines.h"
 #include "stm32f446xx.h"
 
 void adc_set_prescaler(const adc_prescaler_t value) {
@@ -181,6 +182,12 @@ uint16_t adc_read(const uint8_t adc) {
   } else {
     struct adc *regs = ADC_(adc);
 
-    return (65535UL & regs->DR);
+    /* Wait for conversion */
+    while (! (1UL & (regs->SR >> ADC_SR_EOC_Pos)));
+    uint16_t result = 65535U & regs->DR;
+
+    regs->SR &= ~ADC_SR_EOC_Pos; // Clear EOC flag
+
+    return result;
   }
 }

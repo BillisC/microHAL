@@ -1,9 +1,9 @@
 /** @file mcu_init.c
  *  @brief Function definitions for the MCU initializer.
  *
- *  This file contains all of the function definitions 
+ *  This file contains all of the function definitions
  *  declared in mcu_init.h.
- *  
+ *
  *  @author Vasileios Ch. (BillisC)
  *  @bug None, yet.
  */
@@ -66,17 +66,37 @@ static void clock_init(void) {
   SystemCoreClockUpdate();
 }
 
-static void peripheral_init(void) {
-  /* Enable peripherals */
+static void ahb1_periph(void) {
   uint32_t ahb1enr = 0U;
   #if PWR_GPIO == TRUE
     ahb1enr |= RCC_AHB1ENR_GPIOAEN_Msk;
   #endif
+
   RCC->AHB1ENR |= ahb1enr;
+}
+
+static void apb2_periph(void) {
+  uint32_t apb2enr = 0U;
+  #if PWR_ADC1 == TRUE
+    apb2enr |= RCC_APB2ENR_ADC1EN_Msk;
+  #endif
+  #if PWR_ADC2 == TRUE
+    apb2enr |= RCC_APB2ENR_ADC2EN_Msk;
+  #endif
+  #if PWR_ADC3 == TRUE
+    apb2enr |= RCC_APB2ENR_ADC3EN_Msk;
+  #endif
+
+  RCC->APB2ENR |= apb2enr;
+}
+
+static void peripheral_init(void) {
+  /* Enable peripherals */
+  ahb1_periph();
+  apb2_periph();
 
   /* dummy reads */
   volatile uint32_t dummy_read;
-  dummy_read = RCC->AHB1ENR;
   dummy_read = RCC->AHB1ENR;
 }
 
@@ -85,5 +105,6 @@ void mcu_init(void) {
   /* Set interrupt rate to 1 KHz (/180 MHZ) and enable interrupts */
   SysTick_Config(180000);
   __enable_irq();
+
   peripheral_init();
 }

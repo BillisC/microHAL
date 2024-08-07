@@ -16,6 +16,8 @@
 #ifndef ADC_H
 #define ADC_H
 
+#define ADC_NUM 3U
+
 /* -- Includes -- */
 #include <stdint.h>
 #include "stm32f4xx.h"
@@ -25,8 +27,7 @@ struct __attribute__((packed)) adc {
   volatile uint32_t SR;
   volatile uint32_t CR1;
   volatile uint32_t CR2;
-  volatile uint32_t SMPR1;
-  volatile uint32_t SMPR2;
+  volatile uint32_t SMPR[2];
   volatile uint32_t JOFR[4];
   volatile uint32_t HTR;
   volatile uint32_t LTR;
@@ -51,14 +52,15 @@ _Static_assert((sizeof(struct adc_common)) == (sizeof(uint32_t) * 3U),
 #define ADC_(number) (struct adc*) (ADC1_BASE + (0x100U * ((uint8_t)number - 1U)))
 #define ADC_COMMON (struct adc_common*) (ADC123_COMMON_BASE)
 
-struct __attribute__((packed)) adc_config {
+struct __attribute__((packed)) adc_modes {
   volatile uint8_t DMA : 1;
+  volatile uint8_t DDS : 1;
   volatile uint8_t CONT: 1;
-  volatile uint8_t DISC: 1;
+  volatile uint8_t DISC: 1; // One stop per conversion
   volatile uint8_t SCAN: 1;
 };
 
-_Static_assert((sizeof(struct adc_config)) == (sizeof(uint8_t) * 1U),
+_Static_assert((sizeof(struct adc_modes)) == (sizeof(uint8_t) * 1U),
                "ADC Configuration struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
@@ -112,7 +114,7 @@ void adc_set_prescaler(const adc_prescaler_t value);
   * specified in the adc_res_t enum. Any other value will be
   * ignored.
   *
-  * @param adc The selected ADC (up to three)
+  * @param adc The selected ADC (1..ADC_NUM)
   * @param value The resolution of the ADC conversions
   * @return None
   */
@@ -125,37 +127,65 @@ void adc_set_resolution(const uint8_t adc, const adc_res_t value);
   * specified in the adc_res_t enum (in clock cycles). Any other
   * value will be ignored.
   *
-  * @param adc The selected ADC (up to three)
+  * @param adc The selected ADC (1..ADC_NUM)
+  * @param channel The selected channel (0..19)
   * @param value The clock cycles of the ADC conversions
   * @return None
   */
-void adc_set_samplerate(const uint8_t adc, const adc_samplerate_t value);
+void adc_set_samplerate(const uint8_t adc, const uint8_t channel, const adc_samplerate_t value);
 
 /**
   * @brief Sets the ADC modes according to the configuration.
   *
   * The configuration values are specified within the adc_config
-  * struct. Please note that the ADON bit is set after this
-  * operation, so make sure to call it before adc_start().
+  * struct. Some modes may not work as expected yet.
   *
-  * @param adc The selected ADC (up to three)
-  * @param value The ADC configuration
+  * @param adc The selected ADC (1..ADC_NUM)
+  * @param config The ADC configuration
   * @return None
   */
-void adc_configure(const uint8_t adc, const struct adc_config config);
+void adc_set_modes(const uint8_t adc, const struct adc_modes config);
+
+/**
+  * @brief Sets the ADC conversion sequence to the specified order.
+  *
+  * The sequence consists of 16 5-bit elements. Bits 6..8 will be
+  * ignored.
+  *
+  * @param adc The selected ADC (1..ADC_NUM)
+  * @param seq Pointer to channel conversion sequence array
+  * @param count The total amount of conversions
+  * @return None
+  */
+void adc_set_seq(const uint8_t adc, const uint8_t* seq, const uint8_t count);
 
 /**
   * @brief Starts the ADC conversion.
   *
-  * @param adc The selected ADC (up to three)
+  * The ADC will be powered on upon calling this command and
+  * start the conversion procedure as configured. Dummy
+  * reads are included.
+  *
+  * @param adc The selected ADC (1..ADC_NUM)
   * @return None
   */
-void adc_start(const uint8_t adc);
+void adc_on(const uint8_t adc);
+
+/**
+  * @brief Stops the ADC conversion.
+  *
+  * The ADC will be powered off upon calling this command
+  * and instantly stop the conversion procedure.
+  *
+  * @param adc The selected ADC (1..ADC_NUM)
+  * @return None
+  */
+void adc_off(const uint8_t adc);
 
 /**
   * @brief Reads the last ADC conversion result.
   *
-  * @param adc The selected ADC (up to three)
+  * @param adc The selected ADC (1..ADC_NUM)
   * @return The conversion result
   */
 uint16_t adc_read(const uint8_t adc);

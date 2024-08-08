@@ -10,7 +10,7 @@ set(EXTERNAL "${CMAKE_SOURCE_DIR}/external")
 
 # GCC ARM compiler flags
 set(C_WARNS "-Wall -Wextra -Werror -Wno-unused-but-set-variable -pedantic")
-set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb -DSTM32F446xx")
+set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb -DSTM32F446xx -mfloat-abi=hard -mfpu=fpv4-sp-d16")
 set(CMAKE_C_FLAGS "${MCU_FLAGS} ${C_WARNS} -nostdlib -std=gnu17 -Wl,-Map=${PROJECT_NAME}.map")
 
 # Linker flags

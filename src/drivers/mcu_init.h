@@ -25,8 +25,8 @@
  * 8MHz (HSE) / 4 (PLLM) = 2MHz
  * 2MHz * 180 (PLLN) = 360MHz
  * 360MHz / 2 (PLLSRC) = 180MHz */
-#define PLLM_VAL 4
-#define PLLN_VAL 180
+#define PLLM_VAL   4
+#define PLLN_VAL   180
 #define PLLSRC_VAL 1
 
 /* Power Regulation */
@@ -36,7 +36,7 @@
  * @brief MCU initialization function.
  *
  * @return None
-*/
+ */
 void mcu_init(void);
 
 #endif

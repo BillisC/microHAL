@@ -28,7 +28,16 @@ struct __attribute__((packed)) usart {
 };
 
 _Static_assert((sizeof(struct usart)) == (sizeof(uint32_t) * 7U),
-               "GPIO register struct size mismatch. Is it aligned?");
+               "USART register struct size mismatch. Is it aligned?");
+
+/* Refer to datasheet */
+struct __attribute__((packed)) usart_config {
+  volatile uint8_t STOPBITS : 2;
+  volatile uint8_t DATABITS : 1;
+};
+
+_Static_assert((sizeof(struct usart_config)) == (sizeof(uint8_t) * 1U),
+               "USART configuration struct size mismatch. Is it aligned?");
 
 /* Enums  */
 typedef enum usart_sel {
@@ -42,24 +51,11 @@ typedef enum usart_sel {
 
 #define USART(sel) (struct usart *)((usart_sel_t)sel)
 
-typedef enum usart_oversampling {
-  ovr16 = 0x00,
-  ovr08 = 0x01
-} usart_oversampling_t;
+void usart_init(const usart_sel_t usart, const uint32_t baudrate,
+                const uint8_t over8);
 
-typedef enum usart_databits {
-  s1d8 = 0x00,
-  s1d9 = 0x01
-} usart_wlength_t;
-
-typedef enum usart_stopbits {
-  stop_one = 0x00,
-  stop_hlf = 0x01,
-  stop_two = 0x02,
-  stop_ohl = 0x03
-} usart_stopbits_t;
-
-void usart_init(const usart_sel_t usart, const uint32_t baudrate);
+void usart_set_config(const usart_sel_t usart,
+                      const struct usart_config config);
 
 void usart_write(const usart_sel_t usart, const char character);
 

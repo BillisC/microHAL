@@ -29,9 +29,9 @@ int main(void) {
   gp_set_direction('A', 3U, (gp_dir_t)al);
   gp_set_af('A', 2U, 7U);
   gp_set_af('A', 3U, 7U);
-  usart_init((usart_sel_t)usart2, 115200, FALSE);
-  struct usart_config u_config = {0U, 0U};
-  usart_set_config((usart_sel_t)usart2, u_config);
+  usart_init((usart_sel_t)usart2, 115200, (usart_mode_t)tx);
+  usart_set_databits((usart_sel_t)usart2, (usart_stopbits_t)sb1,
+                     (usart_databits_t)db8);
   char *message = "Hello, USART!";
   while (*message != '\0') {
     usart_write((usart_sel_t)usart2, *message++); // Send data

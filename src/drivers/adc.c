@@ -9,7 +9,6 @@
  */
 
 /* -- Includes -- */
-#include "stm32f446xx.h"
 #include "defines.h"
 #include "adc.h"
 

@@ -12,13 +12,13 @@
 #ifndef MCU_INIT_H
 #define MCU_INIT_H
 
-/* Includes */
+/* -- Includes -- */
 #include "defines.h"
 
-/* Coprocessors  */
+/* -- Coprocessors -- */
 #define EN_FPU TRUE
 
-/* Peripherals */
+/* -- Peripherals -- */
 #define PWR_GPIO   TRUE
 #define PWR_ADC1   TRUE
 #define PWR_ADC2   FALSE

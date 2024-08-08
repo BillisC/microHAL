@@ -12,11 +12,11 @@
 #ifndef USART_H
 #define USART_H
 
-/* Includes */
+/* -- Includes -- */
 #include <stdint.h>
 #include "stm32f4xx.h"
 
-/* Structs */
+/* -- Structs -- */
 struct __attribute__((packed)) usart {
   volatile uint32_t SR;
   volatile uint32_t DR;
@@ -30,16 +30,7 @@ struct __attribute__((packed)) usart {
 _Static_assert((sizeof(struct usart)) == (sizeof(uint32_t) * 7U),
                "USART register struct size mismatch. Is it aligned?");
 
-/* Refer to datasheet */
-struct __attribute__((packed)) usart_config {
-  volatile uint8_t STOPBITS : 2;
-  volatile uint8_t DATABITS : 1;
-};
-
-_Static_assert((sizeof(struct usart_config)) == (sizeof(uint8_t) * 1U),
-               "USART configuration struct size mismatch. Is it aligned?");
-
-/* Enums  */
+/* -- Enums -- */
 typedef enum usart_sel {
   usart1 = USART1_BASE,
   usart2 = USART2_BASE,
@@ -51,12 +42,87 @@ typedef enum usart_sel {
 
 #define USART(sel) (struct usart *)((usart_sel_t)sel)
 
+typedef enum usart_mode {
+  tx = 0x00,
+  rx = 0x01,
+  bo = 0x02
+} usart_mode_t;
+
+typedef enum usart_databits {
+  db8 = 0x00,
+  db9 = 0x01
+} usart_databits_t;
+
+typedef enum usart_stopbits {
+  sb1 = 0x00,
+  sbh = 0x01,
+  sb2 = 0x02,
+  sbo = 0x03
+} usart_stopbits_t;
+
+typedef enum usart_parity {
+  evn = 0x00,
+  odd = 0x01,
+  off = 0x02
+} usart_parity_t;
+
+/**
+ * @brief Initiates the USART peripheral with specified options.
+ *
+ * The available modes for the USART peripheral are specified in
+ * the usart_mode_t enum. Any other value will be ignored.
+ *
+ * @param usart The selected USART
+ * @param baudrate The desired communication bitrate
+ * @param mode The desired communication mode
+ * @return None
+ */
 void usart_init(const usart_sel_t usart, const uint32_t baudrate,
-                const uint8_t over8);
+                const usart_mode_t mode);
 
-void usart_set_config(const usart_sel_t usart,
-                      const struct usart_config config);
+/**
+ * @brief Sets the USART databits to the specified values.
+ *
+ * The available number of stopbits and databits for the USART
+ * are specified in usart_stopbits_t and usart_databits_t enums
+ * respectively. Any other value will be ignored.
+ *
+ * @param usart The selected USART
+ * @param stopbits The number of stop bits
+ * @param databits The word length
+ * @return None
+ */
+void usart_set_databits(const usart_sel_t usart,
+                        const usart_stopbits_t stopbits,
+                        const usart_databits_t databits);
 
+/**
+ * @brief Sets the USART parity to the specified mode.
+ *
+ * The available parity modes for the USART are specified in
+ * usart_parity_t. Any other value will be ignored. Please
+ * note that setting the parity modes will automatically set
+ * the PCE (parity control) bit. If the mode is "off" it will
+ * be cleared.
+ *
+ * @param usart The selected USART
+ * @param parity The selected parity
+ * @return None
+ */
+void usart_set_parity(const usart_sel_t usart, const usart_parity_t parity);
+
+/**
+ * @brief Writes specified data to USART buffer.
+ *
+ * In transmit/transceive mode the data will be written to the
+ * DR register and be shifted out of the TX pin when ready. For
+ * strings, it is recommended to write a custom wrapper for this
+ * function.
+ *
+ * @param usart The selected USART
+ * @param character The character to be sent
+ * @return None
+ */
 void usart_write(const usart_sel_t usart, const char character);
 
 #endif

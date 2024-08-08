@@ -27,7 +27,7 @@ static void clock_init(void) {
   dummy_read = RCC->APB1ENR;
 
   /* Set voltage regulator scaling to 1 */
-  PWR->CR |= (3U << PWR_CR_VOS_Pos);
+  PWR->CR |= (3UL << PWR_CR_VOS_Pos);
 
   /* Configure flash controller for 3V3 and 180 MHz
    * system clock (5 wait states). */
@@ -67,7 +67,7 @@ static void clock_init(void) {
 }
 
 static void ahb1_periph(void) {
-  uint32_t ahb1enr = 0U;
+  uint32_t ahb1enr = 0UL;
   #if PWR_GPIO == TRUE
     ahb1enr |= RCC_AHB1ENR_GPIOAEN_Msk;
   #endif
@@ -76,7 +76,7 @@ static void ahb1_periph(void) {
 }
 
 static void apb2_periph(void) {
-  uint32_t apb2enr = 0U;
+  uint32_t apb2enr = 0UL;
   #if PWR_ADC1 == TRUE
     apb2enr |= RCC_APB2ENR_ADC1EN_Msk;
   #endif

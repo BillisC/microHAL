@@ -23,25 +23,30 @@ void gp_set_direction(const char bank, const uint8_t pin, const gp_dir_t dir) {
     default: return;
   };
 
-  /* Change the pin direction */
   struct gpio *regs = GPIO(bank);
-  regs->MODER &= ~(3U << (pin * 2)); // Clear first
-  regs->MODER |= ((3U & dir) << (pin * 2));
+
+  /* Change the pin direction */
+  volatile uint32_t moder = regs->MODER;
+  moder &= ~(3UL << (pin * 2U)); // Clear first
+  moder |= ((3UL & dir) << (pin * 2U));
+
+  regs->MODER = moder;
 }
 
 void gp_set_output_type(const char bank, const uint8_t pin, const gp_otype_t type) {
   /* Check that the type is valid */
-  switch (type) {
-    case pp:
-    case od: break;
+  if ((type != pp) && (type != od)) {
+    return;
+  } else {
+    struct gpio *regs = GPIO(bank);
 
-    default: return;
-  };
+    /* Change the pin output type */
+    volatile uint32_t otyper = regs->OTYPER;
+    otyper &= ~(1UL << pin); // Clear first
+    otyper |= ((1UL & type) << pin);
 
-  /* Change the pin output type */
-  struct gpio *regs = GPIO(bank);
-  regs->OTYPER &= ~(1U << pin); // Clear first
-  regs->OTYPER |= ((1U & type) << pin);
+    regs->OTYPER = otyper;
+  }
 }
 
 void gp_set_speed(const char bank, const uint8_t pin, const gp_speed_t speed) {
@@ -55,10 +60,14 @@ void gp_set_speed(const char bank, const uint8_t pin, const gp_speed_t speed) {
     default: return;
   };
 
-  /* Change the pin output speed */
   struct gpio *regs = GPIO(bank);
-  regs->OSPEEDR &= ~(3U << (pin * 2)); // Clear first
-  regs->OSPEEDR |= ((3U & speed) << (pin * 2));
+
+  /* Change the pin output speed */
+  volatile uint32_t ospeedr = regs->OSPEEDR;
+  ospeedr &= ~(3UL << (pin * 2U)); // Clear first
+  ospeedr |= ((3UL & speed) << (pin * 2U));
+
+  regs->OSPEEDR = ospeedr;
 }
 
 void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupdr_t poopdr) {
@@ -71,10 +80,14 @@ void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupdr_t poopdr) {
     default: return;
   };
 
-  /* Set pull-up / pull-down state of pin */
   struct gpio *regs = GPIO(bank);
-  regs->PUPDR &= ~(3U << (pin * 2)); // Clear first
-  regs->PUPDR |= ((3U & poopdr) << (pin * 2));
+
+  /* Set pull-up / pull-down state of pin */
+  volatile uint32_t pupdr = regs->PUPDR;
+  pupdr &= ~(3UL << (pin * 2U)); // Clear first
+  pupdr |= ((3UL & poopdr) << (pin * 2U));
+
+  regs->PUPDR = pupdr;
 }
 
 void gp_set_val(const char bank, const uint8_t pin, const uint8_t value) {
@@ -82,9 +95,10 @@ void gp_set_val(const char bank, const uint8_t pin, const uint8_t value) {
   if ((value != TRUE) && (value != FALSE)) {
     return;
   } else {
-    /* Set output pin state */
     struct gpio *regs = GPIO(bank);
-    regs->BSSR = (1U << (pin + (16U * (1 - value))));
+
+    /* Set output pin state */
+    regs->BSSR = (1UL << (pin + (16U * (1 - value))));
   }
 }
 
@@ -98,10 +112,14 @@ void gp_set_af(const char bank, const uint8_t pin, const uint8_t af) {
   if (!(af <= 15U)) {
     return;
   } else {
-    /* Set the alternate function to the correct register */
     struct gpio *regs = GPIO(bank);
-    uint8_t sel = (pin <= 7U) ? 0 : 1;
-    regs->AFR[sel] &= ~(15U << ((pin - (8U * sel)) * 4)); // Clear first
-    regs->AFR[sel] |= ((15U & af) << ((pin - (8U * sel)) * 4));
+
+    /* Set the alternate function to the correct register */
+    uint8_t sel = (pin <= 7U) ? 0U : 1U;
+    volatile uint32_t afr = regs->AFR[sel];
+    afr &= ~(15U << ((pin - (8U * sel)) * 4U)); // Clear first
+    afr |= ((15U & af) << ((pin - (8U * sel)) * 4U));
+
+    regs->AFR[sel] = afr;
   }
 }

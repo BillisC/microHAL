@@ -2,7 +2,7 @@
 #define DEFINES_H
 
 // LOGIC
-#define TRUE 1
+#define TRUE  1
 #define FALSE 0
 
 // ASM INSTRUCTIONS

@@ -9,8 +9,8 @@
  */
 
 /* -- Includes -- */
-#include "gpio.h"
 #include "defines.h"
+#include "gpio.h"
 
 void gp_set_direction(const char bank, const uint8_t pin, const gp_dir_t dir) {
   /* Check that the direction is valid */
@@ -33,7 +33,8 @@ void gp_set_direction(const char bank, const uint8_t pin, const gp_dir_t dir) {
   regs->MODER = moder;
 }
 
-void gp_set_output_type(const char bank, const uint8_t pin, const gp_otype_t type) {
+void gp_set_output_type(const char bank, const uint8_t pin,
+                        const gp_otype_t type) {
   /* Check that the type is valid */
   if ((type != pp) && (type != od)) {
     return;

@@ -55,11 +55,11 @@ _Static_assert((sizeof(struct adc_common)) == (sizeof(uint32_t) * 3U),
 #define ADC_COMMON (struct adc_common *)(ADC123_COMMON_BASE)
 
 struct __attribute__((packed)) adc_modes {
-  volatile uint8_t DMA  : 1;
-  volatile uint8_t DDS  : 1;
-  volatile uint8_t CONT : 1;
-  volatile uint8_t DISC : 1; // One stop per conversion
-  volatile uint8_t SCAN : 1;
+  volatile _Bool DMA  : 1;
+  volatile _Bool DDS  : 1;
+  volatile _Bool CONT : 1;
+  volatile _Bool DISC : 1; // One stop per conversion
+  volatile _Bool SCAN : 1;
 };
 
 _Static_assert((sizeof(struct adc_modes)) == (sizeof(uint8_t) * 1U),

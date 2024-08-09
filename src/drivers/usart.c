@@ -10,9 +10,7 @@
 
 /* -- Includes -- */
 #include "defines.h"
-#include "stm32f446xx.h"
 #include "usart.h"
-#include <stdint.h>
 
 void usart_init(const usart_sel_t usart, const uint32_t baudrate,
                 const usart_mode_t mode, const _Bool x8_oversample) {
@@ -86,7 +84,7 @@ void usart_set_interrupts(const usart_sel_t usart,
   regs->CR1 = cr1;
 
   volatile uint8_t cr2 = regs->CR2;
-  cr2 &= ~USART_CR2_STOP_Msk; // Clear first
+  cr2 &= ~(USART_CR2_STOP_Msk); // Clear first
   cr2 |= (config.LBDI << USART_CR2_LBDIE_Pos);
 
   regs->CR2 = cr2;
@@ -132,14 +130,14 @@ void usart_set_databits(const usart_sel_t usart,
 
     /* Set amount of databits */
     volatile uint32_t cr1 = regs->CR1;
-    cr1 &= ~USART_CR1_M_Msk; // Clear first
+    cr1 &= ~(USART_CR1_M_Msk); // Clear first
     cr1 |= (databits << USART_CR1_M_Pos);
 
     regs->CR1 = cr1;
 
     /* Set amount of stopbits */
     volatile uint32_t cr2 = regs->CR2;
-    cr2 &= ~USART_CR2_STOP_Msk; // Clear first
+    cr2 &= ~(USART_CR2_STOP_Msk); // Clear first
     cr2 |= (stopbits << USART_CR2_STOP_Pos);
 
     regs->CR2 = cr2;
@@ -223,7 +221,7 @@ uint16_t usart_read(const usart_sel_t usart) {
   /* Read received data */
   while (!(regs->SR & USART_SR_RXNE_Msk)) { ASM_NOP; };
   const uint16_t word = regs->DR;
-  regs->SR &= ~USART_SR_RXNE_Msk;
+  regs->SR &= ~(USART_SR_RXNE_Msk);
 
   return word;
 }

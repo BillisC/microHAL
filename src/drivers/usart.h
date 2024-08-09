@@ -126,4 +126,28 @@ void usart_set_parity(const usart_sel_t usart, const usart_parity_t parity);
  */
 void usart_write(const usart_sel_t usart, const char character);
 
+/**
+ * @brief Reads the received data from the USART buffer.
+ *
+ * In receive/transceive mode the data will be read from the
+ * DR register and the RXNE flag will be cleared. Beware that
+ * this method is very slow and may cause overrun errors if not
+ * used in conjuction with interrupts.
+ *
+ * @param usart The selected USART
+ * @return The received data
+ */
+uint16_t usart_read(const usart_sel_t usart);
+
+/**
+ * @brief Disable the USART interface.
+ *
+ * The function will wait until all transmissions are complete
+ * and turn off the specified USART peripheral.
+ *
+ * @param usart The selected USART
+ * @return None
+ */
+void usart_stop(const usart_sel_t usart);
+
 #endif

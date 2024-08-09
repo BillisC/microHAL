@@ -10,7 +10,9 @@
 
 /* -- Includes -- */
 #include "defines.h"
+#include "stm32f446xx.h"
 #include "usart.h"
+#include <stdint.h>
 
 void usart_init(const usart_sel_t usart, const uint32_t baudrate,
                 const usart_mode_t mode, const _Bool x8_oversample) {
@@ -160,4 +162,47 @@ void usart_write(const usart_sel_t usart, const char character) {
   /* Wait for TXE and transmit data */
   while (!(regs->SR & USART_SR_TXE_Msk)) { ASM_NOP; };
   regs->DR = character;
+}
+
+uint16_t usart_read(const usart_sel_t usart) {
+  /* Check that the USART exists */
+  switch (usart) {
+    case usart1:
+    case usart2:
+    case usart3:
+    case uart4:
+    case uart5:
+    case usart6: break;
+
+    default: return 0U;
+  }
+
+  struct usart *regs = USART(usart);
+
+  /* Read received data */
+  while (!(regs->SR & USART_SR_RXNE_Msk)) { ASM_NOP; };
+  const uint16_t word = regs->DR;
+  regs->SR &= ~USART_SR_RXNE_Msk;
+
+  return word;
+}
+
+void usart_stop(const usart_sel_t usart) {
+  /* Check that the USART exists */
+  switch (usart) {
+    case usart1:
+    case usart2:
+    case usart3:
+    case uart4:
+    case uart5:
+    case usart6: break;
+
+    default: return;
+  }
+
+  struct usart *regs = USART(usart);
+
+  /* Wait for all transmissions to end */
+  while (!(regs->SR & USART_SR_TC_Msk)) { ASM_NOP; };
+  regs->CR1 &= ~(USART_CR1_UE_Msk);
 }

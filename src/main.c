@@ -29,7 +29,7 @@ int main(void) {
   gp_set_direction('A', 3U, (gp_dir_t)al);
   gp_set_af('A', 2U, 7U);
   gp_set_af('A', 3U, 7U);
-  usart_init((usart_sel_t)usart2, 115200, (usart_mode_t)tx);
+  usart_init((usart_sel_t)usart2, 115200, (usart_mode_t)tx, FALSE);
   usart_set_databits((usart_sel_t)usart2, (usart_stopbits_t)sb1,
                      (usart_databits_t)db8);
   char *message = "Hello, USART!";

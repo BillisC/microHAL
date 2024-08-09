@@ -75,10 +75,11 @@ typedef enum usart_parity {
  * @param usart The selected USART
  * @param baudrate The desired communication bitrate
  * @param mode The desired communication mode
+ * @param x8_oversample Use x8 oversampling instead of x16
  * @return None
  */
 void usart_init(const usart_sel_t usart, const uint32_t baudrate,
-                const usart_mode_t mode);
+                const usart_mode_t mode, const _Bool x8_oversample);
 
 /**
  * @brief Sets the USART databits to the specified values.

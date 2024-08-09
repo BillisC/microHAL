@@ -126,7 +126,7 @@ void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupdr_t poopdr);
  * @param value The pin value
  * @return None
  */
-void gp_set_val(const char bank, const uint8_t pin, const uint8_t value);
+void gp_set_val(const char bank, const uint8_t pin, const _Bool value);
 
 /**
  * @brief Reads the GPIO input pin value.

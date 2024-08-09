@@ -91,16 +91,12 @@ void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupdr_t poopdr) {
   regs->PUPDR = pupdr;
 }
 
-void gp_set_val(const char bank, const uint8_t pin, const uint8_t value) {
+void gp_set_val(const char bank, const uint8_t pin, const _Bool value) {
   /* Check that the value is valid */
-  if ((value != TRUE) && (value != FALSE)) {
-    return;
-  } else {
-    struct gpio *regs = GPIO(bank);
+  struct gpio *regs = GPIO(bank);
 
-    /* Set output pin state */
-    regs->BSSR = (1UL << (pin + (16U * (1 - value))));
-  }
+  /* Set output pin state */
+  regs->BSSR = (1UL << (pin + (16U * (1 - value))));
 }
 
 uint8_t gp_read_val(const char bank, const uint8_t pin) {

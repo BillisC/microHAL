@@ -30,6 +30,20 @@ struct __attribute__((packed)) usart {
 _Static_assert((sizeof(struct usart)) == (sizeof(uint32_t) * 7U),
                "USART register struct size mismatch. Is it aligned?");
 
+struct __attribute__((packed)) usart_isr {
+  volatile _Bool TXEI  : 1;
+  volatile _Bool CTSI  : 1;
+  volatile _Bool TCI   : 1;
+  volatile _Bool RXNEI : 1;
+  volatile _Bool IDLEI : 1;
+  volatile _Bool PEI   : 1;
+  volatile _Bool LBDI  : 1;
+  volatile _Bool EI    : 1;
+};
+
+_Static_assert((sizeof(struct usart_isr)) == (sizeof(uint8_t) * 1U),
+               "USART interrupt struct size mismatch. Is it aligned?");
+
 /* -- Enums -- */
 typedef enum usart_sel {
   usart1 = USART1_BASE,
@@ -80,6 +94,19 @@ typedef enum usart_parity {
  */
 void usart_init(const usart_sel_t usart, const uint32_t baudrate,
                 const usart_mode_t mode, const _Bool x8_oversample);
+
+/**
+ * @brief Enables the specified USART interrupts.
+ *
+ * The available interrupts are located in the usart_isr
+ * struct.
+ *
+ * @param usart The selected USART
+ * @param config The ISR configuration
+ * @return None
+ */
+void usart_set_interrupts(const usart_sel_t usart,
+                          const struct usart_isr config);
 
 /**
  * @brief Sets the USART databits to the specified values.

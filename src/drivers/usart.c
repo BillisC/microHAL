@@ -58,6 +58,47 @@ void usart_init(const usart_sel_t usart, const uint32_t baudrate,
   regs->BRR = ((4095UL & mantissa) << 4) | (15UL & fraction);
 }
 
+void usart_set_interrupts(const usart_sel_t usart,
+                          const struct usart_isr config) {
+  /* Check that the USART exists */
+  switch (usart) {
+    case usart1:
+    case usart2:
+    case usart3:
+    case uart4:
+    case uart5:
+    case usart6: break;
+
+    default: return;
+  }
+  struct usart *regs = USART(usart);
+
+  /* Set USART interrupts */
+  volatile uint8_t cr1 = regs->CR1;
+  cr1 &= ~(USART_CR1_PEIE_Msk | USART_CR1_TXEIE_Msk | USART_CR1_TCIE_Msk |
+           USART_CR1_RXNEIE_Msk | USART_CR1_IDLEIE_Msk); // Clear first
+  cr1 |= ((config.PEI << USART_CR1_PEIE_Pos) |
+          (config.TXEI << USART_CR1_TXEIE_Pos) |
+          (config.TCI << USART_CR1_TCIE_Pos) |
+          (config.RXNEI << USART_CR1_RXNEIE_Pos) |
+          (config.IDLEI << USART_CR1_IDLEIE_Pos));
+
+  regs->CR1 = cr1;
+
+  volatile uint8_t cr2 = regs->CR2;
+  cr2 &= ~USART_CR2_STOP_Msk; // Clear first
+  cr2 |= (config.LBDI << USART_CR2_LBDIE_Pos);
+
+  regs->CR2 = cr2;
+
+  volatile uint8_t cr3 = regs->CR3;
+  cr3 &= ~(USART_CR3_CTSIE_Msk | USART_CR3_EIE_Msk); // Clear first
+  cr3 |= ((config.CTSI << USART_CR3_CTSIE_Pos) |
+          (config.EI << USART_CR3_EIE_Pos)); //
+
+  regs->CR3 = cr3;
+}
+
 void usart_set_databits(const usart_sel_t usart,
                         const usart_stopbits_t stopbits,
                         const usart_databits_t databits) {
@@ -91,14 +132,14 @@ void usart_set_databits(const usart_sel_t usart,
 
     /* Set amount of databits */
     volatile uint32_t cr1 = regs->CR1;
-    cr1 &= ~(USART_CR1_M_Msk);
+    cr1 &= ~USART_CR1_M_Msk; // Clear first
     cr1 |= (databits << USART_CR1_M_Pos);
 
     regs->CR1 = cr1;
 
     /* Set amount of stopbits */
     volatile uint32_t cr2 = regs->CR2;
-    cr2 &= ~(USART_CR2_STOP_Msk);
+    cr2 &= ~USART_CR2_STOP_Msk; // Clear first
     cr2 |= (stopbits << USART_CR2_STOP_Pos);
 
     regs->CR2 = cr2;

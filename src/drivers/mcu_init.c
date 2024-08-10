@@ -11,7 +11,6 @@
 /* Includes */
 #include <stdint.h>
 #include "stm32f4xx.h"
-#include "defines.h"
 #include "mcu_init.h"
 
 static void clock_init(void) {

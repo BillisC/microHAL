@@ -33,14 +33,16 @@ static void clock_init(void) {
    * system clock (5 wait states). */
   FLASH->ACR |= FLASH_ACR_LATENCY_5WS;
 
-  /* Clear PLL clock parameters */
-  RCC->PLLCFGR &=
-      ~(RCC_PLLCFGR_PLLM_Msk | RCC_PLLCFGR_PLLN_Msk | RCC_PLLCFGR_PLLP_Msk);
-
   /* Configure the PLL clock */
+  RCC->PLLCFGR &= ~(RCC_PLLCFGR_PLLM_Msk | RCC_PLLCFGR_PLLN_Msk |
+                    RCC_PLLCFGR_PLLP_Msk); // Clear first
   RCC->PLLCFGR |=
       ((PLLM_VAL << RCC_PLLCFGR_PLLM_Pos) | (PLLN_VAL << RCC_PLLCFGR_PLLN_Pos) |
        (PLLSRC_VAL << RCC_PLLCFGR_PLLSRC_Pos));
+
+  /* Configure the APB clocks */
+  RCC->CFGR |=
+      ((APB1_CLK << RCC_CFGR_PPRE1_Pos) | (APB2_CLK << RCC_CFGR_PPRE2_Pos));
 
   /* Enable PLL clock */
   RCC->CR |= RCC_CR_PLLON_Msk;
@@ -74,6 +76,24 @@ static void ahb1_periph(void) {
   RCC->AHB1ENR |= ahb1enr;
 }
 
+static void apb1_periph(void) {
+  uint32_t apb1enr = 0UL;
+#if PWR_USART2 == TRUE
+  apb1enr |= RCC_APB1ENR_USART2EN_Msk;
+#endif
+#if PWR_USART3 == TRUE
+  apb1enr |= RCC_APB1ENR_USART3EN_Msk;
+#endif
+#if PWR_UART4 == TRUE
+  apb1enr |= RCC_APB1ENR_UART4EN_Msk;
+#endif
+#if PWR_UART5 == TRUE
+  apb1enr |= RCC_APB1ENR_UART5EN_Msk;
+#endif
+
+  RCC->APB1ENR |= apb1enr;
+}
+
 static void apb2_periph(void) {
   uint32_t apb2enr = 0UL;
 #if PWR_ADC1 == TRUE
@@ -85,6 +105,12 @@ static void apb2_periph(void) {
 #if PWR_ADC3 == TRUE
   apb2enr |= RCC_APB2ENR_ADC3EN_Msk;
 #endif
+#if PWR_USART1 == TRUE
+  apb2enr |= RCC_APB2ENR_USART1EN_Msk;
+#endif
+#if PWR_USART6 == TRUE
+  apb2enr |= RCC_APB2ENR_USART6EN_Msk;
+#endif
 
   RCC->APB2ENR |= apb2enr;
 }
@@ -92,6 +118,7 @@ static void apb2_periph(void) {
 static void peripheral_init(void) {
   /* Enable peripherals */
   ahb1_periph();
+  apb1_periph();
   apb2_periph();
 
   /* dummy reads */
@@ -101,9 +128,14 @@ static void peripheral_init(void) {
 
 void mcu_init(void) {
   clock_init();
+
   /* Set interrupt rate to 1 KHz (/180 MHZ) and enable interrupts */
   SysTick_Config(180000);
   __enable_irq();
+
+#if EN_FPU == TRUE
+  SCB->CPACR |= ((3UL << 20U) | (3UL << 22U));
+#endif
 
   peripheral_init();
 }

@@ -144,6 +144,7 @@ void usart_set_parity(const usart_sel_t usart, const usart_parity_t parity);
  *
  * In transmit/transceive mode the data will be written to the
  * DR register and be shifted out of the TX pin when ready.
+ * Using it without DMA is not recommended for multibyte messages.
  *
  * @param usart The selected USART
  * @param character Pointer to the message

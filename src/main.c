@@ -35,8 +35,7 @@ int main(void) {
   usart_set_databits((usart_sel_t)usart2, (usart_stopbits_t)sb1,
                      (usart_databits_t)db8);
   usart_start((usart_sel_t)usart2, 115200, (usart_mode_t)tx);
-  char *message = "Hello, USART!\n";
-  usart_tx_message((usart_sel_t)usart2, message);
+  usart_tx_message((usart_sel_t)usart2, "Hello, USART!\t\n");
 
   /* MAIN CODE GOES HERE */
   while (TRUE) { ASM_NOP; }

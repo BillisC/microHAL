@@ -28,6 +28,9 @@ void usart_start(const usart_sel_t usart, const uint32_t baudrate,
 
   struct usart *regs = USART(usart);
 
+  /* Calculate USART div accurately */
+  regs->BRR = ((APB1_CLK * 1000000) / baudrate);
+
   /* Setup communication modes */
   volatile uint32_t cr1 = regs->CR1;
   cr1 &= ~(USART_CR1_TE_Msk | USART_CR1_RE_Msk); // Clear first
@@ -41,9 +44,6 @@ void usart_start(const usart_sel_t usart, const uint32_t baudrate,
 
   /* Power on USART interface */
   regs->CR1 = (cr1 | USART_CR1_UE_Msk);
-
-  /* Calculate USART div accurately */
-  regs->BRR = ((APB1_CLK * 1000000) / baudrate);
 }
 
 void usart_set_interrupts(const usart_sel_t usart,

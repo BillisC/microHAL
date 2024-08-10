@@ -12,8 +12,8 @@
 #include "defines.h"
 #include "usart.h"
 
-void usart_init(const usart_sel_t usart, const uint32_t baudrate,
-                const usart_mode_t mode, const _Bool x8_oversample) {
+void usart_start(const usart_sel_t usart, const uint32_t baudrate,
+                 const usart_mode_t mode) {
   /* Check that the USART exists */
   switch (usart) {
     case usart1:
@@ -28,14 +28,9 @@ void usart_init(const usart_sel_t usart, const uint32_t baudrate,
 
   struct usart *regs = USART(usart);
 
-  /* Power on USART interface */
-  volatile uint8_t cr1 = regs->CR1;
-  cr1 |= USART_CR1_UE_Msk;
-
   /* Setup communication modes */
-  cr1 &= ~(USART_CR1_TE_Msk | USART_CR1_RE_Msk |
-           USART_CR1_OVER8_Msk); // Clear first
-  cr1 |= (x8_oversample << USART_CR1_OVER8_Pos);
+  volatile uint32_t cr1 = regs->CR1;
+  cr1 &= ~(USART_CR1_TE_Msk | USART_CR1_RE_Msk); // Clear first
   if (mode == tx) {
     cr1 |= USART_CR1_TE_Msk;
   } else if (mode == rx) {
@@ -44,16 +39,11 @@ void usart_init(const usart_sel_t usart, const uint32_t baudrate,
     cr1 |= (USART_CR1_TE_Msk | USART_CR1_RE_Msk);
   }
 
-  regs->CR1 = cr1;
+  /* Power on USART interface */
+  regs->CR1 = (cr1 | USART_CR1_UE_Msk);
 
   /* Calculate USART div accurately */
-  float usartdiv =
-      ((APB1_CLK * 1000000.0f) / ((8 * (2 - x8_oversample) * baudrate)));
-  uint16_t mantissa = (uint16_t)usartdiv;
-  uint8_t fraction =
-      (uint8_t)((float)(usartdiv - mantissa) * (16 - (8 * x8_oversample)));
-
-  regs->BRR = ((4095UL & mantissa) << 4) | (15UL & fraction);
+  regs->BRR = ((APB1_CLK * 1000000) / baudrate);
 }
 
 void usart_set_interrupts(const usart_sel_t usart,
@@ -84,7 +74,7 @@ void usart_set_interrupts(const usart_sel_t usart,
   regs->CR1 = cr1;
 
   volatile uint8_t cr2 = regs->CR2;
-  cr2 &= ~(USART_CR2_STOP_Msk); // Clear first
+  cr2 &= ~(USART_CR2_LBDIE_Msk); // Clear first
   cr2 |= (config.LBDI << USART_CR2_LBDIE_Pos);
 
   regs->CR2 = cr2;
@@ -183,7 +173,13 @@ void usart_set_parity(const usart_sel_t usart, const usart_parity_t parity) {
   regs->CR1 = cr1;
 }
 
-void usart_write(const usart_sel_t usart, const char character) {
+inline static void usart_tx_byte(struct usart *regs, const char character) {
+  /* Wait for TXE and transmit data */
+  while (!(regs->SR & USART_SR_TXE_Msk)) { ASM_NOP; };
+  regs->DR = character;
+}
+
+void usart_tx_message(const usart_sel_t usart, const char *message) {
   /* Check that the USART exists */
   switch (usart) {
     case usart1:
@@ -198,12 +194,14 @@ void usart_write(const usart_sel_t usart, const char character) {
 
   struct usart *regs = USART(usart);
 
-  /* Wait for TXE and transmit data */
-  while (!(regs->SR & USART_SR_TXE_Msk)) { ASM_NOP; };
-  regs->DR = character;
+  /* Send message */
+  while (*message != '\0') { usart_tx_byte(regs, *message++); }
+
+  /* Wait for transmission complete flag  */
+  while (!(regs->SR & USART_SR_TC_Msk)) { ASM_NOP; };
 }
 
-uint16_t usart_read(const usart_sel_t usart) {
+uint16_t usart_rx_byte(const usart_sel_t usart) {
   /* Check that the USART exists */
   switch (usart) {
     case usart1:
@@ -221,7 +219,6 @@ uint16_t usart_read(const usart_sel_t usart) {
   /* Read received data */
   while (!(regs->SR & USART_SR_RXNE_Msk)) { ASM_NOP; };
   const uint16_t word = regs->DR;
-  regs->SR &= ~(USART_SR_RXNE_Msk);
 
   return word;
 }

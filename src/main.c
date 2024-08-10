@@ -29,13 +29,14 @@ int main(void) {
   gp_set_direction('A', 3U, (gp_dir_t)al);
   gp_set_af('A', 2U, 7U);
   gp_set_af('A', 3U, 7U);
-  usart_init((usart_sel_t)usart2, 115200, (usart_mode_t)tx, FALSE);
+  gp_set_speed('A', 2U, (gp_speed_t)hig);
+  gp_set_speed('A', 3U, (gp_speed_t)hig);
+
   usart_set_databits((usart_sel_t)usart2, (usart_stopbits_t)sb1,
                      (usart_databits_t)db8);
-  char *message = "Hello, USART!";
-  while (*message != '\0') {
-    usart_write((usart_sel_t)usart2, *message++); // Send data
-  }
+  usart_start((usart_sel_t)usart2, 115200, (usart_mode_t)tx);
+  char *message = "Hello, USART!\n";
+  usart_tx_message((usart_sel_t)usart2, message);
 
   /* MAIN CODE GOES HERE */
   while (TRUE) { ASM_NOP; }

@@ -92,8 +92,8 @@ typedef enum usart_parity {
  * @param x8_oversample Use x8 oversampling instead of x16
  * @return None
  */
-void usart_init(const usart_sel_t usart, const uint32_t baudrate,
-                const usart_mode_t mode, const _Bool x8_oversample);
+void usart_start(const usart_sel_t usart, const uint32_t baudrate,
+                 const usart_mode_t mode);
 
 /**
  * @brief Enables the specified USART interrupts.
@@ -140,18 +140,16 @@ void usart_set_databits(const usart_sel_t usart,
 void usart_set_parity(const usart_sel_t usart, const usart_parity_t parity);
 
 /**
- * @brief Writes specified data to USART buffer.
+ * @brief Writes specified message to USART buffer.
  *
  * In transmit/transceive mode the data will be written to the
- * DR register and be shifted out of the TX pin when ready. For
- * strings, it is recommended to write a custom wrapper for this
- * function.
+ * DR register and be shifted out of the TX pin when ready.
  *
  * @param usart The selected USART
- * @param character The character to be sent
+ * @param character Pointer to the message
  * @return None
  */
-void usart_write(const usart_sel_t usart, const char character);
+void usart_tx_message(const usart_sel_t usart, const char *message);
 
 /**
  * @brief Reads the received data from the USART buffer.
@@ -164,7 +162,7 @@ void usart_write(const usart_sel_t usart, const char character);
  * @param usart The selected USART
  * @return The received data
  */
-uint16_t usart_read(const usart_sel_t usart);
+uint16_t usart_rx_byte(const usart_sel_t usart);
 
 /**
  * @brief Disable the USART interface.

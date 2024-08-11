@@ -28,8 +28,9 @@ set(ALZ cppcheck)
 set(ALZ_TARGET ${CMAKE_SOURCE_DIR}/src/)
 set(ALZ_FLAGS --enable=all
               --error-exitcode=1
-              --suppress=missingInclude
-              --suppress=unusedFunction
+              --suppress=missingInclude # Will not check CMSIS too
+              --suppress=unusedFunction # This is a template source
+              --suppress=knownConditionTrueFalse # Issue with SysTick interrupt
               -I ${CMAKE_SOURCE_DIR}/src/
               -I ${CMAKE_SOURCE_DIR}/src/common/
               -I ${CMAKE_SOURCE_DIR}/src/drivers/)

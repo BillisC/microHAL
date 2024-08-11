@@ -114,7 +114,7 @@ void usart_set_databits(const usart_sel_t usart,
   }
 
   /* Make sure the number of databits is valid */
-  if ((databits != USART_DATABITS_DB8) && (databits != USART_DATABITS_DB8)) {
+  if ((databits != USART_DATABITS_DB8) && (databits != USART_DATABITS_DB9)) {
     return;
   } else {
     struct USARTRegs *regs = USART(usart);

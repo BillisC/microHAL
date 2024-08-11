@@ -32,17 +32,17 @@ void dma_configure_data(const uint8_t dma, const uint8_t stream,
                         const dma_datasize_t psize) {
   /* Check that datasizes are correct */
   switch (msize) {
-    case DMA_byte:
-    case DMA_hwrd:
-    case DMA_word: break;
+    case DMA_DATASIZE_BYTE:
+    case DMA_DATASIZE_HWRD:
+    case DMA_DATASIZE_WORD: break;
 
     default: return;
   }
 
   switch (psize) {
-    case DMA_byte:
-    case DMA_hwrd:
-    case DMA_word: break;
+    case DMA_DATASIZE_BYTE:
+    case DMA_DATASIZE_HWRD:
+    case DMA_DATASIZE_WORD: break;
 
     default: return;
   }
@@ -69,9 +69,9 @@ void dma_configure_data(const uint8_t dma, const uint8_t stream,
 void dma_set_direction(const uint8_t dma, const uint8_t stream,
                        const dma_dir_t direction) {
   switch (direction) {
-    case DMA_per2mem:
-    case DMA_mem2per:
-    case DMA_mem2mem: break;
+    case DMA_DIR_PER2MEM:
+    case DMA_DIR_MEM2PER:
+    case DMA_DIR_MEM2MEM: break;
 
     default: return;
   };
@@ -113,6 +113,16 @@ void dma_configure_stream(const uint8_t dma, const uint8_t stream,
 
 void dma_set_channel(const uint8_t dma, const uint8_t stream,
                      const uint8_t channel, const dma_priority_t priority) {
+  /* Make sure the priority is correct */
+  switch (priority) {
+    case DMA_PRIORITY_LOW:
+    case DMA_PRIORITY_MED:
+    case DMA_PRIORITY_HIG:
+    case DMA_PRIORITY_VHI: break;
+
+    default: return;
+  };
+
   /* Make sure that the stream exists */
   if (!(stream < 8)) {
     return;

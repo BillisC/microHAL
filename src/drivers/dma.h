@@ -69,22 +69,22 @@ _Static_assert((sizeof(struct DMAStreamISR)) == (sizeof(uint8_t) * 1U),
 
 /* -- Enums -- */
 typedef enum dma_dir {
-  DMA_per2mem = 0x00,
-  DMA_mem2per = 0x01,
-  DMA_mem2mem = 0x02
+  DMA_DIR_PER2MEM = 0x00,
+  DMA_DIR_MEM2PER = 0x01,
+  DMA_DIR_MEM2MEM = 0x02
 } dma_dir_t;
 
 typedef enum dma_datasize {
-  DMA_byte = 0x00,
-  DMA_hwrd = 0x01,
-  DMA_word = 0x02
+  DMA_DATASIZE_BYTE = 0x00,
+  DMA_DATASIZE_HWRD = 0x01,
+  DMA_DATASIZE_WORD = 0x02
 } dma_datasize_t;
 
 typedef enum dma_priority {
-  DMA_low = 0x00,
-  DMA_med = 0x01,
-  DMA_hig = 0x02,
-  DMA_vhi = 0x03
+  DMA_PRIORITY_LOW = 0x00,
+  DMA_PRIORITY_MED = 0x01,
+  DMA_PRIORITY_HIG = 0x02,
+  DMA_PRIORITY_VHI = 0x03
 } dma_priority_t;
 
 /**

@@ -23,7 +23,7 @@
 #include "stm32f4xx.h"
 
 /* -- Structs -- */
-struct __attribute__((packed)) adc {
+struct __attribute__((packed)) ADCRegs {
   volatile uint32_t SR;
   volatile uint32_t CR1;
   volatile uint32_t CR2;
@@ -37,24 +37,24 @@ struct __attribute__((packed)) adc {
   volatile uint32_t DR;
 };
 
-_Static_assert((sizeof(struct adc)) == (sizeof(uint32_t) * 20U),
+_Static_assert((sizeof(struct ADCRegs)) == (sizeof(uint32_t) * 20U),
                "ADC register struct size mismatch. Is it aligned?");
 
-struct __attribute__((packed)) adc_common {
+struct __attribute__((packed)) ADCCommonRegs {
   volatile uint32_t CSR;
   volatile uint32_t CCR;
   volatile uint32_t CDR;
 };
 
-_Static_assert((sizeof(struct adc_common)) == (sizeof(uint32_t) * 3U),
+_Static_assert((sizeof(struct ADCCommonRegs)) == (sizeof(uint32_t) * 3U),
                "ADC Common register struct size mismatch. Is it aligned?");
 
 #define ADC_(number)                                                           \
-  (struct adc *)(ADC1_BASE + (0x100UL * ((uint8_t)number - 1U)))
+  (struct ADCRegs *)(ADC1_BASE + (0x100UL * ((uint8_t)number - 1U)))
 
-#define ADC_COMMON (struct adc_common *)(ADC123_COMMON_BASE)
+#define ADC_COMMON (struct ADCCommonRegs *)(ADC123_COMMON_BASE)
 
-struct __attribute__((packed)) adc_modes {
+struct __attribute__((packed)) ADCModes {
   volatile _Bool DMA  : 1;
   volatile _Bool DDS  : 1;
   volatile _Bool CONT : 1;
@@ -62,40 +62,40 @@ struct __attribute__((packed)) adc_modes {
   volatile _Bool SCAN : 1;
 };
 
-_Static_assert((sizeof(struct adc_modes)) == (sizeof(uint8_t) * 1U),
+_Static_assert((sizeof(struct ADCModes)) == (sizeof(uint8_t) * 1U),
                "ADC Configuration struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
 typedef enum adc_res {
-  b12 = 0x00, // >= 15 ADCCLK cycles
-  b10 = 0x01, // >= 13 ADCCLK cycles
-  b08 = 0x02, // >= 11 ADCCLK cycles
-  b06 = 0x03  // >= 9 ADCCLK cycles
+  ADC_RES_B12 = 0x00, // >= 15 ADCCLK cycles
+  ADC_RES_B10 = 0x01, // >= 13 ADCCLK cycles
+  ADC_RES_B08 = 0x02, // >= 11 ADCCLK cycles
+  ADC_RES_B06 = 0x03  // >= 9 ADCCLK cycles
 } adc_res_t;
 
 typedef enum adc_trigger {
-  none = 0x00,
-  rise = 0x01,
-  fall = 0x02,
-  both = 0x03
+  ADC_TRIGGER_NONE = 0x00,
+  ADC_TRIGGER_RISE = 0x01,
+  ADC_TRIGGER_FALL = 0x02,
+  ADC_TRIGGER_BOTH = 0x03
 } adc_trigger_t;
 
 typedef enum adc_samplerate {
-  c003 = 0x00,
-  c015 = 0x01,
-  c028 = 0x02,
-  c056 = 0x03,
-  c084 = 0x04,
-  c112 = 0x05,
-  c144 = 0x06,
-  c480 = 0x07
+  ADC_SAMPLERATE_C003 = 0x00,
+  ADC_SAMPLERATE_C015 = 0x01,
+  ADC_SAMPLERATE_C028 = 0x02,
+  ADC_SAMPLERATE_C056 = 0x03,
+  ADC_SAMPLERATE_C084 = 0x04,
+  ADC_SAMPLERATE_C112 = 0x05,
+  ADC_SAMPLERATE_C144 = 0x06,
+  ADC_SAMPLERATE_C480 = 0x07
 } adc_samplerate_t;
 
 typedef enum adc_prescaler {
-  div2 = 0x00,
-  div4 = 0x01,
-  div6 = 0x02,
-  div8 = 0x03,
+  ADC_PRESCALER_DIV2 = 0x00,
+  ADC_PRESCALER_DIV4 = 0x01,
+  ADC_PRESCALER_DIV6 = 0x02,
+  ADC_PRESCALER_DIV8 = 0x03,
 } adc_prescaler_t;
 
 /**
@@ -147,7 +147,7 @@ void adc_set_samplerate(const uint8_t adc, const uint8_t channel,
  * @param config The ADC configuration
  * @return None
  */
-void adc_set_modes(const uint8_t adc, const struct adc_modes config);
+void adc_set_modes(const uint8_t adc, const struct ADCModes config);
 
 /**
  * @brief Sets the ADC conversion sequence to the specified order.

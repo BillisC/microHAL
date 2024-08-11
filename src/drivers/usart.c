@@ -16,17 +16,17 @@ void usart_start(const usart_sel_t usart, const uint32_t baudrate,
                  const usart_mode_t mode) {
   /* Check that the USART exists */
   switch (usart) {
-    case usart1:
-    case usart2:
-    case usart3:
-    case uart4:
-    case uart5:
-    case usart6: break;
+    case USART_SEL_1:
+    case USART_SEL_2:
+    case USART_SEL_3:
+    case UART_SEL_4:
+    case UART_SEL_5:
+    case USART_SEL_6: break;
 
     default: return;
   }
 
-  struct usart *regs = USART(usart);
+  struct USARTRegs *regs = USART(usart);
 
   /* Calculate USART div accurately */
   regs->BRR = ((APB1_CLK * 1000000) / baudrate);
@@ -34,9 +34,9 @@ void usart_start(const usart_sel_t usart, const uint32_t baudrate,
   /* Setup communication modes */
   volatile uint32_t cr1 = regs->CR1;
   cr1 &= ~(USART_CR1_TE_Msk | USART_CR1_RE_Msk); // Clear first
-  if (mode == tx) {
+  if (mode == USART_MODE_TX) {
     cr1 |= USART_CR1_TE_Msk;
-  } else if (mode == rx) {
+  } else if (mode == USART_MODE_RX) {
     cr1 |= USART_CR1_RE_Msk;
   } else {
     cr1 |= (USART_CR1_TE_Msk | USART_CR1_RE_Msk);
@@ -47,19 +47,20 @@ void usart_start(const usart_sel_t usart, const uint32_t baudrate,
 }
 
 void usart_set_interrupts(const usart_sel_t usart,
-                          const struct usart_isr config) {
+                          const struct USARTISR config) {
   /* Check that the USART exists */
   switch (usart) {
-    case usart1:
-    case usart2:
-    case usart3:
-    case uart4:
-    case uart5:
-    case usart6: break;
+    case USART_SEL_1:
+    case USART_SEL_2:
+    case USART_SEL_3:
+    case UART_SEL_4:
+    case UART_SEL_5:
+    case USART_SEL_6: break;
 
     default: return;
-  }
-  struct usart *regs = USART(usart);
+  };
+
+  struct USARTRegs *regs = USART(usart);
 
   /* Set USART interrupts */
   volatile uint8_t cr1 = regs->CR1;
@@ -92,31 +93,31 @@ void usart_set_databits(const usart_sel_t usart,
                         const usart_databits_t databits) {
   /* Make sure the stopbits are valid */
   switch (stopbits) {
-    case sb1:
-    case sbh:
-    case sb2:
-    case sbo: break;
+    case USART_STOPBITS_SB1:
+    case USART_STOPBITS_SBH:
+    case USART_STOPBITS_SB2:
+    case USART_STOPBITS_SBO: break;
 
     default: return;
   }
 
   /* Check that the USART exists */
   switch (usart) {
-    case usart1:
-    case usart2:
-    case usart3:
-    case uart4:
-    case uart5:
-    case usart6: break;
+    case USART_SEL_1:
+    case USART_SEL_2:
+    case USART_SEL_3:
+    case UART_SEL_4:
+    case UART_SEL_5:
+    case USART_SEL_6: break;
 
     default: return;
   }
 
   /* Make sure the number of databits is valid */
-  if ((databits != db8) && (databits != db9)) {
+  if ((databits != USART_DATABITS_DB8) && (databits != USART_DATABITS_DB8)) {
     return;
   } else {
-    struct usart *regs = USART(usart);
+    struct USARTRegs *regs = USART(usart);
 
     /* Set amount of databits */
     volatile uint32_t cr1 = regs->CR1;
@@ -137,34 +138,34 @@ void usart_set_databits(const usart_sel_t usart,
 void usart_set_parity(const usart_sel_t usart, const usart_parity_t parity) {
   /* Check that the parity is valid */
   switch (parity) {
-    case evn:
-    case odd:
-    case off: break;
+    case USART_PARITY_EVN:
+    case USART_PARITY_ODD:
+    case USART_PARITY_OFF: break;
 
     default: return;
   }
 
   /* Check that the USART exists */
   switch (usart) {
-    case usart1:
-    case usart2:
-    case usart3:
-    case uart4:
-    case uart5:
-    case usart6: break;
+    case USART_SEL_1:
+    case USART_SEL_2:
+    case USART_SEL_3:
+    case UART_SEL_4:
+    case UART_SEL_5:
+    case USART_SEL_6: break;
 
     default: return;
   }
 
-  struct usart *regs = USART(usart);
+  struct USARTRegs *regs = USART(usart);
 
   /* Set amount of databits */
   volatile uint32_t cr1 = regs->CR1;
 
-  if (parity == evn) {
+  if (parity == USART_PARITY_EVN) {
     cr1 &= ~(USART_CR1_PS_Msk);
     cr1 |= USART_CR1_PCE_Msk;
-  } else if (parity == odd) {
+  } else if (parity == USART_PARITY_ODD) {
     cr1 |= (USART_CR1_PS_Msk | USART_CR1_PCE_Msk);
   } else {
     cr1 &= ~(USART_CR1_PCE_Msk);
@@ -173,7 +174,7 @@ void usart_set_parity(const usart_sel_t usart, const usart_parity_t parity) {
   regs->CR1 = cr1;
 }
 
-inline static void usart_tx_byte(struct usart *regs, const char character) {
+inline static void usart_tx_byte(struct USARTRegs *regs, const char character) {
   /* Wait for TXE and transmit data */
   while (!(regs->SR & USART_SR_TXE_Msk)) { ASM_NOP; };
   regs->DR = character;
@@ -182,17 +183,17 @@ inline static void usart_tx_byte(struct usart *regs, const char character) {
 void usart_tx_message(const usart_sel_t usart, const char *message) {
   /* Check that the USART exists */
   switch (usart) {
-    case usart1:
-    case usart2:
-    case usart3:
-    case uart4:
-    case uart5:
-    case usart6: break;
+    case USART_SEL_1:
+    case USART_SEL_2:
+    case USART_SEL_3:
+    case UART_SEL_4:
+    case UART_SEL_5:
+    case USART_SEL_6: break;
 
     default: return;
   }
 
-  struct usart *regs = USART(usart);
+  struct USARTRegs *regs = USART(usart);
 
   /* Send message */
   while (*message != '\0') { usart_tx_byte(regs, *message++); }
@@ -204,17 +205,17 @@ void usart_tx_message(const usart_sel_t usart, const char *message) {
 uint16_t usart_rx_byte(const usart_sel_t usart) {
   /* Check that the USART exists */
   switch (usart) {
-    case usart1:
-    case usart2:
-    case usart3:
-    case uart4:
-    case uart5:
-    case usart6: break;
+    case USART_SEL_1:
+    case USART_SEL_2:
+    case USART_SEL_3:
+    case UART_SEL_4:
+    case UART_SEL_5:
+    case USART_SEL_6: break;
 
-    default: return 0U;
+    default: return '\0';
   }
 
-  struct usart *regs = USART(usart);
+  struct USARTRegs *regs = USART(usart);
 
   /* Read received data */
   while (!(regs->SR & USART_SR_RXNE_Msk)) { ASM_NOP; };
@@ -226,17 +227,17 @@ uint16_t usart_rx_byte(const usart_sel_t usart) {
 void usart_stop(const usart_sel_t usart) {
   /* Check that the USART exists */
   switch (usart) {
-    case usart1:
-    case usart2:
-    case usart3:
-    case uart4:
-    case uart5:
-    case usart6: break;
+    case USART_SEL_1:
+    case USART_SEL_2:
+    case USART_SEL_3:
+    case UART_SEL_4:
+    case UART_SEL_5:
+    case USART_SEL_6: break;
 
     default: return;
   }
 
-  struct usart *regs = USART(usart);
+  struct USARTRegs *regs = USART(usart);
 
   /* Wait for all transmissions to end */
   while (!(regs->SR & USART_SR_TC_Msk)) { ASM_NOP; };

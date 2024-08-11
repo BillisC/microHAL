@@ -1,44 +1,38 @@
 /* Includes */
 #include "defines.h"
 #include "interrupts.h"
+#include "dma.h"
 #include "mcu_init.h"
 #include "gpio.h"
-#include "adc.h"
 #include "usart.h"
 
 void delay_ms(const uint32_t milliseconds);
 
-volatile uint16_t read = 0U;
-
 int main(void) {
   mcu_init();
 
-  /* GPIO test */
-  gp_set_direction('A', 5U, (gp_dir_t)ou);
-  gp_set_val('A', 5U, TRUE);
-  gp_set_val('A', 5U, FALSE);
+  const char *message = "Hello, USART!\t\n";
 
-  /* ADC test */
-  gp_set_direction('A', 0U, (gp_dir_t)an);
-  struct adc_modes a_config = {FALSE, FALSE, FALSE, FALSE, FALSE};
-  adc_set_modes(1, a_config);
-  adc_set_prescaler((adc_prescaler_t)div4);
-  adc_set_samplerate(1, 0U, (adc_samplerate_t)c084);
-  adc_on(1);
-  read = adc_read(1);
-
-  /* USART test  */
-  gp_set_direction('A', 2U, (gp_dir_t)al);
-  gp_set_direction('A', 3U, (gp_dir_t)al);
+  /* Setup GPIO for USART communication */
+  gp_set_direction('A', 2U, GP_DIR_AL);
+  gp_set_direction('A', 3U, GP_DIR_AL);
   gp_set_af('A', 2U, 7U);
   gp_set_af('A', 3U, 7U);
-  gp_set_speed('A', 2U, (gp_speed_t)hig);
-  gp_set_speed('A', 3U, (gp_speed_t)hig);
+  gp_set_speed('A', 2U, GP_SPEED_HIG);
+  gp_set_speed('A', 3U, GP_SPEED_HIG);
 
-  usart_set_databits((usart_sel_t)usart2, (usart_stopbits_t)sb1,
-                     (usart_databits_t)db8);
-  usart_start((usart_sel_t)usart2, 115200, (usart_mode_t)tx);
-  usart_tx_message((usart_sel_t)usart2, "Hello, USART!\t\n");
+  /* Setup DMA for USART communication */
+  dma_set_addresses(1U, 6U, (uint32_t)&message, (uint32_t)&USART2->DR, 0U);
+  dma_configure_data(1U, 6U, 1U, DMA_DATASIZE_BYTE, DMA_DATASIZE_BYTE);
+  dma_set_direction(1U, 6U, DMA_DIR_MEM2PER);
+  struct DMAStreamConfig d_config = {TRUE, FALSE, FALSE, FALSE, FALSE};
+  dma_configure_stream(1U, 6U, d_config);
+  dma_set_channel(1U, 6U, 4U, DMA_PRIORITY_VHI);
+
+  /* Setup USART */
+  usart_set_databits(USART_SEL_2, USART_STOPBITS_SB1, USART_DATABITS_DB8);
+  usart_start(USART_SEL_2, 115200, USART_MODE_TX);
+  usart_tx_message(USART_SEL_2, "Hello, USART!\t\n");
 
   /* MAIN CODE GOES HERE */
   while (TRUE) { ASM_NOP; }

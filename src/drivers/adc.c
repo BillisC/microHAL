@@ -15,15 +15,15 @@
 void adc_set_prescaler(const adc_prescaler_t value) {
   /* Check that the divider is valid */
   switch (value) {
-    case div2:
-    case div4:
-    case div6:
-    case div8: break;
+    case ADC_PRESCALER_DIV2:
+    case ADC_PRESCALER_DIV4:
+    case ADC_PRESCALER_DIV6:
+    case ADC_PRESCALER_DIV8: break;
 
     default: return;
   }
 
-  struct adc_common *regs = ADC_COMMON;
+  struct ADCCommonRegs *regs = ADC_COMMON;
 
   /* Apply prescaler value */
   volatile uint32_t ccr = regs->CCR;
@@ -36,10 +36,10 @@ void adc_set_prescaler(const adc_prescaler_t value) {
 void adc_set_resolution(const uint8_t adc, const adc_res_t value) {
   /* Check that the resolution is valid */
   switch (value) {
-    case b06:
-    case b08:
-    case b10:
-    case b12: break;
+    case ADC_RES_B06:
+    case ADC_RES_B08:
+    case ADC_RES_B10:
+    case ADC_RES_B12: break;
 
     default: return;
   }
@@ -48,7 +48,7 @@ void adc_set_resolution(const uint8_t adc, const adc_res_t value) {
   if (adc > ADC_NUM) {
     return;
   } else {
-    struct adc *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Change resolution */
     volatile uint32_t cr1 = regs->CR1;
@@ -63,14 +63,14 @@ void adc_set_samplerate(const uint8_t adc, const uint8_t channel,
                         const adc_samplerate_t value) {
   /* Check that the cycle count is valid */
   switch (value) {
-    case c003:
-    case c015:
-    case c028:
-    case c056:
-    case c084:
-    case c112:
-    case c144:
-    case c480: break;
+    case ADC_SAMPLERATE_C003:
+    case ADC_SAMPLERATE_C015:
+    case ADC_SAMPLERATE_C028:
+    case ADC_SAMPLERATE_C056:
+    case ADC_SAMPLERATE_C084:
+    case ADC_SAMPLERATE_C112:
+    case ADC_SAMPLERATE_C144:
+    case ADC_SAMPLERATE_C480: break;
 
     default: return;
   }
@@ -79,7 +79,7 @@ void adc_set_samplerate(const uint8_t adc, const uint8_t channel,
   if ((adc > ADC_NUM) || (channel > 18U)) {
     return;
   } else {
-    struct adc *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Change samplerate */
     uint8_t sel = (channel <= 9U) ? 1U : 0U;
@@ -91,12 +91,12 @@ void adc_set_samplerate(const uint8_t adc, const uint8_t channel,
   }
 }
 
-void adc_set_modes(const uint8_t adc, const struct adc_modes config) {
+void adc_set_modes(const uint8_t adc, const struct ADCModes config) {
   /* Check that the ADC and channel exist */
   if (adc > ADC_NUM) {
     return;
   } else {
-    struct adc *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Set modes on CR1 */
     volatile uint32_t cr1 = regs->CR1;
@@ -121,7 +121,7 @@ void adc_set_seq(const uint8_t adc, const uint8_t *seq, const uint8_t count) {
   if (adc > ADC_NUM) {
     return;
   } else {
-    struct adc *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Apply new sequence */
     volatile uint32_t sqr[3] = {0};
@@ -144,7 +144,7 @@ void adc_on(const uint8_t adc) {
   if (adc > ADC_NUM) {
     return;
   } else {
-    struct adc *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Power on */
     regs->CR2 |= ADC_CR2_ADON_Msk;
@@ -164,7 +164,7 @@ void adc_off(const uint8_t adc) {
   if (adc > ADC_NUM) {
     return;
   } else {
-    struct adc *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Power off */
     regs->CR2 &= ~(ADC_CR2_ADON_Msk);
@@ -176,7 +176,7 @@ uint16_t adc_read(const uint8_t adc) {
   if (adc > ADC_NUM) {
     return 0U;
   } else {
-    struct adc *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Wait for conversion */
     while (!(1UL & (regs->SR >> ADC_SR_EOC_Pos))) {};

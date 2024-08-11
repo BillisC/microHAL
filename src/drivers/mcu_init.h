@@ -19,7 +19,9 @@
 #define EN_FPU TRUE
 
 /* -- Peripherals -- */
-#define PWR_GPIO   TRUE
+#define PWR_GPIOA  TRUE
+#define PWR_DMA1   FALSE
+#define PWR_DMA2   TRUE
 #define PWR_ADC1   TRUE
 #define PWR_ADC2   FALSE
 #define PWR_ADC3   FALSE

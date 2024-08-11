@@ -17,7 +17,7 @@
 #include "stm32f4xx.h"
 
 /* -- Structs -- */
-struct __attribute__((packed)) usart {
+struct __attribute__((packed)) USARTRegs {
   volatile uint32_t SR;
   volatile uint32_t DR;
   volatile uint32_t BRR;
@@ -27,10 +27,10 @@ struct __attribute__((packed)) usart {
   volatile uint32_t GTPR;
 };
 
-_Static_assert((sizeof(struct usart)) == (sizeof(uint32_t) * 7U),
+_Static_assert((sizeof(struct USARTRegs)) == (sizeof(uint32_t) * 7U),
                "USART register struct size mismatch. Is it aligned?");
 
-struct __attribute__((packed)) usart_isr {
+struct __attribute__((packed)) USARTISR {
   volatile _Bool TXEI  : 1;
   volatile _Bool CTSI  : 1;
   volatile _Bool TCI   : 1;
@@ -41,43 +41,43 @@ struct __attribute__((packed)) usart_isr {
   volatile _Bool EI    : 1;
 };
 
-_Static_assert((sizeof(struct usart_isr)) == (sizeof(uint8_t) * 1U),
+_Static_assert((sizeof(struct USARTISR)) == (sizeof(uint8_t) * 1U),
                "USART interrupt struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
 typedef enum usart_sel {
-  usart1 = USART1_BASE,
-  usart2 = USART2_BASE,
-  usart3 = USART3_BASE,
-  usart6 = USART6_BASE,
-  uart4 = UART4_BASE,
-  uart5 = UART5_BASE,
+  USART_SEL_1 = USART1_BASE,
+  USART_SEL_2 = USART2_BASE,
+  USART_SEL_3 = USART3_BASE,
+  USART_SEL_6 = USART6_BASE,
+  UART_SEL_4 = UART4_BASE,
+  UART_SEL_5 = UART5_BASE
 } usart_sel_t;
 
-#define USART(sel) (struct usart *)((usart_sel_t)sel)
+#define USART(sel) (struct USARTRegs *)((usart_sel_t)sel)
 
 typedef enum usart_mode {
-  tx = 0x00,
-  rx = 0x01,
-  bo = 0x02
+  USART_MODE_TX = 0x00,
+  USART_MODE_RX = 0x01,
+  USART_MODE_BO = 0x02
 } usart_mode_t;
 
 typedef enum usart_databits {
-  db8 = 0x00,
-  db9 = 0x01
+  USART_DATABITS_DB8 = 0x00,
+  USART_DATABITS_DB9 = 0x01
 } usart_databits_t;
 
 typedef enum usart_stopbits {
-  sb1 = 0x00,
-  sbh = 0x01,
-  sb2 = 0x02,
-  sbo = 0x03
+  USART_STOPBITS_SB1 = 0x00,
+  USART_STOPBITS_SBH = 0x01,
+  USART_STOPBITS_SB2 = 0x02,
+  USART_STOPBITS_SBO = 0x03
 } usart_stopbits_t;
 
 typedef enum usart_parity {
-  evn = 0x00,
-  odd = 0x01,
-  off = 0x02
+  USART_PARITY_EVN = 0x00,
+  USART_PARITY_ODD = 0x01,
+  USART_PARITY_OFF = 0x02
 } usart_parity_t;
 
 /**
@@ -106,7 +106,7 @@ void usart_start(const usart_sel_t usart, const uint32_t baudrate,
  * @return None
  */
 void usart_set_interrupts(const usart_sel_t usart,
-                          const struct usart_isr config);
+                          const struct USARTISR config);
 
 /**
  * @brief Sets the USART databits to the specified values.

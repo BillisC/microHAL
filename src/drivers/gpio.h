@@ -17,7 +17,7 @@
 #include "stm32f4xx.h"
 
 /* -- Structs -- */
-struct __attribute__((packed)) gpio {
+struct __attribute__((packed)) GPIORegs {
   volatile uint32_t MODER;
   volatile uint32_t OTYPER;
   volatile uint32_t OSPEEDR;
@@ -29,37 +29,37 @@ struct __attribute__((packed)) gpio {
   volatile uint32_t AFR[2];
 };
 
-_Static_assert((sizeof(struct gpio)) == (sizeof(uint32_t) * 10U),
+_Static_assert((sizeof(struct GPIORegs)) == (sizeof(uint32_t) * 10U),
                "GPIO register struct size mismatch. Is it aligned?");
 
 #define GPIO(bank)                                                             \
-  (struct gpio *)(GPIOA_BASE + (0x400U * ((uint8_t)bank - (uint8_t)'A')))
+  (struct GPIORegs *)(GPIOA_BASE + (0x400U * ((uint8_t)bank - (uint8_t)'A')))
 
 /* -- Enums -- */
 typedef enum gp_dir {
-  in = 0x00,
-  ou = 0x01,
-  al = 0x02,
-  an = 0x03
+  GP_DIR_IN = 0x00,
+  GP_DIR_OU = 0x01,
+  GP_DIR_AL = 0x02,
+  GP_DIR_AN = 0x03
 } gp_dir_t;
 
 typedef enum gp_otype {
-  pp = 0x00,
-  od = 0x01
+  GP_OTYPE_PP = 0x00,
+  GP_OTYPE_OD = 0x01
 } gp_otype_t;
 
 typedef enum gp_speed {
-  low = 0x00,
-  med = 0x01,
-  fas = 0x02,
-  hig = 0x03
+  GP_SPEED_LOW = 0x00,
+  GP_SPEED_MED = 0x01,
+  GP_SPEED_FAS = 0x02,
+  GP_SPEED_HIG = 0x03
 } gp_speed_t;
 
-typedef enum gp_pupdr {
-  no = 0x00,
-  pu = 0x01,
-  pd = 0x02,
-} gp_pupdr_t;
+typedef enum gp_pupd {
+  GP_PUPD_NONE = 0x00,
+  GP_PUPD_PLUP = 0x01,
+  GP_PUPD_PLDO = 0x02,
+} gp_pupd_t;
 
 /**
  * @brief Sets the GPIO pin to the desired mode.
@@ -113,7 +113,7 @@ void gp_set_speed(const char bank, const uint8_t pin, const gp_speed_t speed);
  * @param poopdr The pin state
  * @return None
  */
-void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupdr_t poopdr);
+void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupd_t poopdr);
 
 /**
  * @brief Sets the GPIO output pin to the desired value.

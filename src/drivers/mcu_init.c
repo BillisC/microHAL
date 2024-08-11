@@ -69,8 +69,14 @@ static void clock_init(void) {
 
 static void ahb1_periph(void) {
   uint32_t ahb1enr = 0UL;
-#if PWR_GPIO == TRUE
+#if PWR_GPIOA == TRUE
   ahb1enr |= RCC_AHB1ENR_GPIOAEN_Msk;
+#endif
+#if PWR_DMA1 == TRUE
+  ahb1enr |= RCC_AHB1ENR_DMA1EN_Msk;
+#endif
+#if PWR_DMA2 == TRUE
+  ahb1enr |= RCC_AHB1ENR_DMA2EN_Msk;
 #endif
 
   RCC->AHB1ENR |= ahb1enr;

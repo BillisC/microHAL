@@ -1,9 +1,12 @@
 /* Includes */
 #include "defines.h"
+#include "interrupts.h"
 #include "mcu_init.h"
 #include "gpio.h"
 #include "adc.h"
 #include "usart.h"
+
+void delay_ms(const uint32_t milliseconds);
 
 volatile uint16_t read = 0U;
 
@@ -41,4 +44,16 @@ int main(void) {
   while (TRUE) { ASM_NOP; }
 
   return 0;
+}
+
+/* Simple delay function in milliseconds */
+void delay_ms(const uint32_t milliseconds) {
+  uint32_t start = ticks;
+  uint32_t end = start + milliseconds;
+
+  if (end < start) {
+    while (ticks > start) { ASM_NOP; };
+  }
+
+  while (ticks < end) { ASM_NOP; };
 }

@@ -43,7 +43,7 @@ _Static_assert((sizeof(struct DMARegs)) ==
                    (sizeof(uint32_t) * (4U + (6U * 8U))),
                "DMA register struct size mismatch. Is it aligned?");
 
-#define DMA(x) (struct DMARegs *)(DMA1_BASE + ((x == 1) ? 0UL : 0x400UL))
+#define DMA(x) (struct DMARegs *)(DMA1_BASE + ((x - 1) * 0x400UL))
 
 struct __attribute__((packed)) DMAStreamConfig {
   volatile _Bool Circular     : 1;

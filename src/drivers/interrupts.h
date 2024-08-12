@@ -16,6 +16,7 @@
 #include <stdint.h>
 
 extern uint32_t ticks;
+
 void SysTick_Handler(void);
 
 #endif

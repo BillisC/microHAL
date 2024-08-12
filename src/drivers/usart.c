@@ -46,6 +46,31 @@ void usart_start(const usart_sel_t usart, const uint32_t baudrate,
   regs->CR1 = (cr1 | USART_CR1_UE_Msk);
 }
 
+void usart_set_dma(const usart_sel_t usart, const _Bool forTX,
+                   const _Bool forRX) {
+  /* Check that the USART exists */
+  switch (usart) {
+    case USART_SEL_1:
+    case USART_SEL_2:
+    case USART_SEL_3:
+    case UART_SEL_4:
+    case UART_SEL_5:
+    case USART_SEL_6: break;
+
+    default: return;
+  };
+
+  struct USARTRegs *regs = USART(usart);
+
+  /* Configure DMA parameters */
+  volatile uint32_t cr3 = regs->CR3;
+  cr3 &= ~(USART_CR3_DMAT_Msk | USART_CR3_DMAR_Msk); // Clear first
+  cr3 |= (((1UL & forTX) << USART_CR3_DMAT_Pos) |
+          ((1UL & forRX) << USART_CR3_DMAR_Pos));
+
+  regs->CR3 = cr3;
+}
+
 void usart_set_interrupts(const usart_sel_t usart,
                           const struct USARTISR config) {
   /* Check that the USART exists */

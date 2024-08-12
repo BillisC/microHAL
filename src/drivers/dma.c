@@ -10,6 +10,7 @@
 
 /* -- Includes -- */
 #include "dma.h"
+#include "defines.h"
 
 void dma_set_addresses(const uint8_t dma, const uint8_t stream,
                        const uint32_t PA, const uint32_t M0A,
@@ -21,9 +22,9 @@ void dma_set_addresses(const uint8_t dma, const uint8_t stream,
     struct DMARegs *regs = DMA(dma);
 
     /* Set memory addresses */
-    regs->S[stream].PAR = PA;
-    regs->S[stream].M0AR = M0A;
-    regs->S[stream].M1AR = M1A;
+    regs->S[stream].PAR |= PA;
+    regs->S[stream].M0AR |= M0A;
+    regs->S[stream].M1AR |= M1A;
   }
 }
 
@@ -86,6 +87,8 @@ void dma_set_direction(const uint8_t dma, const uint8_t stream,
     volatile uint32_t cr = regs->S[stream].CR;
     cr &= ~(DMA_SxCR_DIR_Msk); // Clear first
     cr |= ((3UL & direction) << DMA_SxCR_DIR_Pos);
+
+    regs->S[stream].CR = cr;
   }
 }
 
@@ -191,7 +194,8 @@ void dma_disable(const uint8_t dma, const uint8_t stream) {
   } else {
     struct DMARegs *regs = DMA(dma);
 
-    /* Enable the specified stream */
+    /* Disable the specified stream */
     regs->S[stream].CR &= ~(DMA_SxCR_EN_Msk);
+    while (regs->S[stream].CR & DMA_SxCR_EN_Msk) {};
   }
 }

@@ -8,7 +8,9 @@
  *  DISCLAIMER: No burst or FIFO for the time being!
  *
  *  @author Vasileios Ch. (BillisC)
- *  @bug None, yet.
+ *  @bug There is a case where DMA1 clears EN SxCR bit
+ *  when the peripheral address is USART2 DR. There is no
+ *  workaround at the moment (is it errata?).
  */
 
 #ifndef DMA_H

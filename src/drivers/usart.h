@@ -96,6 +96,17 @@ void usart_start(const usart_sel_t usart, const uint32_t baudrate,
                  const usart_mode_t mode);
 
 /**
+ * @brief Configures the USART DMA functionality.
+ *
+ * @param usart The selected USART
+ * @param forTX Enable / Disable DMA for TX
+ * @param forTX Enable / Disable DMA for RX
+ * @return None
+ */
+void usart_set_dma(const usart_sel_t usart, const _Bool forTX,
+                   const _Bool forRX);
+
+/**
  * @brief Enables the specified USART interrupts.
  *
  * The available interrupts are located in the usart_isr

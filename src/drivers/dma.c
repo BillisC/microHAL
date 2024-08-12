@@ -5,7 +5,9 @@
  *  declared in dma.h.
  *
  *  @author Vasileios Ch. (BillisC)
- *  @bug None, yet.
+ *  @bug There is a case where DMA1 clears EN SxCR bit
+ *  when the peripheral address is USART2 DR. There is no
+ *  workaround at the moment (is it errata?).
  */
 
 /* -- Includes -- */

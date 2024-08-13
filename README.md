@@ -42,6 +42,10 @@ Finally compile and flash the project:
 cmake --build build/{config}/ --target flash
 ```
 
+### Unit testing
+Just don't include the `--toolchain arm-toolchain.cmake`.
+Execute the build output `utest` to run all tests **natively**.
+
 ### Debugging
 The following will launch a GDB server at port **3333**:
 ```

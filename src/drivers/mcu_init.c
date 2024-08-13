@@ -34,8 +34,9 @@ static void clock_init(void) {
   FLASH->ACR |= FLASH_ACR_LATENCY_5WS;
 
   /* Configure the PLL clock */
-  RCC->PLLCFGR &= ~(RCC_PLLCFGR_PLLM_Msk | RCC_PLLCFGR_PLLN_Msk |
-                    RCC_PLLCFGR_PLLP_Msk); // Clear first
+  RCC->PLLCFGR &=
+      ~(RCC_PLLCFGR_PLLM_Msk | RCC_PLLCFGR_PLLN_Msk | RCC_PLLCFGR_PLLSRC_Msk |
+        RCC_PLLCFGR_PLLP_Msk); // Clear first
   RCC->PLLCFGR |=
       ((PLLM_VAL << RCC_PLLCFGR_PLLM_Pos) | (PLLN_VAL << RCC_PLLCFGR_PLLN_Pos) |
        (PLLSRC_VAL << RCC_PLLCFGR_PLLSRC_Pos));
@@ -51,12 +52,12 @@ static void clock_init(void) {
 #if EN_OVERDRIVE == TRUE
   /* Enable overdrive mode */
   PWR->CR |= (PWR_CR_ODEN_Msk);
-  while (!(PWR->CSR & PWR_CSR_ODRDY)) { ASM_NOP; };
+  while (!(PWR->CSR & PWR_CSR_ODRDY_Msk)) { ASM_NOP; };
 
   /* Switch internal voltage regulator to
    * overdrive mode. */
   PWR->CR |= (PWR_CR_ODSWEN_Msk);
-  while (!(PWR->CSR & PWR_CSR_ODSWRDY)) { ASM_NOP; };
+  while (!(PWR->CSR & PWR_CSR_ODSWRDY_Msk)) { ASM_NOP; };
 #endif
 
   /* Select PLL as the system clock source */

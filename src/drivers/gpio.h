@@ -32,8 +32,12 @@ struct __attribute__((packed)) GPIORegs {
 _Static_assert((sizeof(struct GPIORegs)) == (sizeof(uint32_t) * 10U),
                "GPIO register struct size mismatch. Is it aligned?");
 
+#ifndef UTEST
 #define GPIO(bank)                                                             \
   (struct GPIORegs *)(GPIOA_BASE + (0x400U * ((uint8_t)bank - (uint8_t)'A')))
+#else
+extern struct GPIORegs *GPIO(const uint8_t bank);
+#endif
 
 /* -- Enums -- */
 typedef enum gp_dir {

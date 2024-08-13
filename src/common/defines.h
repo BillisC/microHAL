@@ -6,8 +6,13 @@
 #define FALSE 0
 
 /* ASM INSTRUCTIONS */
+#ifndef UTEST
 #define ASM_BKPT __asm__("BKPT")
 #define ASM_NOP  __asm__("NOP")
+#else
+#define ASM_BKPT
+#define ASM_NOP
+#endif
 
 /* SYSTEM */
 #define SYS_CLK  180 // in MHz

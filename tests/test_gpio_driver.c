@@ -2,7 +2,6 @@
 #include <stdint.h>
 #include "unity.h"
 #include "gpio.h"
-#include "unity_internals.h"
 
 #define BANK_NUM(bank) ((uint8_t)bank - (uint8_t)'A')
 

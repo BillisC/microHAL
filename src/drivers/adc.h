@@ -49,10 +49,14 @@ struct __attribute__((packed)) ADCCommonRegs {
 _Static_assert((sizeof(struct ADCCommonRegs)) == (sizeof(uint32_t) * 3U),
                "ADC Common register struct size mismatch. Is it aligned?");
 
+#ifndef UTEST
 #define ADC_(number)                                                           \
   (struct ADCRegs *)(ADC1_BASE + (0x100UL * ((uint8_t)number - 1U)))
-
 #define ADC_COMMON (struct ADCCommonRegs *)(ADC123_COMMON_BASE)
+#else
+extern struct ADCRegs *ADC_(const uint8_t number);
+extern struct ADCCommonRegs *ADC_COMMON;
+#endif
 
 struct __attribute__((packed)) ADCModes {
   volatile _Bool DMA  : 1;

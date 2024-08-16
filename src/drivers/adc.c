@@ -45,7 +45,7 @@ void adc_set_resolution(const uint8_t adc, const adc_res_t value) {
   }
 
   /* Check that the ADC exists */
-  if (adc > ADC_NUM) {
+  if (adc > ADC_NUM || adc == 0) {
     return;
   } else {
     struct ADCRegs *regs = ADC_(adc);
@@ -76,7 +76,9 @@ void adc_set_samplerate(const uint8_t adc, const uint8_t channel,
   }
 
   /* Check that the ADC and channel exist */
-  if ((adc > ADC_NUM) || (channel > 18U)) {
+  if ((adc > ADC_NUM || adc == 0)) {
+    return;
+  } else if (channel > 18U) {
     return;
   } else {
     struct ADCRegs *regs = ADC_(adc);
@@ -93,7 +95,7 @@ void adc_set_samplerate(const uint8_t adc, const uint8_t channel,
 
 void adc_set_modes(const uint8_t adc, const struct ADCModes config) {
   /* Check that the ADC and channel exist */
-  if (adc > ADC_NUM) {
+  if (adc > ADC_NUM || adc == 0) {
     return;
   } else {
     struct ADCRegs *regs = ADC_(adc);
@@ -118,7 +120,7 @@ void adc_set_modes(const uint8_t adc, const struct ADCModes config) {
 
 void adc_set_seq(const uint8_t adc, const uint8_t *seq, const uint8_t count) {
   /* Check that the ADC and channel exist */
-  if (adc > ADC_NUM) {
+  if (adc > ADC_NUM || adc == 0) {
     return;
   } else {
     struct ADCRegs *regs = ADC_(adc);
@@ -126,11 +128,15 @@ void adc_set_seq(const uint8_t adc, const uint8_t *seq, const uint8_t count) {
     /* Apply new sequence */
     volatile uint32_t sqr[3] = {0};
 
-    sqr[0] |= (15UL & count) << ADC_SQR1_L_Pos;
+    sqr[0] |= (15UL & ((count < 16U) ? count : 0U)) << ADC_SQR1_L_Pos;
 
     for (uint8_t i = 0U; i < 16U; i++) {
-      uint8_t sel = (i < 6U) ? 2U : ((i < 12U) ? 1U : 0U);
-      sqr[sel] |= ((31UL & seq[i]) << ((i - (6U * (2U - sel))) * 5U));
+      if (seq[i] > 18U) {
+        continue;
+      } else {
+        uint8_t sel = (i < 6U) ? 2U : ((i < 12U) ? 1U : 0U);
+        sqr[sel] |= ((31UL & seq[i]) << ((i - (6U * (2U - sel))) * 5U));
+      }
     }
 
     regs->SQR[0] = sqr[0];
@@ -141,7 +147,7 @@ void adc_set_seq(const uint8_t adc, const uint8_t *seq, const uint8_t count) {
 
 void adc_on(const uint8_t adc) {
   /* Check that the ADC and channel exist */
-  if (adc > ADC_NUM) {
+  if (adc > ADC_NUM || adc == 0) {
     return;
   } else {
     struct ADCRegs *regs = ADC_(adc);
@@ -161,7 +167,7 @@ void adc_on(const uint8_t adc) {
 
 void adc_off(const uint8_t adc) {
   /* Check that the ADC and channel exist */
-  if (adc > ADC_NUM) {
+  if (adc > ADC_NUM || adc == 0) {
     return;
   } else {
     struct ADCRegs *regs = ADC_(adc);
@@ -173,7 +179,7 @@ void adc_off(const uint8_t adc) {
 
 uint16_t adc_read(const uint8_t adc) {
   /* Check that the ADC and channel exist */
-  if (adc > ADC_NUM) {
+  if (adc > ADC_NUM || adc == 0) {
     return 0U;
   } else {
     struct ADCRegs *regs = ADC_(adc);

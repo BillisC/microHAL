@@ -50,7 +50,7 @@ else ()
   message("No toolchain specified, will run unit tests natively")
 
   # GCC ARM compiler flags
-  set(CMAKE_C_FLAGS "${CC_FLAGS} -Wno-int-to-pointer-cast -Wno-array-bounds -fsanitize=address")
+  set(CMAKE_C_FLAGS "${CC_FLAGS} -Wno-int-to-pointer-cast -fsanitize=address")
   set(C_DEFINES ${CHIP} UTEST)
 
   # Unit test frameworks

@@ -7,6 +7,9 @@
 
 void delay_ms(const uint32_t milliseconds);
 
+/* Message to send */
+const char *message = "Just a test message!\r\n";
+
 int main(void) {
   mcu_init();
 
@@ -20,12 +23,11 @@ int main(void) {
   usart_set_databits(USART_SEL_2, USART_STOPBITS_SB1, USART_DATABITS_DB8);
   usart_start(USART_SEL_2, 115200, USART_MODE_TX);
 
-  /* Send message */
-  const char *message = "Hello, USART!\r\n";
-  usart_tx_message(USART_SEL_2, message);
-
   /* MAIN CODE GOES HERE */
-  while (TRUE) { ASM_NOP; }
+  while (TRUE) {
+    usart_tx_message(USART_SEL_2, message);
+    delay_ms(1000U);
+  }
 
   return 0;
 }

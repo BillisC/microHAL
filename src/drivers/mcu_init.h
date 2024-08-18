@@ -47,7 +47,7 @@
 
 #define PLLSRC_VAL 1U // Use HSE clock
 
-_Static_assert((((8 / 4) * 180) / 2) == (SYS_CLK),
+_Static_assert((((HSE_CLK / PLLM_VAL) * PLLN_VAL) / 2) == (SYS_CLK),
                "System clock calculation mismatch. Did you update SYS_CLK?");
 
 _Static_assert((SYS_CLK / 4) == (APB1_CLK),

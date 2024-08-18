@@ -17,7 +17,8 @@
 #endif
 
 /* SYSTEM */
-#define SYS_CLK  180 // in MHz
+#define HSE_CLK  8U // in MHz
+#define SYS_CLK  180
 #define APB1_CLK 45
 #define APB2_CLK 90
 

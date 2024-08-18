@@ -20,6 +20,13 @@
 
 /* -- Peripherals -- */
 #define PWR_GPIOA  TRUE
+#define PWR_GPIOB  FALSE
+#define PWR_GPIOC  FALSE
+#define PWR_GPIOD  FALSE
+#define PWR_GPIOE  FALSE
+#define PWR_GPIOF  FALSE
+#define PWR_GPIOG  FALSE
+#define PWR_GPIOH  FALSE
 #define PWR_DMA1   FALSE
 #define PWR_DMA2   FALSE
 #define PWR_ADC1   FALSE

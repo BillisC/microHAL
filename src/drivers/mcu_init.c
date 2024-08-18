@@ -15,16 +15,12 @@
 
 static void clock_init(void) {
   /* Enable 8 MHz HSE oscillator (Source: STLINK) */
-  RCC->CR |= RCC_CR_HSEBYP_Msk | RCC_CR_HSEON_Msk;
+  RCC->CR |= (RCC_CR_HSEBYP_Msk | RCC_CR_HSEON_Msk);
   while (!(RCC->CR & RCC_CR_HSERDY_Msk)) { ASM_NOP; };
 
   /* Enable power controller */
-  uint32_t apb1enr = RCC_APB1ENR_PWREN_Msk;
-  RCC->APB1ENR |= apb1enr;
-  /* Do some dummy reads */
-  volatile uint32_t dummy_read;
-  dummy_read = RCC->APB1ENR;
-  dummy_read = RCC->APB1ENR;
+  RCC->APB1ENR |= RCC_APB1ENR_PWREN_Msk;
+  ASM_DSB;
 
   /* Set voltage regulator scaling to 1 */
   PWR->CR |= (3UL << PWR_CR_VOS_Pos);
@@ -39,11 +35,14 @@ static void clock_init(void) {
         RCC_PLLCFGR_PLLP_Msk); // Clear first
   RCC->PLLCFGR |=
       ((PLLM_VAL << RCC_PLLCFGR_PLLM_Pos) | (PLLN_VAL << RCC_PLLCFGR_PLLN_Pos) |
+       (PLLP_VAL << RCC_PLLCFGR_PLLP_Pos) |
        (PLLSRC_VAL << RCC_PLLCFGR_PLLSRC_Pos));
+  ASM_DSB;
 
   /* Configure the APB clocks */
   RCC->CFGR |=
       ((APB1_CLK << RCC_CFGR_PPRE1_Pos) | (APB2_CLK << RCC_CFGR_PPRE2_Pos));
+  ASM_DSB;
 
   /* Enable PLL clock */
   RCC->CR |= RCC_CR_PLLON_Msk;
@@ -81,6 +80,7 @@ static void ahb1_periph(void) {
 #endif
 
   RCC->AHB1ENR |= ahb1enr;
+  ASM_DSB;
 }
 
 static void apb1_periph(void) {
@@ -99,6 +99,7 @@ static void apb1_periph(void) {
 #endif
 
   RCC->APB1ENR |= apb1enr;
+  ASM_DSB;
 }
 
 static void apb2_periph(void) {
@@ -120,6 +121,7 @@ static void apb2_periph(void) {
 #endif
 
   RCC->APB2ENR |= apb2enr;
+  ASM_DSB;
 }
 
 static void peripheral_init(void) {
@@ -127,17 +129,13 @@ static void peripheral_init(void) {
   ahb1_periph();
   apb1_periph();
   apb2_periph();
-
-  /* dummy reads */
-  volatile uint32_t dummy_read;
-  dummy_read = RCC->AHB1ENR;
 }
 
 void mcu_init(void) {
   clock_init();
 
-  /* Set interrupt rate to 1 KHz (/180 MHZ) and enable interrupts */
-  SysTick_Config(180000);
+  /* Set interrupt rate to 1 KHz and enable interrupts */
+  SysTick_Config(SYS_CLK * 1000U);
   __enable_irq();
 
 #if EN_FPU == TRUE

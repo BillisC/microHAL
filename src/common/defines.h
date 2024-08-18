@@ -7,11 +7,13 @@
 
 /* ASM INSTRUCTIONS */
 #ifndef UTEST
-#define ASM_BKPT __asm__("BKPT")
-#define ASM_NOP  __asm__("NOP")
+#define ASM_BKPT volatile __asm__("BKPT")
+#define ASM_NOP  volatile __asm__("NOP")
+#define ASM_DSB  volatile __asm__("DSB")
 #else
 #define ASM_BKPT
 #define ASM_NOP
+#define ASM_DSB
 #endif
 
 /* SYSTEM */

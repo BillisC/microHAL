@@ -72,6 +72,27 @@ static void ahb1_periph(void) {
 #if PWR_GPIOA == TRUE
   ahb1enr |= RCC_AHB1ENR_GPIOAEN_Msk;
 #endif
+#if PWR_GPIOB == TRUE
+  ahb1enr |= RCC_AHB1ENR_GPIOBEN_Msk;
+#endif
+#if PWR_GPIOC == TRUE
+  ahb1enr |= RCC_AHB1ENR_GPIOCEN_Msk;
+#endif
+#if PWR_GPIOD == TRUE
+  ahb1enr |= RCC_AHB1ENR_GPIODEN_Msk;
+#endif
+#if PWR_GPIOE == TRUE
+  ahb1enr |= RCC_AHB1ENR_GPIOEEN_Msk;
+#endif
+#if PWR_GPIOF == TRUE
+  ahb1enr |= RCC_AHB1ENR_GPIOFEN_Msk;
+#endif
+#if PWR_GPIOG == TRUE
+  ahb1enr |= RCC_AHB1ENR_GPIOGEN_Msk;
+#endif
+#if PWR_GPIOH == TRUE
+  ahb1enr |= RCC_AHB1ENR_GPIOHEN_Msk;
+#endif
 #if PWR_DMA1 == TRUE
   ahb1enr |= RCC_AHB1ENR_DMA1EN_Msk;
 #endif

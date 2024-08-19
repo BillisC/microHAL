@@ -90,6 +90,7 @@ $(function(){ initResizable(false); });
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
@@ -101,10 +102,19 @@ $(function(){ initResizable(false); });
 <p>Function prototypes for the USART interface.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;stm32f4xx.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="stm32f4xx_8h_source.html">stm32f4xx.h</a>&quot;</code><br />
 </div>
 <p><a href="usart_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUSARTRegs.html">USARTRegs</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains USART registers.  <a href="structUSARTRegs.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUSARTISR.html">USARTISR</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains USART interrupt configuration.  <a href="structUSARTISR.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a9253219d896abc79c07c7c9a69655e62" id="r_a9253219d896abc79c07c7c9a69655e62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9253219d896abc79c07c7c9a69655e62">USART</a>(sel)</td></tr>
@@ -113,24 +123,29 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a79febc36be6daf0f77269ebddd0e81c9" id="r_a79febc36be6daf0f77269ebddd0e81c9"><td class="memItemLeft" align="right" valign="top"><a id="a79febc36be6daf0f77269ebddd0e81c9" name="a79febc36be6daf0f77269ebddd0e81c9"></a>
-typedef enum usart_sel&#160;</td><td class="memItemRight" valign="bottom"><b>usart_sel_t</b></td></tr>
+typedef enum <a class="el" href="#afc040080711205d142964e8660974dd0">usart_sel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>usart_sel_t</b></td></tr>
+<tr class="memdesc:a79febc36be6daf0f77269ebddd0e81c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available USART peripherals. <br /></td></tr>
 <tr class="separator:a79febc36be6daf0f77269ebddd0e81c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9cb6192f394ebde038a7b64527eb5e9" id="r_af9cb6192f394ebde038a7b64527eb5e9"><td class="memItemLeft" align="right" valign="top"><a id="af9cb6192f394ebde038a7b64527eb5e9" name="af9cb6192f394ebde038a7b64527eb5e9"></a>
-typedef enum usart_mode&#160;</td><td class="memItemRight" valign="bottom"><b>usart_mode_t</b></td></tr>
+typedef enum <a class="el" href="#a1c465965478e0f6908a4c99d4f3ad20f">usart_mode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>usart_mode_t</b></td></tr>
+<tr class="memdesc:af9cb6192f394ebde038a7b64527eb5e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available USART modes. <br /></td></tr>
 <tr class="separator:af9cb6192f394ebde038a7b64527eb5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a646bb5cdc2347b4c446474ed4d800b28" id="r_a646bb5cdc2347b4c446474ed4d800b28"><td class="memItemLeft" align="right" valign="top"><a id="a646bb5cdc2347b4c446474ed4d800b28" name="a646bb5cdc2347b4c446474ed4d800b28"></a>
-typedef enum usart_databits&#160;</td><td class="memItemRight" valign="bottom"><b>usart_databits_t</b></td></tr>
+typedef enum <a class="el" href="#a224e77e9dff1a704a3b0d15e6e383709">usart_databits</a>&#160;</td><td class="memItemRight" valign="bottom"><b>usart_databits_t</b></td></tr>
+<tr class="memdesc:a646bb5cdc2347b4c446474ed4d800b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available USART databit number. <br /></td></tr>
 <tr class="separator:a646bb5cdc2347b4c446474ed4d800b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec2fddd4341bdbc1ca7e36b9d543d6f9" id="r_aec2fddd4341bdbc1ca7e36b9d543d6f9"><td class="memItemLeft" align="right" valign="top"><a id="aec2fddd4341bdbc1ca7e36b9d543d6f9" name="aec2fddd4341bdbc1ca7e36b9d543d6f9"></a>
-typedef enum usart_stopbits&#160;</td><td class="memItemRight" valign="bottom"><b>usart_stopbits_t</b></td></tr>
+typedef enum <a class="el" href="#ab7d8ac715e2bd7ccddc65bf2c5ceb1f5">usart_stopbits</a>&#160;</td><td class="memItemRight" valign="bottom"><b>usart_stopbits_t</b></td></tr>
+<tr class="memdesc:aec2fddd4341bdbc1ca7e36b9d543d6f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available USART stopbit number. <br /></td></tr>
 <tr class="separator:aec2fddd4341bdbc1ca7e36b9d543d6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b924d5756332a7f8773403d0dd6b708" id="r_a9b924d5756332a7f8773403d0dd6b708"><td class="memItemLeft" align="right" valign="top"><a id="a9b924d5756332a7f8773403d0dd6b708" name="a9b924d5756332a7f8773403d0dd6b708"></a>
-typedef enum usart_parity&#160;</td><td class="memItemRight" valign="bottom"><b>usart_parity_t</b></td></tr>
+typedef enum <a class="el" href="#a867cc5f0ea7d3bf651d68f0046cf6f41">usart_parity</a>&#160;</td><td class="memItemRight" valign="bottom"><b>usart_parity_t</b></td></tr>
+<tr class="memdesc:a9b924d5756332a7f8773403d0dd6b708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available USART parities. <br /></td></tr>
 <tr class="separator:a9b924d5756332a7f8773403d0dd6b708"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:afc040080711205d142964e8660974dd0" id="r_afc040080711205d142964e8660974dd0"><td class="memItemLeft" align="right" valign="top"><a id="afc040080711205d142964e8660974dd0" name="afc040080711205d142964e8660974dd0"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>usart_sel</b> { <br />
+<tr class="memitem:afc040080711205d142964e8660974dd0" id="r_afc040080711205d142964e8660974dd0"><td class="memItemLeft" align="right" valign="top"><a id="afc040080711205d142964e8660974dd0" name="afc040080711205d142964e8660974dd0"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc040080711205d142964e8660974dd0">usart_sel</a> { <br />
 &#160;&#160;<b>USART_SEL_1</b> = USART1_BASE
 , <b>USART_SEL_2</b> = USART2_BASE
 , <b>USART_SEL_3</b> = USART3_BASE
@@ -140,55 +155,57 @@ Enumerations</h2></td></tr>
 , <b>UART_SEL_5</b> = UART5_BASE
 <br />
  }</td></tr>
+<tr class="memdesc:afc040080711205d142964e8660974dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available USART peripherals. <br /></td></tr>
 <tr class="separator:afc040080711205d142964e8660974dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c465965478e0f6908a4c99d4f3ad20f" id="r_a1c465965478e0f6908a4c99d4f3ad20f"><td class="memItemLeft" align="right" valign="top"><a id="a1c465965478e0f6908a4c99d4f3ad20f" name="a1c465965478e0f6908a4c99d4f3ad20f"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>usart_mode</b> { <b>USART_MODE_TX</b> = 0x00
+<tr class="memitem:a1c465965478e0f6908a4c99d4f3ad20f" id="r_a1c465965478e0f6908a4c99d4f3ad20f"><td class="memItemLeft" align="right" valign="top"><a id="a1c465965478e0f6908a4c99d4f3ad20f" name="a1c465965478e0f6908a4c99d4f3ad20f"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c465965478e0f6908a4c99d4f3ad20f">usart_mode</a> { <b>USART_MODE_TX</b> = 0x00
 , <b>USART_MODE_RX</b> = 0x01
 , <b>USART_MODE_BO</b> = 0x02
  }</td></tr>
+<tr class="memdesc:a1c465965478e0f6908a4c99d4f3ad20f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available USART modes. <br /></td></tr>
 <tr class="separator:a1c465965478e0f6908a4c99d4f3ad20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a224e77e9dff1a704a3b0d15e6e383709" id="r_a224e77e9dff1a704a3b0d15e6e383709"><td class="memItemLeft" align="right" valign="top"><a id="a224e77e9dff1a704a3b0d15e6e383709" name="a224e77e9dff1a704a3b0d15e6e383709"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>usart_databits</b> { <b>USART_DATABITS_DB8</b> = 0x00
+<tr class="memitem:a224e77e9dff1a704a3b0d15e6e383709" id="r_a224e77e9dff1a704a3b0d15e6e383709"><td class="memItemLeft" align="right" valign="top"><a id="a224e77e9dff1a704a3b0d15e6e383709" name="a224e77e9dff1a704a3b0d15e6e383709"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a224e77e9dff1a704a3b0d15e6e383709">usart_databits</a> { <b>USART_DATABITS_DB8</b> = 0x00
 , <b>USART_DATABITS_DB9</b> = 0x01
  }</td></tr>
+<tr class="memdesc:a224e77e9dff1a704a3b0d15e6e383709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available USART databit number. <br /></td></tr>
 <tr class="separator:a224e77e9dff1a704a3b0d15e6e383709"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7d8ac715e2bd7ccddc65bf2c5ceb1f5" id="r_ab7d8ac715e2bd7ccddc65bf2c5ceb1f5"><td class="memItemLeft" align="right" valign="top"><a id="ab7d8ac715e2bd7ccddc65bf2c5ceb1f5" name="ab7d8ac715e2bd7ccddc65bf2c5ceb1f5"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>usart_stopbits</b> { <b>USART_STOPBITS_SB1</b> = 0x00
+<tr class="memitem:ab7d8ac715e2bd7ccddc65bf2c5ceb1f5" id="r_ab7d8ac715e2bd7ccddc65bf2c5ceb1f5"><td class="memItemLeft" align="right" valign="top"><a id="ab7d8ac715e2bd7ccddc65bf2c5ceb1f5" name="ab7d8ac715e2bd7ccddc65bf2c5ceb1f5"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7d8ac715e2bd7ccddc65bf2c5ceb1f5">usart_stopbits</a> { <b>USART_STOPBITS_SB1</b> = 0x00
 , <b>USART_STOPBITS_SBH</b> = 0x01
 , <b>USART_STOPBITS_SB2</b> = 0x02
 , <b>USART_STOPBITS_SBO</b> = 0x03
  }</td></tr>
+<tr class="memdesc:ab7d8ac715e2bd7ccddc65bf2c5ceb1f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available USART stopbit number. <br /></td></tr>
 <tr class="separator:ab7d8ac715e2bd7ccddc65bf2c5ceb1f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a867cc5f0ea7d3bf651d68f0046cf6f41" id="r_a867cc5f0ea7d3bf651d68f0046cf6f41"><td class="memItemLeft" align="right" valign="top"><a id="a867cc5f0ea7d3bf651d68f0046cf6f41" name="a867cc5f0ea7d3bf651d68f0046cf6f41"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>usart_parity</b> { <b>USART_PARITY_EVN</b> = 0x00
+<tr class="memitem:a867cc5f0ea7d3bf651d68f0046cf6f41" id="r_a867cc5f0ea7d3bf651d68f0046cf6f41"><td class="memItemLeft" align="right" valign="top"><a id="a867cc5f0ea7d3bf651d68f0046cf6f41" name="a867cc5f0ea7d3bf651d68f0046cf6f41"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a867cc5f0ea7d3bf651d68f0046cf6f41">usart_parity</a> { <b>USART_PARITY_EVN</b> = 0x00
 , <b>USART_PARITY_ODD</b> = 0x01
 , <b>USART_PARITY_OFF</b> = 0x02
  }</td></tr>
+<tr class="memdesc:a867cc5f0ea7d3bf651d68f0046cf6f41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available USART parities. <br /></td></tr>
 <tr class="separator:a867cc5f0ea7d3bf651d68f0046cf6f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac32e542a4f0af3f8a27314e01f9e19e8" id="r_ac32e542a4f0af3f8a27314e01f9e19e8"><td class="memItemLeft" align="right" valign="top"><a id="ac32e542a4f0af3f8a27314e01f9e19e8" name="ac32e542a4f0af3f8a27314e01f9e19e8"></a>
-struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> ((packed)) USARTRegs</td></tr>
-<tr class="separator:ac32e542a4f0af3f8a27314e01f9e19e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace94d68de38aef271250cc03514766a5" id="r_ace94d68de38aef271250cc03514766a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace94d68de38aef271250cc03514766a5">usart_start</a> (const usart_sel_t usart, const uint32_t baudrate, const usart_mode_t mode)</td></tr>
+<tr class="memitem:ace94d68de38aef271250cc03514766a5" id="r_ace94d68de38aef271250cc03514766a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace94d68de38aef271250cc03514766a5">usart_start</a> (const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart, const uint32_t baudrate, const <a class="el" href="#af9cb6192f394ebde038a7b64527eb5e9">usart_mode_t</a> mode)</td></tr>
 <tr class="memdesc:ace94d68de38aef271250cc03514766a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates the USART peripheral with specified options.  <br /></td></tr>
 <tr class="separator:ace94d68de38aef271250cc03514766a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a315d493dbb7df566f88014fbf096c04e" id="r_a315d493dbb7df566f88014fbf096c04e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a315d493dbb7df566f88014fbf096c04e">usart_set_dma</a> (const usart_sel_t usart, const _Bool forTX, const _Bool forRX)</td></tr>
+<tr class="memitem:a315d493dbb7df566f88014fbf096c04e" id="r_a315d493dbb7df566f88014fbf096c04e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a315d493dbb7df566f88014fbf096c04e">usart_set_dma</a> (const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart, const _Bool forTX, const _Bool forRX)</td></tr>
 <tr class="memdesc:a315d493dbb7df566f88014fbf096c04e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the USART DMA functionality.  <br /></td></tr>
 <tr class="separator:a315d493dbb7df566f88014fbf096c04e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7a0168af1fb8b94b02d461ae0507e97" id="r_af7a0168af1fb8b94b02d461ae0507e97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7a0168af1fb8b94b02d461ae0507e97">usart_set_interrupts</a> (const usart_sel_t usart, const struct USARTISR config)</td></tr>
+<tr class="memitem:af7a0168af1fb8b94b02d461ae0507e97" id="r_af7a0168af1fb8b94b02d461ae0507e97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7a0168af1fb8b94b02d461ae0507e97">usart_set_interrupts</a> (const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart, const struct <a class="el" href="structUSARTISR.html">USARTISR</a> config)</td></tr>
 <tr class="memdesc:af7a0168af1fb8b94b02d461ae0507e97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the specified USART interrupts.  <br /></td></tr>
 <tr class="separator:af7a0168af1fb8b94b02d461ae0507e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1984d0d75c1ce6a284498878f4964de9" id="r_a1984d0d75c1ce6a284498878f4964de9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1984d0d75c1ce6a284498878f4964de9">usart_set_databits</a> (const usart_sel_t usart, const usart_stopbits_t stopbits, const usart_databits_t databits)</td></tr>
+<tr class="memitem:a1984d0d75c1ce6a284498878f4964de9" id="r_a1984d0d75c1ce6a284498878f4964de9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1984d0d75c1ce6a284498878f4964de9">usart_set_databits</a> (const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart, const <a class="el" href="#aec2fddd4341bdbc1ca7e36b9d543d6f9">usart_stopbits_t</a> stopbits, const <a class="el" href="#a646bb5cdc2347b4c446474ed4d800b28">usart_databits_t</a> databits)</td></tr>
 <tr class="memdesc:a1984d0d75c1ce6a284498878f4964de9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the USART databits to the specified values.  <br /></td></tr>
 <tr class="separator:a1984d0d75c1ce6a284498878f4964de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c66eb9fb13bc64b9699c963ea8753e7" id="r_a5c66eb9fb13bc64b9699c963ea8753e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c66eb9fb13bc64b9699c963ea8753e7">usart_set_parity</a> (const usart_sel_t usart, const usart_parity_t parity)</td></tr>
+<tr class="memitem:a5c66eb9fb13bc64b9699c963ea8753e7" id="r_a5c66eb9fb13bc64b9699c963ea8753e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c66eb9fb13bc64b9699c963ea8753e7">usart_set_parity</a> (const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart, const <a class="el" href="#a9b924d5756332a7f8773403d0dd6b708">usart_parity_t</a> parity)</td></tr>
 <tr class="memdesc:a5c66eb9fb13bc64b9699c963ea8753e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the USART parity to the specified mode.  <br /></td></tr>
 <tr class="separator:a5c66eb9fb13bc64b9699c963ea8753e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4004e6aceaef961a4c1446bead1b73e1" id="r_a4004e6aceaef961a4c1446bead1b73e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4004e6aceaef961a4c1446bead1b73e1">usart_tx_message</a> (const usart_sel_t usart, const char *message)</td></tr>
+<tr class="memitem:a4004e6aceaef961a4c1446bead1b73e1" id="r_a4004e6aceaef961a4c1446bead1b73e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4004e6aceaef961a4c1446bead1b73e1">usart_tx_message</a> (const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart, const char *message)</td></tr>
 <tr class="memdesc:a4004e6aceaef961a4c1446bead1b73e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes specified message to USART buffer.  <br /></td></tr>
 <tr class="separator:a4004e6aceaef961a4c1446bead1b73e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fc3e1ec28df901667776c5fe4043867" id="r_a6fc3e1ec28df901667776c5fe4043867"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fc3e1ec28df901667776c5fe4043867">usart_rx_byte</a> (const usart_sel_t usart)</td></tr>
+<tr class="memitem:a6fc3e1ec28df901667776c5fe4043867" id="r_a6fc3e1ec28df901667776c5fe4043867"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fc3e1ec28df901667776c5fe4043867">usart_rx_byte</a> (const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart)</td></tr>
 <tr class="memdesc:a6fc3e1ec28df901667776c5fe4043867"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the received data from the USART buffer.  <br /></td></tr>
 <tr class="separator:a6fc3e1ec28df901667776c5fe4043867"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7867e56537b2710b8a78614b44a56b4d" id="r_a7867e56537b2710b8a78614b44a56b4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7867e56537b2710b8a78614b44a56b4d">usart_stop</a> (const usart_sel_t usart)</td></tr>
+<tr class="memitem:a7867e56537b2710b8a78614b44a56b4d" id="r_a7867e56537b2710b8a78614b44a56b4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7867e56537b2710b8a78614b44a56b4d">usart_stop</a> (const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart)</td></tr>
 <tr class="memdesc:a7867e56537b2710b8a78614b44a56b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable the USART interface.  <br /></td></tr>
 <tr class="separator:a7867e56537b2710b8a78614b44a56b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -196,7 +213,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
 <div class="textblock"><p>Function prototypes for the USART interface. </p>
 <p>This file contains all of the enums, macros, and function prototypes required for a functional usart driver.</p>
 <dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
-<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000012">Bug</a></b></dt><dd>None, yet. </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000013">Bug</a></b></dt><dd>None, yet. </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a9253219d896abc79c07c7c9a69655e62" name="a9253219d896abc79c07c7c9a69655e62"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9253219d896abc79c07c7c9a69655e62">&#9670;&#160;</a></span>USART</h2>
@@ -212,7 +229,9 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">(<span class="keyword">struct </span>USARTRegs *)((usart_sel_t)sel)</div>
+<b>Value:</b><div class="fragment"><div class="line">(<span class="keyword">struct </span><a class="code hl_struct" href="structUSARTRegs.html">USARTRegs</a> *)((<a class="code hl_typedef" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a>)sel)</div>
+<div class="ttc" id="astructUSARTRegs_html"><div class="ttname"><a href="structUSARTRegs.html">USARTRegs</a></div><div class="ttdoc">Contains USART registers.</div><div class="ttdef"><b>Definition</b> usart.h:23</div></div>
+<div class="ttc" id="ausart_8h_html_a79febc36be6daf0f77269ebddd0e81c9"><div class="ttname"><a href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></div><div class="ttdeci">enum usart_sel usart_sel_t</div><div class="ttdoc">Available USART peripherals.</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -226,7 +245,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="memname">uint16_t usart_rx_byte </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -253,17 +272,17 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="memname">void usart_set_databits </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const usart_stopbits_t</td>          <td class="paramname"><span class="paramname"><em>stopbits</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#aec2fddd4341bdbc1ca7e36b9d543d6f9">usart_stopbits_t</a></td>          <td class="paramname"><span class="paramname"><em>stopbits</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const usart_databits_t</td>          <td class="paramname"><span class="paramname"><em>databits</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#a646bb5cdc2347b4c446474ed4d800b28">usart_databits_t</a></td>          <td class="paramname"><span class="paramname"><em>databits</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -291,7 +310,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="memname">void usart_set_dma </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -328,12 +347,12 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="memname">void usart_set_interrupts </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const struct USARTISR</td>          <td class="paramname"><span class="paramname"><em>config</em></span>&#160;)</td>
+          <td class="paramtype">const struct <a class="el" href="structUSARTISR.html">USARTISR</a></td>          <td class="paramname"><span class="paramname"><em>config</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -360,12 +379,12 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="memname">void usart_set_parity </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const usart_parity_t</td>          <td class="paramname"><span class="paramname"><em>parity</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#a9b924d5756332a7f8773403d0dd6b708">usart_parity_t</a></td>          <td class="paramname"><span class="paramname"><em>parity</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -392,7 +411,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="memname">void usart_start </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -402,7 +421,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const usart_mode_t</td>          <td class="paramname"><span class="paramname"><em>mode</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#af9cb6192f394ebde038a7b64527eb5e9">usart_mode_t</a></td>          <td class="paramname"><span class="paramname"><em>mode</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -431,7 +450,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="memname">void usart_stop </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -458,7 +477,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="memname">void usart_tx_message </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

@@ -97,7 +97,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define MCU_INIT_H</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">/* -- Includes -- */</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;defines.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="defines_8h.html">defines.h</a>&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/* -- Coprocessors -- */</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define EN_FPU FALSE</span></div>
@@ -123,31 +123,39 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#define PWR_UART4  FALSE</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define PWR_UART5  FALSE</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="mcu__init_8h.html#aa7aa0d1620cde02f9f2600670598588d">   49</a></span><span class="preprocessor">#define PLLM_VAL  4U</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#define PLLN_VAL  180U</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#define PLLP_VAL  0U </span><span class="comment">// == 2</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#define PPRE1_VAL 5U </span><span class="comment">// == 4</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#define PPRE2_VAL 4U </span><span class="comment">// == 2</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#define PLLSRC_VAL 1U </span><span class="comment">// Use HSE clock</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">_Static_assert</span>((((HSE_CLK / <a class="code hl_define" href="mcu__init_8h.html#aa7aa0d1620cde02f9f2600670598588d">PLLM_VAL</a>) * PLLN_VAL) / 2) == (SYS_CLK),</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>               <span class="stringliteral">&quot;System clock calculation mismatch. Did you update SYS_CLK?&quot;</span>);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">_Static_assert</span>((SYS_CLK / 4) == (APB1_CLK),</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>               <span class="stringliteral">&quot;APB1 clock calculation mismatch. Did you update APB1_CLK?&quot;</span>);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">_Static_assert</span>((SYS_CLK / 2) == (APB2_CLK),</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>               <span class="stringliteral">&quot;APB2 clock calculation mismatch. Did you update APB2_CLK?&quot;</span>);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">/* Power Regulation */</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#define EN_OVERDRIVE TRUE</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keywordtype">void</span> <a class="code hl_function" href="mcu__init_8h.html#a9af744358ff4b1e3e33d7dd170862f9b">mcu_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/* Clock Configuration:</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"> * 8MHz (HSE) / 4 (PLLM) = 2MHz</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"> * 2MHz * 180 (PLLN) = 360MHz</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"> * 360MHz / 2 (PLLP) = 180MHz</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> * 180MHz / 4 (PPRE1) = 45MHz (APB1)</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> * 180MHz / 2 (PPRE2) = 90MHz (APB2)</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#define PLLM_VAL  4U</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#define PLLN_VAL  180U</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#define PLLP_VAL  0U </span><span class="comment">// == 2</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#define PPRE1_VAL 5U </span><span class="comment">// == 4</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#define PPRE2_VAL 4U </span><span class="comment">// == 2</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#define PLLSRC_VAL 1U </span><span class="comment">// Use HSE clock</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">_Static_assert</span>((((HSE_CLK / PLLM_VAL) * PLLN_VAL) / 2) == (SYS_CLK),</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>               <span class="stringliteral">&quot;System clock calculation mismatch. Did you update SYS_CLK?&quot;</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">_Static_assert</span>((SYS_CLK / 4) == (APB1_CLK),</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>               <span class="stringliteral">&quot;APB1 clock calculation mismatch. Did you update APB1_CLK?&quot;</span>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">_Static_assert</span>((SYS_CLK / 2) == (APB2_CLK),</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>               <span class="stringliteral">&quot;APB2 clock calculation mismatch. Did you update APB2_CLK?&quot;</span>);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">/* Power Regulation */</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#define EN_OVERDRIVE TRUE</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keywordtype">void</span> <a class="code hl_function" href="mcu__init_8h.html#a9af744358ff4b1e3e33d7dd170862f9b">mcu_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="adefines_8h_html"><div class="ttname"><a href="defines_8h.html">defines.h</a></div><div class="ttdoc">Defines used commonly in most files.</div></div>
 <div class="ttc" id="amcu__init_8h_html_a9af744358ff4b1e3e33d7dd170862f9b"><div class="ttname"><a href="mcu__init_8h.html#a9af744358ff4b1e3e33d7dd170862f9b">mcu_init</a></div><div class="ttdeci">void mcu_init(void)</div><div class="ttdoc">MCU initialization function.</div><div class="ttdef"><b>Definition</b> mcu_init.c:155</div></div>
-<div class="ttc" id="amcu__init_8h_html_aa7aa0d1620cde02f9f2600670598588d"><div class="ttname"><a href="mcu__init_8h.html#aa7aa0d1620cde02f9f2600670598588d">PLLM_VAL</a></div><div class="ttdeci">#define PLLM_VAL</div><div class="ttdef"><b>Definition</b> mcu_init.h:49</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -7,6 +7,15 @@ Function prototypes for the ADC driver.
 
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 {\ttfamily \#include "{}stm32f4xx.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structADCRegs}{ADCRegs}}
+\begin{DoxyCompactList}\small\item\em Contains ADC registers. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structADCCommonRegs}{ADCCommon\+Regs}}
+\begin{DoxyCompactList}\small\item\em Contains ADC common registers. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structADCModes}{ADCModes}}
+\begin{DoxyCompactList}\small\item\em Contains ADC conversion modes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -16,7 +25,7 @@ Function prototypes for the ADC driver.
 \#define \mbox{\hyperlink{adc_8h_a432a9dde0c2acd17dbe8100a648bb30a}{ADC\+\_\+}}(number)
 \item 
 \Hypertarget{adc_8h_a435a3a89417f788d4d23f161c01bda5f}\label{adc_8h_a435a3a89417f788d4d23f161c01bda5f} 
-\#define {\bfseries ADC\+\_\+\+COMMON}~(struct ADCCommon\+Regs \texorpdfstring{$\ast$}{*})(ADC123\+\_\+\+COMMON\+\_\+\+BASE)
+\#define {\bfseries ADC\+\_\+\+COMMON}~(struct \mbox{\hyperlink{structADCCommonRegs}{ADCCommon\+Regs}} \texorpdfstring{$\ast$}{*})(ADC123\+\_\+\+COMMON\+\_\+\+BASE)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -73,16 +82,13 @@ enum {\bfseries adc\+\_\+prescaler} \{ {\bfseries ADC\+\_\+\+PRESCALER\+\_\+\+DI
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{adc_8h_ab14018fc97a34eca8102685e71ee64fb}\label{adc_8h_ab14018fc97a34eca8102685e71ee64fb} 
-struct {\bfseries \+\_\+\+\_\+attribute\+\_\+\+\_\+} ((packed)) ADCRegs
-\item 
 void \mbox{\hyperlink{adc_8h_a9eb3c8478c8926f4e9c752516151a953}{adc\+\_\+set\+\_\+prescaler}} (const adc\+\_\+prescaler\+\_\+t value)
 \begin{DoxyCompactList}\small\item\em Sets the ADC Prescaler divider to the specified value. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{adc_8h_a38a3d191c258d54ef099a03c5f4bb942}{adc\+\_\+set\+\_\+resolution}} (const uint8\+\_\+t adc, const adc\+\_\+res\+\_\+t value)
 \begin{DoxyCompactList}\small\item\em Sets the ADC resolution to the specified value. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{adc_8h_a277295eb7f7523478637e206fa082b0b}{adc\+\_\+set\+\_\+samplerate}} (const uint8\+\_\+t adc, const uint8\+\_\+t channel, const adc\+\_\+samplerate\+\_\+t value)
 \begin{DoxyCompactList}\small\item\em Sets the ADC sampling rate to the specified value. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{adc_8h_a508304374c9dba7c1f5681922e2fe2e1}{adc\+\_\+set\+\_\+modes}} (const uint8\+\_\+t adc, const struct ADCModes config)
+void \mbox{\hyperlink{adc_8h_a508304374c9dba7c1f5681922e2fe2e1}{adc\+\_\+set\+\_\+modes}} (const uint8\+\_\+t adc, const struct \mbox{\hyperlink{structADCModes}{ADCModes}} config)
 \begin{DoxyCompactList}\small\item\em Sets the ADC modes according to the configuration. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{adc_8h_aa1f1a673889c40e5ea83e5d0c84b808e}{adc\+\_\+set\+\_\+seq}} (const uint8\+\_\+t adc, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}seq, const uint8\+\_\+t count)
 \begin{DoxyCompactList}\small\item\em Sets the ADC conversion sequence to the specified order. \end{DoxyCompactList}\item 
@@ -105,7 +111,7 @@ DISCLAIMER\+: Only for regular channels in single / continuous / discontinuous m
 Vasileios Ch. (BillisC) 
 \end{DoxyAuthor}
 \begin{DoxyRefDesc}{Bug}
-\item[\mbox{\hyperlink{bug__bug000002}{Bug}}]None, yet. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{bug__bug000003}{Bug}}]None, yet. \end{DoxyRefDesc}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -117,7 +123,7 @@ Vasileios Ch. (BillisC)
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ (\textcolor{keyword}{struct\ }ADCRegs\ *)(ADC1\_BASE\ +\ (0x100UL\ *\ ((uint8\_t)number\ -\/\ 1U)))}
+\DoxyCodeLine{\ \ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{structADCRegs}{ADCRegs}}\ *)(ADC1\_BASE\ +\ (0x100UL\ *\ ((uint8\_t)number\ -\/\ 1U)))}
 
 \end{DoxyCode}
 
@@ -185,7 +191,7 @@ The conversion result
 \index{adc\_set\_modes@{adc\_set\_modes}!adc.h@{adc.h}}
 \doxysubsubsection{\texorpdfstring{adc\_set\_modes()}{adc\_set\_modes()}}
 {\footnotesize\ttfamily \label{adc_8h_a508304374c9dba7c1f5681922e2fe2e1} 
-void adc\+\_\+set\+\_\+modes (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{adc}{, }\item[{const struct ADCModes}]{config}{}\end{DoxyParamCaption})}
+void adc\+\_\+set\+\_\+modes (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{adc}{, }\item[{const struct \mbox{\hyperlink{structADCModes}{ADCModes}}}]{config}{}\end{DoxyParamCaption})}
 
 
 

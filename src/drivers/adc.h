@@ -23,6 +23,9 @@
 #include "stm32f4xx.h"
 
 /* -- Structs -- */
+/**
+ *  @brief Contains ADC registers
+ */
 struct __attribute__((packed)) ADCRegs {
   volatile uint32_t SR;
   volatile uint32_t CR1;
@@ -40,6 +43,9 @@ struct __attribute__((packed)) ADCRegs {
 _Static_assert((sizeof(struct ADCRegs)) == (sizeof(uint32_t) * 20U),
                "ADC register struct size mismatch. Is it aligned?");
 
+/**
+ *  @brief Contains ADC common registers
+ */
 struct __attribute__((packed)) ADCCommonRegs {
   volatile uint32_t CSR;
   volatile uint32_t CCR;
@@ -58,6 +64,9 @@ extern struct ADCRegs *ADC_(const uint8_t number);
 extern struct ADCCommonRegs *ADC_COMMON;
 #endif
 
+/**
+ *  @brief Contains ADC conversion modes
+ */
 struct __attribute__((packed)) ADCModes {
   volatile _Bool DMA  : 1;
   volatile _Bool DDS  : 1;

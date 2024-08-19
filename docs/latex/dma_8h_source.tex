@@ -8,101 +8,101 @@
 \DoxyCodeLine{00018\ }
 \DoxyCodeLine{00019\ \textcolor{comment}{/*\ -\/-\/\ Includes\ -\/-\/\ */}}
 \DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}stm32f4xx.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{stm32f4xx_8h}{stm32f4xx.h}}"{}}}
 \DoxyCodeLine{00022\ }
 \DoxyCodeLine{00023\ \textcolor{comment}{/*\ -\/-\/\ Structs\ -\/-\/\ */}}
-\DoxyCodeLine{00024\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ DMAStreamRegs\ \{}
-\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ CR;}
-\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ NDTR;}
-\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ PAR;}
-\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ M0AR;}
-\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ M1AR;}
-\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ FCR;}
-\DoxyCodeLine{00031\ \};}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }DMAStreamRegs))\ ==\ (\textcolor{keyword}{sizeof}(uint32\_t)\ *\ 6U),}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}DMA\ Sx\ register\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structDMAStreamRegs}{DMAStreamRegs}}\ \{}
+\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ CR;}
+\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ NDTR;}
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ PAR;}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ M0AR;}
+\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ M1AR;}
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ FCR;}
+\DoxyCodeLine{00034\ \};}
 \DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ DMARegs\ \{}
-\DoxyCodeLine{00037\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ LISR;}
-\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ HISR;}
-\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ LIFCR;}
-\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ HIFCR;}
-\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{volatile}\ \textcolor{keyword}{struct\ }DMAStreamRegs\ S[8];}
-\DoxyCodeLine{00042\ \};}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }DMARegs))\ ==}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keyword}{sizeof}(uint32\_t)\ *\ (4U\ +\ (6U\ *\ 8U))),}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}DMA\ register\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ DMA(x)\ (struct\ DMARegs\ *)(DMA1\_BASE\ +\ ((x\ -\/\ 1)\ *\ 0x400UL))}}
+\DoxyCodeLine{00036\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structDMAStreamRegs}{DMAStreamRegs}}))\ ==\ (\textcolor{keyword}{sizeof}(uint32\_t)\ *\ 6U),}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}DMA\ Sx\ register\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structDMARegs}{DMARegs}}\ \{}
+\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ LISR;}
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ HISR;}
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ LIFCR;}
+\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ HIFCR;}
+\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{volatile}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDMAStreamRegs}{DMAStreamRegs}}\ S[8];}
+\DoxyCodeLine{00048\ \};}
 \DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ DMAStreamConfig\ \{}
-\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ Circular\ \ \ \ \ :\ 1;}
-\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ DoubleBuffer\ :\ 1;}
-\DoxyCodeLine{00053\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ PerIncrement\ :\ 1;}
-\DoxyCodeLine{00054\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ MemIncrement\ :\ 1;}
-\DoxyCodeLine{00055\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ PerFlowCtrl\ \ :\ 1;}
-\DoxyCodeLine{00056\ \};}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }DMAStreamConfig))\ ==\ (\textcolor{keyword}{sizeof}(uint8\_t)\ *\ 1U),}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}DMA\ Stream\ config\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ DMAStreamISR\ \{}
-\DoxyCodeLine{00062\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ HTI\ \ :\ 1;}
-\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ TCI\ \ :\ 1;}
-\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ TEI\ \ :\ 1;}
-\DoxyCodeLine{00065\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ FEI\ \ :\ 1;}
-\DoxyCodeLine{00066\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ DMEI\ :\ 1;}
-\DoxyCodeLine{00067\ \};}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }DMAStreamISR))\ ==\ (\textcolor{keyword}{sizeof}(uint8\_t)\ *\ 1U),}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}DMA\ Stream\ Interrupt\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ \textcolor{comment}{/*\ -\/-\/\ Enums\ -\/-\/\ */}}
-\DoxyCodeLine{00073\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ dma\_dir\ \{}
-\DoxyCodeLine{00074\ \ \ DMA\_DIR\_PER2MEM\ =\ 0x00,}
-\DoxyCodeLine{00075\ \ \ DMA\_DIR\_MEM2PER\ =\ 0x01,}
-\DoxyCodeLine{00076\ \ \ DMA\_DIR\_MEM2MEM\ =\ 0x02}
-\DoxyCodeLine{00077\ \}\ dma\_dir\_t;}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ dma\_datasize\ \{}
-\DoxyCodeLine{00080\ \ \ DMA\_DATASIZE\_BYTE\ =\ 0x00,}
-\DoxyCodeLine{00081\ \ \ DMA\_DATASIZE\_HWRD\ =\ 0x01,}
-\DoxyCodeLine{00082\ \ \ DMA\_DATASIZE\_WORD\ =\ 0x02}
-\DoxyCodeLine{00083\ \}\ dma\_datasize\_t;}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ dma\_priority\ \{}
-\DoxyCodeLine{00086\ \ \ DMA\_PRIORITY\_LOW\ =\ 0x00,}
-\DoxyCodeLine{00087\ \ \ DMA\_PRIORITY\_MED\ =\ 0x01,}
-\DoxyCodeLine{00088\ \ \ DMA\_PRIORITY\_HIG\ =\ 0x02,}
-\DoxyCodeLine{00089\ \ \ DMA\_PRIORITY\_VHI\ =\ 0x03}
-\DoxyCodeLine{00090\ \}\ dma\_priority\_t;}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_a85a6e9d9a27dec6506deb4df62739b63}{dma\_set\_addresses}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream,}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint32\_t\ PA,\ \textcolor{keyword}{const}\ uint32\_t\ M0A,}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint32\_t\ M1A);}
-\DoxyCodeLine{00108\ }
-\DoxyCodeLine{00122\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_a15de574c8c2114715651fc14586853f1}{dma\_configure\_data}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream,}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint16\_t\ count,\ \textcolor{keyword}{const}\ dma\_datasize\_t\ msize,}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ dma\_datasize\_t\ psize);}
-\DoxyCodeLine{00125\ }
-\DoxyCodeLine{00138\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_aee1bdf1a525c3c27fd3924ceb1bfc6f0}{dma\_set\_direction}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream,}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ dma\_dir\_t\ direction);}
-\DoxyCodeLine{00140\ }
-\DoxyCodeLine{00152\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_a729deea5992aa6db7a941f425b1f6b87}{dma\_configure\_stream}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream,}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ DMAStreamConfig\ config);}
-\DoxyCodeLine{00154\ }
-\DoxyCodeLine{00168\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_ae71d23609ff4bd49f8b32a853ded4ee2}{dma\_set\_channel}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream,}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ channel,\ \textcolor{keyword}{const}\ dma\_priority\_t\ priority);}
-\DoxyCodeLine{00170\ }
-\DoxyCodeLine{00182\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_a697c7ee8843ceabcb67aa490bb1c5747}{dma\_set\_interrupts}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream,}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ DMAStreamISR\ config);}
-\DoxyCodeLine{00184\ }
-\DoxyCodeLine{00192\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_a88e3967cf41b526d098bdfe069de0159}{dma\_enable}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream);}
-\DoxyCodeLine{00193\ }
-\DoxyCodeLine{00201\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_aafaeaadc24e0bd880951898b65bf10db}{dma\_disable}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream);}
-\DoxyCodeLine{00202\ }
-\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00050\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structDMARegs}{DMARegs}}))\ ==}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keyword}{sizeof}(uint32\_t)\ *\ (4U\ +\ (6U\ *\ 8U))),}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}DMA\ register\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ DMA(x)\ (struct\ DMARegs\ *)(DMA1\_BASE\ +\ ((x\ -\/\ 1)\ *\ 0x400UL))}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structDMAStreamConfig}{DMAStreamConfig}}\ \{}
+\DoxyCodeLine{00060\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ Circular\ \ \ \ \ :\ 1;}
+\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ DoubleBuffer\ :\ 1;}
+\DoxyCodeLine{00062\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ PerIncrement\ :\ 1;}
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ MemIncrement\ :\ 1;}
+\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ PerFlowCtrl\ \ :\ 1;}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structDMAStreamConfig}{DMAStreamConfig}}))\ ==\ (\textcolor{keyword}{sizeof}(uint8\_t)\ *\ 1U),}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}DMA\ Stream\ config\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structDMAStreamISR}{DMAStreamISR}}\ \{}
+\DoxyCodeLine{00074\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ HTI\ \ :\ 1;}
+\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ TCI\ \ :\ 1;}
+\DoxyCodeLine{00076\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ TEI\ \ :\ 1;}
+\DoxyCodeLine{00077\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ FEI\ \ :\ 1;}
+\DoxyCodeLine{00078\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ DMEI\ :\ 1;}
+\DoxyCodeLine{00079\ \};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structDMAStreamISR}{DMAStreamISR}}))\ ==\ (\textcolor{keyword}{sizeof}(uint8\_t)\ *\ 1U),}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}DMA\ Stream\ Interrupt\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{comment}{/*\ -\/-\/\ Enums\ -\/-\/\ */}}
+\DoxyCodeLine{00088\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{dma_8h_a196fc6dd22613931cb7033e8349cf666}{dma\_dir}}\ \{}
+\DoxyCodeLine{00089\ \ \ DMA\_DIR\_PER2MEM\ =\ 0x00,}
+\DoxyCodeLine{00090\ \ \ DMA\_DIR\_MEM2PER\ =\ 0x01,}
+\DoxyCodeLine{00091\ \ \ DMA\_DIR\_MEM2MEM\ =\ 0x02}
+\DoxyCodeLine{00092\ \}\ \mbox{\hyperlink{dma_8h_acb4c9afece395581961a451cf89a0daf}{dma\_dir\_t}};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{dma_8h_a9124186f3969f38be8d5aeb68abee24a}{dma\_datasize}}\ \{}
+\DoxyCodeLine{00098\ \ \ DMA\_DATASIZE\_BYTE\ =\ 0x00,}
+\DoxyCodeLine{00099\ \ \ DMA\_DATASIZE\_HWRD\ =\ 0x01,}
+\DoxyCodeLine{00100\ \ \ DMA\_DATASIZE\_WORD\ =\ 0x02}
+\DoxyCodeLine{00101\ \}\ \mbox{\hyperlink{dma_8h_a1732e13bbb47e74a2237ea590425326a}{dma\_datasize\_t}};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00106\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{dma_8h_acff7214370827484610e276b30f6da75}{dma\_priority}}\ \{}
+\DoxyCodeLine{00107\ \ \ DMA\_PRIORITY\_LOW\ =\ 0x00,}
+\DoxyCodeLine{00108\ \ \ DMA\_PRIORITY\_MED\ =\ 0x01,}
+\DoxyCodeLine{00109\ \ \ DMA\_PRIORITY\_HIG\ =\ 0x02,}
+\DoxyCodeLine{00110\ \ \ DMA\_PRIORITY\_VHI\ =\ 0x03}
+\DoxyCodeLine{00111\ \}\ \mbox{\hyperlink{dma_8h_a945cea4e4c15bf97a414f0a003067de6}{dma\_priority\_t}};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00126\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_a85a6e9d9a27dec6506deb4df62739b63}{dma\_set\_addresses}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream,}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint32\_t\ PA,\ \textcolor{keyword}{const}\ uint32\_t\ M0A,}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint32\_t\ M1A);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00143\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_a15de574c8c2114715651fc14586853f1}{dma\_configure\_data}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream,}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint16\_t\ count,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{dma_8h_a1732e13bbb47e74a2237ea590425326a}{dma\_datasize\_t}}\ msize,}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{dma_8h_a1732e13bbb47e74a2237ea590425326a}{dma\_datasize\_t}}\ psize);}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00159\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_aee1bdf1a525c3c27fd3924ceb1bfc6f0}{dma\_set\_direction}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream,}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{dma_8h_acb4c9afece395581961a451cf89a0daf}{dma\_dir\_t}}\ direction);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00173\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_a729deea5992aa6db7a941f425b1f6b87}{dma\_configure\_stream}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream,}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structDMAStreamConfig}{DMAStreamConfig}}\ config);}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00189\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_ae71d23609ff4bd49f8b32a853ded4ee2}{dma\_set\_channel}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream,}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ channel,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{dma_8h_a945cea4e4c15bf97a414f0a003067de6}{dma\_priority\_t}}\ priority);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00203\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_a697c7ee8843ceabcb67aa490bb1c5747}{dma\_set\_interrupts}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream,}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structDMAStreamISR}{DMAStreamISR}}\ config);}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00213\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_a88e3967cf41b526d098bdfe069de0159}{dma\_enable}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream);}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00222\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dma_8h_aafaeaadc24e0bd880951898b65bf10db}{dma\_disable}}(\textcolor{keyword}{const}\ uint8\_t\ dma,\ \textcolor{keyword}{const}\ uint8\_t\ stream);}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

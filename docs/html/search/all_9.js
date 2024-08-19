@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pllm_5fval_0',['PLLM_VAL',['../mcu__init_8h.html#aa7aa0d1620cde02f9f2600670598588d',1,'mcu_init.h']]],
-  ['preparation_1',['Preparation',['../index.html#autotoc_md1',1,'']]]
+  ['preparation_0',['Preparation',['../index.html#autotoc_md1',1,'']]],
+  ['pwr_5ftypedef_1',['PWR_TypeDef',['../structPWR__TypeDef.html',1,'']]]
 ];

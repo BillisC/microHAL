@@ -98,7 +98,7 @@ $(function(){ initResizable(false); });
 
 <p>Function prototypes for the MCU initializer.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;defines.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="defines_8h_source.html">defines.h</a>&quot;</code><br />
 </div>
 <p><a href="mcu__init_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -164,7 +164,8 @@ Macros</h2></td></tr>
 <tr class="memitem:a529efc00e953074077416289484b0ad3" id="r_a529efc00e953074077416289484b0ad3"><td class="memItemLeft" align="right" valign="top"><a id="a529efc00e953074077416289484b0ad3" name="a529efc00e953074077416289484b0ad3"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PWR_UART5</b>&#160;&#160;&#160;FALSE</td></tr>
 <tr class="separator:a529efc00e953074077416289484b0ad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7aa0d1620cde02f9f2600670598588d" id="r_aa7aa0d1620cde02f9f2600670598588d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7aa0d1620cde02f9f2600670598588d">PLLM_VAL</a>&#160;&#160;&#160;4U</td></tr>
+<tr class="memitem:aa7aa0d1620cde02f9f2600670598588d" id="r_aa7aa0d1620cde02f9f2600670598588d"><td class="memItemLeft" align="right" valign="top"><a id="aa7aa0d1620cde02f9f2600670598588d" name="aa7aa0d1620cde02f9f2600670598588d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PLLM_VAL</b>&#160;&#160;&#160;4U</td></tr>
 <tr class="separator:aa7aa0d1620cde02f9f2600670598588d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ac6951b192e1f617416982701fa8ffb" id="r_a4ac6951b192e1f617416982701fa8ffb"><td class="memItemLeft" align="right" valign="top"><a id="a4ac6951b192e1f617416982701fa8ffb" name="a4ac6951b192e1f617416982701fa8ffb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PLLN_VAL</b>&#160;&#160;&#160;180U</td></tr>
@@ -195,24 +196,8 @@ Functions</h2></td></tr>
 <div class="textblock"><p>Function prototypes for the MCU initializer. </p>
 <p>This file contains all of the enums, macros, and function prototypes required for a proper peripheral and clock initialization.</p>
 <dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
-<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000010">Bug</a></b></dt><dd>None, yet. </dd></dl>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="aa7aa0d1620cde02f9f2600670598588d" name="aa7aa0d1620cde02f9f2600670598588d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7aa0d1620cde02f9f2600670598588d">&#9670;&#160;</a></span>PLLM_VAL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PLLM_VAL&#160;&#160;&#160;4U</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Clock Configuration 8MHz (HSE) / 4 (PLLM) = 2MHz 2MHz * 180 (PLLN) = 360MHz 360MHz / 2 (PLLP) = 180MHz 180MHz / 4 (PPRE1) = 45MHz (APB1) 180MHz / 2 (PPRE2) = 90MHz (APB2) </p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000011">Bug</a></b></dt><dd>None, yet. </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a9af744358ff4b1e3e33d7dd170862f9b" name="a9af744358ff4b1e3e33d7dd170862f9b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9af744358ff4b1e3e33d7dd170862f9b">&#9670;&#160;</a></span>mcu_init()</h2>
 

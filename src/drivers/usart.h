@@ -17,6 +17,9 @@
 #include "stm32f4xx.h"
 
 /* -- Structs -- */
+/**
+ *  @brief Contains USART registers
+ */
 struct __attribute__((packed)) USARTRegs {
   volatile uint32_t SR;
   volatile uint32_t DR;
@@ -30,6 +33,9 @@ struct __attribute__((packed)) USARTRegs {
 _Static_assert((sizeof(struct USARTRegs)) == (sizeof(uint32_t) * 7U),
                "USART register struct size mismatch. Is it aligned?");
 
+/**
+ *  @brief Contains USART interrupt configuration
+ */
 struct __attribute__((packed)) USARTISR {
   volatile _Bool TXEI  : 1;
   volatile _Bool CTSI  : 1;
@@ -45,6 +51,9 @@ _Static_assert((sizeof(struct USARTISR)) == (sizeof(uint8_t) * 1U),
                "USART interrupt struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
+/**
+ *  @brief Available USART peripherals
+ */
 typedef enum usart_sel {
   USART_SEL_1 = USART1_BASE,
   USART_SEL_2 = USART2_BASE,
@@ -56,17 +65,26 @@ typedef enum usart_sel {
 
 #define USART(sel) (struct USARTRegs *)((usart_sel_t)sel)
 
+/**
+ *  @brief Available USART modes
+ */
 typedef enum usart_mode {
   USART_MODE_TX = 0x00,
   USART_MODE_RX = 0x01,
   USART_MODE_BO = 0x02
 } usart_mode_t;
 
+/**
+ *  @brief Available USART databit number
+ */
 typedef enum usart_databits {
   USART_DATABITS_DB8 = 0x00,
   USART_DATABITS_DB9 = 0x01
 } usart_databits_t;
 
+/**
+ *  @brief Available USART stopbit number
+ */
 typedef enum usart_stopbits {
   USART_STOPBITS_SB1 = 0x00,
   USART_STOPBITS_SBH = 0x01,
@@ -74,6 +92,9 @@ typedef enum usart_stopbits {
   USART_STOPBITS_SBO = 0x03
 } usart_stopbits_t;
 
+/**
+ *  @brief Available USART parities
+ */
 typedef enum usart_parity {
   USART_PARITY_EVN = 0x00,
   USART_PARITY_ODD = 0x01,

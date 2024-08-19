@@ -1,3 +1,10 @@
+/** @file defines.h
+ *  @brief Defines used commonly in most files
+ *
+ *  @author Vasileios Ch. (BillisC)
+ *  @bug None, yet.
+ */
+
 #ifndef DEFINES_H
 #define DEFINES_H
 

@@ -17,6 +17,9 @@
 #include "stm32f4xx.h"
 
 /* -- Structs -- */
+/**
+ *  @brief Contains GPIO registers
+ */
 struct __attribute__((packed)) GPIORegs {
   volatile uint32_t MODER;
   volatile uint32_t OTYPER;
@@ -40,6 +43,9 @@ extern struct GPIORegs *GPIO(const uint8_t bank);
 #endif
 
 /* -- Enums -- */
+/**
+ *  @brief Available GPIO modes
+ */
 typedef enum gp_dir {
   GP_DIR_IN = 0x00,
   GP_DIR_OU = 0x01,
@@ -47,11 +53,17 @@ typedef enum gp_dir {
   GP_DIR_AN = 0x03
 } gp_dir_t;
 
+/**
+ *  @brief Available GPIO output types
+ */
 typedef enum gp_otype {
   GP_OTYPE_PP = 0x00,
   GP_OTYPE_OD = 0x01
 } gp_otype_t;
 
+/**
+ *  @brief Available GPIO output speeds
+ */
 typedef enum gp_speed {
   GP_SPEED_LOW = 0x00,
   GP_SPEED_MED = 0x01,
@@ -59,6 +71,9 @@ typedef enum gp_speed {
   GP_SPEED_HIG = 0x03
 } gp_speed_t;
 
+/**
+ *  @brief Available GPIO pull states
+ */
 typedef enum gp_pupd {
   GP_PUPD_NONE = 0x00,
   GP_PUPD_PLUP = 0x01,

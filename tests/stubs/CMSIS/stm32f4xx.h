@@ -1,3 +1,13 @@
+/** @file stm32f4xx.h
+ *  @brief CMSIS device header stubs
+ *
+ *  This file contains stubs that make unit testing
+ *  possible natively. This is a necessary step as CMSIS
+ *  has function definitions in their headers.
+ *
+ *  @author Vasileios Ch. (BillisC)
+ */
+
 /* -- Includes -- */
 #include <stdint.h>
 #include "system_stm32f4xx.h"
@@ -105,6 +115,9 @@
 #define USART_SR_RXNE_Msk    (0x1UL << (5U))
 
 /* RCC */
+/**
+ * @brief Contains stubbed RCC registers.
+ */
 typedef struct {
   volatile uint32_t CR;
   volatile uint32_t PLLCFGR;
@@ -159,6 +172,9 @@ typedef struct {
 #define RCC_APB2ENR_USART6EN_Msk (0x1UL << (5U))
 
 /* PWR */
+/**
+ * @brief Contains stubbed PWR registers.
+ */
 typedef struct {
   volatile uint32_t CR;
   volatile uint32_t CSR;
@@ -172,6 +188,9 @@ typedef struct {
 #define PWR_CSR_ODSWRDY_Msk (0x1UL << (17U))
 
 /* FLASH */
+/**
+ * @brief Contains stubbed FLASH registers.
+ */
 typedef struct {
   volatile uint32_t ACR;
 } FLASH_TypeDef;
@@ -180,6 +199,9 @@ typedef struct {
 #define FLASH_ACR_LATENCY_5WS 0x00000005U
 
 /* SCB */
+/**
+ * @brief Contains stubbed SCB registers.
+ */
 typedef struct {
   volatile uint32_t CPACR;
 } SCB_TypeDef;

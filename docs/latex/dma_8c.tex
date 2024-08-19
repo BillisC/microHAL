@@ -12,15 +12,15 @@ Function defines the DMA driver.
 \item 
 void \mbox{\hyperlink{dma_8c_a85a6e9d9a27dec6506deb4df62739b63}{dma\+\_\+set\+\_\+addresses}} (const uint8\+\_\+t dma, const uint8\+\_\+t stream, const uint32\+\_\+t PA, const uint32\+\_\+t M0A, const uint32\+\_\+t M1A)
 \begin{DoxyCompactList}\small\item\em Set the DMA source and destination addresses. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{dma_8c_a15de574c8c2114715651fc14586853f1}{dma\+\_\+configure\+\_\+data}} (const uint8\+\_\+t dma, const uint8\+\_\+t stream, const uint16\+\_\+t count, const dma\+\_\+datasize\+\_\+t msize, const dma\+\_\+datasize\+\_\+t psize)
+void \mbox{\hyperlink{dma_8c_a15de574c8c2114715651fc14586853f1}{dma\+\_\+configure\+\_\+data}} (const uint8\+\_\+t dma, const uint8\+\_\+t stream, const uint16\+\_\+t count, const \mbox{\hyperlink{dma_8h_a1732e13bbb47e74a2237ea590425326a}{dma\+\_\+datasize\+\_\+t}} msize, const \mbox{\hyperlink{dma_8h_a1732e13bbb47e74a2237ea590425326a}{dma\+\_\+datasize\+\_\+t}} psize)
 \begin{DoxyCompactList}\small\item\em Set DMA transfers to specified configuration. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{dma_8c_aee1bdf1a525c3c27fd3924ceb1bfc6f0}{dma\+\_\+set\+\_\+direction}} (const uint8\+\_\+t dma, const uint8\+\_\+t stream, const dma\+\_\+dir\+\_\+t direction)
+void \mbox{\hyperlink{dma_8c_aee1bdf1a525c3c27fd3924ceb1bfc6f0}{dma\+\_\+set\+\_\+direction}} (const uint8\+\_\+t dma, const uint8\+\_\+t stream, const \mbox{\hyperlink{dma_8h_acb4c9afece395581961a451cf89a0daf}{dma\+\_\+dir\+\_\+t}} direction)
 \begin{DoxyCompactList}\small\item\em Set DMA transfers to the desired direction. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{dma_8c_a729deea5992aa6db7a941f425b1f6b87}{dma\+\_\+configure\+\_\+stream}} (const uint8\+\_\+t dma, const uint8\+\_\+t stream, const struct DMAStream\+Config config)
+void \mbox{\hyperlink{dma_8c_a729deea5992aa6db7a941f425b1f6b87}{dma\+\_\+configure\+\_\+stream}} (const uint8\+\_\+t dma, const uint8\+\_\+t stream, const struct \mbox{\hyperlink{structDMAStreamConfig}{DMAStream\+Config}} config)
 \begin{DoxyCompactList}\small\item\em Set DMA stream to the specified configuration. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{dma_8c_ae71d23609ff4bd49f8b32a853ded4ee2}{dma\+\_\+set\+\_\+channel}} (const uint8\+\_\+t dma, const uint8\+\_\+t stream, const uint8\+\_\+t channel, const dma\+\_\+priority\+\_\+t priority)
+void \mbox{\hyperlink{dma_8c_ae71d23609ff4bd49f8b32a853ded4ee2}{dma\+\_\+set\+\_\+channel}} (const uint8\+\_\+t dma, const uint8\+\_\+t stream, const uint8\+\_\+t channel, const \mbox{\hyperlink{dma_8h_a945cea4e4c15bf97a414f0a003067de6}{dma\+\_\+priority\+\_\+t}} priority)
 \begin{DoxyCompactList}\small\item\em Set the DMA stream channel and priority. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{dma_8c_a697c7ee8843ceabcb67aa490bb1c5747}{dma\+\_\+set\+\_\+interrupts}} (const uint8\+\_\+t dma, const uint8\+\_\+t stream, const struct DMAStream\+ISR config)
+void \mbox{\hyperlink{dma_8c_a697c7ee8843ceabcb67aa490bb1c5747}{dma\+\_\+set\+\_\+interrupts}} (const uint8\+\_\+t dma, const uint8\+\_\+t stream, const struct \mbox{\hyperlink{structDMAStreamISR}{DMAStream\+ISR}} config)
 \begin{DoxyCompactList}\small\item\em Enabled the specified DMA stream interrupts. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{dma_8c_a88e3967cf41b526d098bdfe069de0159}{dma\+\_\+enable}} (const uint8\+\_\+t dma, const uint8\+\_\+t stream)
 \begin{DoxyCompactList}\small\item\em Enables DMA stream transfers. \end{DoxyCompactList}\item 
@@ -37,7 +37,7 @@ This file contains all of the function definitions declared in \doxylink{dma_8h}
 Vasileios Ch. (BillisC) 
 \end{DoxyAuthor}
 \begin{DoxyRefDesc}{Bug}
-\item[\mbox{\hyperlink{bug__bug000003}{Bug}}]There is a case where DMA1 clears EN Sx\+CR bit when the peripheral address is USART2 DR. There is no workaround at the moment (is it errata?). \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{bug__bug000004}{Bug}}]There is a case where DMA1 clears EN Sx\+CR bit when the peripheral address is USART2 DR. There is no workaround at the moment (is it errata?). \end{DoxyRefDesc}
 
 
 \doxysubsection{Function Documentation}
@@ -45,7 +45,7 @@ Vasileios Ch. (BillisC)
 \index{dma\_configure\_data@{dma\_configure\_data}!dma.c@{dma.c}}
 \doxysubsubsection{\texorpdfstring{dma\_configure\_data()}{dma\_configure\_data()}}
 {\footnotesize\ttfamily \label{dma_8c_a15de574c8c2114715651fc14586853f1} 
-void dma\+\_\+configure\+\_\+data (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{dma}{, }\item[{const uint8\+\_\+t}]{stream}{, }\item[{const uint16\+\_\+t}]{count}{, }\item[{const dma\+\_\+datasize\+\_\+t}]{msize}{, }\item[{const dma\+\_\+datasize\+\_\+t}]{psize}{}\end{DoxyParamCaption})}
+void dma\+\_\+configure\+\_\+data (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{dma}{, }\item[{const uint8\+\_\+t}]{stream}{, }\item[{const uint16\+\_\+t}]{count}{, }\item[{const \mbox{\hyperlink{dma_8h_a1732e13bbb47e74a2237ea590425326a}{dma\+\_\+datasize\+\_\+t}}}]{msize}{, }\item[{const \mbox{\hyperlink{dma_8h_a1732e13bbb47e74a2237ea590425326a}{dma\+\_\+datasize\+\_\+t}}}]{psize}{}\end{DoxyParamCaption})}
 
 
 
@@ -73,13 +73,13 @@ None
 \index{dma\_configure\_stream@{dma\_configure\_stream}!dma.c@{dma.c}}
 \doxysubsubsection{\texorpdfstring{dma\_configure\_stream()}{dma\_configure\_stream()}}
 {\footnotesize\ttfamily \label{dma_8c_a729deea5992aa6db7a941f425b1f6b87} 
-void dma\+\_\+configure\+\_\+stream (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{dma}{, }\item[{const uint8\+\_\+t}]{stream}{, }\item[{const struct DMAStream\+Config}]{config}{}\end{DoxyParamCaption})}
+void dma\+\_\+configure\+\_\+stream (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{dma}{, }\item[{const uint8\+\_\+t}]{stream}{, }\item[{const struct \mbox{\hyperlink{structDMAStreamConfig}{DMAStream\+Config}}}]{config}{}\end{DoxyParamCaption})}
 
 
 
 Set DMA stream to the specified configuration. 
 
-The DMA stream options are specified in the DMAStream\+Config struct.
+The DMA stream options are specified in the \doxylink{structDMAStreamConfig}{DMAStream\+Config} struct.
 
 
 \begin{DoxyParams}{Parameters}
@@ -165,7 +165,7 @@ None
 \index{dma\_set\_channel@{dma\_set\_channel}!dma.c@{dma.c}}
 \doxysubsubsection{\texorpdfstring{dma\_set\_channel()}{dma\_set\_channel()}}
 {\footnotesize\ttfamily \label{dma_8c_ae71d23609ff4bd49f8b32a853ded4ee2} 
-void dma\+\_\+set\+\_\+channel (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{dma}{, }\item[{const uint8\+\_\+t}]{stream}{, }\item[{const uint8\+\_\+t}]{channel}{, }\item[{const dma\+\_\+priority\+\_\+t}]{priority}{}\end{DoxyParamCaption})}
+void dma\+\_\+set\+\_\+channel (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{dma}{, }\item[{const uint8\+\_\+t}]{stream}{, }\item[{const uint8\+\_\+t}]{channel}{, }\item[{const \mbox{\hyperlink{dma_8h_a945cea4e4c15bf97a414f0a003067de6}{dma\+\_\+priority\+\_\+t}}}]{priority}{}\end{DoxyParamCaption})}
 
 
 
@@ -191,7 +191,7 @@ None
 \index{dma\_set\_direction@{dma\_set\_direction}!dma.c@{dma.c}}
 \doxysubsubsection{\texorpdfstring{dma\_set\_direction()}{dma\_set\_direction()}}
 {\footnotesize\ttfamily \label{dma_8c_aee1bdf1a525c3c27fd3924ceb1bfc6f0} 
-void dma\+\_\+set\+\_\+direction (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{dma}{, }\item[{const uint8\+\_\+t}]{stream}{, }\item[{const dma\+\_\+dir\+\_\+t}]{direction}{}\end{DoxyParamCaption})}
+void dma\+\_\+set\+\_\+direction (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{dma}{, }\item[{const uint8\+\_\+t}]{stream}{, }\item[{const \mbox{\hyperlink{dma_8h_acb4c9afece395581961a451cf89a0daf}{dma\+\_\+dir\+\_\+t}}}]{direction}{}\end{DoxyParamCaption})}
 
 
 
@@ -215,13 +215,13 @@ None
 \index{dma\_set\_interrupts@{dma\_set\_interrupts}!dma.c@{dma.c}}
 \doxysubsubsection{\texorpdfstring{dma\_set\_interrupts()}{dma\_set\_interrupts()}}
 {\footnotesize\ttfamily \label{dma_8c_a697c7ee8843ceabcb67aa490bb1c5747} 
-void dma\+\_\+set\+\_\+interrupts (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{dma}{, }\item[{const uint8\+\_\+t}]{stream}{, }\item[{const struct DMAStream\+ISR}]{config}{}\end{DoxyParamCaption})}
+void dma\+\_\+set\+\_\+interrupts (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{dma}{, }\item[{const uint8\+\_\+t}]{stream}{, }\item[{const struct \mbox{\hyperlink{structDMAStreamISR}{DMAStream\+ISR}}}]{config}{}\end{DoxyParamCaption})}
 
 
 
 Enabled the specified DMA stream interrupts. 
 
-The available DMA interrupts are located in the DMAStream\+ISR struct.
+The available DMA interrupts are located in the \doxylink{structDMAStreamISR}{DMAStream\+ISR} struct.
 
 
 \begin{DoxyParams}{Parameters}

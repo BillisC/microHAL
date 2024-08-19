@@ -1,0 +1,116 @@
+\doxysection{tests/test\+\_\+adc\+\_\+driver.c File Reference}
+\hypertarget{test__adc__driver_8c}{}\label{test__adc__driver_8c}\index{tests/test\_adc\_driver.c@{tests/test\_adc\_driver.c}}
+
+
+Unit tests for the ADC driver.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}unity.\+h"{}}\newline
+{\ttfamily \#include "{}adc.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{test__adc__driver_8c_abdcc6fd9c31800ca1b8ea7f35a829991}\label{test__adc__driver_8c_abdcc6fd9c31800ca1b8ea7f35a829991} 
+struct \mbox{\hyperlink{structADCRegs}{ADCRegs}} \texorpdfstring{$\ast$}{*} {\bfseries ADC\+\_\+} (const uint8\+\_\+t number)
+\item 
+\Hypertarget{test__adc__driver_8c_a3451f515695a47cb8196605868c25102}\label{test__adc__driver_8c_a3451f515695a47cb8196605868c25102} 
+void {\bfseries Test\+\_\+\+ADCSet\+Prescaler\+\_\+\+Edge\+Case\+\_\+\+Register\+Should\+Set\+Properly} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a4dadc3c465e6793bacea59c09c3a1a46}\label{test__adc__driver_8c_a4dadc3c465e6793bacea59c09c3a1a46} 
+void {\bfseries Test\+\_\+\+ADCSet\+Prescaler\+\_\+\+Prescale\+Is\+Invalid\+\_\+\+Register\+Should\+Not\+Set} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a2e53d0a9d545b511137ef91b1ffd2b66}\label{test__adc__driver_8c_a2e53d0a9d545b511137ef91b1ffd2b66} 
+void {\bfseries Test\+\_\+\+ADCSet\+Resolution\+\_\+\+Edge\+Case\+\_\+\+Register\+Should\+Set\+Properly} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a32369e255ef76dbfa9e7ac4b6277d8c7}\label{test__adc__driver_8c_a32369e255ef76dbfa9e7ac4b6277d8c7} 
+void {\bfseries Test\+\_\+\+ADCSet\+Resolution\+\_\+\+ADCIs\+Invalid\+\_\+\+Register\+Should\+Not\+Set} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_af392a0e29758ebb04ecee94a4c597a64}\label{test__adc__driver_8c_af392a0e29758ebb04ecee94a4c597a64} 
+void {\bfseries Test\+\_\+\+ADCSet\+Resolution\+\_\+\+Resolution\+Is\+Invalid\+\_\+\+Register\+Should\+Not\+Set} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a95af2bfd248de5b3d74b0dfda1ed1f67}\label{test__adc__driver_8c_a95af2bfd248de5b3d74b0dfda1ed1f67} 
+void {\bfseries Test\+\_\+\+ADCSet\+Samplerate\+\_\+\+Edge\+Case\+\_\+\+Register\+Should\+Set\+Properly} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a6d9a341b6c823f92da226391b82fd176}\label{test__adc__driver_8c_a6d9a341b6c823f92da226391b82fd176} 
+void {\bfseries Test\+\_\+\+ADCSet\+Samplerate\+\_\+\+ADCIs\+Invalid\+\_\+\+Register\+Should\+Not\+Set} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_ab786d6a80ab191e06979e2d93fd34cf2}\label{test__adc__driver_8c_ab786d6a80ab191e06979e2d93fd34cf2} 
+void {\bfseries Test\+\_\+\+ADCSet\+Samplerate\+\_\+\+Channel\+Is\+Invalid\+\_\+\+Register\+Should\+Not\+Set} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a07cbc883e3a3ef4722b45e6543479e62}\label{test__adc__driver_8c_a07cbc883e3a3ef4722b45e6543479e62} 
+void {\bfseries Test\+\_\+\+ADCSet\+Samplerate\+\_\+\+Samplerate\+Is\+Invalid\+\_\+\+Register\+Should\+Not\+Set} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a5589b16f335240db57f0169ac0e4a39b}\label{test__adc__driver_8c_a5589b16f335240db57f0169ac0e4a39b} 
+void {\bfseries Test\+\_\+\+ADCSet\+Modes\+\_\+\+Edge\+Case\+\_\+\+Registers\+Should\+Set\+Properly} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a4a0b4cc39471301d1f1da8ec01b89d1b}\label{test__adc__driver_8c_a4a0b4cc39471301d1f1da8ec01b89d1b} 
+void {\bfseries Test\+\_\+\+ADCSet\+Modes\+\_\+\+ADCIs\+Invalid\+\_\+\+Registers\+Should\+Not\+Set} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_ad7f2fd74716663ffcdba9714075a6f32}\label{test__adc__driver_8c_ad7f2fd74716663ffcdba9714075a6f32} 
+void {\bfseries Test\+\_\+\+ADCSet\+Seq\+\_\+\+Edge\+Case\+\_\+\+Registers\+Should\+Set\+Properly} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_acc0fef187fcff323171e5137f8ccb887}\label{test__adc__driver_8c_acc0fef187fcff323171e5137f8ccb887} 
+void {\bfseries Test\+\_\+\+ADCSet\+Seq\+\_\+\+ADCIs\+Invalid\+\_\+\+Registers\+Should\+Not\+Set} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_adf486079b9f20b790ce553a6fd1134a0}\label{test__adc__driver_8c_adf486079b9f20b790ce553a6fd1134a0} 
+void {\bfseries Test\+\_\+\+ADCSet\+Seq\+\_\+\+Some\+Sequences\+Are\+Invalid\+\_\+\+Should\+Clear\+Their\+Register\+Bits} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_afea4063883e1cf26153a10ba30e2f454}\label{test__adc__driver_8c_afea4063883e1cf26153a10ba30e2f454} 
+void {\bfseries Test\+\_\+\+ADCSet\+Seq\+\_\+\+Count\+Is\+Invalid\+\_\+\+Should\+Clear\+Its\+Register\+Bits} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a66219c3f3fe462816b71c42d57abfa85}\label{test__adc__driver_8c_a66219c3f3fe462816b71c42d57abfa85} 
+void {\bfseries Test\+\_\+\+ADCOn\+\_\+\+Edge\+Case\+\_\+\+Register\+Should\+Set\+Properly} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a123c8227336c095d2474f2d65e1f6fb3}\label{test__adc__driver_8c_a123c8227336c095d2474f2d65e1f6fb3} 
+void {\bfseries Test\+\_\+\+ADCOn\+\_\+\+ADCIs\+Invalid\+\_\+\+Register\+Should\+Not\+Set} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a2ae4085ce06957173f7a2c4319610b96}\label{test__adc__driver_8c_a2ae4085ce06957173f7a2c4319610b96} 
+void {\bfseries Test\+\_\+\+ADCOff\+\_\+\+Edge\+Case\+\_\+\+Register\+Should\+Set\+Properly} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a300141d7d117e8e07fa1d38ef50524cf}\label{test__adc__driver_8c_a300141d7d117e8e07fa1d38ef50524cf} 
+void {\bfseries Test\+\_\+\+ADCOff\+\_\+\+ADCIs\+Invalid\+\_\+\+Register\+Should\+Not\+Set} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a52de012d61dd0922877243d616eb5ae6}\label{test__adc__driver_8c_a52de012d61dd0922877243d616eb5ae6} 
+void {\bfseries Test\+\_\+\+ADCRead\+\_\+\+Edge\+Case\+\_\+\+Register\+Should\+Be\+Read\+Properly} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a8ca6993a739c3f9df1123e0f8b634558}\label{test__adc__driver_8c_a8ca6993a739c3f9df1123e0f8b634558} 
+void {\bfseries Test\+\_\+\+ADCRead\+\_\+\+ADCIs\+Invalid\+\_\+\+Register\+Should\+Not\+Be\+Read} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a95c834d6178047ce9e1bce7cbfea2836}\label{test__adc__driver_8c_a95c834d6178047ce9e1bce7cbfea2836} 
+void {\bfseries set\+Up} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a9909011e5fea0c018842eec4d93d0662}\label{test__adc__driver_8c_a9909011e5fea0c018842eec4d93d0662} 
+void {\bfseries tear\+Down} (void)
+\item 
+\Hypertarget{test__adc__driver_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{test__adc__driver_8c_a840291bc02cba5474a4cb46a9b9566fe} 
+int {\bfseries main} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{test__adc__driver_8c_ad737550286b50a980b204fd54abdcca2}\label{test__adc__driver_8c_ad737550286b50a980b204fd54abdcca2} 
+struct \mbox{\hyperlink{structADCRegs}{ADCRegs}} {\bfseries empty\+\_\+regs} = \{0\}
+\item 
+\Hypertarget{test__adc__driver_8c_aa5c0ba6eed7d6947e2c4b33c2cfa89ad}\label{test__adc__driver_8c_aa5c0ba6eed7d6947e2c4b33c2cfa89ad} 
+struct \mbox{\hyperlink{structADCRegs}{ADCRegs}} {\bfseries test\+\_\+regs} \mbox{[}ADC\+\_\+\+NUM+1\mbox{]}
+\item 
+\Hypertarget{test__adc__driver_8c_a58d2108cec0568e9f8e0cb9e86275a9c}\label{test__adc__driver_8c_a58d2108cec0568e9f8e0cb9e86275a9c} 
+struct \mbox{\hyperlink{structADCCommonRegs}{ADCCommon\+Regs}} {\bfseries empty\+\_\+cregs} = \{0\}
+\item 
+\Hypertarget{test__adc__driver_8c_a42f1ca779f42c6fbd4d56bbeb8545f76}\label{test__adc__driver_8c_a42f1ca779f42c6fbd4d56bbeb8545f76} 
+struct \mbox{\hyperlink{structADCCommonRegs}{ADCCommon\+Regs}} {\bfseries test\+\_\+cregs}
+\item 
+\Hypertarget{test__adc__driver_8c_ab429a52a816ec4761750a43b45e7ade2}\label{test__adc__driver_8c_ab429a52a816ec4761750a43b45e7ade2} 
+struct \mbox{\hyperlink{structADCCommonRegs}{ADCCommon\+Regs}} \texorpdfstring{$\ast$}{*} {\bfseries ADC\+\_\+\+COMMON} = \&test\+\_\+cregs
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Unit tests for the ADC driver. 
+
+The unit tests defined in this file handle mostly invalid parameter and edge cases in a stubbed environment. The purpose of these tests is logic checking and does not reflect the actual behaviour of registers in real MCUs.
+
+\begin{DoxyAuthor}{Author}
+Vasileios Ch. (BillisC) 
+\end{DoxyAuthor}

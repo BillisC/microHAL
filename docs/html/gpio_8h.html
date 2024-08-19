@@ -90,6 +90,7 @@ $(function(){ initResizable(false); });
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
@@ -101,10 +102,16 @@ $(function(){ initResizable(false); });
 <p>Function prototypes for the GPIO driver.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;stm32f4xx.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="stm32f4xx_8h_source.html">stm32f4xx.h</a>&quot;</code><br />
 </div>
 <p><a href="gpio_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGPIORegs.html">GPIORegs</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains GPIO registers.  <a href="structGPIORegs.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:afb4f9326807b359ae7987b5911a35025" id="r_afb4f9326807b359ae7987b5911a35025"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb4f9326807b359ae7987b5911a35025">GPIO</a>(bank)</td></tr>
@@ -113,57 +120,62 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a2066c61dfaee27a2e15d2a7f6eb6be53" id="r_a2066c61dfaee27a2e15d2a7f6eb6be53"><td class="memItemLeft" align="right" valign="top"><a id="a2066c61dfaee27a2e15d2a7f6eb6be53" name="a2066c61dfaee27a2e15d2a7f6eb6be53"></a>
-typedef enum gp_dir&#160;</td><td class="memItemRight" valign="bottom"><b>gp_dir_t</b></td></tr>
+typedef enum <a class="el" href="#ad41a68bf735698334fe528ac7a6d8df2">gp_dir</a>&#160;</td><td class="memItemRight" valign="bottom"><b>gp_dir_t</b></td></tr>
+<tr class="memdesc:a2066c61dfaee27a2e15d2a7f6eb6be53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available GPIO modes. <br /></td></tr>
 <tr class="separator:a2066c61dfaee27a2e15d2a7f6eb6be53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abed873c90c4ec9e59dfd97ae7db692a2" id="r_abed873c90c4ec9e59dfd97ae7db692a2"><td class="memItemLeft" align="right" valign="top"><a id="abed873c90c4ec9e59dfd97ae7db692a2" name="abed873c90c4ec9e59dfd97ae7db692a2"></a>
-typedef enum gp_otype&#160;</td><td class="memItemRight" valign="bottom"><b>gp_otype_t</b></td></tr>
+typedef enum <a class="el" href="#ac867e56268c45d8e06cd3f434c4f0ffe">gp_otype</a>&#160;</td><td class="memItemRight" valign="bottom"><b>gp_otype_t</b></td></tr>
+<tr class="memdesc:abed873c90c4ec9e59dfd97ae7db692a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available GPIO output types. <br /></td></tr>
 <tr class="separator:abed873c90c4ec9e59dfd97ae7db692a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20c9c8df4d3bdb4e8b241ae77851972d" id="r_a20c9c8df4d3bdb4e8b241ae77851972d"><td class="memItemLeft" align="right" valign="top"><a id="a20c9c8df4d3bdb4e8b241ae77851972d" name="a20c9c8df4d3bdb4e8b241ae77851972d"></a>
-typedef enum gp_speed&#160;</td><td class="memItemRight" valign="bottom"><b>gp_speed_t</b></td></tr>
+typedef enum <a class="el" href="#aa21c3be8ce01487bfa7ff29a74a03d86">gp_speed</a>&#160;</td><td class="memItemRight" valign="bottom"><b>gp_speed_t</b></td></tr>
+<tr class="memdesc:a20c9c8df4d3bdb4e8b241ae77851972d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available GPIO output speeds. <br /></td></tr>
 <tr class="separator:a20c9c8df4d3bdb4e8b241ae77851972d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40e057b298dffe6a5e0fa8865394ef30" id="r_a40e057b298dffe6a5e0fa8865394ef30"><td class="memItemLeft" align="right" valign="top"><a id="a40e057b298dffe6a5e0fa8865394ef30" name="a40e057b298dffe6a5e0fa8865394ef30"></a>
-typedef enum gp_pupd&#160;</td><td class="memItemRight" valign="bottom"><b>gp_pupd_t</b></td></tr>
+typedef enum <a class="el" href="#a17de1fea985582b9c6fe1acc1c130a74">gp_pupd</a>&#160;</td><td class="memItemRight" valign="bottom"><b>gp_pupd_t</b></td></tr>
+<tr class="memdesc:a40e057b298dffe6a5e0fa8865394ef30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available GPIO pull states. <br /></td></tr>
 <tr class="separator:a40e057b298dffe6a5e0fa8865394ef30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ad41a68bf735698334fe528ac7a6d8df2" id="r_ad41a68bf735698334fe528ac7a6d8df2"><td class="memItemLeft" align="right" valign="top"><a id="ad41a68bf735698334fe528ac7a6d8df2" name="ad41a68bf735698334fe528ac7a6d8df2"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>gp_dir</b> { <b>GP_DIR_IN</b> = 0x00
+<tr class="memitem:ad41a68bf735698334fe528ac7a6d8df2" id="r_ad41a68bf735698334fe528ac7a6d8df2"><td class="memItemLeft" align="right" valign="top"><a id="ad41a68bf735698334fe528ac7a6d8df2" name="ad41a68bf735698334fe528ac7a6d8df2"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad41a68bf735698334fe528ac7a6d8df2">gp_dir</a> { <b>GP_DIR_IN</b> = 0x00
 , <b>GP_DIR_OU</b> = 0x01
 , <b>GP_DIR_AL</b> = 0x02
 , <b>GP_DIR_AN</b> = 0x03
  }</td></tr>
+<tr class="memdesc:ad41a68bf735698334fe528ac7a6d8df2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available GPIO modes. <br /></td></tr>
 <tr class="separator:ad41a68bf735698334fe528ac7a6d8df2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac867e56268c45d8e06cd3f434c4f0ffe" id="r_ac867e56268c45d8e06cd3f434c4f0ffe"><td class="memItemLeft" align="right" valign="top"><a id="ac867e56268c45d8e06cd3f434c4f0ffe" name="ac867e56268c45d8e06cd3f434c4f0ffe"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>gp_otype</b> { <b>GP_OTYPE_PP</b> = 0x00
+<tr class="memitem:ac867e56268c45d8e06cd3f434c4f0ffe" id="r_ac867e56268c45d8e06cd3f434c4f0ffe"><td class="memItemLeft" align="right" valign="top"><a id="ac867e56268c45d8e06cd3f434c4f0ffe" name="ac867e56268c45d8e06cd3f434c4f0ffe"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac867e56268c45d8e06cd3f434c4f0ffe">gp_otype</a> { <b>GP_OTYPE_PP</b> = 0x00
 , <b>GP_OTYPE_OD</b> = 0x01
  }</td></tr>
+<tr class="memdesc:ac867e56268c45d8e06cd3f434c4f0ffe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available GPIO output types. <br /></td></tr>
 <tr class="separator:ac867e56268c45d8e06cd3f434c4f0ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa21c3be8ce01487bfa7ff29a74a03d86" id="r_aa21c3be8ce01487bfa7ff29a74a03d86"><td class="memItemLeft" align="right" valign="top"><a id="aa21c3be8ce01487bfa7ff29a74a03d86" name="aa21c3be8ce01487bfa7ff29a74a03d86"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>gp_speed</b> { <b>GP_SPEED_LOW</b> = 0x00
+<tr class="memitem:aa21c3be8ce01487bfa7ff29a74a03d86" id="r_aa21c3be8ce01487bfa7ff29a74a03d86"><td class="memItemLeft" align="right" valign="top"><a id="aa21c3be8ce01487bfa7ff29a74a03d86" name="aa21c3be8ce01487bfa7ff29a74a03d86"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa21c3be8ce01487bfa7ff29a74a03d86">gp_speed</a> { <b>GP_SPEED_LOW</b> = 0x00
 , <b>GP_SPEED_MED</b> = 0x01
 , <b>GP_SPEED_FAS</b> = 0x02
 , <b>GP_SPEED_HIG</b> = 0x03
  }</td></tr>
+<tr class="memdesc:aa21c3be8ce01487bfa7ff29a74a03d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available GPIO output speeds. <br /></td></tr>
 <tr class="separator:aa21c3be8ce01487bfa7ff29a74a03d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17de1fea985582b9c6fe1acc1c130a74" id="r_a17de1fea985582b9c6fe1acc1c130a74"><td class="memItemLeft" align="right" valign="top"><a id="a17de1fea985582b9c6fe1acc1c130a74" name="a17de1fea985582b9c6fe1acc1c130a74"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>gp_pupd</b> { <b>GP_PUPD_NONE</b> = 0x00
+<tr class="memitem:a17de1fea985582b9c6fe1acc1c130a74" id="r_a17de1fea985582b9c6fe1acc1c130a74"><td class="memItemLeft" align="right" valign="top"><a id="a17de1fea985582b9c6fe1acc1c130a74" name="a17de1fea985582b9c6fe1acc1c130a74"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17de1fea985582b9c6fe1acc1c130a74">gp_pupd</a> { <b>GP_PUPD_NONE</b> = 0x00
 , <b>GP_PUPD_PLUP</b> = 0x01
 , <b>GP_PUPD_PLDO</b> = 0x02
  }</td></tr>
+<tr class="memdesc:a17de1fea985582b9c6fe1acc1c130a74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available GPIO pull states. <br /></td></tr>
 <tr class="separator:a17de1fea985582b9c6fe1acc1c130a74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a680cb2fbc3a12538eabeeb6bf2f00b46" id="r_a680cb2fbc3a12538eabeeb6bf2f00b46"><td class="memItemLeft" align="right" valign="top"><a id="a680cb2fbc3a12538eabeeb6bf2f00b46" name="a680cb2fbc3a12538eabeeb6bf2f00b46"></a>
-struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> ((packed)) GPIORegs</td></tr>
-<tr class="separator:a680cb2fbc3a12538eabeeb6bf2f00b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0634f59138b12257c51f7a4c368b564" id="r_ab0634f59138b12257c51f7a4c368b564"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0634f59138b12257c51f7a4c368b564">gp_set_direction</a> (const char bank, const uint8_t pin, const gp_dir_t dir)</td></tr>
+<tr class="memitem:ab0634f59138b12257c51f7a4c368b564" id="r_ab0634f59138b12257c51f7a4c368b564"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0634f59138b12257c51f7a4c368b564">gp_set_direction</a> (const char bank, const uint8_t pin, const <a class="el" href="#a2066c61dfaee27a2e15d2a7f6eb6be53">gp_dir_t</a> dir)</td></tr>
 <tr class="memdesc:ab0634f59138b12257c51f7a4c368b564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the GPIO pin to the desired mode.  <br /></td></tr>
 <tr class="separator:ab0634f59138b12257c51f7a4c368b564"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0af948fdb555a92e8d4d46674caec8a4" id="r_a0af948fdb555a92e8d4d46674caec8a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0af948fdb555a92e8d4d46674caec8a4">gp_set_output_type</a> (const char bank, const uint8_t pin, const gp_otype_t type)</td></tr>
+<tr class="memitem:a0af948fdb555a92e8d4d46674caec8a4" id="r_a0af948fdb555a92e8d4d46674caec8a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0af948fdb555a92e8d4d46674caec8a4">gp_set_output_type</a> (const char bank, const uint8_t pin, const <a class="el" href="#abed873c90c4ec9e59dfd97ae7db692a2">gp_otype_t</a> type)</td></tr>
 <tr class="memdesc:a0af948fdb555a92e8d4d46674caec8a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the GPIO output pin to the desired type.  <br /></td></tr>
 <tr class="separator:a0af948fdb555a92e8d4d46674caec8a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1df7b4c9f5748cc16fe2391a6059a7d3" id="r_a1df7b4c9f5748cc16fe2391a6059a7d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1df7b4c9f5748cc16fe2391a6059a7d3">gp_set_speed</a> (const char bank, const uint8_t pin, const gp_speed_t speed)</td></tr>
+<tr class="memitem:a1df7b4c9f5748cc16fe2391a6059a7d3" id="r_a1df7b4c9f5748cc16fe2391a6059a7d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1df7b4c9f5748cc16fe2391a6059a7d3">gp_set_speed</a> (const char bank, const uint8_t pin, const <a class="el" href="#a20c9c8df4d3bdb4e8b241ae77851972d">gp_speed_t</a> speed)</td></tr>
 <tr class="memdesc:a1df7b4c9f5748cc16fe2391a6059a7d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the GPIO output pin to the desired speed.  <br /></td></tr>
 <tr class="separator:a1df7b4c9f5748cc16fe2391a6059a7d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeae32bc56298cd61e481159fe52b242a" id="r_aeae32bc56298cd61e481159fe52b242a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeae32bc56298cd61e481159fe52b242a">gp_set_pupd</a> (const char bank, const uint8_t pin, const gp_pupd_t poopdr)</td></tr>
+<tr class="memitem:aeae32bc56298cd61e481159fe52b242a" id="r_aeae32bc56298cd61e481159fe52b242a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeae32bc56298cd61e481159fe52b242a">gp_set_pupd</a> (const char bank, const uint8_t pin, const <a class="el" href="#a40e057b298dffe6a5e0fa8865394ef30">gp_pupd_t</a> poopdr)</td></tr>
 <tr class="memdesc:aeae32bc56298cd61e481159fe52b242a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the GPIO input pin to the desired state.  <br /></td></tr>
 <tr class="separator:aeae32bc56298cd61e481159fe52b242a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1746be7350679532a4ff89dc46ab802e" id="r_a1746be7350679532a4ff89dc46ab802e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1746be7350679532a4ff89dc46ab802e">gp_set_val</a> (const char bank, const uint8_t pin, const _Bool value)</td></tr>
@@ -180,7 +192,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
 <div class="textblock"><p>Function prototypes for the GPIO driver. </p>
 <p>This file contains all of the enums, macros, and function prototypes required for a functional GPIO driver.</p>
 <dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
-<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000006">Bug</a></b></dt><dd>None, yet. </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000007">Bug</a></b></dt><dd>None, yet. </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="afb4f9326807b359ae7987b5911a35025" name="afb4f9326807b359ae7987b5911a35025"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afb4f9326807b359ae7987b5911a35025">&#9670;&#160;</a></span>GPIO</h2>
@@ -196,7 +208,8 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  (<span class="keyword">struct </span>GPIORegs *)(GPIOA_BASE + (0x400U * ((uint8_t)bank - (uint8_t)<span class="charliteral">&#39;A&#39;</span>)))</div>
+<b>Value:</b><div class="fragment"><div class="line">  (<span class="keyword">struct </span><a class="code hl_struct" href="structGPIORegs.html">GPIORegs</a> *)(GPIOA_BASE + (0x400U * ((uint8_t)bank - (uint8_t)<span class="charliteral">&#39;A&#39;</span>)))</div>
+<div class="ttc" id="astructGPIORegs_html"><div class="ttname"><a href="structGPIORegs.html">GPIORegs</a></div><div class="ttdoc">Contains GPIO registers.</div><div class="ttdef"><b>Definition</b> gpio.h:23</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -288,7 +301,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const gp_dir_t</td>          <td class="paramname"><span class="paramname"><em>dir</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#a2066c61dfaee27a2e15d2a7f6eb6be53">gp_dir_t</a></td>          <td class="paramname"><span class="paramname"><em>dir</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -326,7 +339,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const gp_otype_t</td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#abed873c90c4ec9e59dfd97ae7db692a2">gp_otype_t</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -364,7 +377,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const gp_pupd_t</td>          <td class="paramname"><span class="paramname"><em>poopdr</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#a40e057b298dffe6a5e0fa8865394ef30">gp_pupd_t</a></td>          <td class="paramname"><span class="paramname"><em>poopdr</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -402,7 +415,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const gp_speed_t</td>          <td class="paramname"><span class="paramname"><em>speed</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#a20c9c8df4d3bdb4e8b241ae77851972d">gp_speed_t</a></td>          <td class="paramname"><span class="paramname"><em>speed</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

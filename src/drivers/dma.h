@@ -21,6 +21,9 @@
 #include "stm32f4xx.h"
 
 /* -- Structs -- */
+/**
+ *  @brief Contains DMA stream registers
+ */
 struct __attribute__((packed)) DMAStreamRegs {
   volatile uint32_t CR;
   volatile uint32_t NDTR;
@@ -33,6 +36,9 @@ struct __attribute__((packed)) DMAStreamRegs {
 _Static_assert((sizeof(struct DMAStreamRegs)) == (sizeof(uint32_t) * 6U),
                "DMA Sx register struct size mismatch. Is it aligned?");
 
+/**
+ *  @brief Contains DMA registers
+ */
 struct __attribute__((packed)) DMARegs {
   volatile uint32_t LISR;
   volatile uint32_t HISR;
@@ -47,6 +53,9 @@ _Static_assert((sizeof(struct DMARegs)) ==
 
 #define DMA(x) (struct DMARegs *)(DMA1_BASE + ((x - 1) * 0x400UL))
 
+/**
+ *  @brief Contains DMA stream options
+ */
 struct __attribute__((packed)) DMAStreamConfig {
   volatile _Bool Circular     : 1;
   volatile _Bool DoubleBuffer : 1;
@@ -58,6 +67,9 @@ struct __attribute__((packed)) DMAStreamConfig {
 _Static_assert((sizeof(struct DMAStreamConfig)) == (sizeof(uint8_t) * 1U),
                "DMA Stream config struct size mismatch. Is it aligned?");
 
+/**
+ *  @brief Contains DMA stream interrupt configuration
+ */
 struct __attribute__((packed)) DMAStreamISR {
   volatile _Bool HTI  : 1;
   volatile _Bool TCI  : 1;
@@ -70,18 +82,27 @@ _Static_assert((sizeof(struct DMAStreamISR)) == (sizeof(uint8_t) * 1U),
                "DMA Stream Interrupt struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
+/**
+ *  @brief Available DMA directions
+ */
 typedef enum dma_dir {
   DMA_DIR_PER2MEM = 0x00,
   DMA_DIR_MEM2PER = 0x01,
   DMA_DIR_MEM2MEM = 0x02
 } dma_dir_t;
 
+/**
+ *  @brief Available DMA data sizes
+ */
 typedef enum dma_datasize {
   DMA_DATASIZE_BYTE = 0x00,
   DMA_DATASIZE_HWRD = 0x01,
   DMA_DATASIZE_WORD = 0x02
 } dma_datasize_t;
 
+/**
+ *  @brief Available DMA priorities
+ */
 typedef enum dma_priority {
   DMA_PRIORITY_LOW = 0x00,
   DMA_PRIORITY_MED = 0x01,

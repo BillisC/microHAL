@@ -15,8 +15,16 @@
 /* -- Includes -- */
 #include <stdint.h>
 
+/**
+ * @brief MCU tick count.
+ */
 extern uint32_t ticks;
 
+/**
+ * @brief Systick interrupt handler.
+ *
+ * @return None
+ */
 void SysTick_Handler(void);
 
 #endif

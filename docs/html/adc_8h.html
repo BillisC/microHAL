@@ -90,6 +90,7 @@ $(function(){ initResizable(false); });
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
@@ -101,10 +102,22 @@ $(function(){ initResizable(false); });
 <p>Function prototypes for the ADC driver.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;stm32f4xx.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="stm32f4xx_8h_source.html">stm32f4xx.h</a>&quot;</code><br />
 </div>
 <p><a href="adc_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADCRegs.html">ADCRegs</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains ADC registers.  <a href="structADCRegs.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADCCommonRegs.html">ADCCommonRegs</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains ADC common registers.  <a href="structADCCommonRegs.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADCModes.html">ADCModes</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains ADC conversion modes.  <a href="structADCModes.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a449255704cece03b7bbbf247359b6bbd" id="r_a449255704cece03b7bbbf247359b6bbd"><td class="memItemLeft" align="right" valign="top"><a id="a449255704cece03b7bbbf247359b6bbd" name="a449255704cece03b7bbbf247359b6bbd"></a>
@@ -113,7 +126,7 @@ Macros</h2></td></tr>
 <tr class="memitem:a432a9dde0c2acd17dbe8100a648bb30a" id="r_a432a9dde0c2acd17dbe8100a648bb30a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a432a9dde0c2acd17dbe8100a648bb30a">ADC_</a>(number)</td></tr>
 <tr class="separator:a432a9dde0c2acd17dbe8100a648bb30a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a435a3a89417f788d4d23f161c01bda5f" id="r_a435a3a89417f788d4d23f161c01bda5f"><td class="memItemLeft" align="right" valign="top"><a id="a435a3a89417f788d4d23f161c01bda5f" name="a435a3a89417f788d4d23f161c01bda5f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ADC_COMMON</b>&#160;&#160;&#160;(struct ADCCommonRegs *)(ADC123_COMMON_BASE)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ADC_COMMON</b>&#160;&#160;&#160;(struct <a class="el" href="structADCCommonRegs.html">ADCCommonRegs</a> *)(ADC123_COMMON_BASE)</td></tr>
 <tr class="separator:a435a3a89417f788d4d23f161c01bda5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -167,9 +180,6 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab14018fc97a34eca8102685e71ee64fb" id="r_ab14018fc97a34eca8102685e71ee64fb"><td class="memItemLeft" align="right" valign="top"><a id="ab14018fc97a34eca8102685e71ee64fb" name="ab14018fc97a34eca8102685e71ee64fb"></a>
-struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> ((packed)) ADCRegs</td></tr>
-<tr class="separator:ab14018fc97a34eca8102685e71ee64fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9eb3c8478c8926f4e9c752516151a953" id="r_a9eb3c8478c8926f4e9c752516151a953"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9eb3c8478c8926f4e9c752516151a953">adc_set_prescaler</a> (const adc_prescaler_t value)</td></tr>
 <tr class="memdesc:a9eb3c8478c8926f4e9c752516151a953"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ADC Prescaler divider to the specified value.  <br /></td></tr>
 <tr class="separator:a9eb3c8478c8926f4e9c752516151a953"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,7 +189,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
 <tr class="memitem:a277295eb7f7523478637e206fa082b0b" id="r_a277295eb7f7523478637e206fa082b0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a277295eb7f7523478637e206fa082b0b">adc_set_samplerate</a> (const uint8_t adc, const uint8_t channel, const adc_samplerate_t value)</td></tr>
 <tr class="memdesc:a277295eb7f7523478637e206fa082b0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ADC sampling rate to the specified value.  <br /></td></tr>
 <tr class="separator:a277295eb7f7523478637e206fa082b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a508304374c9dba7c1f5681922e2fe2e1" id="r_a508304374c9dba7c1f5681922e2fe2e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a508304374c9dba7c1f5681922e2fe2e1">adc_set_modes</a> (const uint8_t adc, const struct ADCModes config)</td></tr>
+<tr class="memitem:a508304374c9dba7c1f5681922e2fe2e1" id="r_a508304374c9dba7c1f5681922e2fe2e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a508304374c9dba7c1f5681922e2fe2e1">adc_set_modes</a> (const uint8_t adc, const struct <a class="el" href="structADCModes.html">ADCModes</a> config)</td></tr>
 <tr class="memdesc:a508304374c9dba7c1f5681922e2fe2e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ADC modes according to the configuration.  <br /></td></tr>
 <tr class="separator:a508304374c9dba7c1f5681922e2fe2e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1f1a673889c40e5ea83e5d0c84b808e" id="r_aa1f1a673889c40e5ea83e5d0c84b808e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1f1a673889c40e5ea83e5d0c84b808e">adc_set_seq</a> (const uint8_t adc, const uint8_t *seq, const uint8_t count)</td></tr>
@@ -200,7 +210,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
 <p>This file contains all of the enums, macros, and function prototypes required for a functional ADC driver.</p>
 <p>DISCLAIMER: Only for regular channels in single / continuous / discontinuous modes. Injected channels may be implemented later.</p>
 <dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
-<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000002">Bug</a></b></dt><dd>None, yet. </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000003">Bug</a></b></dt><dd>None, yet. </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a432a9dde0c2acd17dbe8100a648bb30a" name="a432a9dde0c2acd17dbe8100a648bb30a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a432a9dde0c2acd17dbe8100a648bb30a">&#9670;&#160;</a></span>ADC_</h2>
@@ -216,7 +226,8 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  (<span class="keyword">struct </span>ADCRegs *)(ADC1_BASE + (0x100UL * ((uint8_t)number - 1U)))</div>
+<b>Value:</b><div class="fragment"><div class="line">  (<span class="keyword">struct </span><a class="code hl_struct" href="structADCRegs.html">ADCRegs</a> *)(ADC1_BASE + (0x100UL * ((uint8_t)number - 1U)))</div>
+<div class="ttc" id="astructADCRegs_html"><div class="ttname"><a href="structADCRegs.html">ADCRegs</a></div><div class="ttdoc">Contains ADC registers.</div><div class="ttdef"><b>Definition</b> adc.h:29</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -315,7 +326,7 @@ struct&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> (
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const struct ADCModes</td>          <td class="paramname"><span class="paramname"><em>config</em></span>&#160;)</td>
+          <td class="paramtype">const struct <a class="el" href="structADCModes.html">ADCModes</a></td>          <td class="paramname"><span class="paramname"><em>config</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

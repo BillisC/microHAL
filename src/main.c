@@ -1,3 +1,10 @@
+/** @file main.c
+ *  @brief Simple main function with example
+ *
+ *  @author Vasileios Ch. (BillisC)
+ *  @bug None, yet.
+ */
+
 /* Includes */
 #include "defines.h"
 #include "interrupts.h"

@@ -97,33 +97,33 @@ $(function(){ initResizable(false); });
 
 <p>Function defines for the USART driver.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;defines.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="defines_8h_source.html">defines.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="usart_8h_source.html">usart.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ace94d68de38aef271250cc03514766a5" id="r_ace94d68de38aef271250cc03514766a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace94d68de38aef271250cc03514766a5">usart_start</a> (const usart_sel_t usart, const uint32_t baudrate, const usart_mode_t mode)</td></tr>
+<tr class="memitem:ace94d68de38aef271250cc03514766a5" id="r_ace94d68de38aef271250cc03514766a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace94d68de38aef271250cc03514766a5">usart_start</a> (const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart, const uint32_t baudrate, const <a class="el" href="usart_8h.html#af9cb6192f394ebde038a7b64527eb5e9">usart_mode_t</a> mode)</td></tr>
 <tr class="memdesc:ace94d68de38aef271250cc03514766a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates the USART peripheral with specified options.  <br /></td></tr>
 <tr class="separator:ace94d68de38aef271250cc03514766a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a315d493dbb7df566f88014fbf096c04e" id="r_a315d493dbb7df566f88014fbf096c04e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a315d493dbb7df566f88014fbf096c04e">usart_set_dma</a> (const usart_sel_t usart, const _Bool forTX, const _Bool forRX)</td></tr>
+<tr class="memitem:a315d493dbb7df566f88014fbf096c04e" id="r_a315d493dbb7df566f88014fbf096c04e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a315d493dbb7df566f88014fbf096c04e">usart_set_dma</a> (const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart, const _Bool forTX, const _Bool forRX)</td></tr>
 <tr class="memdesc:a315d493dbb7df566f88014fbf096c04e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the USART DMA functionality.  <br /></td></tr>
 <tr class="separator:a315d493dbb7df566f88014fbf096c04e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7a0168af1fb8b94b02d461ae0507e97" id="r_af7a0168af1fb8b94b02d461ae0507e97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7a0168af1fb8b94b02d461ae0507e97">usart_set_interrupts</a> (const usart_sel_t usart, const struct USARTISR config)</td></tr>
+<tr class="memitem:af7a0168af1fb8b94b02d461ae0507e97" id="r_af7a0168af1fb8b94b02d461ae0507e97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7a0168af1fb8b94b02d461ae0507e97">usart_set_interrupts</a> (const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart, const struct <a class="el" href="structUSARTISR.html">USARTISR</a> config)</td></tr>
 <tr class="memdesc:af7a0168af1fb8b94b02d461ae0507e97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the specified USART interrupts.  <br /></td></tr>
 <tr class="separator:af7a0168af1fb8b94b02d461ae0507e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1984d0d75c1ce6a284498878f4964de9" id="r_a1984d0d75c1ce6a284498878f4964de9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1984d0d75c1ce6a284498878f4964de9">usart_set_databits</a> (const usart_sel_t usart, const usart_stopbits_t stopbits, const usart_databits_t databits)</td></tr>
+<tr class="memitem:a1984d0d75c1ce6a284498878f4964de9" id="r_a1984d0d75c1ce6a284498878f4964de9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1984d0d75c1ce6a284498878f4964de9">usart_set_databits</a> (const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart, const <a class="el" href="usart_8h.html#aec2fddd4341bdbc1ca7e36b9d543d6f9">usart_stopbits_t</a> stopbits, const <a class="el" href="usart_8h.html#a646bb5cdc2347b4c446474ed4d800b28">usart_databits_t</a> databits)</td></tr>
 <tr class="memdesc:a1984d0d75c1ce6a284498878f4964de9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the USART databits to the specified values.  <br /></td></tr>
 <tr class="separator:a1984d0d75c1ce6a284498878f4964de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c66eb9fb13bc64b9699c963ea8753e7" id="r_a5c66eb9fb13bc64b9699c963ea8753e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c66eb9fb13bc64b9699c963ea8753e7">usart_set_parity</a> (const usart_sel_t usart, const usart_parity_t parity)</td></tr>
+<tr class="memitem:a5c66eb9fb13bc64b9699c963ea8753e7" id="r_a5c66eb9fb13bc64b9699c963ea8753e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c66eb9fb13bc64b9699c963ea8753e7">usart_set_parity</a> (const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart, const <a class="el" href="usart_8h.html#a9b924d5756332a7f8773403d0dd6b708">usart_parity_t</a> parity)</td></tr>
 <tr class="memdesc:a5c66eb9fb13bc64b9699c963ea8753e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the USART parity to the specified mode.  <br /></td></tr>
 <tr class="separator:a5c66eb9fb13bc64b9699c963ea8753e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4004e6aceaef961a4c1446bead1b73e1" id="r_a4004e6aceaef961a4c1446bead1b73e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4004e6aceaef961a4c1446bead1b73e1">usart_tx_message</a> (const usart_sel_t usart, const char *message)</td></tr>
+<tr class="memitem:a4004e6aceaef961a4c1446bead1b73e1" id="r_a4004e6aceaef961a4c1446bead1b73e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4004e6aceaef961a4c1446bead1b73e1">usart_tx_message</a> (const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart, const char *message)</td></tr>
 <tr class="memdesc:a4004e6aceaef961a4c1446bead1b73e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes specified message to USART buffer.  <br /></td></tr>
 <tr class="separator:a4004e6aceaef961a4c1446bead1b73e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fc3e1ec28df901667776c5fe4043867" id="r_a6fc3e1ec28df901667776c5fe4043867"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fc3e1ec28df901667776c5fe4043867">usart_rx_byte</a> (const usart_sel_t usart)</td></tr>
+<tr class="memitem:a6fc3e1ec28df901667776c5fe4043867" id="r_a6fc3e1ec28df901667776c5fe4043867"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fc3e1ec28df901667776c5fe4043867">usart_rx_byte</a> (const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart)</td></tr>
 <tr class="memdesc:a6fc3e1ec28df901667776c5fe4043867"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the received data from the USART buffer.  <br /></td></tr>
 <tr class="separator:a6fc3e1ec28df901667776c5fe4043867"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7867e56537b2710b8a78614b44a56b4d" id="r_a7867e56537b2710b8a78614b44a56b4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7867e56537b2710b8a78614b44a56b4d">usart_stop</a> (const usart_sel_t usart)</td></tr>
+<tr class="memitem:a7867e56537b2710b8a78614b44a56b4d" id="r_a7867e56537b2710b8a78614b44a56b4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7867e56537b2710b8a78614b44a56b4d">usart_stop</a> (const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a> usart)</td></tr>
 <tr class="memdesc:a7867e56537b2710b8a78614b44a56b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable the USART interface.  <br /></td></tr>
 <tr class="separator:a7867e56537b2710b8a78614b44a56b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -131,7 +131,7 @@ Functions</h2></td></tr>
 <div class="textblock"><p>Function defines for the USART driver. </p>
 <p>This file contains all of the function definitions declared in <a class="el" href="usart_8h.html" title="Function prototypes for the USART interface.">usart.h</a>.</p>
 <dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
-<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000011">Bug</a></b></dt><dd>None, yet. </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000012">Bug</a></b></dt><dd>None, yet. </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a6fc3e1ec28df901667776c5fe4043867" name="a6fc3e1ec28df901667776c5fe4043867"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6fc3e1ec28df901667776c5fe4043867">&#9670;&#160;</a></span>usart_rx_byte()</h2>
@@ -142,7 +142,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">uint16_t usart_rx_byte </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -169,17 +169,17 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void usart_set_databits </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const usart_stopbits_t</td>          <td class="paramname"><span class="paramname"><em>stopbits</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="usart_8h.html#aec2fddd4341bdbc1ca7e36b9d543d6f9">usart_stopbits_t</a></td>          <td class="paramname"><span class="paramname"><em>stopbits</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const usart_databits_t</td>          <td class="paramname"><span class="paramname"><em>databits</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="usart_8h.html#a646bb5cdc2347b4c446474ed4d800b28">usart_databits_t</a></td>          <td class="paramname"><span class="paramname"><em>databits</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -207,7 +207,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void usart_set_dma </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -244,12 +244,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void usart_set_interrupts </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const struct USARTISR</td>          <td class="paramname"><span class="paramname"><em>config</em></span>&#160;)</td>
+          <td class="paramtype">const struct <a class="el" href="structUSARTISR.html">USARTISR</a></td>          <td class="paramname"><span class="paramname"><em>config</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -276,12 +276,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void usart_set_parity </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const usart_parity_t</td>          <td class="paramname"><span class="paramname"><em>parity</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="usart_8h.html#a9b924d5756332a7f8773403d0dd6b708">usart_parity_t</a></td>          <td class="paramname"><span class="paramname"><em>parity</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -308,7 +308,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void usart_start </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -318,7 +318,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const usart_mode_t</td>          <td class="paramname"><span class="paramname"><em>mode</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="usart_8h.html#af9cb6192f394ebde038a7b64527eb5e9">usart_mode_t</a></td>          <td class="paramname"><span class="paramname"><em>mode</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -347,7 +347,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void usart_stop </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -374,7 +374,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void usart_tx_message </td>
           <td>(</td>
-          <td class="paramtype">const usart_sel_t</td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9">usart_sel_t</a></td>          <td class="paramname"><span class="paramname"><em>usart</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

@@ -7,6 +7,13 @@ Function prototypes for the USART interface.
 
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 {\ttfamily \#include "{}stm32f4xx.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structUSARTRegs}{USARTRegs}}
+\begin{DoxyCompactList}\small\item\em Contains USART registers. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structUSARTISR}{USARTISR}}
+\begin{DoxyCompactList}\small\item\em Contains USART interrupt configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -16,25 +23,25 @@ Function prototypes for the USART interface.
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}\label{usart_8h_a79febc36be6daf0f77269ebddd0e81c9} 
-typedef enum usart\+\_\+sel {\bfseries usart\+\_\+sel\+\_\+t}
-\item 
+typedef enum \mbox{\hyperlink{usart_8h_afc040080711205d142964e8660974dd0}{usart\+\_\+sel}} {\bfseries usart\+\_\+sel\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Available USART peripherals. \end{DoxyCompactList}\item 
 \Hypertarget{usart_8h_af9cb6192f394ebde038a7b64527eb5e9}\label{usart_8h_af9cb6192f394ebde038a7b64527eb5e9} 
-typedef enum usart\+\_\+mode {\bfseries usart\+\_\+mode\+\_\+t}
-\item 
+typedef enum \mbox{\hyperlink{usart_8h_a1c465965478e0f6908a4c99d4f3ad20f}{usart\+\_\+mode}} {\bfseries usart\+\_\+mode\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Available USART modes. \end{DoxyCompactList}\item 
 \Hypertarget{usart_8h_a646bb5cdc2347b4c446474ed4d800b28}\label{usart_8h_a646bb5cdc2347b4c446474ed4d800b28} 
-typedef enum usart\+\_\+databits {\bfseries usart\+\_\+databits\+\_\+t}
-\item 
+typedef enum \mbox{\hyperlink{usart_8h_a224e77e9dff1a704a3b0d15e6e383709}{usart\+\_\+databits}} {\bfseries usart\+\_\+databits\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Available USART databit number. \end{DoxyCompactList}\item 
 \Hypertarget{usart_8h_aec2fddd4341bdbc1ca7e36b9d543d6f9}\label{usart_8h_aec2fddd4341bdbc1ca7e36b9d543d6f9} 
-typedef enum usart\+\_\+stopbits {\bfseries usart\+\_\+stopbits\+\_\+t}
-\item 
+typedef enum \mbox{\hyperlink{usart_8h_ab7d8ac715e2bd7ccddc65bf2c5ceb1f5}{usart\+\_\+stopbits}} {\bfseries usart\+\_\+stopbits\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Available USART stopbit number. \end{DoxyCompactList}\item 
 \Hypertarget{usart_8h_a9b924d5756332a7f8773403d0dd6b708}\label{usart_8h_a9b924d5756332a7f8773403d0dd6b708} 
-typedef enum usart\+\_\+parity {\bfseries usart\+\_\+parity\+\_\+t}
-\end{DoxyCompactItemize}
+typedef enum \mbox{\hyperlink{usart_8h_a867cc5f0ea7d3bf651d68f0046cf6f41}{usart\+\_\+parity}} {\bfseries usart\+\_\+parity\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Available USART parities. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{usart_8h_afc040080711205d142964e8660974dd0}\label{usart_8h_afc040080711205d142964e8660974dd0} 
-enum {\bfseries usart\+\_\+sel} \{ \newline
+enum \mbox{\hyperlink{usart_8h_afc040080711205d142964e8660974dd0}{usart\+\_\+sel}} \{ \newline
 {\bfseries USART\+\_\+\+SEL\+\_\+1} = USART1\+\_\+\+BASE
 , {\bfseries USART\+\_\+\+SEL\+\_\+2} = USART2\+\_\+\+BASE
 , {\bfseries USART\+\_\+\+SEL\+\_\+3} = USART3\+\_\+\+BASE
@@ -43,52 +50,49 @@ enum {\bfseries usart\+\_\+sel} \{ \newline
 {\bfseries UART\+\_\+\+SEL\+\_\+4} = UART4\+\_\+\+BASE
 , {\bfseries UART\+\_\+\+SEL\+\_\+5} = UART5\+\_\+\+BASE
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Available USART peripherals. \end{DoxyCompactList}\item 
 \Hypertarget{usart_8h_a1c465965478e0f6908a4c99d4f3ad20f}\label{usart_8h_a1c465965478e0f6908a4c99d4f3ad20f} 
-enum {\bfseries usart\+\_\+mode} \{ {\bfseries USART\+\_\+\+MODE\+\_\+\+TX} = 0x00
+enum \mbox{\hyperlink{usart_8h_a1c465965478e0f6908a4c99d4f3ad20f}{usart\+\_\+mode}} \{ {\bfseries USART\+\_\+\+MODE\+\_\+\+TX} = 0x00
 , {\bfseries USART\+\_\+\+MODE\+\_\+\+RX} = 0x01
 , {\bfseries USART\+\_\+\+MODE\+\_\+\+BO} = 0x02
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Available USART modes. \end{DoxyCompactList}\item 
 \Hypertarget{usart_8h_a224e77e9dff1a704a3b0d15e6e383709}\label{usart_8h_a224e77e9dff1a704a3b0d15e6e383709} 
-enum {\bfseries usart\+\_\+databits} \{ {\bfseries USART\+\_\+\+DATABITS\+\_\+\+DB8} = 0x00
+enum \mbox{\hyperlink{usart_8h_a224e77e9dff1a704a3b0d15e6e383709}{usart\+\_\+databits}} \{ {\bfseries USART\+\_\+\+DATABITS\+\_\+\+DB8} = 0x00
 , {\bfseries USART\+\_\+\+DATABITS\+\_\+\+DB9} = 0x01
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Available USART databit number. \end{DoxyCompactList}\item 
 \Hypertarget{usart_8h_ab7d8ac715e2bd7ccddc65bf2c5ceb1f5}\label{usart_8h_ab7d8ac715e2bd7ccddc65bf2c5ceb1f5} 
-enum {\bfseries usart\+\_\+stopbits} \{ {\bfseries USART\+\_\+\+STOPBITS\+\_\+\+SB1} = 0x00
+enum \mbox{\hyperlink{usart_8h_ab7d8ac715e2bd7ccddc65bf2c5ceb1f5}{usart\+\_\+stopbits}} \{ {\bfseries USART\+\_\+\+STOPBITS\+\_\+\+SB1} = 0x00
 , {\bfseries USART\+\_\+\+STOPBITS\+\_\+\+SBH} = 0x01
 , {\bfseries USART\+\_\+\+STOPBITS\+\_\+\+SB2} = 0x02
 , {\bfseries USART\+\_\+\+STOPBITS\+\_\+\+SBO} = 0x03
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Available USART stopbit number. \end{DoxyCompactList}\item 
 \Hypertarget{usart_8h_a867cc5f0ea7d3bf651d68f0046cf6f41}\label{usart_8h_a867cc5f0ea7d3bf651d68f0046cf6f41} 
-enum {\bfseries usart\+\_\+parity} \{ {\bfseries USART\+\_\+\+PARITY\+\_\+\+EVN} = 0x00
+enum \mbox{\hyperlink{usart_8h_a867cc5f0ea7d3bf651d68f0046cf6f41}{usart\+\_\+parity}} \{ {\bfseries USART\+\_\+\+PARITY\+\_\+\+EVN} = 0x00
 , {\bfseries USART\+\_\+\+PARITY\+\_\+\+ODD} = 0x01
 , {\bfseries USART\+\_\+\+PARITY\+\_\+\+OFF} = 0x02
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Available USART parities. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{usart_8h_ac32e542a4f0af3f8a27314e01f9e19e8}\label{usart_8h_ac32e542a4f0af3f8a27314e01f9e19e8} 
-struct {\bfseries \+\_\+\+\_\+attribute\+\_\+\+\_\+} ((packed)) USARTRegs
-\item 
-void \mbox{\hyperlink{usart_8h_ace94d68de38aef271250cc03514766a5}{usart\+\_\+start}} (const usart\+\_\+sel\+\_\+t usart, const uint32\+\_\+t baudrate, const usart\+\_\+mode\+\_\+t mode)
+void \mbox{\hyperlink{usart_8h_ace94d68de38aef271250cc03514766a5}{usart\+\_\+start}} (const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}} usart, const uint32\+\_\+t baudrate, const \mbox{\hyperlink{usart_8h_af9cb6192f394ebde038a7b64527eb5e9}{usart\+\_\+mode\+\_\+t}} mode)
 \begin{DoxyCompactList}\small\item\em Initiates the USART peripheral with specified options. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{usart_8h_a315d493dbb7df566f88014fbf096c04e}{usart\+\_\+set\+\_\+dma}} (const usart\+\_\+sel\+\_\+t usart, const \+\_\+\+Bool for\+TX, const \+\_\+\+Bool for\+RX)
+void \mbox{\hyperlink{usart_8h_a315d493dbb7df566f88014fbf096c04e}{usart\+\_\+set\+\_\+dma}} (const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}} usart, const \+\_\+\+Bool for\+TX, const \+\_\+\+Bool for\+RX)
 \begin{DoxyCompactList}\small\item\em Configures the USART DMA functionality. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{usart_8h_af7a0168af1fb8b94b02d461ae0507e97}{usart\+\_\+set\+\_\+interrupts}} (const usart\+\_\+sel\+\_\+t usart, const struct USARTISR config)
+void \mbox{\hyperlink{usart_8h_af7a0168af1fb8b94b02d461ae0507e97}{usart\+\_\+set\+\_\+interrupts}} (const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}} usart, const struct \mbox{\hyperlink{structUSARTISR}{USARTISR}} config)
 \begin{DoxyCompactList}\small\item\em Enables the specified USART interrupts. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{usart_8h_a1984d0d75c1ce6a284498878f4964de9}{usart\+\_\+set\+\_\+databits}} (const usart\+\_\+sel\+\_\+t usart, const usart\+\_\+stopbits\+\_\+t stopbits, const usart\+\_\+databits\+\_\+t databits)
+void \mbox{\hyperlink{usart_8h_a1984d0d75c1ce6a284498878f4964de9}{usart\+\_\+set\+\_\+databits}} (const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}} usart, const \mbox{\hyperlink{usart_8h_aec2fddd4341bdbc1ca7e36b9d543d6f9}{usart\+\_\+stopbits\+\_\+t}} stopbits, const \mbox{\hyperlink{usart_8h_a646bb5cdc2347b4c446474ed4d800b28}{usart\+\_\+databits\+\_\+t}} databits)
 \begin{DoxyCompactList}\small\item\em Sets the USART databits to the specified values. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{usart_8h_a5c66eb9fb13bc64b9699c963ea8753e7}{usart\+\_\+set\+\_\+parity}} (const usart\+\_\+sel\+\_\+t usart, const usart\+\_\+parity\+\_\+t parity)
+void \mbox{\hyperlink{usart_8h_a5c66eb9fb13bc64b9699c963ea8753e7}{usart\+\_\+set\+\_\+parity}} (const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}} usart, const \mbox{\hyperlink{usart_8h_a9b924d5756332a7f8773403d0dd6b708}{usart\+\_\+parity\+\_\+t}} parity)
 \begin{DoxyCompactList}\small\item\em Sets the USART parity to the specified mode. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{usart_8h_a4004e6aceaef961a4c1446bead1b73e1}{usart\+\_\+tx\+\_\+message}} (const usart\+\_\+sel\+\_\+t usart, const char \texorpdfstring{$\ast$}{*}message)
+void \mbox{\hyperlink{usart_8h_a4004e6aceaef961a4c1446bead1b73e1}{usart\+\_\+tx\+\_\+message}} (const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}} usart, const char \texorpdfstring{$\ast$}{*}message)
 \begin{DoxyCompactList}\small\item\em Writes specified message to USART buffer. \end{DoxyCompactList}\item 
-uint16\+\_\+t \mbox{\hyperlink{usart_8h_a6fc3e1ec28df901667776c5fe4043867}{usart\+\_\+rx\+\_\+byte}} (const usart\+\_\+sel\+\_\+t usart)
+uint16\+\_\+t \mbox{\hyperlink{usart_8h_a6fc3e1ec28df901667776c5fe4043867}{usart\+\_\+rx\+\_\+byte}} (const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}} usart)
 \begin{DoxyCompactList}\small\item\em Reads the received data from the USART buffer. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{usart_8h_a7867e56537b2710b8a78614b44a56b4d}{usart\+\_\+stop}} (const usart\+\_\+sel\+\_\+t usart)
+void \mbox{\hyperlink{usart_8h_a7867e56537b2710b8a78614b44a56b4d}{usart\+\_\+stop}} (const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}} usart)
 \begin{DoxyCompactList}\small\item\em Disable the USART interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -101,7 +105,7 @@ This file contains all of the enums, macros, and function prototypes required fo
 Vasileios Ch. (BillisC) 
 \end{DoxyAuthor}
 \begin{DoxyRefDesc}{Bug}
-\item[\mbox{\hyperlink{bug__bug000012}{Bug}}]None, yet. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{bug__bug000013}{Bug}}]None, yet. \end{DoxyRefDesc}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -113,7 +117,7 @@ Vasileios Ch. (BillisC)
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{(\textcolor{keyword}{struct\ }USARTRegs\ *)((usart\_sel\_t)sel)}
+\DoxyCodeLine{(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structUSARTRegs}{USARTRegs}}\ *)((\mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\_sel\_t}})sel)}
 
 \end{DoxyCode}
 
@@ -123,7 +127,7 @@ Vasileios Ch. (BillisC)
 \index{usart\_rx\_byte@{usart\_rx\_byte}!usart.h@{usart.h}}
 \doxysubsubsection{\texorpdfstring{usart\_rx\_byte()}{usart\_rx\_byte()}}
 {\footnotesize\ttfamily \label{usart_8h_a6fc3e1ec28df901667776c5fe4043867} 
-uint16\+\_\+t usart\+\_\+rx\+\_\+byte (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{}\end{DoxyParamCaption})}
+uint16\+\_\+t usart\+\_\+rx\+\_\+byte (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}}}]{usart}{}\end{DoxyParamCaption})}
 
 
 
@@ -143,7 +147,7 @@ The received data
 \index{usart\_set\_databits@{usart\_set\_databits}!usart.h@{usart.h}}
 \doxysubsubsection{\texorpdfstring{usart\_set\_databits()}{usart\_set\_databits()}}
 {\footnotesize\ttfamily \label{usart_8h_a1984d0d75c1ce6a284498878f4964de9} 
-void usart\+\_\+set\+\_\+databits (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{, }\item[{const usart\+\_\+stopbits\+\_\+t}]{stopbits}{, }\item[{const usart\+\_\+databits\+\_\+t}]{databits}{}\end{DoxyParamCaption})}
+void usart\+\_\+set\+\_\+databits (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}}}]{usart}{, }\item[{const \mbox{\hyperlink{usart_8h_aec2fddd4341bdbc1ca7e36b9d543d6f9}{usart\+\_\+stopbits\+\_\+t}}}]{stopbits}{, }\item[{const \mbox{\hyperlink{usart_8h_a646bb5cdc2347b4c446474ed4d800b28}{usart\+\_\+databits\+\_\+t}}}]{databits}{}\end{DoxyParamCaption})}
 
 
 
@@ -167,7 +171,7 @@ None
 \index{usart\_set\_dma@{usart\_set\_dma}!usart.h@{usart.h}}
 \doxysubsubsection{\texorpdfstring{usart\_set\_dma()}{usart\_set\_dma()}}
 {\footnotesize\ttfamily \label{usart_8h_a315d493dbb7df566f88014fbf096c04e} 
-void usart\+\_\+set\+\_\+dma (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{, }\item[{const \+\_\+\+Bool}]{for\+TX}{, }\item[{const \+\_\+\+Bool}]{for\+RX}{}\end{DoxyParamCaption})}
+void usart\+\_\+set\+\_\+dma (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}}}]{usart}{, }\item[{const \+\_\+\+Bool}]{for\+TX}{, }\item[{const \+\_\+\+Bool}]{for\+RX}{}\end{DoxyParamCaption})}
 
 
 
@@ -189,7 +193,7 @@ None
 \index{usart\_set\_interrupts@{usart\_set\_interrupts}!usart.h@{usart.h}}
 \doxysubsubsection{\texorpdfstring{usart\_set\_interrupts()}{usart\_set\_interrupts()}}
 {\footnotesize\ttfamily \label{usart_8h_af7a0168af1fb8b94b02d461ae0507e97} 
-void usart\+\_\+set\+\_\+interrupts (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{, }\item[{const struct USARTISR}]{config}{}\end{DoxyParamCaption})}
+void usart\+\_\+set\+\_\+interrupts (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}}}]{usart}{, }\item[{const struct \mbox{\hyperlink{structUSARTISR}{USARTISR}}}]{config}{}\end{DoxyParamCaption})}
 
 
 
@@ -211,7 +215,7 @@ None
 \index{usart\_set\_parity@{usart\_set\_parity}!usart.h@{usart.h}}
 \doxysubsubsection{\texorpdfstring{usart\_set\_parity()}{usart\_set\_parity()}}
 {\footnotesize\ttfamily \label{usart_8h_a5c66eb9fb13bc64b9699c963ea8753e7} 
-void usart\+\_\+set\+\_\+parity (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{, }\item[{const usart\+\_\+parity\+\_\+t}]{parity}{}\end{DoxyParamCaption})}
+void usart\+\_\+set\+\_\+parity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}}}]{usart}{, }\item[{const \mbox{\hyperlink{usart_8h_a9b924d5756332a7f8773403d0dd6b708}{usart\+\_\+parity\+\_\+t}}}]{parity}{}\end{DoxyParamCaption})}
 
 
 
@@ -233,7 +237,7 @@ None
 \index{usart\_start@{usart\_start}!usart.h@{usart.h}}
 \doxysubsubsection{\texorpdfstring{usart\_start()}{usart\_start()}}
 {\footnotesize\ttfamily \label{usart_8h_ace94d68de38aef271250cc03514766a5} 
-void usart\+\_\+start (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{, }\item[{const uint32\+\_\+t}]{baudrate}{, }\item[{const usart\+\_\+mode\+\_\+t}]{mode}{}\end{DoxyParamCaption})}
+void usart\+\_\+start (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}}}]{usart}{, }\item[{const uint32\+\_\+t}]{baudrate}{, }\item[{const \mbox{\hyperlink{usart_8h_af9cb6192f394ebde038a7b64527eb5e9}{usart\+\_\+mode\+\_\+t}}}]{mode}{}\end{DoxyParamCaption})}
 
 
 
@@ -259,7 +263,7 @@ None
 \index{usart\_stop@{usart\_stop}!usart.h@{usart.h}}
 \doxysubsubsection{\texorpdfstring{usart\_stop()}{usart\_stop()}}
 {\footnotesize\ttfamily \label{usart_8h_a7867e56537b2710b8a78614b44a56b4d} 
-void usart\+\_\+stop (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{}\end{DoxyParamCaption})}
+void usart\+\_\+stop (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}}}]{usart}{}\end{DoxyParamCaption})}
 
 
 
@@ -279,7 +283,7 @@ None
 \index{usart\_tx\_message@{usart\_tx\_message}!usart.h@{usart.h}}
 \doxysubsubsection{\texorpdfstring{usart\_tx\_message()}{usart\_tx\_message()}}
 {\footnotesize\ttfamily \label{usart_8h_a4004e6aceaef961a4c1446bead1b73e1} 
-void usart\+\_\+tx\+\_\+message (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{message}{}\end{DoxyParamCaption})}
+void usart\+\_\+tx\+\_\+message (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\+\_\+sel\+\_\+t}}}]{usart}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{message}{}\end{DoxyParamCaption})}
 
 
 

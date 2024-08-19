@@ -39,13 +39,14 @@
 #define PWR_UART4  FALSE
 #define PWR_UART5  FALSE
 
-/** Clock Configuration
+/* Clock Configuration:
  * 8MHz (HSE) / 4 (PLLM) = 2MHz
  * 2MHz * 180 (PLLN) = 360MHz
  * 360MHz / 2 (PLLP) = 180MHz
  * 180MHz / 4 (PPRE1) = 45MHz (APB1)
  * 180MHz / 2 (PPRE2) = 90MHz (APB2)
  */
+
 #define PLLM_VAL  4U
 #define PLLN_VAL  180U
 #define PLLP_VAL  0U // == 2

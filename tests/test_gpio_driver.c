@@ -1,3 +1,15 @@
+/** @file test_gpio_driver.c
+ *  @brief Unit tests for the GPIO driver
+ *
+ *  The unit tests defined in this file handle
+ *  mostly invalid parameter and edge cases in a
+ *  stubbed environment. The purpose of these tests
+ *  is logic checking and does not reflect the
+ *  actual behaviour of registers in real MCUs.
+ *
+ *  @author Vasileios Ch. (BillisC)
+ */
+
 /* -- Includes -- */
 #include <stdint.h>
 #include "unity.h"

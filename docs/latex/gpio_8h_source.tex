@@ -1,0 +1,79 @@
+\doxysection{gpio.\+h}
+\hypertarget{gpio_8h_source}{}\label{gpio_8h_source}\index{src/drivers/gpio.h@{src/drivers/gpio.h}}
+\mbox{\hyperlink{gpio_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ GPIO\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ GPIO\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{/*\ -\/-\/\ Includes\ -\/-\/\ */}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}stm32f4xx.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{/*\ -\/-\/\ Structs\ -\/-\/\ */}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ GPIORegs\ \{}
+\DoxyCodeLine{00021\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ MODER;}
+\DoxyCodeLine{00022\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ OTYPER;}
+\DoxyCodeLine{00023\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ OSPEEDR;}
+\DoxyCodeLine{00024\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ PUPDR;}
+\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ IDR;}
+\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ ODR;}
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ BSSR;}
+\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ LCKR;}
+\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ AFR[2];}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }GPIORegs))\ ==\ (\textcolor{keyword}{sizeof}(uint32\_t)\ *\ 10U),}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}GPIO\ register\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#ifndef\ UTEST}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ GPIO(bank)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\ \ (struct\ GPIORegs\ *)(GPIOA\_BASE\ +\ (0x400U\ *\ ((uint8\_t)bank\ -\/\ (uint8\_t)'A')))}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }GPIORegs\ *GPIO(\textcolor{keyword}{const}\ uint8\_t\ bank);}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{comment}{/*\ -\/-\/\ Enums\ -\/-\/\ */}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ gp\_dir\ \{}
+\DoxyCodeLine{00044\ \ \ GP\_DIR\_IN\ =\ 0x00,}
+\DoxyCodeLine{00045\ \ \ GP\_DIR\_OU\ =\ 0x01,}
+\DoxyCodeLine{00046\ \ \ GP\_DIR\_AL\ =\ 0x02,}
+\DoxyCodeLine{00047\ \ \ GP\_DIR\_AN\ =\ 0x03}
+\DoxyCodeLine{00048\ \}\ gp\_dir\_t;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ gp\_otype\ \{}
+\DoxyCodeLine{00051\ \ \ GP\_OTYPE\_PP\ =\ 0x00,}
+\DoxyCodeLine{00052\ \ \ GP\_OTYPE\_OD\ =\ 0x01}
+\DoxyCodeLine{00053\ \}\ gp\_otype\_t;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ gp\_speed\ \{}
+\DoxyCodeLine{00056\ \ \ GP\_SPEED\_LOW\ =\ 0x00,}
+\DoxyCodeLine{00057\ \ \ GP\_SPEED\_MED\ =\ 0x01,}
+\DoxyCodeLine{00058\ \ \ GP\_SPEED\_FAS\ =\ 0x02,}
+\DoxyCodeLine{00059\ \ \ GP\_SPEED\_HIG\ =\ 0x03}
+\DoxyCodeLine{00060\ \}\ gp\_speed\_t;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ gp\_pupd\ \{}
+\DoxyCodeLine{00063\ \ \ GP\_PUPD\_NONE\ =\ 0x00,}
+\DoxyCodeLine{00064\ \ \ GP\_PUPD\_PLUP\ =\ 0x01,}
+\DoxyCodeLine{00065\ \ \ GP\_PUPD\_PLDO\ =\ 0x02,}
+\DoxyCodeLine{00066\ \}\ gp\_pupd\_t;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gpio_8h_ab0634f59138b12257c51f7a4c368b564}{gp\_set\_direction}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ bank,\ \textcolor{keyword}{const}\ uint8\_t\ pin,\ \textcolor{keyword}{const}\ gp\_dir\_t\ dir);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gpio_8h_a0af948fdb555a92e8d4d46674caec8a4}{gp\_set\_output\_type}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ bank,\ \textcolor{keyword}{const}\ uint8\_t\ pin,}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ gp\_otype\_t\ type);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gpio_8h_a1df7b4c9f5748cc16fe2391a6059a7d3}{gp\_set\_speed}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ bank,\ \textcolor{keyword}{const}\ uint8\_t\ pin,\ \textcolor{keyword}{const}\ gp\_speed\_t\ speed);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00120\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gpio_8h_aeae32bc56298cd61e481159fe52b242a}{gp\_set\_pupd}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ bank,\ \textcolor{keyword}{const}\ uint8\_t\ pin,\ \textcolor{keyword}{const}\ gp\_pupd\_t\ poopdr);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gpio_8h_a1746be7350679532a4ff89dc46ab802e}{gp\_set\_val}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ bank,\ \textcolor{keyword}{const}\ uint8\_t\ pin,\ \textcolor{keyword}{const}\ \_Bool\ value);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00142\ uint8\_t\ \mbox{\hyperlink{gpio_8h_abd098fd2fb3167167a1a1126d50bf0b1}{gp\_read\_val}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ bank,\ \textcolor{keyword}{const}\ uint8\_t\ pin);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00152\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gpio_8h_ad5d096bcdb8870c66364dfa479c0e0af}{gp\_set\_af}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ bank,\ \textcolor{keyword}{const}\ uint8\_t\ pin,\ \textcolor{keyword}{const}\ uint8\_t\ af);}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ GPIO\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

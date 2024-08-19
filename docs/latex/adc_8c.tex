@@ -1,0 +1,213 @@
+\doxysection{src/drivers/adc.c File Reference}
+\hypertarget{adc_8c}{}\label{adc_8c}\index{src/drivers/adc.c@{src/drivers/adc.c}}
+
+
+Function defines for the ADC driver.  
+
+
+{\ttfamily \#include "{}defines.\+h"{}}\newline
+{\ttfamily \#include "{}adc.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{adc_8c_a9eb3c8478c8926f4e9c752516151a953}{adc\+\_\+set\+\_\+prescaler}} (const adc\+\_\+prescaler\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Sets the ADC Prescaler divider to the specified value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adc_8c_a38a3d191c258d54ef099a03c5f4bb942}{adc\+\_\+set\+\_\+resolution}} (const uint8\+\_\+t adc, const adc\+\_\+res\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Sets the ADC resolution to the specified value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adc_8c_a277295eb7f7523478637e206fa082b0b}{adc\+\_\+set\+\_\+samplerate}} (const uint8\+\_\+t adc, const uint8\+\_\+t channel, const adc\+\_\+samplerate\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Sets the ADC sampling rate to the specified value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adc_8c_a508304374c9dba7c1f5681922e2fe2e1}{adc\+\_\+set\+\_\+modes}} (const uint8\+\_\+t adc, const struct ADCModes config)
+\begin{DoxyCompactList}\small\item\em Sets the ADC modes according to the configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adc_8c_aa1f1a673889c40e5ea83e5d0c84b808e}{adc\+\_\+set\+\_\+seq}} (const uint8\+\_\+t adc, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}seq, const uint8\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Sets the ADC conversion sequence to the specified order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adc_8c_a1efc1024ea81ff54636d50c1e2f5304b}{adc\+\_\+on}} (const uint8\+\_\+t adc)
+\begin{DoxyCompactList}\small\item\em Starts the ADC conversion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adc_8c_abbb0c1d82c736fed24920f7f916b2400}{adc\+\_\+off}} (const uint8\+\_\+t adc)
+\begin{DoxyCompactList}\small\item\em Stops the ADC conversion. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{adc_8c_a3493396643667a305e63dfc8ffe860b3}{adc\+\_\+read}} (const uint8\+\_\+t adc)
+\begin{DoxyCompactList}\small\item\em Reads the last ADC conversion result. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function defines for the ADC driver. 
+
+This file contains all of the function definitions declared in \doxylink{adc_8h}{adc.\+h}.
+
+\begin{DoxyAuthor}{Author}
+Vasileios Ch. (BillisC) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000001}{Bug}}]None, yet. \end{DoxyRefDesc}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{adc_8c_abbb0c1d82c736fed24920f7f916b2400}\index{adc.c@{adc.c}!adc\_off@{adc\_off}}
+\index{adc\_off@{adc\_off}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{adc\_off()}{adc\_off()}}
+{\footnotesize\ttfamily \label{adc_8c_abbb0c1d82c736fed24920f7f916b2400} 
+void adc\+\_\+off (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{adc}{}\end{DoxyParamCaption})}
+
+
+
+Stops the ADC conversion. 
+
+The ADC will be powered off upon calling this command and instantly stop the conversion procedure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc} & The selected ADC (1..ADC\+\_\+\+NUM) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\Hypertarget{adc_8c_a1efc1024ea81ff54636d50c1e2f5304b}\index{adc.c@{adc.c}!adc\_on@{adc\_on}}
+\index{adc\_on@{adc\_on}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{adc\_on()}{adc\_on()}}
+{\footnotesize\ttfamily \label{adc_8c_a1efc1024ea81ff54636d50c1e2f5304b} 
+void adc\+\_\+on (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{adc}{}\end{DoxyParamCaption})}
+
+
+
+Starts the ADC conversion. 
+
+The ADC will be powered on upon calling this command and start the conversion procedure as configured. Dummy reads are included.
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc} & The selected ADC (1..ADC\+\_\+\+NUM) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\Hypertarget{adc_8c_a3493396643667a305e63dfc8ffe860b3}\index{adc.c@{adc.c}!adc\_read@{adc\_read}}
+\index{adc\_read@{adc\_read}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{adc\_read()}{adc\_read()}}
+{\footnotesize\ttfamily \label{adc_8c_a3493396643667a305e63dfc8ffe860b3} 
+uint16\+\_\+t adc\+\_\+read (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{adc}{}\end{DoxyParamCaption})}
+
+
+
+Reads the last ADC conversion result. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc} & The selected ADC (1..ADC\+\_\+\+NUM) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The conversion result 
+\end{DoxyReturn}
+\Hypertarget{adc_8c_a508304374c9dba7c1f5681922e2fe2e1}\index{adc.c@{adc.c}!adc\_set\_modes@{adc\_set\_modes}}
+\index{adc\_set\_modes@{adc\_set\_modes}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{adc\_set\_modes()}{adc\_set\_modes()}}
+{\footnotesize\ttfamily \label{adc_8c_a508304374c9dba7c1f5681922e2fe2e1} 
+void adc\+\_\+set\+\_\+modes (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{adc}{, }\item[{const struct ADCModes}]{config}{}\end{DoxyParamCaption})}
+
+
+
+Sets the ADC modes according to the configuration. 
+
+The configuration values are specified within the adc\+\_\+config struct. Some modes may not work as expected yet.
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc} & The selected ADC (1..ADC\+\_\+\+NUM) \\
+\hline
+{\em config} & The ADC configuration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\Hypertarget{adc_8c_a9eb3c8478c8926f4e9c752516151a953}\index{adc.c@{adc.c}!adc\_set\_prescaler@{adc\_set\_prescaler}}
+\index{adc\_set\_prescaler@{adc\_set\_prescaler}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{adc\_set\_prescaler()}{adc\_set\_prescaler()}}
+{\footnotesize\ttfamily \label{adc_8c_a9eb3c8478c8926f4e9c752516151a953} 
+void adc\+\_\+set\+\_\+prescaler (\begin{DoxyParamCaption}\item[{const adc\+\_\+prescaler\+\_\+t}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Sets the ADC Prescaler divider to the specified value. 
+
+The available dividers for the ADC Prescaler are specified in the adc\+\_\+prescaler\+\_\+t enum. Any other value will be ignored.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The prescaler divider value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\Hypertarget{adc_8c_a38a3d191c258d54ef099a03c5f4bb942}\index{adc.c@{adc.c}!adc\_set\_resolution@{adc\_set\_resolution}}
+\index{adc\_set\_resolution@{adc\_set\_resolution}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{adc\_set\_resolution()}{adc\_set\_resolution()}}
+{\footnotesize\ttfamily \label{adc_8c_a38a3d191c258d54ef099a03c5f4bb942} 
+void adc\+\_\+set\+\_\+resolution (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{adc}{, }\item[{const adc\+\_\+res\+\_\+t}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Sets the ADC resolution to the specified value. 
+
+The available resolutions for the ADC channel reads are specified in the adc\+\_\+res\+\_\+t enum. Any other value will be ignored.
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc} & The selected ADC (1..ADC\+\_\+\+NUM) \\
+\hline
+{\em value} & The resolution of the ADC conversions \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\Hypertarget{adc_8c_a277295eb7f7523478637e206fa082b0b}\index{adc.c@{adc.c}!adc\_set\_samplerate@{adc\_set\_samplerate}}
+\index{adc\_set\_samplerate@{adc\_set\_samplerate}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{adc\_set\_samplerate()}{adc\_set\_samplerate()}}
+{\footnotesize\ttfamily \label{adc_8c_a277295eb7f7523478637e206fa082b0b} 
+void adc\+\_\+set\+\_\+samplerate (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{adc}{, }\item[{const uint8\+\_\+t}]{channel}{, }\item[{const adc\+\_\+samplerate\+\_\+t}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Sets the ADC sampling rate to the specified value. 
+
+The available sampling rates for the ADC channel reads are specified in the adc\+\_\+res\+\_\+t enum (in clock cycles). Any other value will be ignored.
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc} & The selected ADC (1..ADC\+\_\+\+NUM) \\
+\hline
+{\em channel} & The selected channel (0..19) \\
+\hline
+{\em value} & The clock cycles of the ADC conversions \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\Hypertarget{adc_8c_aa1f1a673889c40e5ea83e5d0c84b808e}\index{adc.c@{adc.c}!adc\_set\_seq@{adc\_set\_seq}}
+\index{adc\_set\_seq@{adc\_set\_seq}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{adc\_set\_seq()}{adc\_set\_seq()}}
+{\footnotesize\ttfamily \label{adc_8c_aa1f1a673889c40e5ea83e5d0c84b808e} 
+void adc\+\_\+set\+\_\+seq (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{adc}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{seq}{, }\item[{const uint8\+\_\+t}]{count}{}\end{DoxyParamCaption})}
+
+
+
+Sets the ADC conversion sequence to the specified order. 
+
+The sequence consists of 16 5-\/bit elements. Bits 6..8 will be ignored.
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc} & The selected ADC (1..ADC\+\_\+\+NUM) \\
+\hline
+{\em seq} & Pointer to channel conversion sequence array \\
+\hline
+{\em count} & The total amount of conversions \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}

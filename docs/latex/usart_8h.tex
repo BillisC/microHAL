@@ -1,0 +1,299 @@
+\doxysection{src/drivers/usart.h File Reference}
+\hypertarget{usart_8h}{}\label{usart_8h}\index{src/drivers/usart.h@{src/drivers/usart.h}}
+
+
+Function prototypes for the USART interface.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}stm32f4xx.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{usart_8h_a9253219d896abc79c07c7c9a69655e62}{USART}}(sel)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}\label{usart_8h_a79febc36be6daf0f77269ebddd0e81c9} 
+typedef enum usart\+\_\+sel {\bfseries usart\+\_\+sel\+\_\+t}
+\item 
+\Hypertarget{usart_8h_af9cb6192f394ebde038a7b64527eb5e9}\label{usart_8h_af9cb6192f394ebde038a7b64527eb5e9} 
+typedef enum usart\+\_\+mode {\bfseries usart\+\_\+mode\+\_\+t}
+\item 
+\Hypertarget{usart_8h_a646bb5cdc2347b4c446474ed4d800b28}\label{usart_8h_a646bb5cdc2347b4c446474ed4d800b28} 
+typedef enum usart\+\_\+databits {\bfseries usart\+\_\+databits\+\_\+t}
+\item 
+\Hypertarget{usart_8h_aec2fddd4341bdbc1ca7e36b9d543d6f9}\label{usart_8h_aec2fddd4341bdbc1ca7e36b9d543d6f9} 
+typedef enum usart\+\_\+stopbits {\bfseries usart\+\_\+stopbits\+\_\+t}
+\item 
+\Hypertarget{usart_8h_a9b924d5756332a7f8773403d0dd6b708}\label{usart_8h_a9b924d5756332a7f8773403d0dd6b708} 
+typedef enum usart\+\_\+parity {\bfseries usart\+\_\+parity\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{usart_8h_afc040080711205d142964e8660974dd0}\label{usart_8h_afc040080711205d142964e8660974dd0} 
+enum {\bfseries usart\+\_\+sel} \{ \newline
+{\bfseries USART\+\_\+\+SEL\+\_\+1} = USART1\+\_\+\+BASE
+, {\bfseries USART\+\_\+\+SEL\+\_\+2} = USART2\+\_\+\+BASE
+, {\bfseries USART\+\_\+\+SEL\+\_\+3} = USART3\+\_\+\+BASE
+, {\bfseries USART\+\_\+\+SEL\+\_\+6} = USART6\+\_\+\+BASE
+, \newline
+{\bfseries UART\+\_\+\+SEL\+\_\+4} = UART4\+\_\+\+BASE
+, {\bfseries UART\+\_\+\+SEL\+\_\+5} = UART5\+\_\+\+BASE
+ \}
+\item 
+\Hypertarget{usart_8h_a1c465965478e0f6908a4c99d4f3ad20f}\label{usart_8h_a1c465965478e0f6908a4c99d4f3ad20f} 
+enum {\bfseries usart\+\_\+mode} \{ {\bfseries USART\+\_\+\+MODE\+\_\+\+TX} = 0x00
+, {\bfseries USART\+\_\+\+MODE\+\_\+\+RX} = 0x01
+, {\bfseries USART\+\_\+\+MODE\+\_\+\+BO} = 0x02
+ \}
+\item 
+\Hypertarget{usart_8h_a224e77e9dff1a704a3b0d15e6e383709}\label{usart_8h_a224e77e9dff1a704a3b0d15e6e383709} 
+enum {\bfseries usart\+\_\+databits} \{ {\bfseries USART\+\_\+\+DATABITS\+\_\+\+DB8} = 0x00
+, {\bfseries USART\+\_\+\+DATABITS\+\_\+\+DB9} = 0x01
+ \}
+\item 
+\Hypertarget{usart_8h_ab7d8ac715e2bd7ccddc65bf2c5ceb1f5}\label{usart_8h_ab7d8ac715e2bd7ccddc65bf2c5ceb1f5} 
+enum {\bfseries usart\+\_\+stopbits} \{ {\bfseries USART\+\_\+\+STOPBITS\+\_\+\+SB1} = 0x00
+, {\bfseries USART\+\_\+\+STOPBITS\+\_\+\+SBH} = 0x01
+, {\bfseries USART\+\_\+\+STOPBITS\+\_\+\+SB2} = 0x02
+, {\bfseries USART\+\_\+\+STOPBITS\+\_\+\+SBO} = 0x03
+ \}
+\item 
+\Hypertarget{usart_8h_a867cc5f0ea7d3bf651d68f0046cf6f41}\label{usart_8h_a867cc5f0ea7d3bf651d68f0046cf6f41} 
+enum {\bfseries usart\+\_\+parity} \{ {\bfseries USART\+\_\+\+PARITY\+\_\+\+EVN} = 0x00
+, {\bfseries USART\+\_\+\+PARITY\+\_\+\+ODD} = 0x01
+, {\bfseries USART\+\_\+\+PARITY\+\_\+\+OFF} = 0x02
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{usart_8h_ac32e542a4f0af3f8a27314e01f9e19e8}\label{usart_8h_ac32e542a4f0af3f8a27314e01f9e19e8} 
+struct {\bfseries \+\_\+\+\_\+attribute\+\_\+\+\_\+} ((packed)) USARTRegs
+\item 
+void \mbox{\hyperlink{usart_8h_ace94d68de38aef271250cc03514766a5}{usart\+\_\+start}} (const usart\+\_\+sel\+\_\+t usart, const uint32\+\_\+t baudrate, const usart\+\_\+mode\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Initiates the USART peripheral with specified options. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart_8h_a315d493dbb7df566f88014fbf096c04e}{usart\+\_\+set\+\_\+dma}} (const usart\+\_\+sel\+\_\+t usart, const \+\_\+\+Bool for\+TX, const \+\_\+\+Bool for\+RX)
+\begin{DoxyCompactList}\small\item\em Configures the USART DMA functionality. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart_8h_af7a0168af1fb8b94b02d461ae0507e97}{usart\+\_\+set\+\_\+interrupts}} (const usart\+\_\+sel\+\_\+t usart, const struct USARTISR config)
+\begin{DoxyCompactList}\small\item\em Enables the specified USART interrupts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart_8h_a1984d0d75c1ce6a284498878f4964de9}{usart\+\_\+set\+\_\+databits}} (const usart\+\_\+sel\+\_\+t usart, const usart\+\_\+stopbits\+\_\+t stopbits, const usart\+\_\+databits\+\_\+t databits)
+\begin{DoxyCompactList}\small\item\em Sets the USART databits to the specified values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart_8h_a5c66eb9fb13bc64b9699c963ea8753e7}{usart\+\_\+set\+\_\+parity}} (const usart\+\_\+sel\+\_\+t usart, const usart\+\_\+parity\+\_\+t parity)
+\begin{DoxyCompactList}\small\item\em Sets the USART parity to the specified mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart_8h_a4004e6aceaef961a4c1446bead1b73e1}{usart\+\_\+tx\+\_\+message}} (const usart\+\_\+sel\+\_\+t usart, const char \texorpdfstring{$\ast$}{*}message)
+\begin{DoxyCompactList}\small\item\em Writes specified message to USART buffer. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{usart_8h_a6fc3e1ec28df901667776c5fe4043867}{usart\+\_\+rx\+\_\+byte}} (const usart\+\_\+sel\+\_\+t usart)
+\begin{DoxyCompactList}\small\item\em Reads the received data from the USART buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart_8h_a7867e56537b2710b8a78614b44a56b4d}{usart\+\_\+stop}} (const usart\+\_\+sel\+\_\+t usart)
+\begin{DoxyCompactList}\small\item\em Disable the USART interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function prototypes for the USART interface. 
+
+This file contains all of the enums, macros, and function prototypes required for a functional usart driver.
+
+\begin{DoxyAuthor}{Author}
+Vasileios Ch. (BillisC) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000012}{Bug}}]None, yet. \end{DoxyRefDesc}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{usart_8h_a9253219d896abc79c07c7c9a69655e62}\index{usart.h@{usart.h}!USART@{USART}}
+\index{USART@{USART}!usart.h@{usart.h}}
+\doxysubsubsection{\texorpdfstring{USART}{USART}}
+{\footnotesize\ttfamily \label{usart_8h_a9253219d896abc79c07c7c9a69655e62} 
+\#define USART(\begin{DoxyParamCaption}\item[{}]{sel}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\textcolor{keyword}{struct\ }USARTRegs\ *)((usart\_sel\_t)sel)}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{usart_8h_a6fc3e1ec28df901667776c5fe4043867}\index{usart.h@{usart.h}!usart\_rx\_byte@{usart\_rx\_byte}}
+\index{usart\_rx\_byte@{usart\_rx\_byte}!usart.h@{usart.h}}
+\doxysubsubsection{\texorpdfstring{usart\_rx\_byte()}{usart\_rx\_byte()}}
+{\footnotesize\ttfamily \label{usart_8h_a6fc3e1ec28df901667776c5fe4043867} 
+uint16\+\_\+t usart\+\_\+rx\+\_\+byte (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{}\end{DoxyParamCaption})}
+
+
+
+Reads the received data from the USART buffer. 
+
+In receive/transceive mode the data will be read from the DR register and the RXNE flag will be cleared. Beware that this method is very slow and may cause overrun errors if not used in conjuction with interrupts.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart} & The selected USART \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The received data 
+\end{DoxyReturn}
+\Hypertarget{usart_8h_a1984d0d75c1ce6a284498878f4964de9}\index{usart.h@{usart.h}!usart\_set\_databits@{usart\_set\_databits}}
+\index{usart\_set\_databits@{usart\_set\_databits}!usart.h@{usart.h}}
+\doxysubsubsection{\texorpdfstring{usart\_set\_databits()}{usart\_set\_databits()}}
+{\footnotesize\ttfamily \label{usart_8h_a1984d0d75c1ce6a284498878f4964de9} 
+void usart\+\_\+set\+\_\+databits (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{, }\item[{const usart\+\_\+stopbits\+\_\+t}]{stopbits}{, }\item[{const usart\+\_\+databits\+\_\+t}]{databits}{}\end{DoxyParamCaption})}
+
+
+
+Sets the USART databits to the specified values. 
+
+The available number of stopbits and databits for the USART are specified in usart\+\_\+stopbits\+\_\+t and usart\+\_\+databits\+\_\+t enums respectively. Any other value will be ignored.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart} & The selected USART \\
+\hline
+{\em stopbits} & The number of stop bits \\
+\hline
+{\em databits} & The word length \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\Hypertarget{usart_8h_a315d493dbb7df566f88014fbf096c04e}\index{usart.h@{usart.h}!usart\_set\_dma@{usart\_set\_dma}}
+\index{usart\_set\_dma@{usart\_set\_dma}!usart.h@{usart.h}}
+\doxysubsubsection{\texorpdfstring{usart\_set\_dma()}{usart\_set\_dma()}}
+{\footnotesize\ttfamily \label{usart_8h_a315d493dbb7df566f88014fbf096c04e} 
+void usart\+\_\+set\+\_\+dma (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{, }\item[{const \+\_\+\+Bool}]{for\+TX}{, }\item[{const \+\_\+\+Bool}]{for\+RX}{}\end{DoxyParamCaption})}
+
+
+
+Configures the USART DMA functionality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart} & The selected USART \\
+\hline
+{\em for\+TX} & Enable / Disable DMA for TX \\
+\hline
+{\em for\+TX} & Enable / Disable DMA for RX \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\Hypertarget{usart_8h_af7a0168af1fb8b94b02d461ae0507e97}\index{usart.h@{usart.h}!usart\_set\_interrupts@{usart\_set\_interrupts}}
+\index{usart\_set\_interrupts@{usart\_set\_interrupts}!usart.h@{usart.h}}
+\doxysubsubsection{\texorpdfstring{usart\_set\_interrupts()}{usart\_set\_interrupts()}}
+{\footnotesize\ttfamily \label{usart_8h_af7a0168af1fb8b94b02d461ae0507e97} 
+void usart\+\_\+set\+\_\+interrupts (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{, }\item[{const struct USARTISR}]{config}{}\end{DoxyParamCaption})}
+
+
+
+Enables the specified USART interrupts. 
+
+The available interrupts are located in the usart\+\_\+isr struct.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart} & The selected USART \\
+\hline
+{\em config} & The ISR configuration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\Hypertarget{usart_8h_a5c66eb9fb13bc64b9699c963ea8753e7}\index{usart.h@{usart.h}!usart\_set\_parity@{usart\_set\_parity}}
+\index{usart\_set\_parity@{usart\_set\_parity}!usart.h@{usart.h}}
+\doxysubsubsection{\texorpdfstring{usart\_set\_parity()}{usart\_set\_parity()}}
+{\footnotesize\ttfamily \label{usart_8h_a5c66eb9fb13bc64b9699c963ea8753e7} 
+void usart\+\_\+set\+\_\+parity (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{, }\item[{const usart\+\_\+parity\+\_\+t}]{parity}{}\end{DoxyParamCaption})}
+
+
+
+Sets the USART parity to the specified mode. 
+
+The available parity modes for the USART are specified in usart\+\_\+parity\+\_\+t. Any other value will be ignored. Please note that setting the parity modes will automatically set the PCE (parity control) bit. If the mode is "{}off"{} it will be cleared.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart} & The selected USART \\
+\hline
+{\em parity} & The selected parity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\Hypertarget{usart_8h_ace94d68de38aef271250cc03514766a5}\index{usart.h@{usart.h}!usart\_start@{usart\_start}}
+\index{usart\_start@{usart\_start}!usart.h@{usart.h}}
+\doxysubsubsection{\texorpdfstring{usart\_start()}{usart\_start()}}
+{\footnotesize\ttfamily \label{usart_8h_ace94d68de38aef271250cc03514766a5} 
+void usart\+\_\+start (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{, }\item[{const uint32\+\_\+t}]{baudrate}{, }\item[{const usart\+\_\+mode\+\_\+t}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Initiates the USART peripheral with specified options. 
+
+The available modes for the USART peripheral are specified in the usart\+\_\+mode\+\_\+t enum. Any other value will be ignored.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart} & The selected USART \\
+\hline
+{\em baudrate} & The desired communication bitrate \\
+\hline
+{\em mode} & The desired communication mode \\
+\hline
+{\em x8\+\_\+oversample} & Use x8 oversampling instead of x16 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\Hypertarget{usart_8h_a7867e56537b2710b8a78614b44a56b4d}\index{usart.h@{usart.h}!usart\_stop@{usart\_stop}}
+\index{usart\_stop@{usart\_stop}!usart.h@{usart.h}}
+\doxysubsubsection{\texorpdfstring{usart\_stop()}{usart\_stop()}}
+{\footnotesize\ttfamily \label{usart_8h_a7867e56537b2710b8a78614b44a56b4d} 
+void usart\+\_\+stop (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{}\end{DoxyParamCaption})}
+
+
+
+Disable the USART interface. 
+
+The function will wait until all transmissions are complete and turn off the specified USART peripheral.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart} & The selected USART \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\Hypertarget{usart_8h_a4004e6aceaef961a4c1446bead1b73e1}\index{usart.h@{usart.h}!usart\_tx\_message@{usart\_tx\_message}}
+\index{usart\_tx\_message@{usart\_tx\_message}!usart.h@{usart.h}}
+\doxysubsubsection{\texorpdfstring{usart\_tx\_message()}{usart\_tx\_message()}}
+{\footnotesize\ttfamily \label{usart_8h_a4004e6aceaef961a4c1446bead1b73e1} 
+void usart\+\_\+tx\+\_\+message (\begin{DoxyParamCaption}\item[{const usart\+\_\+sel\+\_\+t}]{usart}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{message}{}\end{DoxyParamCaption})}
+
+
+
+Writes specified message to USART buffer. 
+
+In transmit/transceive mode the data will be written to the DR register and be shifted out of the TX pin when ready. Using it without DMA is not recommended for multibyte messages.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart} & The selected USART \\
+\hline
+{\em character} & Pointer to the message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}

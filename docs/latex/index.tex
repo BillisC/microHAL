@@ -1,5 +1,5 @@
-\chapter{STM32\+F446xx Drivers}
-\hypertarget{index}{}\label{index}\index{STM32F446xx Drivers@{STM32F446xx Drivers}}
+\chapter{micro\+HAL}
+\hypertarget{index}{}\label{index}\index{microHAL@{microHAL}}
 \label{index_md_README}%
 \Hypertarget{index_md_README}%
 
@@ -9,11 +9,10 @@
 What\textquotesingle{}s this repo about?
 \begin{DoxyItemize}
 \item Provides a simple HAL
-\item Provides simple driver implementations
 \item Uses CMSIS where needed
 \item Tries to be MISRA C (2023) compliant {\itshape can\textquotesingle{}t be sure though}
-\item Attempts to be cross-\/compatible {\itshape cough}
-\item Serves as a template for future projects
+\item Designed with portability in mind {\itshape cough}
+\item Serves as a library for future projects
 \end{DoxyItemize}
 
 Can I use it for {\bfseries{any}} STM32 F4 series MCU?
@@ -51,6 +50,8 @@ Initialize cmake configuration\+:
 
 \end{DoxyCode}
 \hypertarget{index_autotoc_md3}{}\doxysubsection{\texorpdfstring{Unit testing}{Unit testing}}\label{index_autotoc_md3}
+Purely logical
+
 Just don\textquotesingle{}t include the {\ttfamily -\/-\/toolchain arm-\/toolchain.\+cmake}. Execute the build output {\ttfamily utest} to run all tests {\bfseries{natively}}.\hypertarget{index_autotoc_md4}{}\doxysubsection{\texorpdfstring{Debugging}{Debugging}}\label{index_autotoc_md4}
 The following will launch a GDB server at port {\bfseries{3333}}\+: 
 \begin{DoxyCode}{0}

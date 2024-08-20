@@ -21,6 +21,5 @@ var searchData=
   ['dmaregs_18',['DMARegs',['../structDMARegs.html',1,'']]],
   ['dmastreamconfig_19',['DMAStreamConfig',['../structDMAStreamConfig.html',1,'']]],
   ['dmastreamisr_20',['DMAStreamISR',['../structDMAStreamISR.html',1,'']]],
-  ['dmastreamregs_21',['DMAStreamRegs',['../structDMAStreamRegs.html',1,'']]],
-  ['drivers_22',['STM32F446xx Drivers',['../index.html',1,'']]]
+  ['dmastreamregs_21',['DMAStreamRegs',['../structDMAStreamRegs.html',1,'']]]
 ];

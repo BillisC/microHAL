@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>STM32F446xx Drivers: STM32F446xx Drivers</title>
+<title>microHAL: microHAL</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">STM32F446xx Drivers
+   <div id="projectname">microHAL
    </div>
-   <div id="projectbrief">A simple hardware abstraction layer designed for STM32F446RE</div>
+   <div id="projectbrief">An abstraction layer for your future F446xx projects</div>
   </td>
  </tr>
  </tbody>
@@ -85,18 +85,17 @@ $(function(){ initResizable(false); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">STM32F446xx Drivers </div></div>
+  <div class="headertitle"><div class="title">microHAL </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
 <p><img src="https://github.com/BillisC/stm32f446xx-drivers/actions/workflows/ci.yml/badge.svg" alt="CI" style="pointer-events: none;" class="inline"/></p>
 <p>What's this repo about?</p><ul>
 <li>Provides a simple HAL</li>
-<li>Provides simple driver implementations</li>
 <li>Uses CMSIS where needed</li>
 <li>Tries to be MISRA C (2023) compliant <em>can't be sure though</em></li>
-<li>Attempts to be cross-compatible <em>cough</em></li>
-<li>Serves as a template for future projects</li>
+<li>Designed with portability in mind <em>cough</em></li>
+<li>Serves as a library for future projects</li>
 </ul>
 <p>Can I use it for <b>any</b> STM32 F4 series MCU?</p><ul>
 <li>Probably, but its designed for F446RE so don't blame me if anything burns</li>
@@ -116,6 +115,7 @@ Compile and flash</h2>
 </div><!-- fragment --><p> Finally compile and flash the project: </p><div class="fragment"><div class="line">cmake --build build/{config}/ --target flash</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
 Unit testing</h2>
+<p>Purely logical</p>
 <p>Just don't include the <code>--toolchain arm-toolchain.cmake</code>. Execute the build output <code>utest</code> to run all tests <b>natively</b>.</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Debugging</h2>

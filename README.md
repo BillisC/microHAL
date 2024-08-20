@@ -4,7 +4,6 @@
 
 What's this repo about?
 - Provides a simple HAL
-- Provides simple driver implementations
 - Uses CMSIS where needed
 - Tries to be MISRA C (2023) compliant *can't be sure though*
 - Designed with portability in mind *cough*

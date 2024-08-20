@@ -1,4 +1,4 @@
-## STM32F446xx Drivers
+## microHAL
 
 ![CI](https://github.com/BillisC/stm32f446xx-drivers/actions/workflows/ci.yml/badge.svg)
 
@@ -7,8 +7,8 @@ What's this repo about?
 - Provides simple driver implementations
 - Uses CMSIS where needed
 - Tries to be MISRA C (2023) compliant *can't be sure though*
-- Attempts to be cross-compatible *cough*
-- Serves as a template for future projects
+- Designed with portability in mind *cough*
+- Serves as a library for future projects
 
 Can I use it for **any** STM32 F4 series MCU?
 - Probably, but its designed for F446RE so don't blame me if anything burns
@@ -43,6 +43,8 @@ cmake --build build/{config}/ --target flash
 ```
 
 ### Unit testing
+Purely logical
+
 Just don't include the `--toolchain arm-toolchain.cmake`.
 Execute the build output `utest` to run all tests **natively**.
 

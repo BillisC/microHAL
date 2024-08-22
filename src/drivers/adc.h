@@ -54,10 +54,10 @@ _Static_assert((sizeof(struct ADCCommonRegs)) == (sizeof(uint32_t) * 3U),
                "ADC Common register struct size mismatch. Is it aligned?");
 
 #ifndef UTEST
-#define ADC(NUM)   (struct ADCRegs *)(ADC1_BASE + (0x100UL * ((uint8_t)NUM)))
+#define ADC_(NUM)  (struct ADCRegs *)(ADC1_BASE + (0x100UL * ((uint8_t)NUM)))
 #define ADC_COMMON (struct ADCCommonRegs *)(ADC123_COMMON_BASE)
 #else
-extern struct ADCRegs *ADC(const uint8_t number);
+extern struct ADCRegs *ADC_(const uint8_t number);
 extern struct ADCCommonRegs *ADC_COMMON;
 #endif
 

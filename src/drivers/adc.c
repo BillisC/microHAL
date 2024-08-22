@@ -1,5 +1,5 @@
 /** @file adc.c
- *  @brief Function defines for the ADC driver.
+ *  @brief Function defines for the ADC_ driver.
  *
  *  This file contains all of the function definitions
  *  declared in adc.h.
@@ -13,7 +13,7 @@
 #include "adc.h"
 
 static inline _Bool verifyADC(const adc_peripheral_t adc) {
-  /* Check that the ADC exists */
+  /* Check that the ADC_ exists */
   if ((adc >= 0U) && (adc < ADC_PERIPH_LEN)) {
     return TRUE;
   } else {
@@ -56,7 +56,7 @@ void adc_set_resolution(const adc_peripheral_t adc, const adc_res_t value) {
   if (!verifyADC(adc)) {
     return;
   } else {
-    struct ADCRegs *regs = ADC(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Change resolution */
     volatile uint32_t cr1 = regs->CR1;
@@ -88,7 +88,7 @@ void adc_set_samplerate(const adc_peripheral_t adc, const uint8_t channel,
   } else if (channel > 18U) {
     return;
   } else {
-    struct ADCRegs *regs = ADC(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Change samplerate */
     uint8_t sel = (channel <= 9U) ? 1U : 0U;
@@ -104,7 +104,7 @@ void adc_set_modes(const adc_peripheral_t adc, const struct ADCModes config) {
   if (!verifyADC(adc)) {
     return;
   } else {
-    struct ADCRegs *regs = ADC(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Set modes on CR1 */
     volatile uint32_t cr1 = regs->CR1;
@@ -129,7 +129,7 @@ void adc_set_seq(const adc_peripheral_t adc, const uint8_t *seq,
   if (!verifyADC(adc)) {
     return;
   } else {
-    struct ADCRegs *regs = ADC(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Apply new sequence */
     volatile uint32_t sqr[3] = {0};
@@ -155,7 +155,7 @@ void adc_on(const adc_peripheral_t adc) {
   if (!verifyADC(adc)) {
     return;
   } else {
-    struct ADCRegs *regs = ADC(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Power on */
     regs->CR2 |= ADC_CR2_ADON_Msk;
@@ -165,7 +165,7 @@ void adc_on(const adc_peripheral_t adc) {
     dummy_read = regs->CR2;
     dummy_read = regs->CR2;
 
-    /* Start ADC conversion */
+    /* Start ADC_ conversion */
     regs->CR2 |= ADC_CR2_SWSTART_Msk;
   }
 }
@@ -174,7 +174,7 @@ void adc_off(const adc_peripheral_t adc) {
   if (!verifyADC(adc)) {
     return;
   } else {
-    struct ADCRegs *regs = ADC(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Power off */
     regs->CR2 &= ~(ADC_CR2_ADON_Msk);
@@ -185,7 +185,7 @@ uint16_t adc_read(const adc_peripheral_t adc) {
   if (!verifyADC(adc)) {
     return 0U;
   } else {
-    struct ADCRegs *regs = ADC(adc);
+    struct ADCRegs *regs = ADC_(adc);
 
     /* Wait for conversion */
     while (!(1UL & (regs->SR >> ADC_SR_EOC_Pos))) {};

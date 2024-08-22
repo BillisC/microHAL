@@ -17,7 +17,7 @@
 
 struct ADCRegs empty_regs = {0};
 struct ADCRegs test_regs[ADC_PERIPH_LEN + 1];
-struct ADCRegs *ADC(const uint8_t number) {
+struct ADCRegs *ADC_(const uint8_t number) {
   return &test_regs[number];
 }
 

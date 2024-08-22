@@ -17,40 +17,46 @@
 
 #define BANK_NUM(bank) ((uint8_t)bank - (uint8_t)'A')
 
-/* 8 banks + 1 arbitrary */
-struct GPIORegs test_regs[9] = {0};
+/* 8 banks + 1 arbitrary
+ * GP_BANK_LEN is the letter after the last bank
+ * and when substracted with 'A' it returns the
+ * number of banks!
+ */
+struct GPIORegs test_regs[(GP_BANK_LEN - 'A') + 1] = {0};
 struct GPIORegs *GPIO(const uint8_t bank) {
   return &test_regs[BANK_NUM(bank)];
 }
 
 void Test_GPIOSetDirection_EdgeCase_ShouldSetRegisterProperly(void) {
-  test_regs[BANK_NUM('H')].MODER = 0x00000000UL;
-  gp_set_direction('H', 15U, GP_DIR_AN);
-  TEST_ASSERT_EQUAL_HEX32(0xC0000000UL, test_regs[BANK_NUM('H')].MODER);
+  test_regs[BANK_NUM(GP_BANK_LEN - 1)].MODER = 0x00000000UL;
+  gp_set_direction(GP_BANK_LEN - 1, 15U, GP_DIR_AN);
+  TEST_ASSERT_EQUAL_HEX32(0xC0000000UL,
+                          test_regs[BANK_NUM(GP_BANK_LEN - 1)].MODER);
 }
 
 void Test_GPIOSetDirection_DirectionIsInvalid_ShouldNotSetRegister(void) {
-  test_regs[BANK_NUM('B')].MODER = 0x00000000UL;
-  gp_set_direction('B', 3U, 0x4U);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM('B')].MODER);
+  test_regs[BANK_NUM('A')].MODER = 0x00000000UL;
+  gp_set_direction('A', 3U, 0x4U);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM('A')].MODER);
 }
 
 void Test_GPIOSetDirection_BankIsInvalid_ShouldNotSetRegister(void) {
-  test_regs[BANK_NUM('I')].MODER = 0x00000000UL;
-  gp_set_direction('I', 0U, GP_DIR_OU);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM('I')].MODER);
+  test_regs[BANK_NUM(GP_BANK_LEN)].MODER = 0x00000000UL;
+  gp_set_direction(GP_BANK_LEN, 0U, GP_DIR_OU);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM(GP_BANK_LEN)].MODER);
 }
 
 void Test_GPIOSetDirection_PinIsInvalid_ShouldNotSetRegister(void) {
-  test_regs[BANK_NUM('B')].MODER = 0x00000000UL;
-  gp_set_direction('B', 16U, GP_DIR_OU);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM('B')].MODER);
+  test_regs[BANK_NUM('A')].MODER = 0x00000000UL;
+  gp_set_direction('A', 16U, GP_DIR_OU);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM('A')].MODER);
 }
 
 void Test_GPIOSetOType_EdgeCase_ShouldSetRegisterProperly(void) {
-  test_regs[BANK_NUM('H')].OTYPER = 0x00000000UL;
-  gp_set_output_type('H', 15U, GP_OTYPE_OD);
-  TEST_ASSERT_EQUAL_HEX32(0x00008000UL, test_regs[BANK_NUM('H')].OTYPER);
+  test_regs[BANK_NUM(GP_BANK_LEN - 1)].OTYPER = 0x00000000UL;
+  gp_set_output_type(GP_BANK_LEN - 1, 15U, GP_OTYPE_OD);
+  TEST_ASSERT_EQUAL_HEX32(0x00008000UL,
+                          test_regs[BANK_NUM(GP_BANK_LEN - 1)].OTYPER);
 }
 
 void Test_GPIOSetOType_TypeIsInvalid_ShouldNotSetRegister(void) {
@@ -60,9 +66,10 @@ void Test_GPIOSetOType_TypeIsInvalid_ShouldNotSetRegister(void) {
 }
 
 void Test_GPIOSetOType_BankIsInvalid_ShouldNotSetRegister(void) {
-  test_regs[BANK_NUM('I')].OTYPER = 0x00000000UL;
-  gp_set_output_type('I', 0U, GP_OTYPE_OD);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM('I')].OTYPER);
+  test_regs[BANK_NUM(GP_BANK_LEN)].OTYPER = 0x00000000UL;
+  gp_set_output_type(GP_BANK_LEN, 0U, GP_OTYPE_OD);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL,
+                          test_regs[BANK_NUM(GP_BANK_LEN)].OTYPER);
 }
 
 void Test_GPIOSetOType_PinIsInvalid_ShouldNotSetRegister(void) {
@@ -72,9 +79,10 @@ void Test_GPIOSetOType_PinIsInvalid_ShouldNotSetRegister(void) {
 }
 
 void Test_GPIOSetSpeed_EdgeCase_ShouldSetRegisterProperly(void) {
-  test_regs[BANK_NUM('H')].OSPEEDR = 0x00000000UL;
-  gp_set_speed('H', 15U, GP_SPEED_HIG);
-  TEST_ASSERT_EQUAL_HEX32(0xC0000000UL, test_regs[BANK_NUM('H')].OSPEEDR);
+  test_regs[BANK_NUM(GP_BANK_LEN - 1)].OSPEEDR = 0x00000000UL;
+  gp_set_speed(GP_BANK_LEN - 1, 15U, GP_SPEED_HIG);
+  TEST_ASSERT_EQUAL_HEX32(0xC0000000UL,
+                          test_regs[BANK_NUM(GP_BANK_LEN - 1)].OSPEEDR);
 }
 
 void Test_GPIOSetSpeed_SpeedIsInvalid_ShouldNotSetRegister(void) {
@@ -84,9 +92,10 @@ void Test_GPIOSetSpeed_SpeedIsInvalid_ShouldNotSetRegister(void) {
 }
 
 void Test_GPIOSetSpeed_BankIsInvalid_ShouldNotSetRegister(void) {
-  test_regs[BANK_NUM('I')].OSPEEDR = 0x00000000UL;
-  gp_set_speed('I', 0U, GP_SPEED_HIG);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM('I')].OSPEEDR);
+  test_regs[BANK_NUM(GP_BANK_LEN)].OSPEEDR = 0x00000000UL;
+  gp_set_speed(GP_BANK_LEN, 0U, GP_SPEED_HIG);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL,
+                          test_regs[BANK_NUM(GP_BANK_LEN)].OSPEEDR);
 }
 
 void Test_GPIOSetSpeed_PinIsInvalid_ShouldNotSetRegister(void) {
@@ -96,9 +105,10 @@ void Test_GPIOSetSpeed_PinIsInvalid_ShouldNotSetRegister(void) {
 }
 
 void Test_GPIOSetPUPD_EdgeCase_ShouldSetRegisterProperly(void) {
-  test_regs[BANK_NUM('H')].PUPDR = 0x00000000UL;
-  gp_set_pupd('H', 15U, GP_PUPD_PLDO);
-  TEST_ASSERT_EQUAL_HEX32(0x80000000UL, test_regs[BANK_NUM('H')].PUPDR);
+  test_regs[BANK_NUM(GP_BANK_LEN - 1)].PUPDR = 0x00000000UL;
+  gp_set_pupd(GP_BANK_LEN - 1, 15U, GP_PUPD_PLDO);
+  TEST_ASSERT_EQUAL_HEX32(0x80000000UL,
+                          test_regs[BANK_NUM(GP_BANK_LEN - 1)].PUPDR);
 }
 
 void Test_GPIOSetPUPD_PUPDIsInvalid_ShouldNotSetRegister(void) {
@@ -108,9 +118,9 @@ void Test_GPIOSetPUPD_PUPDIsInvalid_ShouldNotSetRegister(void) {
 }
 
 void Test_GPIOSetPUPD_BankIsInvalid_ShouldNotSetRegister(void) {
-  test_regs[BANK_NUM('I')].PUPDR = 0x00000000UL;
-  gp_set_pupd('I', 0U, GP_PUPD_PLDO);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM('I')].PUPDR);
+  test_regs[BANK_NUM(GP_BANK_LEN)].PUPDR = 0x00000000UL;
+  gp_set_pupd(GP_BANK_LEN, 0U, GP_PUPD_PLDO);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM(GP_BANK_LEN)].PUPDR);
 }
 
 void Test_GPIOSetPUPD_PinIsInvalid_ShouldNotSetRegister(void) {
@@ -120,15 +130,16 @@ void Test_GPIOSetPUPD_PinIsInvalid_ShouldNotSetRegister(void) {
 }
 
 void Test_GPIOSetVal_EdgeCase_ShouldSetRegisterProperly(void) {
-  test_regs[BANK_NUM('H')].BSSR = 0x00000000UL;
-  gp_set_val('H', 15U, 1U);
-  TEST_ASSERT_EQUAL_HEX32(0x00008000UL, test_regs[BANK_NUM('H')].BSSR);
+  test_regs[BANK_NUM(GP_BANK_LEN - 1)].BSSR = 0x00000000UL;
+  gp_set_val(GP_BANK_LEN - 1, 15U, 1U);
+  TEST_ASSERT_EQUAL_HEX32(0x00008000UL,
+                          test_regs[BANK_NUM(GP_BANK_LEN - 1)].BSSR);
 }
 
 void Test_GPIOSetVal_BankIsInvalid_ShouldNotSetRegister(void) {
-  test_regs[BANK_NUM('I')].BSSR = 0x00000000UL;
-  gp_set_val('I', 0U, 1U);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM('I')].BSSR);
+  test_regs[BANK_NUM(GP_BANK_LEN)].BSSR = 0x00000000UL;
+  gp_set_val(GP_BANK_LEN, 0U, 1U);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM(GP_BANK_LEN)].BSSR);
 }
 
 void Test_GPIOSetVal_PinIsInvalid_ShouldNotSetRegister(void) {
@@ -143,8 +154,8 @@ void Test_GPIORead_EdgeCase_ShouldSetRegisterProperly(void) {
 }
 
 void Test_GPIORead_BankIsInvalid_ShouldNotSetRegister(void) {
-  test_regs[BANK_NUM('I')].IDR = 0x00000004UL;
-  TEST_ASSERT_EQUAL_HEX8(0x00U, gp_read_val('I', 2U));
+  test_regs[BANK_NUM(GP_BANK_LEN)].IDR = 0x00000004UL;
+  TEST_ASSERT_EQUAL_HEX8(0x00U, gp_read_val(GP_BANK_LEN, 2U));
 }
 
 void Test_GPIORead_PinIsInvalid_ShouldNotSetRegister(void) {
@@ -153,9 +164,10 @@ void Test_GPIORead_PinIsInvalid_ShouldNotSetRegister(void) {
 }
 
 void Test_GPIOSetAF_EdgeCase_ShouldSetRegisterProperly(void) {
-  test_regs[BANK_NUM('H')].AFR[1] = 0x00000000UL;
-  gp_set_af('H', 15U, 15U);
-  TEST_ASSERT_EQUAL_HEX32(0xF0000000UL, test_regs[BANK_NUM('H')].AFR[1]);
+  test_regs[BANK_NUM(GP_BANK_LEN - 1)].AFR[1] = 0x00000000UL;
+  gp_set_af(GP_BANK_LEN - 1, 15U, 15U);
+  TEST_ASSERT_EQUAL_HEX32(0xF0000000UL,
+                          test_regs[BANK_NUM(GP_BANK_LEN - 1)].AFR[1]);
 }
 
 void Test_GPIOSetAF_AFIsInvalid_ShouldNotSetRegister(void) {
@@ -165,9 +177,10 @@ void Test_GPIOSetAF_AFIsInvalid_ShouldNotSetRegister(void) {
 }
 
 void Test_GPIOSetAF_BankIsInvalid_ShouldNotSetRegister(void) {
-  test_regs[BANK_NUM('I')].AFR[0] = 0x00000000UL;
-  gp_set_af('I', 0U, 1U);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[BANK_NUM('I')].AFR[0]);
+  test_regs[BANK_NUM(GP_BANK_LEN)].AFR[0] = 0x00000000UL;
+  gp_set_af(GP_BANK_LEN, 0U, 1U);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL,
+                          test_regs[BANK_NUM(GP_BANK_LEN)].AFR[0]);
 }
 
 void Test_GPIOSetAF_PinIsInvalid_ShouldNotSetRegister(void) {

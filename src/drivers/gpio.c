@@ -12,17 +12,55 @@
 #include "defines.h"
 #include "gpio.h"
 
-static inline _Bool verifyGPIO(const uint8_t bank, const uint8_t pin) {
-  if (bank > (uint8_t)'H') {
-    return FALSE;
-  } else if (pin > 15U) {
+static inline _Bool verifyGPIO(const gp_bank_t bank, const uint8_t pin) {
+  switch (bank) {
+#ifdef GPIOA_BASE
+    case GP_BANK_A:
+#endif
+#ifdef GPIOB_BASE
+    case GP_BANK_B:
+#endif
+#ifdef GPIOC_BASE
+    case GP_BANK_C:
+#endif
+#ifdef GPIOD_BASE
+    case GP_BANK_D:
+#endif
+#ifdef GPIOE_BASE
+    case GP_BANK_E:
+#endif
+#ifdef GPIOF_BASE
+    case GP_BANK_F:
+#endif
+#ifdef GPIOG_BASE
+    case GP_BANK_G:
+#endif
+#ifdef GPIOH_BASE
+    case GP_BANK_H:
+#endif
+#ifdef GPIOI_BASE
+    case GP_BANK_I:
+#endif
+#ifdef GPIOJ_BASE
+    case GP_BANK_J:
+#endif
+#ifdef GPIOK_BASE
+    case GP_BANK_K:
+#endif
+      break;
+
+    default: return FALSE;
+  };
+
+  if (pin > 15U) {
     return FALSE;
   } else {
     return TRUE;
   }
 }
 
-void gp_set_direction(const char bank, const uint8_t pin, const gp_dir_t dir) {
+void gp_set_direction(const gp_bank_t bank, const uint8_t pin,
+                      const gp_dir_t dir) {
   /* Check that the direction is valid */
   switch (dir) {
     case GP_DIR_IN:
@@ -47,7 +85,7 @@ void gp_set_direction(const char bank, const uint8_t pin, const gp_dir_t dir) {
   }
 }
 
-void gp_set_output_type(const char bank, const uint8_t pin,
+void gp_set_output_type(const gp_bank_t bank, const uint8_t pin,
                         const gp_otype_t type) {
   /* Check that the type exists */
   if ((type != GP_OTYPE_PP) && (type != GP_OTYPE_OD)) {
@@ -66,7 +104,8 @@ void gp_set_output_type(const char bank, const uint8_t pin,
   }
 }
 
-void gp_set_speed(const char bank, const uint8_t pin, const gp_speed_t speed) {
+void gp_set_speed(const gp_bank_t bank, const uint8_t pin,
+                  const gp_speed_t speed) {
   /* Check that the speed is valid */
   switch (speed) {
     case GP_SPEED_LOW:
@@ -91,7 +130,8 @@ void gp_set_speed(const char bank, const uint8_t pin, const gp_speed_t speed) {
   }
 }
 
-void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupd_t poopdr) {
+void gp_set_pupd(const gp_bank_t bank, const uint8_t pin,
+                 const gp_pupd_t poopdr) {
   /* Check that the state value is valid */
   switch (poopdr) {
     case GP_PUPD_NONE:
@@ -115,7 +155,7 @@ void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupd_t poopdr) {
   }
 }
 
-void gp_set_val(const char bank, const uint8_t pin, const _Bool value) {
+void gp_set_val(const gp_bank_t bank, const uint8_t pin, const _Bool value) {
   if (!verifyGPIO(bank, pin)) {
     return;
   } else {
@@ -127,7 +167,7 @@ void gp_set_val(const char bank, const uint8_t pin, const _Bool value) {
   }
 }
 
-uint8_t gp_read_val(const char bank, const uint8_t pin) {
+uint8_t gp_read_val(const gp_bank_t bank, const uint8_t pin) {
   if (!verifyGPIO(bank, pin)) {
     return 0U;
   } else {
@@ -136,7 +176,7 @@ uint8_t gp_read_val(const char bank, const uint8_t pin) {
   }
 }
 
-void gp_set_af(const char bank, const uint8_t pin, const uint8_t af) {
+void gp_set_af(const gp_bank_t bank, const uint8_t pin, const uint8_t af) {
   /* Check that the AF value is valid */
   if (!(af <= 15U)) {
     return;

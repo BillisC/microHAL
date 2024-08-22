@@ -14,17 +14,16 @@
 
 /* ASM INSTRUCTIONS */
 #ifndef UTEST
-#define ASM_BKPT __asm volatile("BKPT")
-#define ASM_NOP  __asm volatile("NOP")
-#define ASM_DSB  __asm volatile("DSB")
+#define ASM_INSTR(x) __asm volatile(#x)
 #else
-#define ASM_BKPT
-#define ASM_NOP
-#define ASM_DSB
+#define ASM_INSTR(x)
 #endif
+#define ASM_BKPT ASM_INSTR(BKPT)
+#define ASM_NOP  ASM_INSTR(NOP)
+#define ASM_DSB  ASM_INSTR(DSB)
 
 /* SYSTEM */
-#define HSE_CLK  8U // in MHz
+#define HSE_CLK  8 // in MHz
 #define SYS_CLK  180
 #define APB1_CLK 45
 #define APB2_CLK 90

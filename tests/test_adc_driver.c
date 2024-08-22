@@ -16,9 +16,9 @@
 #include "adc.h"
 
 struct ADCRegs empty_regs = {0};
-struct ADCRegs test_regs[ADC_NUM + 1];
-struct ADCRegs *ADC_(const uint8_t number) {
-  return &test_regs[number - 1];
+struct ADCRegs test_regs[ADC_PERIPH_LEN + 1];
+struct ADCRegs *ADC(const uint8_t number) {
+  return &test_regs[number];
 }
 
 struct ADCCommonRegs empty_cregs = {0};
@@ -36,136 +36,138 @@ void Test_ADCSetPrescaler_PrescaleIsInvalid_RegisterShouldNotSet(void) {
 }
 
 void Test_ADCSetResolution_EdgeCase_RegisterShouldSetProperly(void) {
-  adc_set_resolution(ADC_NUM, ADC_RES_B06);
-  TEST_ASSERT_EQUAL_HEX32(0x03000000UL, test_regs[ADC_NUM - 1].CR1);
+  adc_set_resolution(ADC_PERIPH_LEN - 1, ADC_RES_B06);
+  TEST_ASSERT_EQUAL_HEX32(0x03000000UL, test_regs[ADC_PERIPH_LEN - 1].CR1);
 }
 
 void Test_ADCSetResolution_ADCIsInvalid_RegisterShouldNotSet(void) {
-  adc_set_resolution(ADC_NUM + 1, ADC_RES_B06);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[ADC_NUM].CR1);
+  adc_set_resolution(ADC_PERIPH_LEN, ADC_RES_B06);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[ADC_PERIPH_LEN].CR1);
 }
 
 void Test_ADCSetResolution_ResolutionIsInvalid_RegisterShouldNotSet(void) {
-  adc_set_resolution(1U, 0x4U);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[0].CR1);
+  adc_set_resolution(ADC_PERIPH_LEN - 1, 0x4U);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[ADC_PERIPH_LEN - 1].CR1);
 }
 
 void Test_ADCSetSamplerate_EdgeCase_RegisterShouldSetProperly(void) {
-  adc_set_samplerate(ADC_NUM, 18U, ADC_SAMPLERATE_C480);
-  TEST_ASSERT_EQUAL_HEX32(0x07000000UL, test_regs[ADC_NUM - 1].SMPR[0]);
+  adc_set_samplerate(ADC_PERIPH_LEN - 1, 18U, ADC_SAMPLERATE_C480);
+  TEST_ASSERT_EQUAL_HEX32(0x07000000UL, test_regs[ADC_PERIPH_LEN - 1].SMPR[0]);
 }
 
 void Test_ADCSetSamplerate_ADCIsInvalid_RegisterShouldNotSet(void) {
-  adc_set_samplerate(ADC_NUM + 1, 18U, ADC_SAMPLERATE_C480);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[ADC_NUM].SMPR[0]);
+  adc_set_samplerate(ADC_PERIPH_LEN, 18U, ADC_SAMPLERATE_C480);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[ADC_PERIPH_LEN].SMPR[0]);
 }
 
 void Test_ADCSetSamplerate_ChannelIsInvalid_RegisterShouldNotSet(void) {
-  adc_set_samplerate(1U, 19U, ADC_SAMPLERATE_C480);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[0].SMPR[0]);
+  adc_set_samplerate(ADC_PERIPH_LEN - 1, 19U, ADC_SAMPLERATE_C480);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[ADC_PERIPH_LEN - 1].SMPR[0]);
 }
 
 void Test_ADCSetSamplerate_SamplerateIsInvalid_RegisterShouldNotSet(void) {
-  adc_set_samplerate(1U, 0U, 0x8U);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[0].SMPR[1]);
+  adc_set_samplerate(ADC_PERIPH_LEN - 1, 0U, 0x8U);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[ADC_PERIPH_LEN - 1].SMPR[1]);
 }
 
 void Test_ADCSetModes_EdgeCase_RegistersShouldSetProperly(void) {
   struct ADCModes modes = {1U, 1U, 1U, 1U, 1U};
-  adc_set_modes(ADC_NUM, modes);
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x00000900UL, test_regs[ADC_NUM - 1].CR1,
-                                  "Register is CR1");
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x00000302UL, test_regs[ADC_NUM - 1].CR2,
-                                  "Register is CR2");
+  adc_set_modes(ADC_PERIPH_LEN - 1, modes);
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(
+      0x00000900UL, test_regs[ADC_PERIPH_LEN - 1].CR1, "Register is CR1");
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(
+      0x00000302UL, test_regs[ADC_PERIPH_LEN - 1].CR2, "Register is CR2");
 }
 
 void Test_ADCSetModes_ADCIsInvalid_RegistersShouldNotSet(void) {
   struct ADCModes modes = {1U, 1U, 1U, 1U, 1U};
-  adc_set_modes(ADC_NUM + 1, modes);
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x00000000UL, test_regs[ADC_NUM].CR1,
+  adc_set_modes(ADC_PERIPH_LEN, modes);
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x00000000UL, test_regs[ADC_PERIPH_LEN].CR1,
                                   "Register is CR1");
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x00000000UL, test_regs[ADC_NUM].CR2,
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x00000000UL, test_regs[ADC_PERIPH_LEN].CR2,
                                   "Register is CR2");
 }
 
 void Test_ADCSetSeq_EdgeCase_RegistersShouldSetProperly(void) {
   uint8_t seq[16] = {0x12, 0x12, 0x12, 0x12, 0x12, 0x12, 0x12, 0x12,
                      0x12, 0x12, 0x12, 0x12, 0x12, 0x12, 0x12, 0x12};
-  adc_set_seq(ADC_NUM, seq, 15U);
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x00F94A52UL, test_regs[ADC_NUM - 1].SQR[0],
-                                  "Register is SQR1");
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x25294A52UL, test_regs[ADC_NUM - 1].SQR[1],
-                                  "Register is SQR2");
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x25294A52UL, test_regs[ADC_NUM - 1].SQR[2],
-                                  "Register is SQR3");
+  adc_set_seq(ADC_PERIPH_LEN - 1, seq, 15U);
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(
+      0x00F94A52UL, test_regs[ADC_PERIPH_LEN - 1].SQR[0], "Register is SQR1");
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(
+      0x25294A52UL, test_regs[ADC_PERIPH_LEN - 1].SQR[1], "Register is SQR2");
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(
+      0x25294A52UL, test_regs[ADC_PERIPH_LEN - 1].SQR[2], "Register is SQR3");
 }
 
 void Test_ADCSetSeq_ADCIsInvalid_RegistersShouldNotSet(void) {
   uint8_t seq[16] = {0x12, 0x00, 0x12, 0x12, 0x12, 0x00, 0x12, 0x00,
                      0x00, 0x12, 0x12, 0x12, 0x00, 0x12, 0x12, 0x12};
-  adc_set_seq(ADC_NUM + 1, seq, 15U);
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x00000000UL, test_regs[ADC_NUM].SQR[0],
-                                  "Register is SQR1");
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x00000000UL, test_regs[ADC_NUM].SQR[1],
-                                  "Register is SQR2");
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x00000000UL, test_regs[ADC_NUM].SQR[2],
-                                  "Register is SQR3");
+  adc_set_seq(ADC_PERIPH_LEN, seq, 15U);
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(
+      0x00000000UL, test_regs[ADC_PERIPH_LEN].SQR[0], "Register is SQR1");
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(
+      0x00000000UL, test_regs[ADC_PERIPH_LEN].SQR[1], "Register is SQR2");
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(
+      0x00000000UL, test_regs[ADC_PERIPH_LEN].SQR[2], "Register is SQR3");
 }
 
 void Test_ADCSetSeq_SomeSequencesAreInvalid_ShouldClearTheirRegisterBits(void) {
   uint8_t seq[16] = {0x13, 0x12, 0x12, 0x12, 0x12, 0x12, 0x13, 0x12,
                      0x12, 0x12, 0x12, 0x12, 0x13, 0x12, 0x12, 0x12};
-  adc_set_seq(1U, seq, 15U);
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x00F94A40UL, test_regs[0].SQR[0],
-                                  "Register is SQR1");
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x25294A40UL, test_regs[0].SQR[1],
-                                  "Register is SQR2");
-  TEST_ASSERT_EQUAL_HEX32_MESSAGE(0x25294A40UL, test_regs[0].SQR[2],
-                                  "Register is SQR3");
+  adc_set_seq(ADC_PERIPH_LEN - 1, seq, 15U);
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(
+      0x00F94A40UL, test_regs[ADC_PERIPH_LEN - 1].SQR[0], "Register is SQR1");
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(
+      0x25294A40UL, test_regs[ADC_PERIPH_LEN - 1].SQR[1], "Register is SQR2");
+  TEST_ASSERT_EQUAL_HEX32_MESSAGE(
+      0x25294A40UL, test_regs[ADC_PERIPH_LEN - 1].SQR[2], "Register is SQR3");
 }
 
 void Test_ADCSetSeq_CountIsInvalid_ShouldClearItsRegisterBits(void) {
   uint8_t seq[16] = {0};
-  adc_set_seq(1U, seq, 18U);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[0].SQR[0]);
+  adc_set_seq(ADC_PERIPH_LEN - 1, seq, 18U);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[ADC_PERIPH_LEN - 1].SQR[0]);
 }
 
 void Test_ADCOn_EdgeCase_RegisterShouldSetProperly(void) {
-  adc_on(ADC_NUM);
-  TEST_ASSERT_EQUAL_HEX32(0x40000001UL, test_regs[ADC_NUM - 1].CR2);
+  adc_on(ADC_PERIPH_LEN - 1);
+  TEST_ASSERT_EQUAL_HEX32(0x40000001UL, test_regs[ADC_PERIPH_LEN - 1].CR2);
 }
 
 void Test_ADCOn_ADCIsInvalid_RegisterShouldNotSet(void) {
-  adc_on(ADC_NUM + 1);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[ADC_NUM].CR2);
+  adc_on(ADC_PERIPH_LEN);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[ADC_PERIPH_LEN].CR2);
 }
 
 void Test_ADCOff_EdgeCase_RegisterShouldSetProperly(void) {
-  test_regs[ADC_NUM - 1].CR2 = 0x00000001UL;
-  adc_off(ADC_NUM);
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[ADC_NUM - 1].CR2);
+  test_regs[ADC_PERIPH_LEN - 1].CR2 = 0x00000001UL;
+  adc_off(ADC_PERIPH_LEN - 1);
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, test_regs[ADC_PERIPH_LEN - 1].CR2);
 }
 
 void Test_ADCOff_ADCIsInvalid_RegisterShouldNotSet(void) {
-  test_regs[ADC_NUM].CR2 = 0x00000001UL;
-  adc_off(ADC_NUM + 1);
-  TEST_ASSERT_EQUAL_HEX32(0x00000001UL, test_regs[ADC_NUM].CR2);
+  test_regs[ADC_PERIPH_LEN].CR2 = 0x00000001UL;
+  adc_off(ADC_PERIPH_LEN);
+  TEST_ASSERT_EQUAL_HEX32(0x00000001UL, test_regs[ADC_PERIPH_LEN].CR2);
 }
 
 void Test_ADCRead_EdgeCase_RegisterShouldBeReadProperly(void) {
-  test_regs[ADC_NUM - 1].DR = 0xFFFFFFFFUL;
-  test_regs[ADC_NUM - 1].SR = 0x00000002UL;
-  TEST_ASSERT_EQUAL_HEX32(0x0000FFFFUL, adc_read(ADC_NUM));
+  test_regs[ADC_PERIPH_LEN - 1].DR = 0xFFFFFFFFUL;
+  test_regs[ADC_PERIPH_LEN - 1].SR = 0x00000002UL;
+  TEST_ASSERT_EQUAL_HEX32(0x0000FFFFUL, adc_read(ADC_PERIPH_LEN - 1));
 }
 
 void Test_ADCRead_ADCIsInvalid_RegisterShouldNotBeRead(void) {
-  test_regs[ADC_NUM].DR = 0xFFFFFFFFUL;
-  test_regs[ADC_NUM].SR = 0x00000002UL;
-  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, adc_read(ADC_NUM + 1));
+  test_regs[ADC_PERIPH_LEN].DR = 0xFFFFFFFFUL;
+  test_regs[ADC_PERIPH_LEN].SR = 0x00000002UL;
+  TEST_ASSERT_EQUAL_HEX32(0x00000000UL, adc_read(ADC_PERIPH_LEN));
 }
 
 void setUp(void) {
-  for (uint8_t i = 0; i < 3; i++) { test_regs[i] = empty_regs; }
+  for (uint8_t i = 0; i < ADC_PERIPH_LEN + 1; i++) {
+    test_regs[i] = empty_regs;
+  }
   test_cregs = empty_cregs;
 }
 

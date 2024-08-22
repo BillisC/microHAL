@@ -43,6 +43,43 @@ extern struct GPIORegs *GPIO(const uint8_t bank);
 #endif
 
 /* -- Enums -- */
+typedef enum gp_bank {
+#ifdef GPIOA_BASE
+  GP_BANK_A = (uint8_t)'A',
+#endif
+#ifdef GPIOB_BASE
+  GP_BANK_B = (uint8_t)'B',
+#endif
+#ifdef GPIOC_BASE
+  GP_BANK_C = (uint8_t)'C',
+#endif
+#ifdef GPIOD_BASE
+  GP_BANK_D = (uint8_t)'D',
+#endif
+#ifdef GPIOE_BASE
+  GP_BANK_E = (uint8_t)'E',
+#endif
+#ifdef GPIOF_BASE
+  GP_BANK_F = (uint8_t)'F',
+#endif
+#ifdef GPIOG_BASE
+  GP_BANK_G = (uint8_t)'G',
+#endif
+#ifdef GPIOH_BASE
+  GP_BANK_H = (uint8_t)'H',
+#endif
+#ifdef GPIOI_BASE
+  GP_BANK_I = (uint8_t)'I',
+#endif
+#ifdef GPIOJ_BASE
+  GP_BANK_J = (uint8_t)'J',
+#endif
+#ifdef GPIOK_BASE
+  GP_BANK_K = (uint8_t)'K',
+#endif
+  GP_BANK_LEN // This should be substracted with 'A'
+} gp_bank_t;
+
 /**
  *  @brief Available GPIO modes
  */
@@ -91,7 +128,8 @@ typedef enum gp_pupd {
  * @param dir The pin mode
  * @return None
  */
-void gp_set_direction(const char bank, const uint8_t pin, const gp_dir_t dir);
+void gp_set_direction(const gp_bank_t bank, const uint8_t pin,
+                      const gp_dir_t dir);
 
 /**
  * @brief Sets the GPIO output pin to the desired type.
@@ -104,7 +142,7 @@ void gp_set_direction(const char bank, const uint8_t pin, const gp_dir_t dir);
  * @param type The pin type
  * @return None
  */
-void gp_set_output_type(const char bank, const uint8_t pin,
+void gp_set_output_type(const gp_bank_t bank, const uint8_t pin,
                         const gp_otype_t type);
 
 /**
@@ -118,7 +156,8 @@ void gp_set_output_type(const char bank, const uint8_t pin,
  * @param speed The pin speed
  * @return None
  */
-void gp_set_speed(const char bank, const uint8_t pin, const gp_speed_t speed);
+void gp_set_speed(const gp_bank_t bank, const uint8_t pin,
+                  const gp_speed_t speed);
 
 /**
  * @brief Sets the GPIO input pin to the desired state.
@@ -132,7 +171,8 @@ void gp_set_speed(const char bank, const uint8_t pin, const gp_speed_t speed);
  * @param poopdr The pin state
  * @return None
  */
-void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupd_t poopdr);
+void gp_set_pupd(const gp_bank_t bank, const uint8_t pin,
+                 const gp_pupd_t poopdr);
 
 /**
  * @brief Sets the GPIO output pin to the desired value.
@@ -145,7 +185,7 @@ void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupd_t poopdr);
  * @param value The pin value
  * @return None
  */
-void gp_set_val(const char bank, const uint8_t pin, const _Bool value);
+void gp_set_val(const gp_bank_t bank, const uint8_t pin, const _Bool value);
 
 /**
  * @brief Reads the GPIO input pin value.
@@ -154,7 +194,7 @@ void gp_set_val(const char bank, const uint8_t pin, const _Bool value);
  * @param pin The GPIO pin
  * @return The current state of the pin
  */
-uint8_t gp_read_val(const char bank, const uint8_t pin);
+uint8_t gp_read_val(const gp_bank_t bank, const uint8_t pin);
 
 /**
  * @brief Sets the alternate function of the GPIO pin
@@ -164,6 +204,6 @@ uint8_t gp_read_val(const char bank, const uint8_t pin);
  * @param The alternate function number
  * @return None
  */
-void gp_set_af(const char bank, const uint8_t pin, const uint8_t af);
+void gp_set_af(const gp_bank_t bank, const uint8_t pin, const uint8_t af);
 
 #endif /* GPIO_H */

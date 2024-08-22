@@ -12,6 +12,15 @@
 #include "defines.h"
 #include "adc.h"
 
+static inline _Bool verifyADC(const adc_peripheral_t adc) {
+  /* Check that the ADC exists */
+  if ((adc >= 0U) && (adc < ADC_PERIPH_LEN)) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
 void adc_set_prescaler(const adc_prescaler_t value) {
   /* Check that the divider is valid */
   switch (value) {
@@ -33,7 +42,7 @@ void adc_set_prescaler(const adc_prescaler_t value) {
   regs->CCR = ccr;
 }
 
-void adc_set_resolution(const uint8_t adc, const adc_res_t value) {
+void adc_set_resolution(const adc_peripheral_t adc, const adc_res_t value) {
   /* Check that the resolution is valid */
   switch (value) {
     case ADC_RES_B06:
@@ -44,11 +53,10 @@ void adc_set_resolution(const uint8_t adc, const adc_res_t value) {
     default: return;
   }
 
-  /* Check that the ADC exists */
-  if (adc > ADC_NUM || adc == 0) {
+  if (!verifyADC(adc)) {
     return;
   } else {
-    struct ADCRegs *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC(adc);
 
     /* Change resolution */
     volatile uint32_t cr1 = regs->CR1;
@@ -59,7 +67,7 @@ void adc_set_resolution(const uint8_t adc, const adc_res_t value) {
   }
 }
 
-void adc_set_samplerate(const uint8_t adc, const uint8_t channel,
+void adc_set_samplerate(const adc_peripheral_t adc, const uint8_t channel,
                         const adc_samplerate_t value) {
   /* Check that the cycle count is valid */
   switch (value) {
@@ -75,13 +83,12 @@ void adc_set_samplerate(const uint8_t adc, const uint8_t channel,
     default: return;
   }
 
-  /* Check that the ADC and channel exist */
-  if ((adc > ADC_NUM || adc == 0)) {
+  if (!verifyADC(adc)) {
     return;
   } else if (channel > 18U) {
     return;
   } else {
-    struct ADCRegs *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC(adc);
 
     /* Change samplerate */
     uint8_t sel = (channel <= 9U) ? 1U : 0U;
@@ -93,12 +100,11 @@ void adc_set_samplerate(const uint8_t adc, const uint8_t channel,
   }
 }
 
-void adc_set_modes(const uint8_t adc, const struct ADCModes config) {
-  /* Check that the ADC and channel exist */
-  if (adc > ADC_NUM || adc == 0) {
+void adc_set_modes(const adc_peripheral_t adc, const struct ADCModes config) {
+  if (!verifyADC(adc)) {
     return;
   } else {
-    struct ADCRegs *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC(adc);
 
     /* Set modes on CR1 */
     volatile uint32_t cr1 = regs->CR1;
@@ -118,12 +124,12 @@ void adc_set_modes(const uint8_t adc, const struct ADCModes config) {
   }
 }
 
-void adc_set_seq(const uint8_t adc, const uint8_t *seq, const uint8_t count) {
-  /* Check that the ADC and channel exist */
-  if (adc > ADC_NUM || adc == 0) {
+void adc_set_seq(const adc_peripheral_t adc, const uint8_t *seq,
+                 const uint8_t count) {
+  if (!verifyADC(adc)) {
     return;
   } else {
-    struct ADCRegs *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC(adc);
 
     /* Apply new sequence */
     volatile uint32_t sqr[3] = {0};
@@ -145,12 +151,11 @@ void adc_set_seq(const uint8_t adc, const uint8_t *seq, const uint8_t count) {
   }
 }
 
-void adc_on(const uint8_t adc) {
-  /* Check that the ADC and channel exist */
-  if (adc > ADC_NUM || adc == 0) {
+void adc_on(const adc_peripheral_t adc) {
+  if (!verifyADC(adc)) {
     return;
   } else {
-    struct ADCRegs *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC(adc);
 
     /* Power on */
     regs->CR2 |= ADC_CR2_ADON_Msk;
@@ -165,24 +170,22 @@ void adc_on(const uint8_t adc) {
   }
 }
 
-void adc_off(const uint8_t adc) {
-  /* Check that the ADC and channel exist */
-  if (adc > ADC_NUM || adc == 0) {
+void adc_off(const adc_peripheral_t adc) {
+  if (!verifyADC(adc)) {
     return;
   } else {
-    struct ADCRegs *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC(adc);
 
     /* Power off */
     regs->CR2 &= ~(ADC_CR2_ADON_Msk);
   }
 }
 
-uint16_t adc_read(const uint8_t adc) {
-  /* Check that the ADC and channel exist */
-  if (adc > ADC_NUM || adc == 0) {
+uint16_t adc_read(const adc_peripheral_t adc) {
+  if (!verifyADC(adc)) {
     return 0U;
   } else {
-    struct ADCRegs *regs = ADC_(adc);
+    struct ADCRegs *regs = ADC(adc);
 
     /* Wait for conversion */
     while (!(1UL & (regs->SR >> ADC_SR_EOC_Pos))) {};

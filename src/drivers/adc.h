@@ -16,8 +16,6 @@
 #ifndef ADC_H
 #define ADC_H
 
-#define ADC_NUM 3U
-
 /* -- Includes -- */
 #include <stdint.h>
 #include "stm32f4xx.h"
@@ -56,11 +54,10 @@ _Static_assert((sizeof(struct ADCCommonRegs)) == (sizeof(uint32_t) * 3U),
                "ADC Common register struct size mismatch. Is it aligned?");
 
 #ifndef UTEST
-#define ADC_(number)                                                           \
-  (struct ADCRegs *)(ADC1_BASE + (0x100UL * ((uint8_t)number - 1U)))
+#define ADC(NUM)   (struct ADCRegs *)(ADC1_BASE + (0x100UL * ((uint8_t)NUM)))
 #define ADC_COMMON (struct ADCCommonRegs *)(ADC123_COMMON_BASE)
 #else
-extern struct ADCRegs *ADC_(const uint8_t number);
+extern struct ADCRegs *ADC(const uint8_t number);
 extern struct ADCCommonRegs *ADC_COMMON;
 #endif
 
@@ -79,6 +76,19 @@ _Static_assert((sizeof(struct ADCModes)) == (sizeof(uint8_t) * 1U),
                "ADC Configuration struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
+typedef enum adc_peripheral {
+#ifdef ADC1_BASE
+  ADC_PERIPH_1 = 0x00,
+#endif
+#ifdef ADC2_BASE
+  ADC_PERIPH_2 = 0x01,
+#endif
+#ifdef ADC3_BASE
+  ADC_PERIPH_3 = 0x02,
+#endif
+  ADC_PERIPH_LEN
+} adc_peripheral_t;
+
 typedef enum adc_res {
   ADC_RES_B12 = 0x00, // >= 15 ADCCLK cycles
   ADC_RES_B10 = 0x01, // >= 13 ADCCLK cycles
@@ -129,11 +139,11 @@ void adc_set_prescaler(const adc_prescaler_t value);
  * specified in the adc_res_t enum. Any other value will be
  * ignored.
  *
- * @param adc The selected ADC (1..ADC_NUM)
+ * @param adc The selected ADC
  * @param value The resolution of the ADC conversions
  * @return None
  */
-void adc_set_resolution(const uint8_t adc, const adc_res_t value);
+void adc_set_resolution(const adc_peripheral_t adc, const adc_res_t value);
 
 /**
  * @brief Sets the ADC sampling rate to the specified value.
@@ -142,12 +152,12 @@ void adc_set_resolution(const uint8_t adc, const adc_res_t value);
  * specified in the adc_res_t enum (in clock cycles). Any other
  * value will be ignored.
  *
- * @param adc The selected ADC (1..ADC_NUM)
+ * @param adc The selected ADC
  * @param channel The selected channel (0..19)
  * @param value The clock cycles of the ADC conversions
  * @return None
  */
-void adc_set_samplerate(const uint8_t adc, const uint8_t channel,
+void adc_set_samplerate(const adc_peripheral_t adc, const uint8_t channel,
                         const adc_samplerate_t value);
 
 /**
@@ -156,11 +166,11 @@ void adc_set_samplerate(const uint8_t adc, const uint8_t channel,
  * The configuration values are specified within the adc_config
  * struct. Some modes may not work as expected yet.
  *
- * @param adc The selected ADC (1..ADC_NUM)
+ * @param adc The selected ADC
  * @param config The ADC configuration
  * @return None
  */
-void adc_set_modes(const uint8_t adc, const struct ADCModes config);
+void adc_set_modes(const adc_peripheral_t adc, const struct ADCModes config);
 
 /**
  * @brief Sets the ADC conversion sequence to the specified order.
@@ -168,12 +178,13 @@ void adc_set_modes(const uint8_t adc, const struct ADCModes config);
  * The sequence consists of 16 5-bit elements. Bits 6..8 will be
  * ignored.
  *
- * @param adc The selected ADC (1..ADC_NUM)
+ * @param adc The selected ADC
  * @param seq Pointer to channel conversion sequence array
  * @param count The total amount of conversions
  * @return None
  */
-void adc_set_seq(const uint8_t adc, const uint8_t *seq, const uint8_t count);
+void adc_set_seq(const adc_peripheral_t adc, const uint8_t *seq,
+                 const uint8_t count);
 
 /**
  * @brief Starts the ADC conversion.
@@ -182,10 +193,10 @@ void adc_set_seq(const uint8_t adc, const uint8_t *seq, const uint8_t count);
  * start the conversion procedure as configured. Dummy
  * reads are included.
  *
- * @param adc The selected ADC (1..ADC_NUM)
+ * @param adc The selected ADC
  * @return None
  */
-void adc_on(const uint8_t adc);
+void adc_on(const adc_peripheral_t adc);
 
 /**
  * @brief Stops the ADC conversion.
@@ -193,17 +204,17 @@ void adc_on(const uint8_t adc);
  * The ADC will be powered off upon calling this command
  * and instantly stop the conversion procedure.
  *
- * @param adc The selected ADC (1..ADC_NUM)
+ * @param adc The selected ADC
  * @return None
  */
-void adc_off(const uint8_t adc);
+void adc_off(const adc_peripheral_t adc);
 
 /**
  * @brief Reads the last ADC conversion result.
  *
- * @param adc The selected ADC (1..ADC_NUM)
+ * @param adc The selected ADC
  * @return The conversion result
  */
-uint16_t adc_read(const uint8_t adc);
+uint16_t adc_read(const adc_peripheral_t adc);
 
 #endif

@@ -14,12 +14,12 @@
 
 static inline _Bool verifyGPIO(const uint8_t bank, const uint8_t pin) {
   if (bank > (uint8_t)'H') {
-    return 0U;
+    return FALSE;
   } else if (pin > 15U) {
-    return 0U;
+    return FALSE;
+  } else {
+    return TRUE;
   }
-
-  return 1U;
 }
 
 void gp_set_direction(const char bank, const uint8_t pin, const gp_dir_t dir) {

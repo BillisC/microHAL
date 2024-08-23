@@ -33,6 +33,8 @@ struct __attribute__((packed)) USARTRegs {
 _Static_assert((sizeof(struct USARTRegs)) == (sizeof(uint32_t) * 7U),
                "USART register struct size mismatch. Is it aligned?");
 
+#define USART(x) (struct USARTRegs *)(x)
+
 /**
  *  @brief Contains USART interrupt configuration
  */
@@ -54,16 +56,26 @@ _Static_assert((sizeof(struct USARTISR)) == (sizeof(uint8_t) * 1U),
 /**
  *  @brief Available USART peripherals
  */
-typedef enum usart_sel {
-  USART_SEL_1 = USART1_BASE,
-  USART_SEL_2 = USART2_BASE,
-  USART_SEL_3 = USART3_BASE,
-  USART_SEL_6 = USART6_BASE,
-  UART_SEL_4 = UART4_BASE,
-  UART_SEL_5 = UART5_BASE
-} usart_sel_t;
-
-#define USART(sel) (struct USARTRegs *)((usart_sel_t)sel)
+typedef enum usart_peripheral {
+#ifdef USART1_BASE
+  USART_PERIPH_1,
+#endif
+#ifdef USART2_BASE
+  USART_PERIPH_2,
+#endif
+#ifdef USART3_BASE
+  USART_PERIPH_3,
+#endif
+#ifdef USART6_BASE
+  USART_PERIPH_6,
+#endif
+#ifdef UART4_BASE
+  UART_PERIPH_4,
+#endif
+#ifdef UART5_BASE
+  UART_PERIPH_5
+#endif
+} usart_peripheral_t;
 
 /**
  *  @brief Available USART modes
@@ -113,7 +125,7 @@ typedef enum usart_parity {
  * @param x8_oversample Use x8 oversampling instead of x16
  * @return None
  */
-void usart_start(const usart_sel_t usart, const uint32_t baudrate,
+void usart_start(const usart_peripheral_t usart, const uint32_t baudrate,
                  const usart_mode_t mode);
 
 /**
@@ -124,7 +136,7 @@ void usart_start(const usart_sel_t usart, const uint32_t baudrate,
  * @param forTX Enable / Disable DMA for RX
  * @return None
  */
-void usart_set_dma(const usart_sel_t usart, const _Bool forTX,
+void usart_set_dma(const usart_peripheral_t usart, const _Bool forTX,
                    const _Bool forRX);
 
 /**
@@ -137,7 +149,7 @@ void usart_set_dma(const usart_sel_t usart, const _Bool forTX,
  * @param config The ISR configuration
  * @return None
  */
-void usart_set_interrupts(const usart_sel_t usart,
+void usart_set_interrupts(const usart_peripheral_t usart,
                           const struct USARTISR config);
 
 /**
@@ -152,7 +164,7 @@ void usart_set_interrupts(const usart_sel_t usart,
  * @param databits The word length
  * @return None
  */
-void usart_set_databits(const usart_sel_t usart,
+void usart_set_databits(const usart_peripheral_t usart,
                         const usart_stopbits_t stopbits,
                         const usart_databits_t databits);
 
@@ -169,7 +181,8 @@ void usart_set_databits(const usart_sel_t usart,
  * @param parity The selected parity
  * @return None
  */
-void usart_set_parity(const usart_sel_t usart, const usart_parity_t parity);
+void usart_set_parity(const usart_peripheral_t usart,
+                      const usart_parity_t parity);
 
 /**
  * @brief Writes specified message to USART buffer.
@@ -182,7 +195,7 @@ void usart_set_parity(const usart_sel_t usart, const usart_parity_t parity);
  * @param character Pointer to the message
  * @return None
  */
-void usart_tx_message(const usart_sel_t usart, const char *message);
+void usart_tx_message(const usart_peripheral_t usart, const char *message);
 
 /**
  * @brief Reads the received data from the USART buffer.
@@ -195,7 +208,7 @@ void usart_tx_message(const usart_sel_t usart, const char *message);
  * @param usart The selected USART
  * @return The received data
  */
-uint16_t usart_rx_byte(const usart_sel_t usart);
+uint16_t usart_rx_byte(const usart_peripheral_t usart);
 
 /**
  * @brief Disable the USART interface.
@@ -206,6 +219,6 @@ uint16_t usart_rx_byte(const usart_sel_t usart);
  * @param usart The selected USART
  * @return None
  */
-void usart_stop(const usart_sel_t usart);
+void usart_stop(const usart_peripheral_t usart);
 
 #endif

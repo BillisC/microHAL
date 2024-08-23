@@ -17,7 +17,7 @@
 static inline _Bool verifyDMA(const dma_peripheral_t dma,
                               const uint8_t stream) {
   /* Make sure that the peripheral and stream exist */
-  if (!((dma != DMA_PERIPH_1) || (dma != DMA_PERIPH_2))) {
+  if ((dma != DMA_PERIPH_1) && (dma != DMA_PERIPH_2)) {
     return FALSE;
   } else if (!(stream < 8)) {
     return FALSE;

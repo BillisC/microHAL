@@ -15,19 +15,20 @@
 /* -- Includes -- */
 #include <stdint.h>
 #include "stm32f4xx.h"
+#include "defines.h"
 
 /* -- Structs -- */
 /**
  *  @brief Contains USART registers
  */
 struct __attribute__((packed)) USARTRegs {
-  volatile uint32_t SR;
-  volatile uint32_t DR;
-  volatile uint32_t BRR;
-  volatile uint32_t CR1;
-  volatile uint32_t CR2;
-  volatile uint32_t CR3;
-  volatile uint32_t GTPR;
+  REG32 SR;
+  REG32 DR;
+  REG32 BRR;
+  REG32 CR1;
+  REG32 CR2;
+  REG32 CR3;
+  REG32 GTPR;
 };
 
 _Static_assert((sizeof(struct USARTRegs)) == (sizeof(uint32_t) * 7U),

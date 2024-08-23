@@ -19,23 +19,24 @@
 /* -- Includes -- */
 #include <stdint.h>
 #include "stm32f4xx.h"
+#include "defines.h"
 
 /* -- Structs -- */
 /**
  *  @brief Contains ADC registers
  */
 struct __attribute__((packed)) ADCRegs {
-  volatile uint32_t SR;
-  volatile uint32_t CR1;
-  volatile uint32_t CR2;
-  volatile uint32_t SMPR[2];
-  volatile uint32_t JOFR[4];
-  volatile uint32_t HTR;
-  volatile uint32_t LTR;
-  volatile uint32_t SQR[3];
-  volatile uint32_t JSQR;
-  volatile uint32_t JDR[4];
-  volatile uint32_t DR;
+  REG32 SR;
+  REG32 CR1;
+  REG32 CR2;
+  REG32 SMPR[2];
+  REG32 JOFR[4];
+  REG32 HTR;
+  REG32 LTR;
+  REG32 SQR[3];
+  REG32 JSQR;
+  REG32 JDR[4];
+  REG32 DR;
 };
 
 _Static_assert((sizeof(struct ADCRegs)) == (sizeof(uint32_t) * 20U),
@@ -45,9 +46,9 @@ _Static_assert((sizeof(struct ADCRegs)) == (sizeof(uint32_t) * 20U),
  *  @brief Contains ADC common registers
  */
 struct __attribute__((packed)) ADCCommonRegs {
-  volatile uint32_t CSR;
-  volatile uint32_t CCR;
-  volatile uint32_t CDR;
+  REG32 CSR;
+  REG32 CCR;
+  REG32 CDR;
 };
 
 _Static_assert((sizeof(struct ADCCommonRegs)) == (sizeof(uint32_t) * 3U),
@@ -76,6 +77,9 @@ _Static_assert((sizeof(struct ADCModes)) == (sizeof(uint8_t) * 1U),
                "ADC Configuration struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
+/**
+ *  @brief Available ADC peripherals
+ */
 typedef enum adc_peripheral {
 #ifdef ADC1_BASE
   ADC_PERIPH_1 = 0x00,
@@ -89,6 +93,9 @@ typedef enum adc_peripheral {
   ADC_PERIPH_LEN
 } adc_peripheral_t;
 
+/**
+ *  @brief Available ADC resolutions
+ */
 typedef enum adc_res {
   ADC_RES_B12 = 0x00, // >= 15 ADCCLK cycles
   ADC_RES_B10 = 0x01, // >= 13 ADCCLK cycles
@@ -96,6 +103,9 @@ typedef enum adc_res {
   ADC_RES_B06 = 0x03  // >= 9 ADCCLK cycles
 } adc_res_t;
 
+/**
+ *  @brief Available ADC trigger modes
+ */
 typedef enum adc_trigger {
   ADC_TRIGGER_NONE = 0x00,
   ADC_TRIGGER_RISE = 0x01,
@@ -103,6 +113,9 @@ typedef enum adc_trigger {
   ADC_TRIGGER_BOTH = 0x03
 } adc_trigger_t;
 
+/**
+ *  @brief Available ADC samplerates (in cycles)
+ */
 typedef enum adc_samplerate {
   ADC_SAMPLERATE_C003 = 0x00,
   ADC_SAMPLERATE_C015 = 0x01,
@@ -114,6 +127,9 @@ typedef enum adc_samplerate {
   ADC_SAMPLERATE_C480 = 0x07
 } adc_samplerate_t;
 
+/**
+ *  @brief Available ADC prescaler dividers
+ */
 typedef enum adc_prescaler {
   ADC_PRESCALER_DIV2 = 0x00,
   ADC_PRESCALER_DIV4 = 0x01,

@@ -9,7 +9,6 @@
  */
 
 /* -- Includes -- */
-#include "defines.h"
 #include "gpio.h"
 
 static inline _Bool verifyGPIO(const gp_bank_t bank, const uint8_t pin) {
@@ -77,7 +76,7 @@ void gp_set_direction(const gp_bank_t bank, const uint8_t pin,
     struct GPIORegs *regs = GPIO(bank);
 
     /* Change the pin direction */
-    volatile uint32_t moder = regs->MODER;
+    REG32 moder = regs->MODER;
     moder &= ~(3UL << (pin * 2U)); // Clear first
     moder |= ((3UL & dir) << (pin * 2U));
 
@@ -96,7 +95,7 @@ void gp_set_output_type(const gp_bank_t bank, const uint8_t pin,
     struct GPIORegs *regs = GPIO(bank);
 
     /* Change the pin output type */
-    volatile uint32_t otyper = regs->OTYPER;
+    REG32 otyper = regs->OTYPER;
     otyper &= ~(1UL << pin); // Clear first
     otyper |= ((1UL & type) << pin);
 
@@ -122,7 +121,7 @@ void gp_set_speed(const gp_bank_t bank, const uint8_t pin,
     struct GPIORegs *regs = GPIO(bank);
 
     /* Change the pin output speed */
-    volatile uint32_t ospeedr = regs->OSPEEDR;
+    REG32 ospeedr = regs->OSPEEDR;
     ospeedr &= ~(3UL << (pin * 2U)); // Clear first
     ospeedr |= ((3UL & speed) << (pin * 2U));
 
@@ -147,7 +146,7 @@ void gp_set_pupd(const gp_bank_t bank, const uint8_t pin,
     struct GPIORegs *regs = GPIO(bank);
 
     /* Set pull-up / pull-down state of pin */
-    volatile uint32_t pupdr = regs->PUPDR;
+    REG32 pupdr = regs->PUPDR;
     pupdr &= ~(3UL << (pin * 2U)); // Clear first
     pupdr |= ((3UL & poopdr) << (pin * 2U));
 
@@ -187,7 +186,7 @@ void gp_set_af(const gp_bank_t bank, const uint8_t pin, const uint8_t af) {
 
     /* Set the alternate function to the correct register */
     uint8_t sel = (pin <= 7U) ? 0U : 1U;
-    volatile uint32_t afr = regs->AFR[sel];
+    REG32 afr = regs->AFR[sel];
     afr &= ~(15U << ((pin - (8U * sel)) * 4U)); // Clear first
     afr |= ((15U & af) << ((pin - (8U * sel)) * 4U));
 

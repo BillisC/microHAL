@@ -5,8 +5,8 @@ var indexSectionsWithContent =
   2: "adgimstu",
   3: "adgmsu",
   4: "t",
-  5: "dgu",
-  6: "dgu",
+  5: "adgu",
+  6: "adgu",
   7: "blm"
 };
 

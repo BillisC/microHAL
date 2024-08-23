@@ -18,7 +18,7 @@
 /**
  * @brief MCU tick count.
  */
-extern uint32_t ticks;
+extern volatile uint32_t ticks;
 
 /**
  * @brief Systick interrupt handler.

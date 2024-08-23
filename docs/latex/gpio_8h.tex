@@ -7,6 +7,7 @@ Function prototypes for the GPIO driver.
 
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 {\ttfamily \#include "{}stm32f4xx.\+h"{}}\newline
+{\ttfamily \#include "{}defines.\+h"{}}\newline
 \doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
@@ -20,6 +21,9 @@ struct \mbox{\hyperlink{structGPIORegs}{GPIORegs}}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
+\Hypertarget{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}\label{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9} 
+typedef enum \mbox{\hyperlink{gpio_8h_a57c29567ddbfe8b54e5f18925ca257d5}{gp\+\_\+bank}} {\bfseries gp\+\_\+bank\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Available GPIO peripherals. \end{DoxyCompactList}\item 
 \Hypertarget{gpio_8h_a2066c61dfaee27a2e15d2a7f6eb6be53}\label{gpio_8h_a2066c61dfaee27a2e15d2a7f6eb6be53} 
 typedef enum \mbox{\hyperlink{gpio_8h_ad41a68bf735698334fe528ac7a6d8df2}{gp\+\_\+dir}} {\bfseries gp\+\_\+dir\+\_\+t}
 \begin{DoxyCompactList}\small\item\em Available GPIO modes. \end{DoxyCompactList}\item 
@@ -35,6 +39,10 @@ typedef enum \mbox{\hyperlink{gpio_8h_a17de1fea985582b9c6fe1acc1c130a74}{gp\+\_\
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
+\Hypertarget{gpio_8h_a57c29567ddbfe8b54e5f18925ca257d5}\label{gpio_8h_a57c29567ddbfe8b54e5f18925ca257d5} 
+enum \mbox{\hyperlink{gpio_8h_a57c29567ddbfe8b54e5f18925ca257d5}{gp\+\_\+bank}} \{ {\bfseries GP\+\_\+\+BANK\+\_\+\+LEN}
+ \}
+\begin{DoxyCompactList}\small\item\em Available GPIO peripherals. \end{DoxyCompactList}\item 
 \Hypertarget{gpio_8h_ad41a68bf735698334fe528ac7a6d8df2}\label{gpio_8h_ad41a68bf735698334fe528ac7a6d8df2} 
 enum \mbox{\hyperlink{gpio_8h_ad41a68bf735698334fe528ac7a6d8df2}{gp\+\_\+dir}} \{ {\bfseries GP\+\_\+\+DIR\+\_\+\+IN} = 0x00
 , {\bfseries GP\+\_\+\+DIR\+\_\+\+OU} = 0x01
@@ -63,19 +71,19 @@ enum \mbox{\hyperlink{gpio_8h_a17de1fea985582b9c6fe1acc1c130a74}{gp\+\_\+pupd}} 
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{gpio_8h_ab0634f59138b12257c51f7a4c368b564}{gp\+\_\+set\+\_\+direction}} (const char bank, const uint8\+\_\+t pin, const \mbox{\hyperlink{gpio_8h_a2066c61dfaee27a2e15d2a7f6eb6be53}{gp\+\_\+dir\+\_\+t}} dir)
+void \mbox{\hyperlink{gpio_8h_a6a487cbaac9afa23608f3614741af248}{gp\+\_\+set\+\_\+direction}} (const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}} bank, const uint8\+\_\+t pin, const \mbox{\hyperlink{gpio_8h_a2066c61dfaee27a2e15d2a7f6eb6be53}{gp\+\_\+dir\+\_\+t}} dir)
 \begin{DoxyCompactList}\small\item\em Sets the GPIO pin to the desired mode. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{gpio_8h_a0af948fdb555a92e8d4d46674caec8a4}{gp\+\_\+set\+\_\+output\+\_\+type}} (const char bank, const uint8\+\_\+t pin, const \mbox{\hyperlink{gpio_8h_abed873c90c4ec9e59dfd97ae7db692a2}{gp\+\_\+otype\+\_\+t}} type)
+void \mbox{\hyperlink{gpio_8h_a2054ec03056d19ff7ceff26f403dc90f}{gp\+\_\+set\+\_\+output\+\_\+type}} (const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}} bank, const uint8\+\_\+t pin, const \mbox{\hyperlink{gpio_8h_abed873c90c4ec9e59dfd97ae7db692a2}{gp\+\_\+otype\+\_\+t}} type)
 \begin{DoxyCompactList}\small\item\em Sets the GPIO output pin to the desired type. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{gpio_8h_a1df7b4c9f5748cc16fe2391a6059a7d3}{gp\+\_\+set\+\_\+speed}} (const char bank, const uint8\+\_\+t pin, const \mbox{\hyperlink{gpio_8h_a20c9c8df4d3bdb4e8b241ae77851972d}{gp\+\_\+speed\+\_\+t}} speed)
+void \mbox{\hyperlink{gpio_8h_ae7a1e3ff84b488d75100f9471309ece0}{gp\+\_\+set\+\_\+speed}} (const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}} bank, const uint8\+\_\+t pin, const \mbox{\hyperlink{gpio_8h_a20c9c8df4d3bdb4e8b241ae77851972d}{gp\+\_\+speed\+\_\+t}} speed)
 \begin{DoxyCompactList}\small\item\em Sets the GPIO output pin to the desired speed. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{gpio_8h_aeae32bc56298cd61e481159fe52b242a}{gp\+\_\+set\+\_\+pupd}} (const char bank, const uint8\+\_\+t pin, const \mbox{\hyperlink{gpio_8h_a40e057b298dffe6a5e0fa8865394ef30}{gp\+\_\+pupd\+\_\+t}} poopdr)
+void \mbox{\hyperlink{gpio_8h_a9a6d1660ac4b5055bf2bc88c5f96b78a}{gp\+\_\+set\+\_\+pupd}} (const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}} bank, const uint8\+\_\+t pin, const \mbox{\hyperlink{gpio_8h_a40e057b298dffe6a5e0fa8865394ef30}{gp\+\_\+pupd\+\_\+t}} poopdr)
 \begin{DoxyCompactList}\small\item\em Sets the GPIO input pin to the desired state. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{gpio_8h_a1746be7350679532a4ff89dc46ab802e}{gp\+\_\+set\+\_\+val}} (const char bank, const uint8\+\_\+t pin, const \+\_\+\+Bool value)
+void \mbox{\hyperlink{gpio_8h_a2c454082c2e6f63ed7dd1c55ab977af5}{gp\+\_\+set\+\_\+val}} (const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}} bank, const uint8\+\_\+t pin, const \+\_\+\+Bool value)
 \begin{DoxyCompactList}\small\item\em Sets the GPIO output pin to the desired value. \end{DoxyCompactList}\item 
-uint8\+\_\+t \mbox{\hyperlink{gpio_8h_abd098fd2fb3167167a1a1126d50bf0b1}{gp\+\_\+read\+\_\+val}} (const char bank, const uint8\+\_\+t pin)
+uint8\+\_\+t \mbox{\hyperlink{gpio_8h_a3f45fb872ed0fb99979b0427f54293e1}{gp\+\_\+read\+\_\+val}} (const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}} bank, const uint8\+\_\+t pin)
 \begin{DoxyCompactList}\small\item\em Reads the GPIO input pin value. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{gpio_8h_ad5d096bcdb8870c66364dfa479c0e0af}{gp\+\_\+set\+\_\+af}} (const char bank, const uint8\+\_\+t pin, const uint8\+\_\+t af)
+void \mbox{\hyperlink{gpio_8h_aeb74661b8cc6041d9fd52e7d18be0f6f}{gp\+\_\+set\+\_\+af}} (const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}} bank, const uint8\+\_\+t pin, const uint8\+\_\+t af)
 \begin{DoxyCompactList}\small\item\em Sets the alternate function of the GPIO pin. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -106,11 +114,11 @@ Vasileios Ch. (BillisC)
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{gpio_8h_abd098fd2fb3167167a1a1126d50bf0b1}\index{gpio.h@{gpio.h}!gp\_read\_val@{gp\_read\_val}}
+\Hypertarget{gpio_8h_a3f45fb872ed0fb99979b0427f54293e1}\index{gpio.h@{gpio.h}!gp\_read\_val@{gp\_read\_val}}
 \index{gp\_read\_val@{gp\_read\_val}!gpio.h@{gpio.h}}
 \doxysubsubsection{\texorpdfstring{gp\_read\_val()}{gp\_read\_val()}}
-{\footnotesize\ttfamily \label{gpio_8h_abd098fd2fb3167167a1a1126d50bf0b1} 
-uint8\+\_\+t gp\+\_\+read\+\_\+val (\begin{DoxyParamCaption}\item[{const char}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{gpio_8h_a3f45fb872ed0fb99979b0427f54293e1} 
+uint8\+\_\+t gp\+\_\+read\+\_\+val (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}}}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{}\end{DoxyParamCaption})}
 
 
 
@@ -126,11 +134,11 @@ Reads the GPIO input pin value.
 \begin{DoxyReturn}{Returns}
 The current state of the pin 
 \end{DoxyReturn}
-\Hypertarget{gpio_8h_ad5d096bcdb8870c66364dfa479c0e0af}\index{gpio.h@{gpio.h}!gp\_set\_af@{gp\_set\_af}}
+\Hypertarget{gpio_8h_aeb74661b8cc6041d9fd52e7d18be0f6f}\index{gpio.h@{gpio.h}!gp\_set\_af@{gp\_set\_af}}
 \index{gp\_set\_af@{gp\_set\_af}!gpio.h@{gpio.h}}
 \doxysubsubsection{\texorpdfstring{gp\_set\_af()}{gp\_set\_af()}}
-{\footnotesize\ttfamily \label{gpio_8h_ad5d096bcdb8870c66364dfa479c0e0af} 
-void gp\+\_\+set\+\_\+af (\begin{DoxyParamCaption}\item[{const char}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{, }\item[{const uint8\+\_\+t}]{af}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{gpio_8h_aeb74661b8cc6041d9fd52e7d18be0f6f} 
+void gp\+\_\+set\+\_\+af (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}}}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{, }\item[{const uint8\+\_\+t}]{af}{}\end{DoxyParamCaption})}
 
 
 
@@ -148,11 +156,11 @@ Sets the alternate function of the GPIO pin.
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\Hypertarget{gpio_8h_ab0634f59138b12257c51f7a4c368b564}\index{gpio.h@{gpio.h}!gp\_set\_direction@{gp\_set\_direction}}
+\Hypertarget{gpio_8h_a6a487cbaac9afa23608f3614741af248}\index{gpio.h@{gpio.h}!gp\_set\_direction@{gp\_set\_direction}}
 \index{gp\_set\_direction@{gp\_set\_direction}!gpio.h@{gpio.h}}
 \doxysubsubsection{\texorpdfstring{gp\_set\_direction()}{gp\_set\_direction()}}
-{\footnotesize\ttfamily \label{gpio_8h_ab0634f59138b12257c51f7a4c368b564} 
-void gp\+\_\+set\+\_\+direction (\begin{DoxyParamCaption}\item[{const char}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{, }\item[{const \mbox{\hyperlink{gpio_8h_a2066c61dfaee27a2e15d2a7f6eb6be53}{gp\+\_\+dir\+\_\+t}}}]{dir}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{gpio_8h_a6a487cbaac9afa23608f3614741af248} 
+void gp\+\_\+set\+\_\+direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}}}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{, }\item[{const \mbox{\hyperlink{gpio_8h_a2066c61dfaee27a2e15d2a7f6eb6be53}{gp\+\_\+dir\+\_\+t}}}]{dir}{}\end{DoxyParamCaption})}
 
 
 
@@ -172,11 +180,11 @@ The available directions for the GPIO pins are specified in the gp\+\_\+dir\+\_\
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\Hypertarget{gpio_8h_a0af948fdb555a92e8d4d46674caec8a4}\index{gpio.h@{gpio.h}!gp\_set\_output\_type@{gp\_set\_output\_type}}
+\Hypertarget{gpio_8h_a2054ec03056d19ff7ceff26f403dc90f}\index{gpio.h@{gpio.h}!gp\_set\_output\_type@{gp\_set\_output\_type}}
 \index{gp\_set\_output\_type@{gp\_set\_output\_type}!gpio.h@{gpio.h}}
 \doxysubsubsection{\texorpdfstring{gp\_set\_output\_type()}{gp\_set\_output\_type()}}
-{\footnotesize\ttfamily \label{gpio_8h_a0af948fdb555a92e8d4d46674caec8a4} 
-void gp\+\_\+set\+\_\+output\+\_\+type (\begin{DoxyParamCaption}\item[{const char}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{, }\item[{const \mbox{\hyperlink{gpio_8h_abed873c90c4ec9e59dfd97ae7db692a2}{gp\+\_\+otype\+\_\+t}}}]{type}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{gpio_8h_a2054ec03056d19ff7ceff26f403dc90f} 
+void gp\+\_\+set\+\_\+output\+\_\+type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}}}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{, }\item[{const \mbox{\hyperlink{gpio_8h_abed873c90c4ec9e59dfd97ae7db692a2}{gp\+\_\+otype\+\_\+t}}}]{type}{}\end{DoxyParamCaption})}
 
 
 
@@ -196,11 +204,11 @@ The available output types for the GPIO pins are specified in the gp\+\_\+otype\
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\Hypertarget{gpio_8h_aeae32bc56298cd61e481159fe52b242a}\index{gpio.h@{gpio.h}!gp\_set\_pupd@{gp\_set\_pupd}}
+\Hypertarget{gpio_8h_a9a6d1660ac4b5055bf2bc88c5f96b78a}\index{gpio.h@{gpio.h}!gp\_set\_pupd@{gp\_set\_pupd}}
 \index{gp\_set\_pupd@{gp\_set\_pupd}!gpio.h@{gpio.h}}
 \doxysubsubsection{\texorpdfstring{gp\_set\_pupd()}{gp\_set\_pupd()}}
-{\footnotesize\ttfamily \label{gpio_8h_aeae32bc56298cd61e481159fe52b242a} 
-void gp\+\_\+set\+\_\+pupd (\begin{DoxyParamCaption}\item[{const char}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{, }\item[{const \mbox{\hyperlink{gpio_8h_a40e057b298dffe6a5e0fa8865394ef30}{gp\+\_\+pupd\+\_\+t}}}]{poopdr}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{gpio_8h_a9a6d1660ac4b5055bf2bc88c5f96b78a} 
+void gp\+\_\+set\+\_\+pupd (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}}}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{, }\item[{const \mbox{\hyperlink{gpio_8h_a40e057b298dffe6a5e0fa8865394ef30}{gp\+\_\+pupd\+\_\+t}}}]{poopdr}{}\end{DoxyParamCaption})}
 
 
 
@@ -220,11 +228,11 @@ The available pull-\/up/pull-\/down states for the GPIO pins are specified in th
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\Hypertarget{gpio_8h_a1df7b4c9f5748cc16fe2391a6059a7d3}\index{gpio.h@{gpio.h}!gp\_set\_speed@{gp\_set\_speed}}
+\Hypertarget{gpio_8h_ae7a1e3ff84b488d75100f9471309ece0}\index{gpio.h@{gpio.h}!gp\_set\_speed@{gp\_set\_speed}}
 \index{gp\_set\_speed@{gp\_set\_speed}!gpio.h@{gpio.h}}
 \doxysubsubsection{\texorpdfstring{gp\_set\_speed()}{gp\_set\_speed()}}
-{\footnotesize\ttfamily \label{gpio_8h_a1df7b4c9f5748cc16fe2391a6059a7d3} 
-void gp\+\_\+set\+\_\+speed (\begin{DoxyParamCaption}\item[{const char}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{, }\item[{const \mbox{\hyperlink{gpio_8h_a20c9c8df4d3bdb4e8b241ae77851972d}{gp\+\_\+speed\+\_\+t}}}]{speed}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{gpio_8h_ae7a1e3ff84b488d75100f9471309ece0} 
+void gp\+\_\+set\+\_\+speed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}}}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{, }\item[{const \mbox{\hyperlink{gpio_8h_a20c9c8df4d3bdb4e8b241ae77851972d}{gp\+\_\+speed\+\_\+t}}}]{speed}{}\end{DoxyParamCaption})}
 
 
 
@@ -244,11 +252,11 @@ The available speeds for the GPIO output pins are specified in the gp\+\_\+speed
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\Hypertarget{gpio_8h_a1746be7350679532a4ff89dc46ab802e}\index{gpio.h@{gpio.h}!gp\_set\_val@{gp\_set\_val}}
+\Hypertarget{gpio_8h_a2c454082c2e6f63ed7dd1c55ab977af5}\index{gpio.h@{gpio.h}!gp\_set\_val@{gp\_set\_val}}
 \index{gp\_set\_val@{gp\_set\_val}!gpio.h@{gpio.h}}
 \doxysubsubsection{\texorpdfstring{gp\_set\_val()}{gp\_set\_val()}}
-{\footnotesize\ttfamily \label{gpio_8h_a1746be7350679532a4ff89dc46ab802e} 
-void gp\+\_\+set\+\_\+val (\begin{DoxyParamCaption}\item[{const char}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{, }\item[{const \+\_\+\+Bool}]{value}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{gpio_8h_a2c454082c2e6f63ed7dd1c55ab977af5} 
+void gp\+\_\+set\+\_\+val (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{gpio_8h_ae22c25f9d4e2dcf552d6e7418c7295b9}{gp\+\_\+bank\+\_\+t}}}]{bank}{, }\item[{const uint8\+\_\+t}]{pin}{, }\item[{const \+\_\+\+Bool}]{value}{}\end{DoxyParamCaption})}
 
 
 

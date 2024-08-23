@@ -99,134 +99,145 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">/* -- Includes -- */</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="stm32f4xx_8h.html">stm32f4xx.h</a>&quot;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">/* -- Structs -- */</span></div>
-<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structDMAStreamRegs.html">   27</a></span><span class="keyword">struct </span>__attribute__((packed)) <a class="code hl_struct" href="structDMAStreamRegs.html">DMAStreamRegs</a> {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keyword">volatile</span> uint32_t CR;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keyword">volatile</span> uint32_t NDTR;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="keyword">volatile</span> uint32_t PAR;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keyword">volatile</span> uint32_t M0AR;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keyword">volatile</span> uint32_t M1AR;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="keyword">volatile</span> uint32_t FCR;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="defines_8h.html">defines.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">/* -- Structs -- */</span></div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structDMAStreamRegs.html">   28</a></span><span class="keyword">struct </span>__attribute__((packed)) <a class="code hl_struct" href="structDMAStreamRegs.html">DMAStreamRegs</a> {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  REG32 CR;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  REG32 NDTR;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  REG32 PAR;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  REG32 M0AR;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  REG32 M1AR;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  REG32 FCR;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
 </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">_Static_assert</span>((<span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code hl_struct" href="structDMAStreamRegs.html">DMAStreamRegs</a>)) == (<span class="keyword">sizeof</span>(uint32_t) * 6U),</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>               <span class="stringliteral">&quot;DMA Sx register struct size mismatch. Is it aligned?&quot;</span>);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="foldopen" id="foldopen00042" data-start="{" data-end="};">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structDMARegs.html">   42</a></span><span class="keyword">struct </span>__attribute__((packed)) <a class="code hl_struct" href="structDMARegs.html">DMARegs</a> {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="keyword">volatile</span> uint32_t LISR;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keyword">volatile</span> uint32_t HISR;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keyword">volatile</span> uint32_t LIFCR;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keyword">volatile</span> uint32_t HIFCR;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keyword">volatile</span> <span class="keyword">struct </span><a class="code hl_struct" href="structDMAStreamRegs.html">DMAStreamRegs</a> S[8];</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">_Static_assert</span>((<span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code hl_struct" href="structDMAStreamRegs.html">DMAStreamRegs</a>)) == (<span class="keyword">sizeof</span>(uint32_t) * 6U),</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>               <span class="stringliteral">&quot;DMA Sx register struct size mismatch. Is it aligned?&quot;</span>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="};">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structDMARegs.html">   43</a></span><span class="keyword">struct </span>__attribute__((packed)) <a class="code hl_struct" href="structDMARegs.html">DMARegs</a> {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  REG32 LISR;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  REG32 HISR;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  REG32 LIFCR;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  REG32 HIFCR;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">volatile</span> <span class="keyword">struct </span><a class="code hl_struct" href="structDMAStreamRegs.html">DMAStreamRegs</a> S[8];</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>};</div>
 </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">_Static_assert</span>((<span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code hl_struct" href="structDMARegs.html">DMARegs</a>)) ==</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                   (<span class="keyword">sizeof</span>(uint32_t) * (4U + (6U * 8U))),</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>               <span class="stringliteral">&quot;DMA register struct size mismatch. Is it aligned?&quot;</span>);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#define DMA(x) (struct DMARegs *)(DMA1_BASE + ((x - 1) * 0x400UL))</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="foldopen" id="foldopen00059" data-start="{" data-end="};">
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="structDMAStreamConfig.html">   59</a></span><span class="keyword">struct </span>__attribute__((packed)) <a class="code hl_struct" href="structDMAStreamConfig.html">DMAStreamConfig</a> {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keyword">volatile</span> _Bool Circular     : 1;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">volatile</span> _Bool DoubleBuffer : 1;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keyword">volatile</span> _Bool PerIncrement : 1;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keyword">volatile</span> _Bool MemIncrement : 1;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keyword">volatile</span> _Bool PerFlowCtrl  : 1;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>};</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">_Static_assert</span>((<span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code hl_struct" href="structDMARegs.html">DMARegs</a>)) ==</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                   (<span class="keyword">sizeof</span>(uint32_t) * (4U + (6U * 8U))),</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>               <span class="stringliteral">&quot;DMA register struct size mismatch. Is it aligned?&quot;</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#define DMA(x) (struct DMARegs *)(DMA1_BASE + (x * 0x400UL))</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00060" data-start="{" data-end="};">
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structDMAStreamConfig.html">   60</a></span><span class="keyword">struct </span>__attribute__((packed)) <a class="code hl_struct" href="structDMAStreamConfig.html">DMAStreamConfig</a> {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">volatile</span> _Bool Circular     : 1;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keyword">volatile</span> _Bool DoubleBuffer : 1;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keyword">volatile</span> _Bool PerIncrement : 1;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keyword">volatile</span> _Bool MemIncrement : 1;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keyword">volatile</span> _Bool PerFlowCtrl  : 1;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
 </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">_Static_assert</span>((<span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code hl_struct" href="structDMAStreamConfig.html">DMAStreamConfig</a>)) == (<span class="keyword">sizeof</span>(uint8_t) * 1U),</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>               <span class="stringliteral">&quot;DMA Stream config struct size mismatch. Is it aligned?&quot;</span>);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="foldopen" id="foldopen00073" data-start="{" data-end="};">
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="structDMAStreamISR.html">   73</a></span><span class="keyword">struct </span>__attribute__((packed)) <a class="code hl_struct" href="structDMAStreamISR.html">DMAStreamISR</a> {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keyword">volatile</span> _Bool HTI  : 1;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="keyword">volatile</span> _Bool TCI  : 1;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  <span class="keyword">volatile</span> _Bool TEI  : 1;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keyword">volatile</span> _Bool FEI  : 1;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="keyword">volatile</span> _Bool DMEI : 1;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>};</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">_Static_assert</span>((<span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code hl_struct" href="structDMAStreamConfig.html">DMAStreamConfig</a>)) == (<span class="keyword">sizeof</span>(uint8_t) * 1U),</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>               <span class="stringliteral">&quot;DMA Stream config struct size mismatch. Is it aligned?&quot;</span>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="};">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="structDMAStreamISR.html">   74</a></span><span class="keyword">struct </span>__attribute__((packed)) <a class="code hl_struct" href="structDMAStreamISR.html">DMAStreamISR</a> {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="keyword">volatile</span> _Bool HTI  : 1;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  <span class="keyword">volatile</span> _Bool TCI  : 1;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keyword">volatile</span> _Bool TEI  : 1;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="keyword">volatile</span> _Bool FEI  : 1;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <span class="keyword">volatile</span> _Bool DMEI : 1;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
 </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">_Static_assert</span>((<span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code hl_struct" href="structDMAStreamISR.html">DMAStreamISR</a>)) == (<span class="keyword">sizeof</span>(uint8_t) * 1U),</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>               <span class="stringliteral">&quot;DMA Stream Interrupt struct size mismatch. Is it aligned?&quot;</span>);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">/* -- Enums -- */</span></div>
-<div class="foldopen" id="foldopen00088" data-start="{" data-end="};">
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="dma_8h.html#a196fc6dd22613931cb7033e8349cf666">   88</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="dma_8h.html#a196fc6dd22613931cb7033e8349cf666">dma_dir</a> {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  DMA_DIR_PER2MEM = 0x00,</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  DMA_DIR_MEM2PER = 0x01,</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  DMA_DIR_MEM2MEM = 0x02</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="dma_8h.html#acb4c9afece395581961a451cf89a0daf">   92</a></span>} <a class="code hl_typedef" href="dma_8h.html#acb4c9afece395581961a451cf89a0daf">dma_dir_t</a>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">_Static_assert</span>((<span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code hl_struct" href="structDMAStreamISR.html">DMAStreamISR</a>)) == (<span class="keyword">sizeof</span>(uint8_t) * 1U),</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>               <span class="stringliteral">&quot;DMA Stream Interrupt struct size mismatch. Is it aligned?&quot;</span>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">/* -- Enums -- */</span></div>
+<div class="foldopen" id="foldopen00089" data-start="{" data-end="};">
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="dma_8h.html#aed2304bab72eeb731ab101233f31ed08">   89</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="dma_8h.html#aed2304bab72eeb731ab101233f31ed08">dma_peripheral</a> {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  DMA_PERIPH_1 = 0x00,</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  DMA_PERIPH_2 = 0x01</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">   92</a></span>} <a class="code hl_typedef" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a>;</div>
 </div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
 <div class="foldopen" id="foldopen00097" data-start="{" data-end="};">
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="dma_8h.html#a9124186f3969f38be8d5aeb68abee24a">   97</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="dma_8h.html#a9124186f3969f38be8d5aeb68abee24a">dma_datasize</a> {</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  DMA_DATASIZE_BYTE = 0x00,</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  DMA_DATASIZE_HWRD = 0x01,</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  DMA_DATASIZE_WORD = 0x02</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">  101</a></span>} <a class="code hl_typedef" href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">dma_datasize_t</a>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="dma_8h.html#a196fc6dd22613931cb7033e8349cf666">   97</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="dma_8h.html#a196fc6dd22613931cb7033e8349cf666">dma_dir</a> {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  DMA_DIR_PER2MEM = 0x00,</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  DMA_DIR_MEM2PER = 0x01,</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  DMA_DIR_MEM2MEM = 0x02</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="dma_8h.html#acb4c9afece395581961a451cf89a0daf">  101</a></span>} <a class="code hl_typedef" href="dma_8h.html#acb4c9afece395581961a451cf89a0daf">dma_dir_t</a>;</div>
 </div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
 <div class="foldopen" id="foldopen00106" data-start="{" data-end="};">
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="dma_8h.html#acff7214370827484610e276b30f6da75">  106</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="dma_8h.html#acff7214370827484610e276b30f6da75">dma_priority</a> {</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  DMA_PRIORITY_LOW = 0x00,</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  DMA_PRIORITY_MED = 0x01,</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  DMA_PRIORITY_HIG = 0x02,</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  DMA_PRIORITY_VHI = 0x03</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="dma_8h.html#a945cea4e4c15bf97a414f0a003067de6">  111</a></span>} <a class="code hl_typedef" href="dma_8h.html#a945cea4e4c15bf97a414f0a003067de6">dma_priority_t</a>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="dma_8h.html#a9124186f3969f38be8d5aeb68abee24a">  106</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="dma_8h.html#a9124186f3969f38be8d5aeb68abee24a">dma_datasize</a> {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  DMA_DATASIZE_BYTE = 0x00,</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  DMA_DATASIZE_HWRD = 0x01,</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  DMA_DATASIZE_WORD = 0x02</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">  110</a></span>} <a class="code hl_typedef" href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">dma_datasize_t</a>;</div>
 </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#a85a6e9d9a27dec6506deb4df62739b63">dma_set_addresses</a>(<span class="keyword">const</span> uint8_t dma, <span class="keyword">const</span> uint8_t stream,</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                       <span class="keyword">const</span> uint32_t PA, <span class="keyword">const</span> uint32_t M0A,</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                       <span class="keyword">const</span> uint32_t M1A);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#a15de574c8c2114715651fc14586853f1">dma_configure_data</a>(<span class="keyword">const</span> uint8_t dma, <span class="keyword">const</span> uint8_t stream,</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                        <span class="keyword">const</span> uint16_t count, <span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">dma_datasize_t</a> msize,</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                        <span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">dma_datasize_t</a> psize);</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#aee1bdf1a525c3c27fd3924ceb1bfc6f0">dma_set_direction</a>(<span class="keyword">const</span> uint8_t dma, <span class="keyword">const</span> uint8_t stream,</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                       <span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#acb4c9afece395581961a451cf89a0daf">dma_dir_t</a> direction);</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#a729deea5992aa6db7a941f425b1f6b87">dma_configure_stream</a>(<span class="keyword">const</span> uint8_t dma, <span class="keyword">const</span> uint8_t stream,</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                          <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structDMAStreamConfig.html">DMAStreamConfig</a> config);</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#ae71d23609ff4bd49f8b32a853ded4ee2">dma_set_channel</a>(<span class="keyword">const</span> uint8_t dma, <span class="keyword">const</span> uint8_t stream,</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                     <span class="keyword">const</span> uint8_t channel, <span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a945cea4e4c15bf97a414f0a003067de6">dma_priority_t</a> priority);</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#a697c7ee8843ceabcb67aa490bb1c5747">dma_set_interrupts</a>(<span class="keyword">const</span> uint8_t dma, <span class="keyword">const</span> uint8_t stream,</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                        <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structDMAStreamISR.html">DMAStreamISR</a> config);</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#a88e3967cf41b526d098bdfe069de0159">dma_enable</a>(<span class="keyword">const</span> uint8_t dma, <span class="keyword">const</span> uint8_t stream);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="foldopen" id="foldopen00115" data-start="{" data-end="};">
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="dma_8h.html#acff7214370827484610e276b30f6da75">  115</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="dma_8h.html#acff7214370827484610e276b30f6da75">dma_priority</a> {</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  DMA_PRIORITY_LOW = 0x00,</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  DMA_PRIORITY_MED = 0x01,</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  DMA_PRIORITY_HIG = 0x02,</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  DMA_PRIORITY_VHI = 0x03</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="dma_8h.html#a945cea4e4c15bf97a414f0a003067de6">  120</a></span>} <a class="code hl_typedef" href="dma_8h.html#a945cea4e4c15bf97a414f0a003067de6">dma_priority_t</a>;</div>
+</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#aed39ce334b5dd6cebf59185a5cde3bf7">dma_set_addresses</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, <span class="keyword">const</span> uint8_t stream,</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                       <span class="keyword">const</span> uint32_t PA, <span class="keyword">const</span> uint32_t M0A,</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                       <span class="keyword">const</span> uint32_t M1A);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#a57a92af2d585c5179c5bebcb0e42a159">dma_configure_data</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, <span class="keyword">const</span> uint8_t stream,</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                        <span class="keyword">const</span> uint16_t count, <span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">dma_datasize_t</a> msize,</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                        <span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">dma_datasize_t</a> psize);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#a1fe21db110dae1687ace3d097a4d558e">dma_set_direction</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, <span class="keyword">const</span> uint8_t stream,</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                       <span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#acb4c9afece395581961a451cf89a0daf">dma_dir_t</a> direction);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#a317fb319e7528b1e7ce6ad0df5ccc94f">dma_configure_stream</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, <span class="keyword">const</span> uint8_t stream,</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                          <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structDMAStreamConfig.html">DMAStreamConfig</a> config);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#a596dd5fdee29a7a84ebae8fdc2d1c1f7">dma_set_channel</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, <span class="keyword">const</span> uint8_t stream,</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                     <span class="keyword">const</span> uint8_t channel, <span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a945cea4e4c15bf97a414f0a003067de6">dma_priority_t</a> priority);</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#adb3051773cb04ea9206da23de3536f68">dma_set_interrupts</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, <span class="keyword">const</span> uint8_t stream,</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>                        <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structDMAStreamISR.html">DMAStreamISR</a> config);</div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#aafaeaadc24e0bd880951898b65bf10db">dma_disable</a>(<span class="keyword">const</span> uint8_t dma, <span class="keyword">const</span> uint8_t stream);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#ada55bad0a993826be5925226ee90639a">dma_enable</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, <span class="keyword">const</span> uint8_t stream);</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="adma_8h_html_a15de574c8c2114715651fc14586853f1"><div class="ttname"><a href="dma_8h.html#a15de574c8c2114715651fc14586853f1">dma_configure_data</a></div><div class="ttdeci">void dma_configure_data(const uint8_t dma, const uint8_t stream, const uint16_t count, const dma_datasize_t msize, const dma_datasize_t psize)</div><div class="ttdoc">Set DMA transfers to specified configuration.</div><div class="ttdef"><b>Definition</b> dma.c:33</div></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="keywordtype">void</span> <a class="code hl_function" href="dma_8h.html#abb407bc5fd74bbe66472dbbf03f9efe0">dma_disable</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, <span class="keyword">const</span> uint8_t stream);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="adefines_8h_html"><div class="ttname"><a href="defines_8h.html">defines.h</a></div><div class="ttdoc">Defines used commonly in most files.</div></div>
 <div class="ttc" id="adma_8h_html_a1732e13bbb47e74a2237ea590425326a"><div class="ttname"><a href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">dma_datasize_t</a></div><div class="ttdeci">enum dma_datasize dma_datasize_t</div><div class="ttdoc">Available DMA data sizes.</div></div>
-<div class="ttc" id="adma_8h_html_a196fc6dd22613931cb7033e8349cf666"><div class="ttname"><a href="dma_8h.html#a196fc6dd22613931cb7033e8349cf666">dma_dir</a></div><div class="ttdeci">dma_dir</div><div class="ttdoc">Available DMA directions.</div><div class="ttdef"><b>Definition</b> dma.h:88</div></div>
-<div class="ttc" id="adma_8h_html_a697c7ee8843ceabcb67aa490bb1c5747"><div class="ttname"><a href="dma_8h.html#a697c7ee8843ceabcb67aa490bb1c5747">dma_set_interrupts</a></div><div class="ttdeci">void dma_set_interrupts(const uint8_t dma, const uint8_t stream, const struct DMAStreamISR config)</div><div class="ttdoc">Enabled the specified DMA stream interrupts.</div><div class="ttdef"><b>Definition</b> dma.c:152</div></div>
-<div class="ttc" id="adma_8h_html_a729deea5992aa6db7a941f425b1f6b87"><div class="ttname"><a href="dma_8h.html#a729deea5992aa6db7a941f425b1f6b87">dma_configure_stream</a></div><div class="ttdeci">void dma_configure_stream(const uint8_t dma, const uint8_t stream, const struct DMAStreamConfig config)</div><div class="ttdoc">Set DMA stream to the specified configuration.</div><div class="ttdef"><b>Definition</b> dma.c:97</div></div>
-<div class="ttc" id="adma_8h_html_a85a6e9d9a27dec6506deb4df62739b63"><div class="ttname"><a href="dma_8h.html#a85a6e9d9a27dec6506deb4df62739b63">dma_set_addresses</a></div><div class="ttdeci">void dma_set_addresses(const uint8_t dma, const uint8_t stream, const uint32_t PA, const uint32_t M0A, const uint32_t M1A)</div><div class="ttdoc">Set the DMA source and destination addresses.</div><div class="ttdef"><b>Definition</b> dma.c:17</div></div>
-<div class="ttc" id="adma_8h_html_a88e3967cf41b526d098bdfe069de0159"><div class="ttname"><a href="dma_8h.html#a88e3967cf41b526d098bdfe069de0159">dma_enable</a></div><div class="ttdeci">void dma_enable(const uint8_t dma, const uint8_t stream)</div><div class="ttdoc">Enables DMA stream transfers.</div><div class="ttdef"><b>Definition</b> dma.c:180</div></div>
-<div class="ttc" id="adma_8h_html_a9124186f3969f38be8d5aeb68abee24a"><div class="ttname"><a href="dma_8h.html#a9124186f3969f38be8d5aeb68abee24a">dma_datasize</a></div><div class="ttdeci">dma_datasize</div><div class="ttdoc">Available DMA data sizes.</div><div class="ttdef"><b>Definition</b> dma.h:97</div></div>
+<div class="ttc" id="adma_8h_html_a196fc6dd22613931cb7033e8349cf666"><div class="ttname"><a href="dma_8h.html#a196fc6dd22613931cb7033e8349cf666">dma_dir</a></div><div class="ttdeci">dma_dir</div><div class="ttdoc">Available DMA directions.</div><div class="ttdef"><b>Definition</b> dma.h:97</div></div>
+<div class="ttc" id="adma_8h_html_a1fe21db110dae1687ace3d097a4d558e"><div class="ttname"><a href="dma_8h.html#a1fe21db110dae1687ace3d097a4d558e">dma_set_direction</a></div><div class="ttdeci">void dma_set_direction(const dma_peripheral_t dma, const uint8_t stream, const dma_dir_t direction)</div><div class="ttdoc">Set DMA transfers to the desired direction.</div><div class="ttdef"><b>Definition</b> dma.c:81</div></div>
+<div class="ttc" id="adma_8h_html_a317fb319e7528b1e7ce6ad0df5ccc94f"><div class="ttname"><a href="dma_8h.html#a317fb319e7528b1e7ce6ad0df5ccc94f">dma_configure_stream</a></div><div class="ttdeci">void dma_configure_stream(const dma_peripheral_t dma, const uint8_t stream, const struct DMAStreamConfig config)</div><div class="ttdoc">Set DMA stream to the specified configuration.</div><div class="ttdef"><b>Definition</b> dma.c:105</div></div>
+<div class="ttc" id="adma_8h_html_a52b50d9b580890a3a99d6e452e540f05"><div class="ttname"><a href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a></div><div class="ttdeci">enum dma_peripheral dma_peripheral_t</div><div class="ttdoc">Available DMA peripherals.</div></div>
+<div class="ttc" id="adma_8h_html_a57a92af2d585c5179c5bebcb0e42a159"><div class="ttname"><a href="dma_8h.html#a57a92af2d585c5179c5bebcb0e42a159">dma_configure_data</a></div><div class="ttdeci">void dma_configure_data(const dma_peripheral_t dma, const uint8_t stream, const uint16_t count, const dma_datasize_t msize, const dma_datasize_t psize)</div><div class="ttdoc">Set DMA transfers to specified configuration.</div><div class="ttdef"><b>Definition</b> dma.c:43</div></div>
+<div class="ttc" id="adma_8h_html_a596dd5fdee29a7a84ebae8fdc2d1c1f7"><div class="ttname"><a href="dma_8h.html#a596dd5fdee29a7a84ebae8fdc2d1c1f7">dma_set_channel</a></div><div class="ttdeci">void dma_set_channel(const dma_peripheral_t dma, const uint8_t stream, const uint8_t channel, const dma_priority_t priority)</div><div class="ttdoc">Set the DMA stream channel and priority.</div><div class="ttdef"><b>Definition</b> dma.c:126</div></div>
+<div class="ttc" id="adma_8h_html_a9124186f3969f38be8d5aeb68abee24a"><div class="ttname"><a href="dma_8h.html#a9124186f3969f38be8d5aeb68abee24a">dma_datasize</a></div><div class="ttdeci">dma_datasize</div><div class="ttdoc">Available DMA data sizes.</div><div class="ttdef"><b>Definition</b> dma.h:106</div></div>
 <div class="ttc" id="adma_8h_html_a945cea4e4c15bf97a414f0a003067de6"><div class="ttname"><a href="dma_8h.html#a945cea4e4c15bf97a414f0a003067de6">dma_priority_t</a></div><div class="ttdeci">enum dma_priority dma_priority_t</div><div class="ttdoc">Available DMA priorities.</div></div>
-<div class="ttc" id="adma_8h_html_aafaeaadc24e0bd880951898b65bf10db"><div class="ttname"><a href="dma_8h.html#aafaeaadc24e0bd880951898b65bf10db">dma_disable</a></div><div class="ttdeci">void dma_disable(const uint8_t dma, const uint8_t stream)</div><div class="ttdoc">Disables DMA stream transfers.</div><div class="ttdef"><b>Definition</b> dma.c:192</div></div>
+<div class="ttc" id="adma_8h_html_abb407bc5fd74bbe66472dbbf03f9efe0"><div class="ttname"><a href="dma_8h.html#abb407bc5fd74bbe66472dbbf03f9efe0">dma_disable</a></div><div class="ttdeci">void dma_disable(const dma_peripheral_t dma, const uint8_t stream)</div><div class="ttdoc">Disables DMA stream transfers.</div><div class="ttdef"><b>Definition</b> dma.c:196</div></div>
 <div class="ttc" id="adma_8h_html_acb4c9afece395581961a451cf89a0daf"><div class="ttname"><a href="dma_8h.html#acb4c9afece395581961a451cf89a0daf">dma_dir_t</a></div><div class="ttdeci">enum dma_dir dma_dir_t</div><div class="ttdoc">Available DMA directions.</div></div>
-<div class="ttc" id="adma_8h_html_acff7214370827484610e276b30f6da75"><div class="ttname"><a href="dma_8h.html#acff7214370827484610e276b30f6da75">dma_priority</a></div><div class="ttdeci">dma_priority</div><div class="ttdoc">Available DMA priorities.</div><div class="ttdef"><b>Definition</b> dma.h:106</div></div>
-<div class="ttc" id="adma_8h_html_ae71d23609ff4bd49f8b32a853ded4ee2"><div class="ttname"><a href="dma_8h.html#ae71d23609ff4bd49f8b32a853ded4ee2">dma_set_channel</a></div><div class="ttdeci">void dma_set_channel(const uint8_t dma, const uint8_t stream, const uint8_t channel, const dma_priority_t priority)</div><div class="ttdoc">Set the DMA stream channel and priority.</div><div class="ttdef"><b>Definition</b> dma.c:119</div></div>
-<div class="ttc" id="adma_8h_html_aee1bdf1a525c3c27fd3924ceb1bfc6f0"><div class="ttname"><a href="dma_8h.html#aee1bdf1a525c3c27fd3924ceb1bfc6f0">dma_set_direction</a></div><div class="ttdeci">void dma_set_direction(const uint8_t dma, const uint8_t stream, const dma_dir_t direction)</div><div class="ttdoc">Set DMA transfers to the desired direction.</div><div class="ttdef"><b>Definition</b> dma.c:72</div></div>
+<div class="ttc" id="adma_8h_html_acff7214370827484610e276b30f6da75"><div class="ttname"><a href="dma_8h.html#acff7214370827484610e276b30f6da75">dma_priority</a></div><div class="ttdeci">dma_priority</div><div class="ttdoc">Available DMA priorities.</div><div class="ttdef"><b>Definition</b> dma.h:115</div></div>
+<div class="ttc" id="adma_8h_html_ada55bad0a993826be5925226ee90639a"><div class="ttname"><a href="dma_8h.html#ada55bad0a993826be5925226ee90639a">dma_enable</a></div><div class="ttdeci">void dma_enable(const dma_peripheral_t dma, const uint8_t stream)</div><div class="ttdoc">Enables DMA stream transfers.</div><div class="ttdef"><b>Definition</b> dma.c:185</div></div>
+<div class="ttc" id="adma_8h_html_adb3051773cb04ea9206da23de3536f68"><div class="ttname"><a href="dma_8h.html#adb3051773cb04ea9206da23de3536f68">dma_set_interrupts</a></div><div class="ttdeci">void dma_set_interrupts(const dma_peripheral_t dma, const uint8_t stream, const struct DMAStreamISR config)</div><div class="ttdoc">Enabled the specified DMA stream interrupts.</div><div class="ttdef"><b>Definition</b> dma.c:158</div></div>
+<div class="ttc" id="adma_8h_html_aed2304bab72eeb731ab101233f31ed08"><div class="ttname"><a href="dma_8h.html#aed2304bab72eeb731ab101233f31ed08">dma_peripheral</a></div><div class="ttdeci">dma_peripheral</div><div class="ttdoc">Available DMA peripherals.</div><div class="ttdef"><b>Definition</b> dma.h:89</div></div>
+<div class="ttc" id="adma_8h_html_aed39ce334b5dd6cebf59185a5cde3bf7"><div class="ttname"><a href="dma_8h.html#aed39ce334b5dd6cebf59185a5cde3bf7">dma_set_addresses</a></div><div class="ttdeci">void dma_set_addresses(const dma_peripheral_t dma, const uint8_t stream, const uint32_t PA, const uint32_t M0A, const uint32_t M1A)</div><div class="ttdoc">Set the DMA source and destination addresses.</div><div class="ttdef"><b>Definition</b> dma.c:28</div></div>
 <div class="ttc" id="astm32f4xx_8h_html"><div class="ttname"><a href="stm32f4xx_8h.html">stm32f4xx.h</a></div><div class="ttdoc">CMSIS device header stubs.</div></div>
-<div class="ttc" id="astructDMARegs_html"><div class="ttname"><a href="structDMARegs.html">DMARegs</a></div><div class="ttdoc">Contains DMA registers.</div><div class="ttdef"><b>Definition</b> dma.h:42</div></div>
-<div class="ttc" id="astructDMAStreamConfig_html"><div class="ttname"><a href="structDMAStreamConfig.html">DMAStreamConfig</a></div><div class="ttdoc">Contains DMA stream options.</div><div class="ttdef"><b>Definition</b> dma.h:59</div></div>
-<div class="ttc" id="astructDMAStreamISR_html"><div class="ttname"><a href="structDMAStreamISR.html">DMAStreamISR</a></div><div class="ttdoc">Contains DMA stream interrupt configuration.</div><div class="ttdef"><b>Definition</b> dma.h:73</div></div>
-<div class="ttc" id="astructDMAStreamRegs_html"><div class="ttname"><a href="structDMAStreamRegs.html">DMAStreamRegs</a></div><div class="ttdoc">Contains DMA stream registers.</div><div class="ttdef"><b>Definition</b> dma.h:27</div></div>
+<div class="ttc" id="astructDMARegs_html"><div class="ttname"><a href="structDMARegs.html">DMARegs</a></div><div class="ttdoc">Contains DMA registers.</div><div class="ttdef"><b>Definition</b> dma.h:43</div></div>
+<div class="ttc" id="astructDMAStreamConfig_html"><div class="ttname"><a href="structDMAStreamConfig.html">DMAStreamConfig</a></div><div class="ttdoc">Contains DMA stream options.</div><div class="ttdef"><b>Definition</b> dma.h:60</div></div>
+<div class="ttc" id="astructDMAStreamISR_html"><div class="ttname"><a href="structDMAStreamISR.html">DMAStreamISR</a></div><div class="ttdoc">Contains DMA stream interrupt configuration.</div><div class="ttdef"><b>Definition</b> dma.h:74</div></div>
+<div class="ttc" id="astructDMAStreamRegs_html"><div class="ttname"><a href="structDMAStreamRegs.html">DMAStreamRegs</a></div><div class="ttdoc">Contains DMA stream registers.</div><div class="ttdef"><b>Definition</b> dma.h:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

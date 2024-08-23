@@ -14,17 +14,19 @@ Defines used commonly in most files.
 \Hypertarget{defines_8h_aa93f0eb578d23995850d61f7d61c55c1}\label{defines_8h_aa93f0eb578d23995850d61f7d61c55c1} 
 \#define {\bfseries FALSE}~0
 \item 
+\#define \mbox{\hyperlink{defines_8h_a0bfc218c73bb90fda93255d3df223d09}{ASM\+\_\+\+INSTR}}(x)
+\item 
 \Hypertarget{defines_8h_a7cd6918459f7972a7ce594d8639e30fb}\label{defines_8h_a7cd6918459f7972a7ce594d8639e30fb} 
-\#define {\bfseries ASM\+\_\+\+BKPT}~\+\_\+\+\_\+asm volatile("{}BKPT"{})
+\#define {\bfseries ASM\+\_\+\+BKPT}~ASM\+\_\+\+INSTR(BKPT)
 \item 
 \Hypertarget{defines_8h_aa909058014d2d74d8269847e8d61acd3}\label{defines_8h_aa909058014d2d74d8269847e8d61acd3} 
-\#define {\bfseries ASM\+\_\+\+NOP}~\+\_\+\+\_\+asm volatile("{}NOP"{})
+\#define {\bfseries ASM\+\_\+\+NOP}~ASM\+\_\+\+INSTR(NOP)
 \item 
 \Hypertarget{defines_8h_a399cad3f24ea528f91989fd87cc3bcc1}\label{defines_8h_a399cad3f24ea528f91989fd87cc3bcc1} 
-\#define {\bfseries ASM\+\_\+\+DSB}~\+\_\+\+\_\+asm volatile("{}DSB"{})
+\#define {\bfseries ASM\+\_\+\+DSB}~ASM\+\_\+\+INSTR(DSB)
 \item 
 \Hypertarget{defines_8h_a1c1cd962e8c172fc60edfaf3ee4e2d14}\label{defines_8h_a1c1cd962e8c172fc60edfaf3ee4e2d14} 
-\#define {\bfseries HSE\+\_\+\+CLK}~8U
+\#define {\bfseries HSE\+\_\+\+CLK}~8
 \item 
 \Hypertarget{defines_8h_ab3a7892b9f9fbb5c3fc2cbdbceb10017}\label{defines_8h_ab3a7892b9f9fbb5c3fc2cbdbceb10017} 
 \#define {\bfseries SYS\+\_\+\+CLK}~180
@@ -34,6 +36,9 @@ Defines used commonly in most files.
 \item 
 \Hypertarget{defines_8h_a406b1a312c9bd51e463b4bf9e6066f2c}\label{defines_8h_a406b1a312c9bd51e463b4bf9e6066f2c} 
 \#define {\bfseries APB2\+\_\+\+CLK}~90
+\item 
+\Hypertarget{defines_8h_a4f017ef6e922d8496886a2533ed0b908}\label{defines_8h_a4f017ef6e922d8496886a2533ed0b908} 
+\#define {\bfseries REG32}~volatile uint32\+\_\+t
 \end{DoxyCompactItemize}
 
 
@@ -45,3 +50,17 @@ Vasileios Ch. (BillisC)
 \end{DoxyAuthor}
 \begin{DoxyRefDesc}{Bug}
 \item[\mbox{\hyperlink{bug__bug000001}{Bug}}]None, yet. \end{DoxyRefDesc}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{defines_8h_a0bfc218c73bb90fda93255d3df223d09}\index{defines.h@{defines.h}!ASM\_INSTR@{ASM\_INSTR}}
+\index{ASM\_INSTR@{ASM\_INSTR}!defines.h@{defines.h}}
+\doxysubsubsection{\texorpdfstring{ASM\_INSTR}{ASM\_INSTR}}
+{\footnotesize\ttfamily \label{defines_8h_a0bfc218c73bb90fda93255d3df223d09} 
+\#define ASM\+\_\+\+INSTR(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_asm\ \textcolor{keyword}{volatile}(\#x)}
+
+\end{DoxyCode}

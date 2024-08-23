@@ -6,109 +6,121 @@
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ ADC\_H}}
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ ADC\_H}}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ ADC\_NUM\ 3U}}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{comment}{/*\ -\/-\/\ Includes\ -\/-\/\ */}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{stm32f4xx_8h}{stm32f4xx.h}}"{}}}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{comment}{/*\ -\/-\/\ Structs\ -\/-\/\ */}}
-\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structADCRegs}{ADCRegs}}\ \{}
-\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ SR;}
-\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ CR1;}
-\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ CR2;}
-\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ SMPR[2];}
-\DoxyCodeLine{00034\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ JOFR[4];}
-\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ HTR;}
-\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ LTR;}
-\DoxyCodeLine{00037\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ SQR[3];}
-\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ JSQR;}
-\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ JDR[4];}
-\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ DR;}
-\DoxyCodeLine{00041\ \};}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structADCRegs}{ADCRegs}}))\ ==\ (\textcolor{keyword}{sizeof}(uint32\_t)\ *\ 20U),}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ADC\ register\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00049\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structADCCommonRegs}{ADCCommonRegs}}\ \{}
-\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ CSR;}
-\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ CCR;}
-\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ CDR;}
-\DoxyCodeLine{00053\ \};}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structADCCommonRegs}{ADCCommonRegs}}))\ ==\ (\textcolor{keyword}{sizeof}(uint32\_t)\ *\ 3U),}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ADC\ Common\ register\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#ifndef\ UTEST}}
-\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ ADC\_(number)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
-\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \ (struct\ ADCRegs\ *)(ADC1\_BASE\ +\ (0x100UL\ *\ ((uint8\_t)number\ -\/\ 1U)))}}
-\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ ADC\_COMMON\ (struct\ ADCCommonRegs\ *)(ADC123\_COMMON\_BASE)}}
-\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{00063\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structADCRegs}{ADCRegs}}\ *ADC\_(\textcolor{keyword}{const}\ uint8\_t\ number);}
-\DoxyCodeLine{00064\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structADCCommonRegs}{ADCCommonRegs}}\ *ADC\_COMMON;}
-\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00070\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structADCModes}{ADCModes}}\ \{}
-\DoxyCodeLine{00071\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ DMA\ \ :\ 1;}
-\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ DDS\ \ :\ 1;}
-\DoxyCodeLine{00073\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ CONT\ :\ 1;}
-\DoxyCodeLine{00074\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ DISC\ :\ 1;\ \textcolor{comment}{//\ One\ stop\ per\ conversion}}
-\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ SCAN\ :\ 1;}
-\DoxyCodeLine{00076\ \};}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00078\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structADCModes}{ADCModes}}))\ ==\ (\textcolor{keyword}{sizeof}(uint8\_t)\ *\ 1U),}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ADC\ Configuration\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \textcolor{comment}{/*\ -\/-\/\ Enums\ -\/-\/\ */}}
-\DoxyCodeLine{00082\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ adc\_res\ \{}
-\DoxyCodeLine{00083\ \ \ ADC\_RES\_B12\ =\ 0x00,\ \textcolor{comment}{//\ >=\ 15\ ADCCLK\ cycles}}
-\DoxyCodeLine{00084\ \ \ ADC\_RES\_B10\ =\ 0x01,\ \textcolor{comment}{//\ >=\ 13\ ADCCLK\ cycles}}
-\DoxyCodeLine{00085\ \ \ ADC\_RES\_B08\ =\ 0x02,\ \textcolor{comment}{//\ >=\ 11\ ADCCLK\ cycles}}
-\DoxyCodeLine{00086\ \ \ ADC\_RES\_B06\ =\ 0x03\ \ \textcolor{comment}{//\ >=\ 9\ ADCCLK\ cycles}}
-\DoxyCodeLine{00087\ \}\ adc\_res\_t;}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ adc\_trigger\ \{}
-\DoxyCodeLine{00090\ \ \ ADC\_TRIGGER\_NONE\ =\ 0x00,}
-\DoxyCodeLine{00091\ \ \ ADC\_TRIGGER\_RISE\ =\ 0x01,}
-\DoxyCodeLine{00092\ \ \ ADC\_TRIGGER\_FALL\ =\ 0x02,}
-\DoxyCodeLine{00093\ \ \ ADC\_TRIGGER\_BOTH\ =\ 0x03}
-\DoxyCodeLine{00094\ \}\ adc\_trigger\_t;}
+\DoxyCodeLine{00019\ \textcolor{comment}{/*\ -\/-\/\ Includes\ -\/-\/\ */}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{stm32f4xx_8h}{stm32f4xx.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{defines_8h}{defines.h}}"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{/*\ -\/-\/\ Structs\ -\/-\/\ */}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structADCRegs}{ADCRegs}}\ \{}
+\DoxyCodeLine{00029\ \ \ REG32\ SR;}
+\DoxyCodeLine{00030\ \ \ REG32\ CR1;}
+\DoxyCodeLine{00031\ \ \ REG32\ CR2;}
+\DoxyCodeLine{00032\ \ \ REG32\ SMPR[2];}
+\DoxyCodeLine{00033\ \ \ REG32\ JOFR[4];}
+\DoxyCodeLine{00034\ \ \ REG32\ HTR;}
+\DoxyCodeLine{00035\ \ \ REG32\ LTR;}
+\DoxyCodeLine{00036\ \ \ REG32\ SQR[3];}
+\DoxyCodeLine{00037\ \ \ REG32\ JSQR;}
+\DoxyCodeLine{00038\ \ \ REG32\ JDR[4];}
+\DoxyCodeLine{00039\ \ \ REG32\ DR;}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structADCRegs}{ADCRegs}}))\ ==\ (\textcolor{keyword}{sizeof}(uint32\_t)\ *\ 20U),}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ADC\ register\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structADCCommonRegs}{ADCCommonRegs}}\ \{}
+\DoxyCodeLine{00049\ \ \ REG32\ CSR;}
+\DoxyCodeLine{00050\ \ \ REG32\ CCR;}
+\DoxyCodeLine{00051\ \ \ REG32\ CDR;}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structADCCommonRegs}{ADCCommonRegs}}))\ ==\ (\textcolor{keyword}{sizeof}(uint32\_t)\ *\ 3U),}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ADC\ Common\ register\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#ifndef\ UTEST}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ ADC\_(NUM)\ \ (struct\ ADCRegs\ *)(ADC1\_BASE\ +\ (0x100UL\ *\ ((uint8\_t)NUM)))}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ ADC\_COMMON\ (struct\ ADCCommonRegs\ *)(ADC123\_COMMON\_BASE)}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00061\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structADCRegs}{ADCRegs}}\ *ADC\_(\textcolor{keyword}{const}\ uint8\_t\ number);}
+\DoxyCodeLine{00062\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structADCCommonRegs}{ADCCommonRegs}}\ *ADC\_COMMON;}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structADCModes}{ADCModes}}\ \{}
+\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ DMA\ \ :\ 1;}
+\DoxyCodeLine{00070\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ DDS\ \ :\ 1;}
+\DoxyCodeLine{00071\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ CONT\ :\ 1;}
+\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ DISC\ :\ 1;\ \textcolor{comment}{//\ One\ stop\ per\ conversion}}
+\DoxyCodeLine{00073\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ SCAN\ :\ 1;}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structADCModes}{ADCModes}}))\ ==\ (\textcolor{keyword}{sizeof}(uint8\_t)\ *\ 1U),}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ADC\ Configuration\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{comment}{/*\ -\/-\/\ Enums\ -\/-\/\ */}}
+\DoxyCodeLine{00083\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{adc_8h_a410b7633747a1ebac95080b763a143e7}{adc\_peripheral}}\ \{}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#ifdef\ ADC1\_BASE}}
+\DoxyCodeLine{00085\ \ \ ADC\_PERIPH\_1\ =\ 0x00,}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#ifdef\ ADC2\_BASE}}
+\DoxyCodeLine{00088\ \ \ ADC\_PERIPH\_2\ =\ 0x01,}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#ifdef\ ADC3\_BASE}}
+\DoxyCodeLine{00091\ \ \ ADC\_PERIPH\_3\ =\ 0x02,}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00093\ \ \ ADC\_PERIPH\_LEN}
+\DoxyCodeLine{00094\ \}\ \mbox{\hyperlink{adc_8h_ac890f1a91e1b8569617cd846532cc536}{adc\_peripheral\_t}};}
 \DoxyCodeLine{00095\ }
-\DoxyCodeLine{00096\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ adc\_samplerate\ \{}
-\DoxyCodeLine{00097\ \ \ ADC\_SAMPLERATE\_C003\ =\ 0x00,}
-\DoxyCodeLine{00098\ \ \ ADC\_SAMPLERATE\_C015\ =\ 0x01,}
-\DoxyCodeLine{00099\ \ \ ADC\_SAMPLERATE\_C028\ =\ 0x02,}
-\DoxyCodeLine{00100\ \ \ ADC\_SAMPLERATE\_C056\ =\ 0x03,}
-\DoxyCodeLine{00101\ \ \ ADC\_SAMPLERATE\_C084\ =\ 0x04,}
-\DoxyCodeLine{00102\ \ \ ADC\_SAMPLERATE\_C112\ =\ 0x05,}
-\DoxyCodeLine{00103\ \ \ ADC\_SAMPLERATE\_C144\ =\ 0x06,}
-\DoxyCodeLine{00104\ \ \ ADC\_SAMPLERATE\_C480\ =\ 0x07}
-\DoxyCodeLine{00105\ \}\ adc\_samplerate\_t;}
-\DoxyCodeLine{00106\ }
-\DoxyCodeLine{00107\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ adc\_prescaler\ \{}
-\DoxyCodeLine{00108\ \ \ ADC\_PRESCALER\_DIV2\ =\ 0x00,}
-\DoxyCodeLine{00109\ \ \ ADC\_PRESCALER\_DIV4\ =\ 0x01,}
-\DoxyCodeLine{00110\ \ \ ADC\_PRESCALER\_DIV6\ =\ 0x02,}
-\DoxyCodeLine{00111\ \ \ ADC\_PRESCALER\_DIV8\ =\ 0x03,}
-\DoxyCodeLine{00112\ \}\ adc\_prescaler\_t;}
-\DoxyCodeLine{00113\ }
-\DoxyCodeLine{00123\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a9eb3c8478c8926f4e9c752516151a953}{adc\_set\_prescaler}}(\textcolor{keyword}{const}\ adc\_prescaler\_t\ value);}
-\DoxyCodeLine{00124\ }
-\DoxyCodeLine{00136\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a38a3d191c258d54ef099a03c5f4bb942}{adc\_set\_resolution}}(\textcolor{keyword}{const}\ uint8\_t\ adc,\ \textcolor{keyword}{const}\ adc\_res\_t\ value);}
-\DoxyCodeLine{00137\ }
-\DoxyCodeLine{00150\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a277295eb7f7523478637e206fa082b0b}{adc\_set\_samplerate}}(\textcolor{keyword}{const}\ uint8\_t\ adc,\ \textcolor{keyword}{const}\ uint8\_t\ channel,}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ adc\_samplerate\_t\ value);}
-\DoxyCodeLine{00152\ }
-\DoxyCodeLine{00163\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a508304374c9dba7c1f5681922e2fe2e1}{adc\_set\_modes}}(\textcolor{keyword}{const}\ uint8\_t\ adc,\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structADCModes}{ADCModes}}\ config);}
-\DoxyCodeLine{00164\ }
-\DoxyCodeLine{00176\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_aa1f1a673889c40e5ea83e5d0c84b808e}{adc\_set\_seq}}(\textcolor{keyword}{const}\ uint8\_t\ adc,\ \textcolor{keyword}{const}\ uint8\_t\ *seq,\ \textcolor{keyword}{const}\ uint8\_t\ count);}
-\DoxyCodeLine{00177\ }
-\DoxyCodeLine{00188\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a1efc1024ea81ff54636d50c1e2f5304b}{adc\_on}}(\textcolor{keyword}{const}\ uint8\_t\ adc);}
-\DoxyCodeLine{00189\ }
-\DoxyCodeLine{00199\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_abbb0c1d82c736fed24920f7f916b2400}{adc\_off}}(\textcolor{keyword}{const}\ uint8\_t\ adc);}
-\DoxyCodeLine{00200\ }
-\DoxyCodeLine{00207\ uint16\_t\ \mbox{\hyperlink{adc_8h_a3493396643667a305e63dfc8ffe860b3}{adc\_read}}(\textcolor{keyword}{const}\ uint8\_t\ adc);}
-\DoxyCodeLine{00208\ }
-\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00099\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{adc_8h_a30443b7af1623e41bf412fcecb632f22}{adc\_res}}\ \{}
+\DoxyCodeLine{00100\ \ \ ADC\_RES\_B12\ =\ 0x00,\ \textcolor{comment}{//\ >=\ 15\ ADCCLK\ cycles}}
+\DoxyCodeLine{00101\ \ \ ADC\_RES\_B10\ =\ 0x01,\ \textcolor{comment}{//\ >=\ 13\ ADCCLK\ cycles}}
+\DoxyCodeLine{00102\ \ \ ADC\_RES\_B08\ =\ 0x02,\ \textcolor{comment}{//\ >=\ 11\ ADCCLK\ cycles}}
+\DoxyCodeLine{00103\ \ \ ADC\_RES\_B06\ =\ 0x03\ \ \textcolor{comment}{//\ >=\ 9\ ADCCLK\ cycles}}
+\DoxyCodeLine{00104\ \}\ \mbox{\hyperlink{adc_8h_a87e2393c3b4be47adb2d3ee1dd3f6f46}{adc\_res\_t}};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00109\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{adc_8h_adac5df7f2a1fa6df2915490437034183}{adc\_trigger}}\ \{}
+\DoxyCodeLine{00110\ \ \ ADC\_TRIGGER\_NONE\ =\ 0x00,}
+\DoxyCodeLine{00111\ \ \ ADC\_TRIGGER\_RISE\ =\ 0x01,}
+\DoxyCodeLine{00112\ \ \ ADC\_TRIGGER\_FALL\ =\ 0x02,}
+\DoxyCodeLine{00113\ \ \ ADC\_TRIGGER\_BOTH\ =\ 0x03}
+\DoxyCodeLine{00114\ \}\ \mbox{\hyperlink{adc_8h_a4febcf1b622069decb576e94f52f12b4}{adc\_trigger\_t}};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00119\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{adc_8h_af706589396e514e32045fff1b19f3eaf}{adc\_samplerate}}\ \{}
+\DoxyCodeLine{00120\ \ \ ADC\_SAMPLERATE\_C003\ =\ 0x00,}
+\DoxyCodeLine{00121\ \ \ ADC\_SAMPLERATE\_C015\ =\ 0x01,}
+\DoxyCodeLine{00122\ \ \ ADC\_SAMPLERATE\_C028\ =\ 0x02,}
+\DoxyCodeLine{00123\ \ \ ADC\_SAMPLERATE\_C056\ =\ 0x03,}
+\DoxyCodeLine{00124\ \ \ ADC\_SAMPLERATE\_C084\ =\ 0x04,}
+\DoxyCodeLine{00125\ \ \ ADC\_SAMPLERATE\_C112\ =\ 0x05,}
+\DoxyCodeLine{00126\ \ \ ADC\_SAMPLERATE\_C144\ =\ 0x06,}
+\DoxyCodeLine{00127\ \ \ ADC\_SAMPLERATE\_C480\ =\ 0x07}
+\DoxyCodeLine{00128\ \}\ \mbox{\hyperlink{adc_8h_a1dc8ca1b8b76af313c51ecba2aa6117d}{adc\_samplerate\_t}};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00133\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{adc_8h_a02634359ec7ce6df8aa4dbda146bf49d}{adc\_prescaler}}\ \{}
+\DoxyCodeLine{00134\ \ \ ADC\_PRESCALER\_DIV2\ =\ 0x00,}
+\DoxyCodeLine{00135\ \ \ ADC\_PRESCALER\_DIV4\ =\ 0x01,}
+\DoxyCodeLine{00136\ \ \ ADC\_PRESCALER\_DIV6\ =\ 0x02,}
+\DoxyCodeLine{00137\ \ \ ADC\_PRESCALER\_DIV8\ =\ 0x03,}
+\DoxyCodeLine{00138\ \}\ \mbox{\hyperlink{adc_8h_a4b541ef455f3a62ac2ef51347e117921}{adc\_prescaler\_t}};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00149\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a9eb3c8478c8926f4e9c752516151a953}{adc\_set\_prescaler}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{adc_8h_a4b541ef455f3a62ac2ef51347e117921}{adc\_prescaler\_t}}\ value);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00162\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a3bbde0c6d10ba0b901cc5a48e450ae13}{adc\_set\_resolution}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{adc_8h_ac890f1a91e1b8569617cd846532cc536}{adc\_peripheral\_t}}\ adc,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{adc_8h_a87e2393c3b4be47adb2d3ee1dd3f6f46}{adc\_res\_t}}\ value);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00176\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_ae7824573bf9df8005a2f8c52140d145e}{adc\_set\_samplerate}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{adc_8h_ac890f1a91e1b8569617cd846532cc536}{adc\_peripheral\_t}}\ adc,\ \textcolor{keyword}{const}\ uint8\_t\ channel,}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{adc_8h_a1dc8ca1b8b76af313c51ecba2aa6117d}{adc\_samplerate\_t}}\ value);}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00189\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_af35a9a05504a42f59183138faf1eb5a0}{adc\_set\_modes}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{adc_8h_ac890f1a91e1b8569617cd846532cc536}{adc\_peripheral\_t}}\ adc,\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structADCModes}{ADCModes}}\ config);}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00202\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_aa7a57e5f8b11e9e5ef98982182aa3ccd}{adc\_set\_seq}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{adc_8h_ac890f1a91e1b8569617cd846532cc536}{adc\_peripheral\_t}}\ adc,\ \textcolor{keyword}{const}\ uint8\_t\ *seq,}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ count);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00215\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_af5f68b54ec814d60d816e5b7c6790460}{adc\_on}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{adc_8h_ac890f1a91e1b8569617cd846532cc536}{adc\_peripheral\_t}}\ adc);}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00226\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_acc4fc086eaa6a8f530eb4d641e8d4a44}{adc\_off}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{adc_8h_ac890f1a91e1b8569617cd846532cc536}{adc\_peripheral\_t}}\ adc);}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00234\ uint16\_t\ \mbox{\hyperlink{adc_8h_a620a299bdb8d0d8785d7ddaebff7f86c}{adc\_read}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{adc_8h_ac890f1a91e1b8569617cd846532cc536}{adc\_peripheral\_t}}\ adc);}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

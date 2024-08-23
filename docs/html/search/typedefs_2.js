@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['usart_5fdatabits_5ft_0',['usart_databits_t',['../usart_8h.html#a646bb5cdc2347b4c446474ed4d800b28',1,'usart.h']]],
-  ['usart_5fmode_5ft_1',['usart_mode_t',['../usart_8h.html#af9cb6192f394ebde038a7b64527eb5e9',1,'usart.h']]],
-  ['usart_5fparity_5ft_2',['usart_parity_t',['../usart_8h.html#a9b924d5756332a7f8773403d0dd6b708',1,'usart.h']]],
-  ['usart_5fsel_5ft_3',['usart_sel_t',['../usart_8h.html#a79febc36be6daf0f77269ebddd0e81c9',1,'usart.h']]],
-  ['usart_5fstopbits_5ft_4',['usart_stopbits_t',['../usart_8h.html#aec2fddd4341bdbc1ca7e36b9d543d6f9',1,'usart.h']]]
+  ['gp_5fbank_5ft_0',['gp_bank_t',['../gpio_8h.html#ae22c25f9d4e2dcf552d6e7418c7295b9',1,'gpio.h']]],
+  ['gp_5fdir_5ft_1',['gp_dir_t',['../gpio_8h.html#a2066c61dfaee27a2e15d2a7f6eb6be53',1,'gpio.h']]],
+  ['gp_5fotype_5ft_2',['gp_otype_t',['../gpio_8h.html#abed873c90c4ec9e59dfd97ae7db692a2',1,'gpio.h']]],
+  ['gp_5fpupd_5ft_3',['gp_pupd_t',['../gpio_8h.html#a40e057b298dffe6a5e0fa8865394ef30',1,'gpio.h']]],
+  ['gp_5fspeed_5ft_4',['gp_speed_t',['../gpio_8h.html#a20c9c8df4d3bdb4e8b241ae77851972d',1,'gpio.h']]]
 ];

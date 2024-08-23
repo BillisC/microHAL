@@ -9,92 +9,106 @@
 \DoxyCodeLine{00015\ \textcolor{comment}{/*\ -\/-\/\ Includes\ -\/-\/\ */}}
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{stm32f4xx_8h}{stm32f4xx.h}}"{}}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{comment}{/*\ -\/-\/\ Structs\ -\/-\/\ */}}
-\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structUSARTRegs}{USARTRegs}}\ \{}
-\DoxyCodeLine{00024\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ SR;}
-\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ DR;}
-\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ BRR;}
-\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ CR1;}
-\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ CR2;}
-\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ CR3;}
-\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{volatile}\ uint32\_t\ GTPR;}
-\DoxyCodeLine{00031\ \};}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structUSARTRegs}{USARTRegs}}))\ ==\ (\textcolor{keyword}{sizeof}(uint32\_t)\ *\ 7U),}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}USART\ register\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00039\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structUSARTISR}{USARTISR}}\ \{}
-\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ TXEI\ \ :\ 1;}
-\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ CTSI\ \ :\ 1;}
-\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ TCI\ \ \ :\ 1;}
-\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ RXNEI\ :\ 1;}
-\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ IDLEI\ :\ 1;}
-\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ PEI\ \ \ :\ 1;}
-\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ LBDI\ \ :\ 1;}
-\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ EI\ \ \ \ :\ 1;}
-\DoxyCodeLine{00048\ \};}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structUSARTISR}{USARTISR}}))\ ==\ (\textcolor{keyword}{sizeof}(uint8\_t)\ *\ 1U),}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}USART\ interrupt\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{defines_8h}{defines.h}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{/*\ -\/-\/\ Structs\ -\/-\/\ */}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structUSARTRegs}{USARTRegs}}\ \{}
+\DoxyCodeLine{00025\ \ \ REG32\ SR;}
+\DoxyCodeLine{00026\ \ \ REG32\ DR;}
+\DoxyCodeLine{00027\ \ \ REG32\ BRR;}
+\DoxyCodeLine{00028\ \ \ REG32\ CR1;}
+\DoxyCodeLine{00029\ \ \ REG32\ CR2;}
+\DoxyCodeLine{00030\ \ \ REG32\ CR3;}
+\DoxyCodeLine{00031\ \ \ REG32\ GTPR;}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structUSARTRegs}{USARTRegs}}))\ ==\ (\textcolor{keyword}{sizeof}(uint32\_t)\ *\ 7U),}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}USART\ register\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ USART(x)\ (struct\ USARTRegs\ *)(x)}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ \mbox{\hyperlink{structUSARTISR}{USARTISR}}\ \{}
+\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ TXEI\ \ :\ 1;}
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ CTSI\ \ :\ 1;}
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ TCI\ \ \ :\ 1;}
+\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ RXNEI\ :\ 1;}
+\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ IDLEI\ :\ 1;}
+\DoxyCodeLine{00048\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ PEI\ \ \ :\ 1;}
+\DoxyCodeLine{00049\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ LBDI\ \ :\ 1;}
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{volatile}\ \_Bool\ EI\ \ \ \ :\ 1;}
+\DoxyCodeLine{00051\ \};}
 \DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{comment}{/*\ -\/-\/\ Enums\ -\/-\/\ */}}
-\DoxyCodeLine{00057\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{usart_8h_afc040080711205d142964e8660974dd0}{usart\_sel}}\ \{}
-\DoxyCodeLine{00058\ \ \ USART\_SEL\_1\ =\ USART1\_BASE,}
-\DoxyCodeLine{00059\ \ \ USART\_SEL\_2\ =\ USART2\_BASE,}
-\DoxyCodeLine{00060\ \ \ USART\_SEL\_3\ =\ USART3\_BASE,}
-\DoxyCodeLine{00061\ \ \ USART\_SEL\_6\ =\ USART6\_BASE,}
-\DoxyCodeLine{00062\ \ \ UART\_SEL\_4\ =\ UART4\_BASE,}
-\DoxyCodeLine{00063\ \ \ UART\_SEL\_5\ =\ UART5\_BASE}
-\DoxyCodeLine{00064\ \}\ \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\_sel\_t}};}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ USART(sel)\ (struct\ USARTRegs\ *)((usart\_sel\_t)sel)}}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00071\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{usart_8h_a1c465965478e0f6908a4c99d4f3ad20f}{usart\_mode}}\ \{}
-\DoxyCodeLine{00072\ \ \ USART\_MODE\_TX\ =\ 0x00,}
-\DoxyCodeLine{00073\ \ \ USART\_MODE\_RX\ =\ 0x01,}
-\DoxyCodeLine{00074\ \ \ USART\_MODE\_BO\ =\ 0x02}
-\DoxyCodeLine{00075\ \}\ \mbox{\hyperlink{usart_8h_af9cb6192f394ebde038a7b64527eb5e9}{usart\_mode\_t}};}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00080\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{usart_8h_a224e77e9dff1a704a3b0d15e6e383709}{usart\_databits}}\ \{}
-\DoxyCodeLine{00081\ \ \ USART\_DATABITS\_DB8\ =\ 0x00,}
-\DoxyCodeLine{00082\ \ \ USART\_DATABITS\_DB9\ =\ 0x01}
-\DoxyCodeLine{00083\ \}\ \mbox{\hyperlink{usart_8h_a646bb5cdc2347b4c446474ed4d800b28}{usart\_databits\_t}};}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00088\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{usart_8h_ab7d8ac715e2bd7ccddc65bf2c5ceb1f5}{usart\_stopbits}}\ \{}
-\DoxyCodeLine{00089\ \ \ USART\_STOPBITS\_SB1\ =\ 0x00,}
-\DoxyCodeLine{00090\ \ \ USART\_STOPBITS\_SBH\ =\ 0x01,}
-\DoxyCodeLine{00091\ \ \ USART\_STOPBITS\_SB2\ =\ 0x02,}
-\DoxyCodeLine{00092\ \ \ USART\_STOPBITS\_SBO\ =\ 0x03}
-\DoxyCodeLine{00093\ \}\ \mbox{\hyperlink{usart_8h_aec2fddd4341bdbc1ca7e36b9d543d6f9}{usart\_stopbits\_t}};}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00098\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{usart_8h_a867cc5f0ea7d3bf651d68f0046cf6f41}{usart\_parity}}\ \{}
-\DoxyCodeLine{00099\ \ \ USART\_PARITY\_EVN\ =\ 0x00,}
-\DoxyCodeLine{00100\ \ \ USART\_PARITY\_ODD\ =\ 0x01,}
-\DoxyCodeLine{00101\ \ \ USART\_PARITY\_OFF\ =\ 0x02}
-\DoxyCodeLine{00102\ \}\ \mbox{\hyperlink{usart_8h_a9b924d5756332a7f8773403d0dd6b708}{usart\_parity\_t}};}
-\DoxyCodeLine{00103\ }
-\DoxyCodeLine{00116\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_ace94d68de38aef271250cc03514766a5}{usart\_start}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\_sel\_t}}\ usart,\ \textcolor{keyword}{const}\ uint32\_t\ baudrate,}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_af9cb6192f394ebde038a7b64527eb5e9}{usart\_mode\_t}}\ mode);}
-\DoxyCodeLine{00118\ }
-\DoxyCodeLine{00127\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_a315d493dbb7df566f88014fbf096c04e}{usart\_set\_dma}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\_sel\_t}}\ usart,\ \textcolor{keyword}{const}\ \_Bool\ forTX,}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \_Bool\ forRX);}
-\DoxyCodeLine{00129\ }
-\DoxyCodeLine{00140\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_af7a0168af1fb8b94b02d461ae0507e97}{usart\_set\_interrupts}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\_sel\_t}}\ usart,}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structUSARTISR}{USARTISR}}\ config);}
+\DoxyCodeLine{00053\ \textcolor{keyword}{\_Static\_assert}((\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structUSARTISR}{USARTISR}}))\ ==\ (\textcolor{keyword}{sizeof}(uint8\_t)\ *\ 1U),}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}USART\ interrupt\ struct\ size\ mismatch.\ Is\ it\ aligned?"{}});}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{comment}{/*\ -\/-\/\ Enums\ -\/-\/\ */}}
+\DoxyCodeLine{00060\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{usart_8h_a239575d038ee98e4e68bab0e5c329b77}{usart\_peripheral}}\ \{}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#ifdef\ USART1\_BASE}}
+\DoxyCodeLine{00062\ \ \ USART\_PERIPH\_1,}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#ifdef\ USART2\_BASE}}
+\DoxyCodeLine{00065\ \ \ USART\_PERIPH\_2,}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#ifdef\ USART3\_BASE}}
+\DoxyCodeLine{00068\ \ \ USART\_PERIPH\_3,}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#ifdef\ USART6\_BASE}}
+\DoxyCodeLine{00071\ \ \ USART\_PERIPH\_6,}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#ifdef\ UART4\_BASE}}
+\DoxyCodeLine{00074\ \ \ UART\_PERIPH\_4,}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#ifdef\ UART5\_BASE}}
+\DoxyCodeLine{00077\ \ \ UART\_PERIPH\_5}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00079\ \}\ \mbox{\hyperlink{usart_8h_a84089acfdd6cff2f2d8a844e76bbf655}{usart\_peripheral\_t}};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{usart_8h_a1c465965478e0f6908a4c99d4f3ad20f}{usart\_mode}}\ \{}
+\DoxyCodeLine{00085\ \ \ USART\_MODE\_TX\ =\ 0x00,}
+\DoxyCodeLine{00086\ \ \ USART\_MODE\_RX\ =\ 0x01,}
+\DoxyCodeLine{00087\ \ \ USART\_MODE\_BO\ =\ 0x02}
+\DoxyCodeLine{00088\ \}\ \mbox{\hyperlink{usart_8h_af9cb6192f394ebde038a7b64527eb5e9}{usart\_mode\_t}};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00093\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{usart_8h_a224e77e9dff1a704a3b0d15e6e383709}{usart\_databits}}\ \{}
+\DoxyCodeLine{00094\ \ \ USART\_DATABITS\_DB8\ =\ 0x00,}
+\DoxyCodeLine{00095\ \ \ USART\_DATABITS\_DB9\ =\ 0x01}
+\DoxyCodeLine{00096\ \}\ \mbox{\hyperlink{usart_8h_a646bb5cdc2347b4c446474ed4d800b28}{usart\_databits\_t}};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00101\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{usart_8h_ab7d8ac715e2bd7ccddc65bf2c5ceb1f5}{usart\_stopbits}}\ \{}
+\DoxyCodeLine{00102\ \ \ USART\_STOPBITS\_SB1\ =\ 0x00,}
+\DoxyCodeLine{00103\ \ \ USART\_STOPBITS\_SBH\ =\ 0x01,}
+\DoxyCodeLine{00104\ \ \ USART\_STOPBITS\_SB2\ =\ 0x02,}
+\DoxyCodeLine{00105\ \ \ USART\_STOPBITS\_SBO\ =\ 0x03}
+\DoxyCodeLine{00106\ \}\ \mbox{\hyperlink{usart_8h_aec2fddd4341bdbc1ca7e36b9d543d6f9}{usart\_stopbits\_t}};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{usart_8h_a867cc5f0ea7d3bf651d68f0046cf6f41}{usart\_parity}}\ \{}
+\DoxyCodeLine{00112\ \ \ USART\_PARITY\_EVN\ =\ 0x00,}
+\DoxyCodeLine{00113\ \ \ USART\_PARITY\_ODD\ =\ 0x01,}
+\DoxyCodeLine{00114\ \ \ USART\_PARITY\_OFF\ =\ 0x02}
+\DoxyCodeLine{00115\ \}\ \mbox{\hyperlink{usart_8h_a9b924d5756332a7f8773403d0dd6b708}{usart\_parity\_t}};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00129\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_ad9c264f63f18256847b7c7b954a17d8d}{usart\_start}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a84089acfdd6cff2f2d8a844e76bbf655}{usart\_peripheral\_t}}\ usart,\ \textcolor{keyword}{const}\ uint32\_t\ baudrate,}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_af9cb6192f394ebde038a7b64527eb5e9}{usart\_mode\_t}}\ mode);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00140\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_a0455ec8a07f9dacafb4662e78c03c718}{usart\_set\_dma}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a84089acfdd6cff2f2d8a844e76bbf655}{usart\_peripheral\_t}}\ usart,\ \textcolor{keyword}{const}\ \_Bool\ forTX,}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \_Bool\ forRX);}
 \DoxyCodeLine{00142\ }
-\DoxyCodeLine{00155\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_a1984d0d75c1ce6a284498878f4964de9}{usart\_set\_databits}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\_sel\_t}}\ usart,}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_aec2fddd4341bdbc1ca7e36b9d543d6f9}{usart\_stopbits\_t}}\ stopbits,}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a646bb5cdc2347b4c446474ed4d800b28}{usart\_databits\_t}}\ databits);}
-\DoxyCodeLine{00158\ }
-\DoxyCodeLine{00172\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_a5c66eb9fb13bc64b9699c963ea8753e7}{usart\_set\_parity}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\_sel\_t}}\ usart,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a9b924d5756332a7f8773403d0dd6b708}{usart\_parity\_t}}\ parity);}
-\DoxyCodeLine{00173\ }
-\DoxyCodeLine{00185\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_a4004e6aceaef961a4c1446bead1b73e1}{usart\_tx\_message}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\_sel\_t}}\ usart,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *message);}
-\DoxyCodeLine{00186\ }
-\DoxyCodeLine{00198\ uint16\_t\ \mbox{\hyperlink{usart_8h_a6fc3e1ec28df901667776c5fe4043867}{usart\_rx\_byte}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\_sel\_t}}\ usart);}
-\DoxyCodeLine{00199\ }
-\DoxyCodeLine{00209\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_a7867e56537b2710b8a78614b44a56b4d}{usart\_stop}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a79febc36be6daf0f77269ebddd0e81c9}{usart\_sel\_t}}\ usart);}
-\DoxyCodeLine{00210\ }
-\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00153\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_a8361f1f285f8d7b9ae851ee7cb4c92df}{usart\_set\_interrupts}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a84089acfdd6cff2f2d8a844e76bbf655}{usart\_peripheral\_t}}\ usart,}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structUSARTISR}{USARTISR}}\ config);}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00168\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_aa83846fd837fc77d400a5f1af3409917}{usart\_set\_databits}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a84089acfdd6cff2f2d8a844e76bbf655}{usart\_peripheral\_t}}\ usart,}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_aec2fddd4341bdbc1ca7e36b9d543d6f9}{usart\_stopbits\_t}}\ stopbits,}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a646bb5cdc2347b4c446474ed4d800b28}{usart\_databits\_t}}\ databits);}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00185\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_adca849a8d415a84829011ab9c34eed5c}{usart\_set\_parity}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a84089acfdd6cff2f2d8a844e76bbf655}{usart\_peripheral\_t}}\ usart,}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a9b924d5756332a7f8773403d0dd6b708}{usart\_parity\_t}}\ parity);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00199\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_af5c553a09e20287a276c4d553ba33483}{usart\_tx\_message}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a84089acfdd6cff2f2d8a844e76bbf655}{usart\_peripheral\_t}}\ usart,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *message);}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00212\ uint16\_t\ \mbox{\hyperlink{usart_8h_aa9bbbb89288476fa1f9ca4162c0ad76c}{usart\_rx\_byte}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a84089acfdd6cff2f2d8a844e76bbf655}{usart\_peripheral\_t}}\ usart);}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00223\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart_8h_a71c3522d1b9c9cfa223d15a085a0796d}{usart\_stop}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{usart_8h_a84089acfdd6cff2f2d8a844e76bbf655}{usart\_peripheral\_t}}\ usart);}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

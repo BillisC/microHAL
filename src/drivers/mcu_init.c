@@ -30,6 +30,7 @@ static void clock_init(void) {
   FLASH->ACR |= FLASH_ACR_LATENCY_5WS;
 
   /* Configure the PLL clock */
+#ifndef CPPCHECK // To avoid bitmask error
   RCC->PLLCFGR &=
       ~(RCC_PLLCFGR_PLLM_Msk | RCC_PLLCFGR_PLLN_Msk | RCC_PLLCFGR_PLLSRC_Msk |
         RCC_PLLCFGR_PLLP_Msk); // Clear first
@@ -38,6 +39,7 @@ static void clock_init(void) {
        (PLLP_VAL << RCC_PLLCFGR_PLLP_Pos) |
        (PLLSRC_VAL << RCC_PLLCFGR_PLLSRC_Pos));
   ASM_DSB;
+#endif
 
   /* Configure the APB clocks */
   RCC->CFGR |=

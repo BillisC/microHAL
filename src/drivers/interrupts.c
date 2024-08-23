@@ -12,5 +12,5 @@
 #include "interrupts.h"
 
 /* SysTick interrupt routine override */
-uint32_t ticks = 0UL;
+volatile uint32_t ticks = 0UL;
 void SysTick_Handler(void) { ticks++; }

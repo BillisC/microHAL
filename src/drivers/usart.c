@@ -9,7 +9,6 @@
  */
 
 /* -- Includes -- */
-#include "defines.h"
 #include "usart.h"
 
 /** @brief USART address look up table
@@ -77,7 +76,7 @@ void usart_start(const usart_peripheral_t usart, const uint32_t baudrate,
     regs->BRR = ((APB1_CLK * 1000000) / baudrate);
 
     /* Setup communication modes */
-    volatile uint32_t cr1 = regs->CR1;
+    REG32 cr1 = regs->CR1;
     cr1 &= ~(USART_CR1_TE_Msk | USART_CR1_RE_Msk); // Clear first
     if (mode == USART_MODE_TX) {
       cr1 |= USART_CR1_TE_Msk;
@@ -100,7 +99,7 @@ void usart_set_dma(const usart_peripheral_t usart, const _Bool forTX,
     struct USARTRegs *regs = USART(USART_LUT[usart]);
 
     /* Configure DMA parameters */
-    volatile uint32_t cr3 = regs->CR3;
+    REG32 cr3 = regs->CR3;
     cr3 &= ~(USART_CR3_DMAT_Msk | USART_CR3_DMAR_Msk); // Clear first
     cr3 |= (((1UL & forTX) << USART_CR3_DMAT_Pos) |
             ((1UL & forRX) << USART_CR3_DMAR_Pos));
@@ -165,14 +164,14 @@ void usart_set_databits(const usart_peripheral_t usart,
     struct USARTRegs *regs = USART(USART_LUT[usart]);
 
     /* Set amount of databits */
-    volatile uint32_t cr1 = regs->CR1;
+    REG32 cr1 = regs->CR1;
     cr1 &= ~(USART_CR1_M_Msk); // Clear first
     cr1 |= (databits << USART_CR1_M_Pos);
 
     regs->CR1 = cr1;
 
     /* Set amount of stopbits */
-    volatile uint32_t cr2 = regs->CR2;
+    REG32 cr2 = regs->CR2;
     cr2 &= ~(USART_CR2_STOP_Msk); // Clear first
     cr2 |= (stopbits << USART_CR2_STOP_Pos);
 
@@ -197,7 +196,7 @@ void usart_set_parity(const usart_peripheral_t usart,
     struct USARTRegs *regs = USART(USART_LUT[usart]);
 
     /* Set amount of databits */
-    volatile uint32_t cr1 = regs->CR1;
+    REG32 cr1 = regs->CR1;
 
     if (parity == USART_PARITY_EVN) {
       cr1 &= ~(USART_CR1_PS_Msk);

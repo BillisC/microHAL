@@ -28,4 +28,7 @@
 #define APB1_CLK 45
 #define APB2_CLK 90
 
+/* TYPES */
+#define REG32 volatile uint32_t
+
 #endif

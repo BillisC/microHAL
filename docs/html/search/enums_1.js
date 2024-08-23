@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['gp_5fdir_0',['gp_dir',['../gpio_8h.html#ad41a68bf735698334fe528ac7a6d8df2',1,'gpio.h']]],
-  ['gp_5fotype_1',['gp_otype',['../gpio_8h.html#ac867e56268c45d8e06cd3f434c4f0ffe',1,'gpio.h']]],
-  ['gp_5fpupd_2',['gp_pupd',['../gpio_8h.html#a17de1fea985582b9c6fe1acc1c130a74',1,'gpio.h']]],
-  ['gp_5fspeed_3',['gp_speed',['../gpio_8h.html#aa21c3be8ce01487bfa7ff29a74a03d86',1,'gpio.h']]]
+  ['dma_5fdatasize_0',['dma_datasize',['../dma_8h.html#a9124186f3969f38be8d5aeb68abee24a',1,'dma.h']]],
+  ['dma_5fdir_1',['dma_dir',['../dma_8h.html#a196fc6dd22613931cb7033e8349cf666',1,'dma.h']]],
+  ['dma_5fperipheral_2',['dma_peripheral',['../dma_8h.html#aed2304bab72eeb731ab101233f31ed08',1,'dma.h']]],
+  ['dma_5fpriority_3',['dma_priority',['../dma_8h.html#acff7214370827484610e276b30f6da75',1,'dma.h']]]
 ];

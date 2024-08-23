@@ -98,34 +98,33 @@ $(function(){ initResizable(false); });
 <p>Function defines the DMA driver.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="dma_8h_source.html">dma.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="defines_8h_source.html">defines.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a85a6e9d9a27dec6506deb4df62739b63" id="r_a85a6e9d9a27dec6506deb4df62739b63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85a6e9d9a27dec6506deb4df62739b63">dma_set_addresses</a> (const uint8_t dma, const uint8_t stream, const uint32_t PA, const uint32_t M0A, const uint32_t M1A)</td></tr>
-<tr class="memdesc:a85a6e9d9a27dec6506deb4df62739b63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the DMA source and destination addresses.  <br /></td></tr>
-<tr class="separator:a85a6e9d9a27dec6506deb4df62739b63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15de574c8c2114715651fc14586853f1" id="r_a15de574c8c2114715651fc14586853f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15de574c8c2114715651fc14586853f1">dma_configure_data</a> (const uint8_t dma, const uint8_t stream, const uint16_t count, const <a class="el" href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">dma_datasize_t</a> msize, const <a class="el" href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">dma_datasize_t</a> psize)</td></tr>
-<tr class="memdesc:a15de574c8c2114715651fc14586853f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set DMA transfers to specified configuration.  <br /></td></tr>
-<tr class="separator:a15de574c8c2114715651fc14586853f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee1bdf1a525c3c27fd3924ceb1bfc6f0" id="r_aee1bdf1a525c3c27fd3924ceb1bfc6f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee1bdf1a525c3c27fd3924ceb1bfc6f0">dma_set_direction</a> (const uint8_t dma, const uint8_t stream, const <a class="el" href="dma_8h.html#acb4c9afece395581961a451cf89a0daf">dma_dir_t</a> direction)</td></tr>
-<tr class="memdesc:aee1bdf1a525c3c27fd3924ceb1bfc6f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set DMA transfers to the desired direction.  <br /></td></tr>
-<tr class="separator:aee1bdf1a525c3c27fd3924ceb1bfc6f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a729deea5992aa6db7a941f425b1f6b87" id="r_a729deea5992aa6db7a941f425b1f6b87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a729deea5992aa6db7a941f425b1f6b87">dma_configure_stream</a> (const uint8_t dma, const uint8_t stream, const struct <a class="el" href="structDMAStreamConfig.html">DMAStreamConfig</a> config)</td></tr>
-<tr class="memdesc:a729deea5992aa6db7a941f425b1f6b87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set DMA stream to the specified configuration.  <br /></td></tr>
-<tr class="separator:a729deea5992aa6db7a941f425b1f6b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae71d23609ff4bd49f8b32a853ded4ee2" id="r_ae71d23609ff4bd49f8b32a853ded4ee2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae71d23609ff4bd49f8b32a853ded4ee2">dma_set_channel</a> (const uint8_t dma, const uint8_t stream, const uint8_t channel, const <a class="el" href="dma_8h.html#a945cea4e4c15bf97a414f0a003067de6">dma_priority_t</a> priority)</td></tr>
-<tr class="memdesc:ae71d23609ff4bd49f8b32a853ded4ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the DMA stream channel and priority.  <br /></td></tr>
-<tr class="separator:ae71d23609ff4bd49f8b32a853ded4ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a697c7ee8843ceabcb67aa490bb1c5747" id="r_a697c7ee8843ceabcb67aa490bb1c5747"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a697c7ee8843ceabcb67aa490bb1c5747">dma_set_interrupts</a> (const uint8_t dma, const uint8_t stream, const struct <a class="el" href="structDMAStreamISR.html">DMAStreamISR</a> config)</td></tr>
-<tr class="memdesc:a697c7ee8843ceabcb67aa490bb1c5747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enabled the specified DMA stream interrupts.  <br /></td></tr>
-<tr class="separator:a697c7ee8843ceabcb67aa490bb1c5747"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88e3967cf41b526d098bdfe069de0159" id="r_a88e3967cf41b526d098bdfe069de0159"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88e3967cf41b526d098bdfe069de0159">dma_enable</a> (const uint8_t dma, const uint8_t stream)</td></tr>
-<tr class="memdesc:a88e3967cf41b526d098bdfe069de0159"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables DMA stream transfers.  <br /></td></tr>
-<tr class="separator:a88e3967cf41b526d098bdfe069de0159"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafaeaadc24e0bd880951898b65bf10db" id="r_aafaeaadc24e0bd880951898b65bf10db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafaeaadc24e0bd880951898b65bf10db">dma_disable</a> (const uint8_t dma, const uint8_t stream)</td></tr>
-<tr class="memdesc:aafaeaadc24e0bd880951898b65bf10db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables DMA stream transfers.  <br /></td></tr>
-<tr class="separator:aafaeaadc24e0bd880951898b65bf10db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed39ce334b5dd6cebf59185a5cde3bf7" id="r_aed39ce334b5dd6cebf59185a5cde3bf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed39ce334b5dd6cebf59185a5cde3bf7">dma_set_addresses</a> (const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, const uint8_t stream, const uint32_t PA, const uint32_t M0A, const uint32_t M1A)</td></tr>
+<tr class="memdesc:aed39ce334b5dd6cebf59185a5cde3bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the DMA source and destination addresses.  <br /></td></tr>
+<tr class="separator:aed39ce334b5dd6cebf59185a5cde3bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57a92af2d585c5179c5bebcb0e42a159" id="r_a57a92af2d585c5179c5bebcb0e42a159"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57a92af2d585c5179c5bebcb0e42a159">dma_configure_data</a> (const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, const uint8_t stream, const uint16_t count, const <a class="el" href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">dma_datasize_t</a> msize, const <a class="el" href="dma_8h.html#a1732e13bbb47e74a2237ea590425326a">dma_datasize_t</a> psize)</td></tr>
+<tr class="memdesc:a57a92af2d585c5179c5bebcb0e42a159"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set DMA transfers to specified configuration.  <br /></td></tr>
+<tr class="separator:a57a92af2d585c5179c5bebcb0e42a159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fe21db110dae1687ace3d097a4d558e" id="r_a1fe21db110dae1687ace3d097a4d558e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fe21db110dae1687ace3d097a4d558e">dma_set_direction</a> (const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, const uint8_t stream, const <a class="el" href="dma_8h.html#acb4c9afece395581961a451cf89a0daf">dma_dir_t</a> direction)</td></tr>
+<tr class="memdesc:a1fe21db110dae1687ace3d097a4d558e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set DMA transfers to the desired direction.  <br /></td></tr>
+<tr class="separator:a1fe21db110dae1687ace3d097a4d558e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a317fb319e7528b1e7ce6ad0df5ccc94f" id="r_a317fb319e7528b1e7ce6ad0df5ccc94f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a317fb319e7528b1e7ce6ad0df5ccc94f">dma_configure_stream</a> (const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, const uint8_t stream, const struct <a class="el" href="structDMAStreamConfig.html">DMAStreamConfig</a> config)</td></tr>
+<tr class="memdesc:a317fb319e7528b1e7ce6ad0df5ccc94f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set DMA stream to the specified configuration.  <br /></td></tr>
+<tr class="separator:a317fb319e7528b1e7ce6ad0df5ccc94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a596dd5fdee29a7a84ebae8fdc2d1c1f7" id="r_a596dd5fdee29a7a84ebae8fdc2d1c1f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a596dd5fdee29a7a84ebae8fdc2d1c1f7">dma_set_channel</a> (const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, const uint8_t stream, const uint8_t channel, const <a class="el" href="dma_8h.html#a945cea4e4c15bf97a414f0a003067de6">dma_priority_t</a> priority)</td></tr>
+<tr class="memdesc:a596dd5fdee29a7a84ebae8fdc2d1c1f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the DMA stream channel and priority.  <br /></td></tr>
+<tr class="separator:a596dd5fdee29a7a84ebae8fdc2d1c1f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb3051773cb04ea9206da23de3536f68" id="r_adb3051773cb04ea9206da23de3536f68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb3051773cb04ea9206da23de3536f68">dma_set_interrupts</a> (const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, const uint8_t stream, const struct <a class="el" href="structDMAStreamISR.html">DMAStreamISR</a> config)</td></tr>
+<tr class="memdesc:adb3051773cb04ea9206da23de3536f68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enabled the specified DMA stream interrupts.  <br /></td></tr>
+<tr class="separator:adb3051773cb04ea9206da23de3536f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada55bad0a993826be5925226ee90639a" id="r_ada55bad0a993826be5925226ee90639a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada55bad0a993826be5925226ee90639a">dma_enable</a> (const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, const uint8_t stream)</td></tr>
+<tr class="memdesc:ada55bad0a993826be5925226ee90639a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables DMA stream transfers.  <br /></td></tr>
+<tr class="separator:ada55bad0a993826be5925226ee90639a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb407bc5fd74bbe66472dbbf03f9efe0" id="r_abb407bc5fd74bbe66472dbbf03f9efe0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb407bc5fd74bbe66472dbbf03f9efe0">dma_disable</a> (const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a> dma, const uint8_t stream)</td></tr>
+<tr class="memdesc:abb407bc5fd74bbe66472dbbf03f9efe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables DMA stream transfers.  <br /></td></tr>
+<tr class="separator:abb407bc5fd74bbe66472dbbf03f9efe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Function defines the DMA driver. </p>
@@ -133,8 +132,8 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
 <dl class="bug"><dt><b><a class="el" href="bug.html#_bug000004">Bug</a></b></dt><dd>There is a case where DMA1 clears EN SxCR bit when the peripheral address is USART2 DR. There is no workaround at the moment (is it errata?). </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a15de574c8c2114715651fc14586853f1" name="a15de574c8c2114715651fc14586853f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15de574c8c2114715651fc14586853f1">&#9670;&#160;</a></span>dma_configure_data()</h2>
+<a id="a57a92af2d585c5179c5bebcb0e42a159" name="a57a92af2d585c5179c5bebcb0e42a159"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57a92af2d585c5179c5bebcb0e42a159">&#9670;&#160;</a></span>dma_configure_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -142,7 +141,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void dma_configure_data </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -171,7 +170,7 @@ Functions</h2></td></tr>
 <p>The DMA datasizes are specified in the dma_datasize_t enum. Any other value will be ignored.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dma</td><td>The selected DMA (1..2) </td></tr>
+    <tr><td class="paramname">dma</td><td>The selected DMA </td></tr>
     <tr><td class="paramname">stream</td><td>The selected stream (0..7) </td></tr>
     <tr><td class="paramname">count</td><td>The total number of data items </td></tr>
     <tr><td class="paramname">msize</td><td>The size of data stored in memory </td></tr>
@@ -183,8 +182,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a729deea5992aa6db7a941f425b1f6b87" name="a729deea5992aa6db7a941f425b1f6b87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a729deea5992aa6db7a941f425b1f6b87">&#9670;&#160;</a></span>dma_configure_stream()</h2>
+<a id="a317fb319e7528b1e7ce6ad0df5ccc94f" name="a317fb319e7528b1e7ce6ad0df5ccc94f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a317fb319e7528b1e7ce6ad0df5ccc94f">&#9670;&#160;</a></span>dma_configure_stream()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -192,7 +191,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void dma_configure_stream </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -211,7 +210,7 @@ Functions</h2></td></tr>
 <p>The DMA stream options are specified in the <a class="el" href="structDMAStreamConfig.html" title="Contains DMA stream options.">DMAStreamConfig</a> struct.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dma</td><td>The selected DMA (1..2) </td></tr>
+    <tr><td class="paramname">dma</td><td>The selected DMA </td></tr>
     <tr><td class="paramname">stream</td><td>The selected stream (0..7) </td></tr>
     <tr><td class="paramname">config</td><td>The stream configuration </td></tr>
   </table>
@@ -221,8 +220,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aafaeaadc24e0bd880951898b65bf10db" name="aafaeaadc24e0bd880951898b65bf10db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafaeaadc24e0bd880951898b65bf10db">&#9670;&#160;</a></span>dma_disable()</h2>
+<a id="abb407bc5fd74bbe66472dbbf03f9efe0" name="abb407bc5fd74bbe66472dbbf03f9efe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb407bc5fd74bbe66472dbbf03f9efe0">&#9670;&#160;</a></span>dma_disable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -230,7 +229,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void dma_disable </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -243,7 +242,7 @@ Functions</h2></td></tr>
 <p>Disables DMA stream transfers. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dma</td><td>The selected DMA (1..2) </td></tr>
+    <tr><td class="paramname">dma</td><td>The selected DMA </td></tr>
     <tr><td class="paramname">stream</td><td>The selected stream (0..7) </td></tr>
   </table>
   </dd>
@@ -252,8 +251,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a88e3967cf41b526d098bdfe069de0159" name="a88e3967cf41b526d098bdfe069de0159"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88e3967cf41b526d098bdfe069de0159">&#9670;&#160;</a></span>dma_enable()</h2>
+<a id="ada55bad0a993826be5925226ee90639a" name="ada55bad0a993826be5925226ee90639a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada55bad0a993826be5925226ee90639a">&#9670;&#160;</a></span>dma_enable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -261,7 +260,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void dma_enable </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -274,7 +273,7 @@ Functions</h2></td></tr>
 <p>Enables DMA stream transfers. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dma</td><td>The selected DMA (1..2) </td></tr>
+    <tr><td class="paramname">dma</td><td>The selected DMA </td></tr>
     <tr><td class="paramname">stream</td><td>The selected stream (0..7) </td></tr>
   </table>
   </dd>
@@ -283,8 +282,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a85a6e9d9a27dec6506deb4df62739b63" name="a85a6e9d9a27dec6506deb4df62739b63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85a6e9d9a27dec6506deb4df62739b63">&#9670;&#160;</a></span>dma_set_addresses()</h2>
+<a id="aed39ce334b5dd6cebf59185a5cde3bf7" name="aed39ce334b5dd6cebf59185a5cde3bf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed39ce334b5dd6cebf59185a5cde3bf7">&#9670;&#160;</a></span>dma_set_addresses()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -292,7 +291,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void dma_set_addresses </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -333,8 +332,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae71d23609ff4bd49f8b32a853ded4ee2" name="ae71d23609ff4bd49f8b32a853ded4ee2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae71d23609ff4bd49f8b32a853ded4ee2">&#9670;&#160;</a></span>dma_set_channel()</h2>
+<a id="a596dd5fdee29a7a84ebae8fdc2d1c1f7" name="a596dd5fdee29a7a84ebae8fdc2d1c1f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a596dd5fdee29a7a84ebae8fdc2d1c1f7">&#9670;&#160;</a></span>dma_set_channel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -342,7 +341,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void dma_set_channel </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -366,7 +365,7 @@ Functions</h2></td></tr>
 <p>The DMA priority levels are specified in the dma_priority_t enum. Any other value will be ignored. Refer to the chip's manual for the channel function matrix.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dma</td><td>The selected DMA (1..2) </td></tr>
+    <tr><td class="paramname">dma</td><td>The selected DMA </td></tr>
     <tr><td class="paramname">stream</td><td>The selected stream (0..7) </td></tr>
     <tr><td class="paramname">channel</td><td>The selected channel (0..7) </td></tr>
     <tr><td class="paramname">priority</td><td>The stream priority level </td></tr>
@@ -377,8 +376,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aee1bdf1a525c3c27fd3924ceb1bfc6f0" name="aee1bdf1a525c3c27fd3924ceb1bfc6f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee1bdf1a525c3c27fd3924ceb1bfc6f0">&#9670;&#160;</a></span>dma_set_direction()</h2>
+<a id="a1fe21db110dae1687ace3d097a4d558e" name="a1fe21db110dae1687ace3d097a4d558e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fe21db110dae1687ace3d097a4d558e">&#9670;&#160;</a></span>dma_set_direction()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -386,7 +385,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void dma_set_direction </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -405,7 +404,7 @@ Functions</h2></td></tr>
 <p>The DMA directions are specified in the dma_dir_t enum. Any other value will be ignored. After that set the addresses according to the chip's manual.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dma</td><td>The selected DMA (1..2) </td></tr>
+    <tr><td class="paramname">dma</td><td>The selected DMA </td></tr>
     <tr><td class="paramname">stream</td><td>The selected stream (0..7) </td></tr>
     <tr><td class="paramname">direction</td><td>The transfer direction </td></tr>
   </table>
@@ -415,8 +414,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a697c7ee8843ceabcb67aa490bb1c5747" name="a697c7ee8843ceabcb67aa490bb1c5747"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a697c7ee8843ceabcb67aa490bb1c5747">&#9670;&#160;</a></span>dma_set_interrupts()</h2>
+<a id="adb3051773cb04ea9206da23de3536f68" name="adb3051773cb04ea9206da23de3536f68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb3051773cb04ea9206da23de3536f68">&#9670;&#160;</a></span>dma_set_interrupts()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -424,7 +423,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void dma_set_interrupts </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="dma_8h.html#a52b50d9b580890a3a99d6e452e540f05">dma_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>dma</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -443,7 +442,7 @@ Functions</h2></td></tr>
 <p>The available DMA interrupts are located in the <a class="el" href="structDMAStreamISR.html" title="Contains DMA stream interrupt configuration.">DMAStreamISR</a> struct.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dma</td><td>The selected DMA (1..2) </td></tr>
+    <tr><td class="paramname">dma</td><td>The selected DMA </td></tr>
     <tr><td class="paramname">stream</td><td>The selected stream (0..7) </td></tr>
     <tr><td class="paramname">config</td><td>The interrupt configuration </td></tr>
   </table>

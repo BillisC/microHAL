@@ -12,7 +12,6 @@
 
 /* -- Includes -- */
 #include "dma.h"
-#include "defines.h"
 
 static inline _Bool verifyDMA(const dma_peripheral_t dma,
                               const uint8_t stream) {
@@ -67,7 +66,7 @@ void dma_configure_data(const dma_peripheral_t dma, const uint8_t stream,
     struct DMARegs *regs = DMA(dma);
 
     /* Set the DMA datasizes */
-    volatile uint32_t cr = regs->S[stream].CR;
+    REG32 cr = regs->S[stream].CR;
     cr &= ~(DMA_SxCR_MSIZE_Msk | DMA_SxCR_PSIZE_Msk); // Clear first
     cr |= (((3UL & msize) << DMA_SxCR_MSIZE_Pos) |
            ((3UL & psize) << DMA_SxCR_PSIZE_Pos));
@@ -95,7 +94,7 @@ void dma_set_direction(const dma_peripheral_t dma, const uint8_t stream,
     struct DMARegs *regs = DMA(dma);
 
     /* Set the stream to the specified direction */
-    volatile uint32_t cr = regs->S[stream].CR;
+    REG32 cr = regs->S[stream].CR;
     cr &= ~(DMA_SxCR_DIR_Msk); // Clear first
     cr |= ((3UL & direction) << DMA_SxCR_DIR_Pos);
 
@@ -111,7 +110,7 @@ void dma_configure_stream(const dma_peripheral_t dma, const uint8_t stream,
     struct DMARegs *regs = DMA(dma);
 
     /* Configure DMA stream modes in CR */
-    volatile uint32_t cr = regs->S[stream].CR;
+    REG32 cr = regs->S[stream].CR;
     cr &= ~(DMA_SxCR_CIRC_Msk | DMA_SxCR_DBM_Msk | DMA_SxCR_PINC_Msk |
             DMA_SxCR_MINC_Msk | DMA_SxCR_PFCTRL_Msk); // Clear first
     cr |= (((1UL & config.Circular) << DMA_SxCR_CIRC_Pos) |
@@ -146,7 +145,7 @@ void dma_set_channel(const dma_peripheral_t dma, const uint8_t stream,
       struct DMARegs *regs = DMA(dma);
 
       /* Select channel and specify priority */
-      volatile uint32_t cr = regs->S[stream].CR;
+      REG32 cr = regs->S[stream].CR;
       cr &= ~(DMA_SxCR_CHSEL_Msk | DMA_SxCR_PL_Msk); // Clear first
       cr |= (((7UL & channel) << DMA_SxCR_CHSEL_Pos) |
              ((3UL & priority) << DMA_SxCR_PL_Pos));
@@ -164,7 +163,7 @@ void dma_set_interrupts(const dma_peripheral_t dma, const uint8_t stream,
     struct DMARegs *regs = DMA(dma);
 
     /* Configure DMA stream interrupts in CR */
-    volatile uint32_t cr = regs->S[stream].CR;
+    REG32 cr = regs->S[stream].CR;
     cr &= ~(DMA_SxCR_DMEIE_Msk | DMA_SxCR_HTIE_Msk | DMA_SxCR_TCIE_Msk |
             DMA_SxCR_TEIE_Msk);
     cr |= (((1UL & config.DMEI) << DMA_SxCR_DMEIE_Pos) |
@@ -175,7 +174,7 @@ void dma_set_interrupts(const dma_peripheral_t dma, const uint8_t stream,
     regs->S[stream].CR = cr;
 
     /* Configure DMA stream interrupts in FCR */
-    volatile uint32_t fcr = regs->S[stream].FCR;
+    REG32 fcr = regs->S[stream].FCR;
     fcr &= ~(DMA_SxFCR_FEIE_Msk);
     fcr |= ((1UL & config.FEI) << DMA_SxFCR_FEIE_Pos);
 

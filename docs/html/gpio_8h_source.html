@@ -99,99 +99,145 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">/* -- Includes -- */</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="stm32f4xx_8h.html">stm32f4xx.h</a>&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">/* -- Structs -- */</span></div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structGPIORegs.html">   23</a></span><span class="keyword">struct </span>__attribute__((packed)) <a class="code hl_struct" href="structGPIORegs.html">GPIORegs</a> {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keyword">volatile</span> uint32_t MODER;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keyword">volatile</span> uint32_t OTYPER;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <span class="keyword">volatile</span> uint32_t OSPEEDR;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keyword">volatile</span> uint32_t PUPDR;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keyword">volatile</span> uint32_t IDR;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keyword">volatile</span> uint32_t ODR;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="keyword">volatile</span> uint32_t BSSR;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keyword">volatile</span> uint32_t LCKR;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keyword">volatile</span> uint32_t AFR[2];</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>};</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="defines_8h.html">defines.h</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">/* -- Structs -- */</span></div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structGPIORegs.html">   24</a></span><span class="keyword">struct </span>__attribute__((packed)) <a class="code hl_struct" href="structGPIORegs.html">GPIORegs</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  REG32 MODER;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  REG32 OTYPER;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  REG32 OSPEEDR;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  REG32 PUPDR;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  REG32 IDR;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  REG32 ODR;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  REG32 BSSR;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  REG32 LCKR;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  REG32 AFR[2];</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
 </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">_Static_assert</span>((<span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code hl_struct" href="structGPIORegs.html">GPIORegs</a>)) == (<span class="keyword">sizeof</span>(uint32_t) * 10U),</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>               <span class="stringliteral">&quot;GPIO register struct size mismatch. Is it aligned?&quot;</span>);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#ifndef UTEST</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#define GPIO(bank)                                                             \</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">  (struct GPIORegs *)(GPIOA_BASE + (0x400U * ((uint8_t)bank - (uint8_t)&#39;A&#39;)))</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">extern</span> <span class="keyword">struct </span><a class="code hl_struct" href="structGPIORegs.html">GPIORegs</a> *GPIO(<span class="keyword">const</span> uint8_t bank);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">/* -- Enums -- */</span></div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="};">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="gpio_8h.html#ad41a68bf735698334fe528ac7a6d8df2">   49</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="gpio_8h.html#ad41a68bf735698334fe528ac7a6d8df2">gp_dir</a> {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  GP_DIR_IN = 0x00,</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  GP_DIR_OU = 0x01,</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  GP_DIR_AL = 0x02,</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  GP_DIR_AN = 0x03</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="gpio_8h.html#a2066c61dfaee27a2e15d2a7f6eb6be53">   54</a></span>} <a class="code hl_typedef" href="gpio_8h.html#a2066c61dfaee27a2e15d2a7f6eb6be53">gp_dir_t</a>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">_Static_assert</span>((<span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code hl_struct" href="structGPIORegs.html">GPIORegs</a>)) == (<span class="keyword">sizeof</span>(uint32_t) * 10U),</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>               <span class="stringliteral">&quot;GPIO register struct size mismatch. Is it aligned?&quot;</span>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#ifndef UTEST</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define GPIO(bank)                                                             \</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">  (struct GPIORegs *)(GPIOA_BASE + (0x400U * ((uint8_t)bank - (uint8_t)&#39;A&#39;)))</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">extern</span> <span class="keyword">struct </span><a class="code hl_struct" href="structGPIORegs.html">GPIORegs</a> *GPIO(<span class="keyword">const</span> uint8_t bank);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/* -- Enums -- */</span></div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="};">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="gpio_8h.html#a57c29567ddbfe8b54e5f18925ca257d5">   50</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="gpio_8h.html#a57c29567ddbfe8b54e5f18925ca257d5">gp_bank</a> {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#ifdef GPIOA_BASE</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  GP_BANK_A = (uint8_t)<span class="charliteral">&#39;A&#39;</span>,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>#endif</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>#ifdef GPIOB_BASE</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  GP_BANK_B = (uint8_t)<span class="charliteral">&#39;B&#39;</span>,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#ifdef GPIOC_BASE</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  GP_BANK_C = (uint8_t)<span class="charliteral">&#39;C&#39;</span>,</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>#endif</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>#ifdef GPIOD_BASE</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  GP_BANK_D = (uint8_t)<span class="charliteral">&#39;D&#39;</span>,</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#ifdef GPIOE_BASE</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  GP_BANK_E = (uint8_t)<span class="charliteral">&#39;E&#39;</span>,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>#endif</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>#ifdef GPIOF_BASE</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  GP_BANK_F = (uint8_t)<span class="charliteral">&#39;F&#39;</span>,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#ifdef GPIOG_BASE</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  GP_BANK_G = (uint8_t)<span class="charliteral">&#39;G&#39;</span>,</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>#endif</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>#ifdef GPIOH_BASE</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  GP_BANK_H = (uint8_t)<span class="charliteral">&#39;H&#39;</span>,</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#ifdef GPIOI_BASE</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  GP_BANK_I = (uint8_t)<span class="charliteral">&#39;I&#39;</span>,</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>#endif</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>#ifdef GPIOJ_BASE</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  GP_BANK_J = (uint8_t)<span class="charliteral">&#39;J&#39;</span>,</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#ifdef GPIOK_BASE</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  GP_BANK_K = (uint8_t)<span class="charliteral">&#39;K&#39;</span>,</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>#endif</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  GP_BANK_LEN <span class="comment">// This should be substracted with &#39;A&#39;</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="gpio_8h.html#ae22c25f9d4e2dcf552d6e7418c7295b9">   85</a></span>} <a class="code hl_typedef" href="gpio_8h.html#ae22c25f9d4e2dcf552d6e7418c7295b9">gp_bank_t</a>;</div>
 </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="foldopen" id="foldopen00059" data-start="{" data-end="};">
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="gpio_8h.html#ac867e56268c45d8e06cd3f434c4f0ffe">   59</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="gpio_8h.html#ac867e56268c45d8e06cd3f434c4f0ffe">gp_otype</a> {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  GP_OTYPE_PP = 0x00,</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  GP_OTYPE_OD = 0x01</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="gpio_8h.html#abed873c90c4ec9e59dfd97ae7db692a2">   62</a></span>} <a class="code hl_typedef" href="gpio_8h.html#abed873c90c4ec9e59dfd97ae7db692a2">gp_otype_t</a>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="foldopen" id="foldopen00090" data-start="{" data-end="};">
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="gpio_8h.html#ad41a68bf735698334fe528ac7a6d8df2">   90</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="gpio_8h.html#ad41a68bf735698334fe528ac7a6d8df2">gp_dir</a> {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  GP_DIR_IN = 0x00,</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  GP_DIR_OU = 0x01,</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  GP_DIR_AL = 0x02,</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  GP_DIR_AN = 0x03</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="gpio_8h.html#a2066c61dfaee27a2e15d2a7f6eb6be53">   95</a></span>} <a class="code hl_typedef" href="gpio_8h.html#a2066c61dfaee27a2e15d2a7f6eb6be53">gp_dir_t</a>;</div>
 </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="foldopen" id="foldopen00067" data-start="{" data-end="};">
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="gpio_8h.html#aa21c3be8ce01487bfa7ff29a74a03d86">   67</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="gpio_8h.html#aa21c3be8ce01487bfa7ff29a74a03d86">gp_speed</a> {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  GP_SPEED_LOW = 0x00,</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  GP_SPEED_MED = 0x01,</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  GP_SPEED_FAS = 0x02,</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  GP_SPEED_HIG = 0x03</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="gpio_8h.html#a20c9c8df4d3bdb4e8b241ae77851972d">   72</a></span>} <a class="code hl_typedef" href="gpio_8h.html#a20c9c8df4d3bdb4e8b241ae77851972d">gp_speed_t</a>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="foldopen" id="foldopen00100" data-start="{" data-end="};">
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="gpio_8h.html#ac867e56268c45d8e06cd3f434c4f0ffe">  100</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="gpio_8h.html#ac867e56268c45d8e06cd3f434c4f0ffe">gp_otype</a> {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  GP_OTYPE_PP = 0x00,</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  GP_OTYPE_OD = 0x01</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="gpio_8h.html#abed873c90c4ec9e59dfd97ae7db692a2">  103</a></span>} <a class="code hl_typedef" href="gpio_8h.html#abed873c90c4ec9e59dfd97ae7db692a2">gp_otype_t</a>;</div>
 </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="foldopen" id="foldopen00077" data-start="{" data-end="};">
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="gpio_8h.html#a17de1fea985582b9c6fe1acc1c130a74">   77</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="gpio_8h.html#a17de1fea985582b9c6fe1acc1c130a74">gp_pupd</a> {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  GP_PUPD_NONE = 0x00,</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  GP_PUPD_PLUP = 0x01,</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  GP_PUPD_PLDO = 0x02,</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="gpio_8h.html#a40e057b298dffe6a5e0fa8865394ef30">   81</a></span>} <a class="code hl_typedef" href="gpio_8h.html#a40e057b298dffe6a5e0fa8865394ef30">gp_pupd_t</a>;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="foldopen" id="foldopen00108" data-start="{" data-end="};">
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="gpio_8h.html#aa21c3be8ce01487bfa7ff29a74a03d86">  108</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="gpio_8h.html#aa21c3be8ce01487bfa7ff29a74a03d86">gp_speed</a> {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  GP_SPEED_LOW = 0x00,</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  GP_SPEED_MED = 0x01,</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  GP_SPEED_FAS = 0x02,</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  GP_SPEED_HIG = 0x03</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="gpio_8h.html#a20c9c8df4d3bdb4e8b241ae77851972d">  113</a></span>} <a class="code hl_typedef" href="gpio_8h.html#a20c9c8df4d3bdb4e8b241ae77851972d">gp_speed_t</a>;</div>
 </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#ab0634f59138b12257c51f7a4c368b564">gp_set_direction</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> bank, <span class="keyword">const</span> uint8_t pin, <span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#a2066c61dfaee27a2e15d2a7f6eb6be53">gp_dir_t</a> dir);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#a0af948fdb555a92e8d4d46674caec8a4">gp_set_output_type</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> bank, <span class="keyword">const</span> uint8_t pin,</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                        <span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#abed873c90c4ec9e59dfd97ae7db692a2">gp_otype_t</a> type);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#a1df7b4c9f5748cc16fe2391a6059a7d3">gp_set_speed</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> bank, <span class="keyword">const</span> uint8_t pin, <span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#a20c9c8df4d3bdb4e8b241ae77851972d">gp_speed_t</a> speed);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#aeae32bc56298cd61e481159fe52b242a">gp_set_pupd</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> bank, <span class="keyword">const</span> uint8_t pin, <span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#a40e057b298dffe6a5e0fa8865394ef30">gp_pupd_t</a> poopdr);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#a1746be7350679532a4ff89dc46ab802e">gp_set_val</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> bank, <span class="keyword">const</span> uint8_t pin, <span class="keyword">const</span> _Bool value);</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>uint8_t <a class="code hl_function" href="gpio_8h.html#abd098fd2fb3167167a1a1126d50bf0b1">gp_read_val</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> bank, <span class="keyword">const</span> uint8_t pin);</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#ad5d096bcdb8870c66364dfa479c0e0af">gp_set_af</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> bank, <span class="keyword">const</span> uint8_t pin, <span class="keyword">const</span> uint8_t af);</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="preprocessor">#endif </span><span class="comment">/* GPIO_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="agpio_8h_html_a0af948fdb555a92e8d4d46674caec8a4"><div class="ttname"><a href="gpio_8h.html#a0af948fdb555a92e8d4d46674caec8a4">gp_set_output_type</a></div><div class="ttdeci">void gp_set_output_type(const char bank, const uint8_t pin, const gp_otype_t type)</div><div class="ttdoc">Sets the GPIO output pin to the desired type.</div><div class="ttdef"><b>Definition</b> gpio.c:50</div></div>
-<div class="ttc" id="agpio_8h_html_a1746be7350679532a4ff89dc46ab802e"><div class="ttname"><a href="gpio_8h.html#a1746be7350679532a4ff89dc46ab802e">gp_set_val</a></div><div class="ttdeci">void gp_set_val(const char bank, const uint8_t pin, const _Bool value)</div><div class="ttdoc">Sets the GPIO output pin to the desired value.</div><div class="ttdef"><b>Definition</b> gpio.c:118</div></div>
-<div class="ttc" id="agpio_8h_html_a17de1fea985582b9c6fe1acc1c130a74"><div class="ttname"><a href="gpio_8h.html#a17de1fea985582b9c6fe1acc1c130a74">gp_pupd</a></div><div class="ttdeci">gp_pupd</div><div class="ttdoc">Available GPIO pull states.</div><div class="ttdef"><b>Definition</b> gpio.h:77</div></div>
-<div class="ttc" id="agpio_8h_html_a1df7b4c9f5748cc16fe2391a6059a7d3"><div class="ttname"><a href="gpio_8h.html#a1df7b4c9f5748cc16fe2391a6059a7d3">gp_set_speed</a></div><div class="ttdeci">void gp_set_speed(const char bank, const uint8_t pin, const gp_speed_t speed)</div><div class="ttdoc">Sets the GPIO output pin to the desired speed.</div><div class="ttdef"><b>Definition</b> gpio.c:69</div></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="foldopen" id="foldopen00118" data-start="{" data-end="};">
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="gpio_8h.html#a17de1fea985582b9c6fe1acc1c130a74">  118</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="gpio_8h.html#a17de1fea985582b9c6fe1acc1c130a74">gp_pupd</a> {</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  GP_PUPD_NONE = 0x00,</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  GP_PUPD_PLUP = 0x01,</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  GP_PUPD_PLDO = 0x02,</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="gpio_8h.html#a40e057b298dffe6a5e0fa8865394ef30">  122</a></span>} <a class="code hl_typedef" href="gpio_8h.html#a40e057b298dffe6a5e0fa8865394ef30">gp_pupd_t</a>;</div>
+</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#a6a487cbaac9afa23608f3614741af248">gp_set_direction</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#ae22c25f9d4e2dcf552d6e7418c7295b9">gp_bank_t</a> bank, <span class="keyword">const</span> uint8_t pin,</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                      <span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#a2066c61dfaee27a2e15d2a7f6eb6be53">gp_dir_t</a> dir);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#a2054ec03056d19ff7ceff26f403dc90f">gp_set_output_type</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#ae22c25f9d4e2dcf552d6e7418c7295b9">gp_bank_t</a> bank, <span class="keyword">const</span> uint8_t pin,</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>                        <span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#abed873c90c4ec9e59dfd97ae7db692a2">gp_otype_t</a> type);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#ae7a1e3ff84b488d75100f9471309ece0">gp_set_speed</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#ae22c25f9d4e2dcf552d6e7418c7295b9">gp_bank_t</a> bank, <span class="keyword">const</span> uint8_t pin,</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                  <span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#a20c9c8df4d3bdb4e8b241ae77851972d">gp_speed_t</a> speed);</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#a9a6d1660ac4b5055bf2bc88c5f96b78a">gp_set_pupd</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#ae22c25f9d4e2dcf552d6e7418c7295b9">gp_bank_t</a> bank, <span class="keyword">const</span> uint8_t pin,</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                 <span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#a40e057b298dffe6a5e0fa8865394ef30">gp_pupd_t</a> poopdr);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#a2c454082c2e6f63ed7dd1c55ab977af5">gp_set_val</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#ae22c25f9d4e2dcf552d6e7418c7295b9">gp_bank_t</a> bank, <span class="keyword">const</span> uint8_t pin, <span class="keyword">const</span> _Bool value);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>uint8_t <a class="code hl_function" href="gpio_8h.html#a3f45fb872ed0fb99979b0427f54293e1">gp_read_val</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#ae22c25f9d4e2dcf552d6e7418c7295b9">gp_bank_t</a> bank, <span class="keyword">const</span> uint8_t pin);</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="keywordtype">void</span> <a class="code hl_function" href="gpio_8h.html#aeb74661b8cc6041d9fd52e7d18be0f6f">gp_set_af</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="gpio_8h.html#ae22c25f9d4e2dcf552d6e7418c7295b9">gp_bank_t</a> bank, <span class="keyword">const</span> uint8_t pin, <span class="keyword">const</span> uint8_t af);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="preprocessor">#endif </span><span class="comment">/* GPIO_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="adefines_8h_html"><div class="ttname"><a href="defines_8h.html">defines.h</a></div><div class="ttdoc">Defines used commonly in most files.</div></div>
+<div class="ttc" id="agpio_8h_html_a17de1fea985582b9c6fe1acc1c130a74"><div class="ttname"><a href="gpio_8h.html#a17de1fea985582b9c6fe1acc1c130a74">gp_pupd</a></div><div class="ttdeci">gp_pupd</div><div class="ttdoc">Available GPIO pull states.</div><div class="ttdef"><b>Definition</b> gpio.h:118</div></div>
+<div class="ttc" id="agpio_8h_html_a2054ec03056d19ff7ceff26f403dc90f"><div class="ttname"><a href="gpio_8h.html#a2054ec03056d19ff7ceff26f403dc90f">gp_set_output_type</a></div><div class="ttdeci">void gp_set_output_type(const gp_bank_t bank, const uint8_t pin, const gp_otype_t type)</div><div class="ttdoc">Sets the GPIO output pin to the desired type.</div><div class="ttdef"><b>Definition</b> gpio.c:87</div></div>
 <div class="ttc" id="agpio_8h_html_a2066c61dfaee27a2e15d2a7f6eb6be53"><div class="ttname"><a href="gpio_8h.html#a2066c61dfaee27a2e15d2a7f6eb6be53">gp_dir_t</a></div><div class="ttdeci">enum gp_dir gp_dir_t</div><div class="ttdoc">Available GPIO modes.</div></div>
 <div class="ttc" id="agpio_8h_html_a20c9c8df4d3bdb4e8b241ae77851972d"><div class="ttname"><a href="gpio_8h.html#a20c9c8df4d3bdb4e8b241ae77851972d">gp_speed_t</a></div><div class="ttdeci">enum gp_speed gp_speed_t</div><div class="ttdoc">Available GPIO output speeds.</div></div>
+<div class="ttc" id="agpio_8h_html_a2c454082c2e6f63ed7dd1c55ab977af5"><div class="ttname"><a href="gpio_8h.html#a2c454082c2e6f63ed7dd1c55ab977af5">gp_set_val</a></div><div class="ttdeci">void gp_set_val(const gp_bank_t bank, const uint8_t pin, const _Bool value)</div><div class="ttdoc">Sets the GPIO output pin to the desired value.</div><div class="ttdef"><b>Definition</b> gpio.c:157</div></div>
+<div class="ttc" id="agpio_8h_html_a3f45fb872ed0fb99979b0427f54293e1"><div class="ttname"><a href="gpio_8h.html#a3f45fb872ed0fb99979b0427f54293e1">gp_read_val</a></div><div class="ttdeci">uint8_t gp_read_val(const gp_bank_t bank, const uint8_t pin)</div><div class="ttdoc">Reads the GPIO input pin value.</div><div class="ttdef"><b>Definition</b> gpio.c:169</div></div>
 <div class="ttc" id="agpio_8h_html_a40e057b298dffe6a5e0fa8865394ef30"><div class="ttname"><a href="gpio_8h.html#a40e057b298dffe6a5e0fa8865394ef30">gp_pupd_t</a></div><div class="ttdeci">enum gp_pupd gp_pupd_t</div><div class="ttdoc">Available GPIO pull states.</div></div>
-<div class="ttc" id="agpio_8h_html_aa21c3be8ce01487bfa7ff29a74a03d86"><div class="ttname"><a href="gpio_8h.html#aa21c3be8ce01487bfa7ff29a74a03d86">gp_speed</a></div><div class="ttdeci">gp_speed</div><div class="ttdoc">Available GPIO output speeds.</div><div class="ttdef"><b>Definition</b> gpio.h:67</div></div>
-<div class="ttc" id="agpio_8h_html_ab0634f59138b12257c51f7a4c368b564"><div class="ttname"><a href="gpio_8h.html#ab0634f59138b12257c51f7a4c368b564">gp_set_direction</a></div><div class="ttdeci">void gp_set_direction(const char bank, const uint8_t pin, const gp_dir_t dir)</div><div class="ttdoc">Sets the GPIO pin to the desired mode.</div><div class="ttdef"><b>Definition</b> gpio.c:25</div></div>
-<div class="ttc" id="agpio_8h_html_abd098fd2fb3167167a1a1126d50bf0b1"><div class="ttname"><a href="gpio_8h.html#abd098fd2fb3167167a1a1126d50bf0b1">gp_read_val</a></div><div class="ttdeci">uint8_t gp_read_val(const char bank, const uint8_t pin)</div><div class="ttdoc">Reads the GPIO input pin value.</div><div class="ttdef"><b>Definition</b> gpio.c:130</div></div>
+<div class="ttc" id="agpio_8h_html_a57c29567ddbfe8b54e5f18925ca257d5"><div class="ttname"><a href="gpio_8h.html#a57c29567ddbfe8b54e5f18925ca257d5">gp_bank</a></div><div class="ttdeci">gp_bank</div><div class="ttdoc">Available GPIO peripherals.</div><div class="ttdef"><b>Definition</b> gpio.h:50</div></div>
+<div class="ttc" id="agpio_8h_html_a6a487cbaac9afa23608f3614741af248"><div class="ttname"><a href="gpio_8h.html#a6a487cbaac9afa23608f3614741af248">gp_set_direction</a></div><div class="ttdeci">void gp_set_direction(const gp_bank_t bank, const uint8_t pin, const gp_dir_t dir)</div><div class="ttdoc">Sets the GPIO pin to the desired mode.</div><div class="ttdef"><b>Definition</b> gpio.c:61</div></div>
+<div class="ttc" id="agpio_8h_html_a9a6d1660ac4b5055bf2bc88c5f96b78a"><div class="ttname"><a href="gpio_8h.html#a9a6d1660ac4b5055bf2bc88c5f96b78a">gp_set_pupd</a></div><div class="ttdeci">void gp_set_pupd(const gp_bank_t bank, const uint8_t pin, const gp_pupd_t poopdr)</div><div class="ttdoc">Sets the GPIO input pin to the desired state.</div><div class="ttdef"><b>Definition</b> gpio.c:132</div></div>
+<div class="ttc" id="agpio_8h_html_aa21c3be8ce01487bfa7ff29a74a03d86"><div class="ttname"><a href="gpio_8h.html#aa21c3be8ce01487bfa7ff29a74a03d86">gp_speed</a></div><div class="ttdeci">gp_speed</div><div class="ttdoc">Available GPIO output speeds.</div><div class="ttdef"><b>Definition</b> gpio.h:108</div></div>
 <div class="ttc" id="agpio_8h_html_abed873c90c4ec9e59dfd97ae7db692a2"><div class="ttname"><a href="gpio_8h.html#abed873c90c4ec9e59dfd97ae7db692a2">gp_otype_t</a></div><div class="ttdeci">enum gp_otype gp_otype_t</div><div class="ttdoc">Available GPIO output types.</div></div>
-<div class="ttc" id="agpio_8h_html_ac867e56268c45d8e06cd3f434c4f0ffe"><div class="ttname"><a href="gpio_8h.html#ac867e56268c45d8e06cd3f434c4f0ffe">gp_otype</a></div><div class="ttdeci">gp_otype</div><div class="ttdoc">Available GPIO output types.</div><div class="ttdef"><b>Definition</b> gpio.h:59</div></div>
-<div class="ttc" id="agpio_8h_html_ad41a68bf735698334fe528ac7a6d8df2"><div class="ttname"><a href="gpio_8h.html#ad41a68bf735698334fe528ac7a6d8df2">gp_dir</a></div><div class="ttdeci">gp_dir</div><div class="ttdoc">Available GPIO modes.</div><div class="ttdef"><b>Definition</b> gpio.h:49</div></div>
-<div class="ttc" id="agpio_8h_html_ad5d096bcdb8870c66364dfa479c0e0af"><div class="ttname"><a href="gpio_8h.html#ad5d096bcdb8870c66364dfa479c0e0af">gp_set_af</a></div><div class="ttdeci">void gp_set_af(const char bank, const uint8_t pin, const uint8_t af)</div><div class="ttdoc">Sets the alternate function of the GPIO pin.</div><div class="ttdef"><b>Definition</b> gpio.c:139</div></div>
-<div class="ttc" id="agpio_8h_html_aeae32bc56298cd61e481159fe52b242a"><div class="ttname"><a href="gpio_8h.html#aeae32bc56298cd61e481159fe52b242a">gp_set_pupd</a></div><div class="ttdeci">void gp_set_pupd(const char bank, const uint8_t pin, const gp_pupd_t poopdr)</div><div class="ttdoc">Sets the GPIO input pin to the desired state.</div><div class="ttdef"><b>Definition</b> gpio.c:94</div></div>
+<div class="ttc" id="agpio_8h_html_ac867e56268c45d8e06cd3f434c4f0ffe"><div class="ttname"><a href="gpio_8h.html#ac867e56268c45d8e06cd3f434c4f0ffe">gp_otype</a></div><div class="ttdeci">gp_otype</div><div class="ttdoc">Available GPIO output types.</div><div class="ttdef"><b>Definition</b> gpio.h:100</div></div>
+<div class="ttc" id="agpio_8h_html_ad41a68bf735698334fe528ac7a6d8df2"><div class="ttname"><a href="gpio_8h.html#ad41a68bf735698334fe528ac7a6d8df2">gp_dir</a></div><div class="ttdeci">gp_dir</div><div class="ttdoc">Available GPIO modes.</div><div class="ttdef"><b>Definition</b> gpio.h:90</div></div>
+<div class="ttc" id="agpio_8h_html_ae22c25f9d4e2dcf552d6e7418c7295b9"><div class="ttname"><a href="gpio_8h.html#ae22c25f9d4e2dcf552d6e7418c7295b9">gp_bank_t</a></div><div class="ttdeci">enum gp_bank gp_bank_t</div><div class="ttdoc">Available GPIO peripherals.</div></div>
+<div class="ttc" id="agpio_8h_html_ae7a1e3ff84b488d75100f9471309ece0"><div class="ttname"><a href="gpio_8h.html#ae7a1e3ff84b488d75100f9471309ece0">gp_set_speed</a></div><div class="ttdeci">void gp_set_speed(const gp_bank_t bank, const uint8_t pin, const gp_speed_t speed)</div><div class="ttdoc">Sets the GPIO output pin to the desired speed.</div><div class="ttdef"><b>Definition</b> gpio.c:106</div></div>
+<div class="ttc" id="agpio_8h_html_aeb74661b8cc6041d9fd52e7d18be0f6f"><div class="ttname"><a href="gpio_8h.html#aeb74661b8cc6041d9fd52e7d18be0f6f">gp_set_af</a></div><div class="ttdeci">void gp_set_af(const gp_bank_t bank, const uint8_t pin, const uint8_t af)</div><div class="ttdoc">Sets the alternate function of the GPIO pin.</div><div class="ttdef"><b>Definition</b> gpio.c:178</div></div>
 <div class="ttc" id="astm32f4xx_8h_html"><div class="ttname"><a href="stm32f4xx_8h.html">stm32f4xx.h</a></div><div class="ttdoc">CMSIS device header stubs.</div></div>
-<div class="ttc" id="astructGPIORegs_html"><div class="ttname"><a href="structGPIORegs.html">GPIORegs</a></div><div class="ttdoc">Contains GPIO registers.</div><div class="ttdef"><b>Definition</b> gpio.h:23</div></div>
+<div class="ttc" id="astructGPIORegs_html"><div class="ttname"><a href="structGPIORegs.html">GPIORegs</a></div><div class="ttdoc">Contains GPIO registers.</div><div class="ttdef"><b>Definition</b> gpio.h:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

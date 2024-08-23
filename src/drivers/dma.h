@@ -19,18 +19,19 @@
 /* -- Includes -- */
 #include <stdint.h>
 #include "stm32f4xx.h"
+#include "defines.h"
 
 /* -- Structs -- */
 /**
  *  @brief Contains DMA stream registers
  */
 struct __attribute__((packed)) DMAStreamRegs {
-  volatile uint32_t CR;
-  volatile uint32_t NDTR;
-  volatile uint32_t PAR;
-  volatile uint32_t M0AR;
-  volatile uint32_t M1AR;
-  volatile uint32_t FCR;
+  REG32 CR;
+  REG32 NDTR;
+  REG32 PAR;
+  REG32 M0AR;
+  REG32 M1AR;
+  REG32 FCR;
 };
 
 _Static_assert((sizeof(struct DMAStreamRegs)) == (sizeof(uint32_t) * 6U),
@@ -40,10 +41,10 @@ _Static_assert((sizeof(struct DMAStreamRegs)) == (sizeof(uint32_t) * 6U),
  *  @brief Contains DMA registers
  */
 struct __attribute__((packed)) DMARegs {
-  volatile uint32_t LISR;
-  volatile uint32_t HISR;
-  volatile uint32_t LIFCR;
-  volatile uint32_t HIFCR;
+  REG32 LISR;
+  REG32 HISR;
+  REG32 LIFCR;
+  REG32 HIFCR;
   volatile struct DMAStreamRegs S[8];
 };
 
@@ -82,6 +83,9 @@ _Static_assert((sizeof(struct DMAStreamISR)) == (sizeof(uint8_t) * 1U),
                "DMA Stream Interrupt struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
+/**
+ *  @brief Available DMA peripherals
+ */
 typedef enum dma_peripheral {
   DMA_PERIPH_1 = 0x00,
   DMA_PERIPH_2 = 0x01

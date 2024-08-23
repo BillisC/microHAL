@@ -108,17 +108,19 @@ Macros</h2></td></tr>
 <tr class="memitem:aa93f0eb578d23995850d61f7d61c55c1" id="r_aa93f0eb578d23995850d61f7d61c55c1"><td class="memItemLeft" align="right" valign="top"><a id="aa93f0eb578d23995850d61f7d61c55c1" name="aa93f0eb578d23995850d61f7d61c55c1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>FALSE</b>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:aa93f0eb578d23995850d61f7d61c55c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bfc218c73bb90fda93255d3df223d09" id="r_a0bfc218c73bb90fda93255d3df223d09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bfc218c73bb90fda93255d3df223d09">ASM_INSTR</a>(x)</td></tr>
+<tr class="separator:a0bfc218c73bb90fda93255d3df223d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cd6918459f7972a7ce594d8639e30fb" id="r_a7cd6918459f7972a7ce594d8639e30fb"><td class="memItemLeft" align="right" valign="top"><a id="a7cd6918459f7972a7ce594d8639e30fb" name="a7cd6918459f7972a7ce594d8639e30fb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ASM_BKPT</b>&#160;&#160;&#160;__asm volatile(&quot;BKPT&quot;)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ASM_BKPT</b>&#160;&#160;&#160;ASM_INSTR(BKPT)</td></tr>
 <tr class="separator:a7cd6918459f7972a7ce594d8639e30fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa909058014d2d74d8269847e8d61acd3" id="r_aa909058014d2d74d8269847e8d61acd3"><td class="memItemLeft" align="right" valign="top"><a id="aa909058014d2d74d8269847e8d61acd3" name="aa909058014d2d74d8269847e8d61acd3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ASM_NOP</b>&#160;&#160;&#160;__asm volatile(&quot;NOP&quot;)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ASM_NOP</b>&#160;&#160;&#160;ASM_INSTR(NOP)</td></tr>
 <tr class="separator:aa909058014d2d74d8269847e8d61acd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a399cad3f24ea528f91989fd87cc3bcc1" id="r_a399cad3f24ea528f91989fd87cc3bcc1"><td class="memItemLeft" align="right" valign="top"><a id="a399cad3f24ea528f91989fd87cc3bcc1" name="a399cad3f24ea528f91989fd87cc3bcc1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ASM_DSB</b>&#160;&#160;&#160;__asm volatile(&quot;DSB&quot;)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ASM_DSB</b>&#160;&#160;&#160;ASM_INSTR(DSB)</td></tr>
 <tr class="separator:a399cad3f24ea528f91989fd87cc3bcc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c1cd962e8c172fc60edfaf3ee4e2d14" id="r_a1c1cd962e8c172fc60edfaf3ee4e2d14"><td class="memItemLeft" align="right" valign="top"><a id="a1c1cd962e8c172fc60edfaf3ee4e2d14" name="a1c1cd962e8c172fc60edfaf3ee4e2d14"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>HSE_CLK</b>&#160;&#160;&#160;8U</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HSE_CLK</b>&#160;&#160;&#160;8</td></tr>
 <tr class="separator:a1c1cd962e8c172fc60edfaf3ee4e2d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3a7892b9f9fbb5c3fc2cbdbceb10017" id="r_ab3a7892b9f9fbb5c3fc2cbdbceb10017"><td class="memItemLeft" align="right" valign="top"><a id="ab3a7892b9f9fbb5c3fc2cbdbceb10017" name="ab3a7892b9f9fbb5c3fc2cbdbceb10017"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SYS_CLK</b>&#160;&#160;&#160;180</td></tr>
@@ -129,12 +131,34 @@ Macros</h2></td></tr>
 <tr class="memitem:a406b1a312c9bd51e463b4bf9e6066f2c" id="r_a406b1a312c9bd51e463b4bf9e6066f2c"><td class="memItemLeft" align="right" valign="top"><a id="a406b1a312c9bd51e463b4bf9e6066f2c" name="a406b1a312c9bd51e463b4bf9e6066f2c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>APB2_CLK</b>&#160;&#160;&#160;90</td></tr>
 <tr class="separator:a406b1a312c9bd51e463b4bf9e6066f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f017ef6e922d8496886a2533ed0b908" id="r_a4f017ef6e922d8496886a2533ed0b908"><td class="memItemLeft" align="right" valign="top"><a id="a4f017ef6e922d8496886a2533ed0b908" name="a4f017ef6e922d8496886a2533ed0b908"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>REG32</b>&#160;&#160;&#160;volatile uint32_t</td></tr>
+<tr class="separator:a4f017ef6e922d8496886a2533ed0b908"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines used commonly in most files. </p>
 <dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
 <dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug</a></b></dt><dd>None, yet. </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a0bfc218c73bb90fda93255d3df223d09" name="a0bfc218c73bb90fda93255d3df223d09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bfc218c73bb90fda93255d3df223d09">&#9670;&#160;</a></span>ASM_INSTR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ASM_INSTR</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">__asm <span class="keyword">volatile</span>(#x)</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0

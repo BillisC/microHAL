@@ -15,21 +15,22 @@
 /* -- Includes -- */
 #include <stdint.h>
 #include "stm32f4xx.h"
+#include "defines.h"
 
 /* -- Structs -- */
 /**
  *  @brief Contains GPIO registers
  */
 struct __attribute__((packed)) GPIORegs {
-  volatile uint32_t MODER;
-  volatile uint32_t OTYPER;
-  volatile uint32_t OSPEEDR;
-  volatile uint32_t PUPDR;
-  volatile uint32_t IDR;
-  volatile uint32_t ODR;
-  volatile uint32_t BSSR;
-  volatile uint32_t LCKR;
-  volatile uint32_t AFR[2];
+  REG32 MODER;
+  REG32 OTYPER;
+  REG32 OSPEEDR;
+  REG32 PUPDR;
+  REG32 IDR;
+  REG32 ODR;
+  REG32 BSSR;
+  REG32 LCKR;
+  REG32 AFR[2];
 };
 
 _Static_assert((sizeof(struct GPIORegs)) == (sizeof(uint32_t) * 10U),
@@ -43,6 +44,9 @@ extern struct GPIORegs *GPIO(const uint8_t bank);
 #endif
 
 /* -- Enums -- */
+/**
+ *  @brief Available GPIO peripherals
+ */
 typedef enum gp_bank {
 #ifdef GPIOA_BASE
   GP_BANK_A = (uint8_t)'A',

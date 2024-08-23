@@ -103,6 +103,7 @@ $(function(){ initResizable(false); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="stm32f4xx_8h_source.html">stm32f4xx.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="defines_8h_source.html">defines.h</a>&quot;</code><br />
 </div>
 <p><a href="adc_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -120,45 +121,56 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a449255704cece03b7bbbf247359b6bbd" id="r_a449255704cece03b7bbbf247359b6bbd"><td class="memItemLeft" align="right" valign="top"><a id="a449255704cece03b7bbbf247359b6bbd" name="a449255704cece03b7bbbf247359b6bbd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ADC_NUM</b>&#160;&#160;&#160;3U</td></tr>
-<tr class="separator:a449255704cece03b7bbbf247359b6bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a432a9dde0c2acd17dbe8100a648bb30a" id="r_a432a9dde0c2acd17dbe8100a648bb30a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a432a9dde0c2acd17dbe8100a648bb30a">ADC_</a>(number)</td></tr>
-<tr class="separator:a432a9dde0c2acd17dbe8100a648bb30a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af05e855b08a63eae6eaef378e1fb15c6" id="r_af05e855b08a63eae6eaef378e1fb15c6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af05e855b08a63eae6eaef378e1fb15c6">ADC_</a>(NUM)</td></tr>
+<tr class="separator:af05e855b08a63eae6eaef378e1fb15c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a435a3a89417f788d4d23f161c01bda5f" id="r_a435a3a89417f788d4d23f161c01bda5f"><td class="memItemLeft" align="right" valign="top"><a id="a435a3a89417f788d4d23f161c01bda5f" name="a435a3a89417f788d4d23f161c01bda5f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>ADC_COMMON</b>&#160;&#160;&#160;(struct <a class="el" href="structADCCommonRegs.html">ADCCommonRegs</a> *)(ADC123_COMMON_BASE)</td></tr>
 <tr class="separator:a435a3a89417f788d4d23f161c01bda5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:ac890f1a91e1b8569617cd846532cc536" id="r_ac890f1a91e1b8569617cd846532cc536"><td class="memItemLeft" align="right" valign="top"><a id="ac890f1a91e1b8569617cd846532cc536" name="ac890f1a91e1b8569617cd846532cc536"></a>
+typedef enum <a class="el" href="#a410b7633747a1ebac95080b763a143e7">adc_peripheral</a>&#160;</td><td class="memItemRight" valign="bottom"><b>adc_peripheral_t</b></td></tr>
+<tr class="memdesc:ac890f1a91e1b8569617cd846532cc536"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available ADC peripherals. <br /></td></tr>
+<tr class="separator:ac890f1a91e1b8569617cd846532cc536"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87e2393c3b4be47adb2d3ee1dd3f6f46" id="r_a87e2393c3b4be47adb2d3ee1dd3f6f46"><td class="memItemLeft" align="right" valign="top"><a id="a87e2393c3b4be47adb2d3ee1dd3f6f46" name="a87e2393c3b4be47adb2d3ee1dd3f6f46"></a>
-typedef enum adc_res&#160;</td><td class="memItemRight" valign="bottom"><b>adc_res_t</b></td></tr>
+typedef enum <a class="el" href="#a30443b7af1623e41bf412fcecb632f22">adc_res</a>&#160;</td><td class="memItemRight" valign="bottom"><b>adc_res_t</b></td></tr>
+<tr class="memdesc:a87e2393c3b4be47adb2d3ee1dd3f6f46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available ADC resolutions. <br /></td></tr>
 <tr class="separator:a87e2393c3b4be47adb2d3ee1dd3f6f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4febcf1b622069decb576e94f52f12b4" id="r_a4febcf1b622069decb576e94f52f12b4"><td class="memItemLeft" align="right" valign="top"><a id="a4febcf1b622069decb576e94f52f12b4" name="a4febcf1b622069decb576e94f52f12b4"></a>
-typedef enum adc_trigger&#160;</td><td class="memItemRight" valign="bottom"><b>adc_trigger_t</b></td></tr>
+typedef enum <a class="el" href="#adac5df7f2a1fa6df2915490437034183">adc_trigger</a>&#160;</td><td class="memItemRight" valign="bottom"><b>adc_trigger_t</b></td></tr>
+<tr class="memdesc:a4febcf1b622069decb576e94f52f12b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available ADC trigger modes. <br /></td></tr>
 <tr class="separator:a4febcf1b622069decb576e94f52f12b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dc8ca1b8b76af313c51ecba2aa6117d" id="r_a1dc8ca1b8b76af313c51ecba2aa6117d"><td class="memItemLeft" align="right" valign="top"><a id="a1dc8ca1b8b76af313c51ecba2aa6117d" name="a1dc8ca1b8b76af313c51ecba2aa6117d"></a>
-typedef enum adc_samplerate&#160;</td><td class="memItemRight" valign="bottom"><b>adc_samplerate_t</b></td></tr>
+typedef enum <a class="el" href="#af706589396e514e32045fff1b19f3eaf">adc_samplerate</a>&#160;</td><td class="memItemRight" valign="bottom"><b>adc_samplerate_t</b></td></tr>
+<tr class="memdesc:a1dc8ca1b8b76af313c51ecba2aa6117d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available ADC samplerates (in cycles) <br /></td></tr>
 <tr class="separator:a1dc8ca1b8b76af313c51ecba2aa6117d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b541ef455f3a62ac2ef51347e117921" id="r_a4b541ef455f3a62ac2ef51347e117921"><td class="memItemLeft" align="right" valign="top"><a id="a4b541ef455f3a62ac2ef51347e117921" name="a4b541ef455f3a62ac2ef51347e117921"></a>
-typedef enum adc_prescaler&#160;</td><td class="memItemRight" valign="bottom"><b>adc_prescaler_t</b></td></tr>
+typedef enum <a class="el" href="#a02634359ec7ce6df8aa4dbda146bf49d">adc_prescaler</a>&#160;</td><td class="memItemRight" valign="bottom"><b>adc_prescaler_t</b></td></tr>
+<tr class="memdesc:a4b541ef455f3a62ac2ef51347e117921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available ADC prescaler dividers. <br /></td></tr>
 <tr class="separator:a4b541ef455f3a62ac2ef51347e117921"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a30443b7af1623e41bf412fcecb632f22" id="r_a30443b7af1623e41bf412fcecb632f22"><td class="memItemLeft" align="right" valign="top"><a id="a30443b7af1623e41bf412fcecb632f22" name="a30443b7af1623e41bf412fcecb632f22"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>adc_res</b> { <b>ADC_RES_B12</b> = 0x00
+<tr class="memitem:a410b7633747a1ebac95080b763a143e7" id="r_a410b7633747a1ebac95080b763a143e7"><td class="memItemLeft" align="right" valign="top"><a id="a410b7633747a1ebac95080b763a143e7" name="a410b7633747a1ebac95080b763a143e7"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a410b7633747a1ebac95080b763a143e7">adc_peripheral</a> { <b>ADC_PERIPH_LEN</b>
+ }</td></tr>
+<tr class="memdesc:a410b7633747a1ebac95080b763a143e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available ADC peripherals. <br /></td></tr>
+<tr class="separator:a410b7633747a1ebac95080b763a143e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30443b7af1623e41bf412fcecb632f22" id="r_a30443b7af1623e41bf412fcecb632f22"><td class="memItemLeft" align="right" valign="top"><a id="a30443b7af1623e41bf412fcecb632f22" name="a30443b7af1623e41bf412fcecb632f22"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30443b7af1623e41bf412fcecb632f22">adc_res</a> { <b>ADC_RES_B12</b> = 0x00
 , <b>ADC_RES_B10</b> = 0x01
 , <b>ADC_RES_B08</b> = 0x02
 , <b>ADC_RES_B06</b> = 0x03
  }</td></tr>
+<tr class="memdesc:a30443b7af1623e41bf412fcecb632f22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available ADC resolutions. <br /></td></tr>
 <tr class="separator:a30443b7af1623e41bf412fcecb632f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adac5df7f2a1fa6df2915490437034183" id="r_adac5df7f2a1fa6df2915490437034183"><td class="memItemLeft" align="right" valign="top"><a id="adac5df7f2a1fa6df2915490437034183" name="adac5df7f2a1fa6df2915490437034183"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>adc_trigger</b> { <b>ADC_TRIGGER_NONE</b> = 0x00
+<tr class="memitem:adac5df7f2a1fa6df2915490437034183" id="r_adac5df7f2a1fa6df2915490437034183"><td class="memItemLeft" align="right" valign="top"><a id="adac5df7f2a1fa6df2915490437034183" name="adac5df7f2a1fa6df2915490437034183"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adac5df7f2a1fa6df2915490437034183">adc_trigger</a> { <b>ADC_TRIGGER_NONE</b> = 0x00
 , <b>ADC_TRIGGER_RISE</b> = 0x01
 , <b>ADC_TRIGGER_FALL</b> = 0x02
 , <b>ADC_TRIGGER_BOTH</b> = 0x03
  }</td></tr>
+<tr class="memdesc:adac5df7f2a1fa6df2915490437034183"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available ADC trigger modes. <br /></td></tr>
 <tr class="separator:adac5df7f2a1fa6df2915490437034183"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af706589396e514e32045fff1b19f3eaf" id="r_af706589396e514e32045fff1b19f3eaf"><td class="memItemLeft" align="right" valign="top"><a id="af706589396e514e32045fff1b19f3eaf" name="af706589396e514e32045fff1b19f3eaf"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>adc_samplerate</b> { <br />
+<tr class="memitem:af706589396e514e32045fff1b19f3eaf" id="r_af706589396e514e32045fff1b19f3eaf"><td class="memItemLeft" align="right" valign="top"><a id="af706589396e514e32045fff1b19f3eaf" name="af706589396e514e32045fff1b19f3eaf"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af706589396e514e32045fff1b19f3eaf">adc_samplerate</a> { <br />
 &#160;&#160;<b>ADC_SAMPLERATE_C003</b> = 0x00
 , <b>ADC_SAMPLERATE_C015</b> = 0x01
 , <b>ADC_SAMPLERATE_C028</b> = 0x02
@@ -170,40 +182,42 @@ Enumerations</h2></td></tr>
 , <b>ADC_SAMPLERATE_C480</b> = 0x07
 <br />
  }</td></tr>
+<tr class="memdesc:af706589396e514e32045fff1b19f3eaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available ADC samplerates (in cycles) <br /></td></tr>
 <tr class="separator:af706589396e514e32045fff1b19f3eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02634359ec7ce6df8aa4dbda146bf49d" id="r_a02634359ec7ce6df8aa4dbda146bf49d"><td class="memItemLeft" align="right" valign="top"><a id="a02634359ec7ce6df8aa4dbda146bf49d" name="a02634359ec7ce6df8aa4dbda146bf49d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>adc_prescaler</b> { <b>ADC_PRESCALER_DIV2</b> = 0x00
+<tr class="memitem:a02634359ec7ce6df8aa4dbda146bf49d" id="r_a02634359ec7ce6df8aa4dbda146bf49d"><td class="memItemLeft" align="right" valign="top"><a id="a02634359ec7ce6df8aa4dbda146bf49d" name="a02634359ec7ce6df8aa4dbda146bf49d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02634359ec7ce6df8aa4dbda146bf49d">adc_prescaler</a> { <b>ADC_PRESCALER_DIV2</b> = 0x00
 , <b>ADC_PRESCALER_DIV4</b> = 0x01
 , <b>ADC_PRESCALER_DIV6</b> = 0x02
 , <b>ADC_PRESCALER_DIV8</b> = 0x03
  }</td></tr>
+<tr class="memdesc:a02634359ec7ce6df8aa4dbda146bf49d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available ADC prescaler dividers. <br /></td></tr>
 <tr class="separator:a02634359ec7ce6df8aa4dbda146bf49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9eb3c8478c8926f4e9c752516151a953" id="r_a9eb3c8478c8926f4e9c752516151a953"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9eb3c8478c8926f4e9c752516151a953">adc_set_prescaler</a> (const adc_prescaler_t value)</td></tr>
+<tr class="memitem:a9eb3c8478c8926f4e9c752516151a953" id="r_a9eb3c8478c8926f4e9c752516151a953"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9eb3c8478c8926f4e9c752516151a953">adc_set_prescaler</a> (const <a class="el" href="#a4b541ef455f3a62ac2ef51347e117921">adc_prescaler_t</a> value)</td></tr>
 <tr class="memdesc:a9eb3c8478c8926f4e9c752516151a953"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ADC Prescaler divider to the specified value.  <br /></td></tr>
 <tr class="separator:a9eb3c8478c8926f4e9c752516151a953"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38a3d191c258d54ef099a03c5f4bb942" id="r_a38a3d191c258d54ef099a03c5f4bb942"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38a3d191c258d54ef099a03c5f4bb942">adc_set_resolution</a> (const uint8_t adc, const adc_res_t value)</td></tr>
-<tr class="memdesc:a38a3d191c258d54ef099a03c5f4bb942"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ADC resolution to the specified value.  <br /></td></tr>
-<tr class="separator:a38a3d191c258d54ef099a03c5f4bb942"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a277295eb7f7523478637e206fa082b0b" id="r_a277295eb7f7523478637e206fa082b0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a277295eb7f7523478637e206fa082b0b">adc_set_samplerate</a> (const uint8_t adc, const uint8_t channel, const adc_samplerate_t value)</td></tr>
-<tr class="memdesc:a277295eb7f7523478637e206fa082b0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ADC sampling rate to the specified value.  <br /></td></tr>
-<tr class="separator:a277295eb7f7523478637e206fa082b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a508304374c9dba7c1f5681922e2fe2e1" id="r_a508304374c9dba7c1f5681922e2fe2e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a508304374c9dba7c1f5681922e2fe2e1">adc_set_modes</a> (const uint8_t adc, const struct <a class="el" href="structADCModes.html">ADCModes</a> config)</td></tr>
-<tr class="memdesc:a508304374c9dba7c1f5681922e2fe2e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ADC modes according to the configuration.  <br /></td></tr>
-<tr class="separator:a508304374c9dba7c1f5681922e2fe2e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1f1a673889c40e5ea83e5d0c84b808e" id="r_aa1f1a673889c40e5ea83e5d0c84b808e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1f1a673889c40e5ea83e5d0c84b808e">adc_set_seq</a> (const uint8_t adc, const uint8_t *seq, const uint8_t count)</td></tr>
-<tr class="memdesc:aa1f1a673889c40e5ea83e5d0c84b808e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ADC conversion sequence to the specified order.  <br /></td></tr>
-<tr class="separator:aa1f1a673889c40e5ea83e5d0c84b808e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1efc1024ea81ff54636d50c1e2f5304b" id="r_a1efc1024ea81ff54636d50c1e2f5304b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1efc1024ea81ff54636d50c1e2f5304b">adc_on</a> (const uint8_t adc)</td></tr>
-<tr class="memdesc:a1efc1024ea81ff54636d50c1e2f5304b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the ADC conversion.  <br /></td></tr>
-<tr class="separator:a1efc1024ea81ff54636d50c1e2f5304b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbb0c1d82c736fed24920f7f916b2400" id="r_abbb0c1d82c736fed24920f7f916b2400"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbb0c1d82c736fed24920f7f916b2400">adc_off</a> (const uint8_t adc)</td></tr>
-<tr class="memdesc:abbb0c1d82c736fed24920f7f916b2400"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the ADC conversion.  <br /></td></tr>
-<tr class="separator:abbb0c1d82c736fed24920f7f916b2400"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3493396643667a305e63dfc8ffe860b3" id="r_a3493396643667a305e63dfc8ffe860b3"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3493396643667a305e63dfc8ffe860b3">adc_read</a> (const uint8_t adc)</td></tr>
-<tr class="memdesc:a3493396643667a305e63dfc8ffe860b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the last ADC conversion result.  <br /></td></tr>
-<tr class="separator:a3493396643667a305e63dfc8ffe860b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bbde0c6d10ba0b901cc5a48e450ae13" id="r_a3bbde0c6d10ba0b901cc5a48e450ae13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bbde0c6d10ba0b901cc5a48e450ae13">adc_set_resolution</a> (const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a> adc, const <a class="el" href="#a87e2393c3b4be47adb2d3ee1dd3f6f46">adc_res_t</a> value)</td></tr>
+<tr class="memdesc:a3bbde0c6d10ba0b901cc5a48e450ae13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ADC resolution to the specified value.  <br /></td></tr>
+<tr class="separator:a3bbde0c6d10ba0b901cc5a48e450ae13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7824573bf9df8005a2f8c52140d145e" id="r_ae7824573bf9df8005a2f8c52140d145e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7824573bf9df8005a2f8c52140d145e">adc_set_samplerate</a> (const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a> adc, const uint8_t channel, const <a class="el" href="#a1dc8ca1b8b76af313c51ecba2aa6117d">adc_samplerate_t</a> value)</td></tr>
+<tr class="memdesc:ae7824573bf9df8005a2f8c52140d145e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ADC sampling rate to the specified value.  <br /></td></tr>
+<tr class="separator:ae7824573bf9df8005a2f8c52140d145e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af35a9a05504a42f59183138faf1eb5a0" id="r_af35a9a05504a42f59183138faf1eb5a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af35a9a05504a42f59183138faf1eb5a0">adc_set_modes</a> (const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a> adc, const struct <a class="el" href="structADCModes.html">ADCModes</a> config)</td></tr>
+<tr class="memdesc:af35a9a05504a42f59183138faf1eb5a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ADC modes according to the configuration.  <br /></td></tr>
+<tr class="separator:af35a9a05504a42f59183138faf1eb5a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7a57e5f8b11e9e5ef98982182aa3ccd" id="r_aa7a57e5f8b11e9e5ef98982182aa3ccd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7a57e5f8b11e9e5ef98982182aa3ccd">adc_set_seq</a> (const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a> adc, const uint8_t *seq, const uint8_t count)</td></tr>
+<tr class="memdesc:aa7a57e5f8b11e9e5ef98982182aa3ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ADC conversion sequence to the specified order.  <br /></td></tr>
+<tr class="separator:aa7a57e5f8b11e9e5ef98982182aa3ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5f68b54ec814d60d816e5b7c6790460" id="r_af5f68b54ec814d60d816e5b7c6790460"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5f68b54ec814d60d816e5b7c6790460">adc_on</a> (const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a> adc)</td></tr>
+<tr class="memdesc:af5f68b54ec814d60d816e5b7c6790460"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the ADC conversion.  <br /></td></tr>
+<tr class="separator:af5f68b54ec814d60d816e5b7c6790460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc4fc086eaa6a8f530eb4d641e8d4a44" id="r_acc4fc086eaa6a8f530eb4d641e8d4a44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc4fc086eaa6a8f530eb4d641e8d4a44">adc_off</a> (const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a> adc)</td></tr>
+<tr class="memdesc:acc4fc086eaa6a8f530eb4d641e8d4a44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the ADC conversion.  <br /></td></tr>
+<tr class="separator:acc4fc086eaa6a8f530eb4d641e8d4a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a620a299bdb8d0d8785d7ddaebff7f86c" id="r_a620a299bdb8d0d8785d7ddaebff7f86c"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a620a299bdb8d0d8785d7ddaebff7f86c">adc_read</a> (const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a> adc)</td></tr>
+<tr class="memdesc:a620a299bdb8d0d8785d7ddaebff7f86c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the last ADC conversion result.  <br /></td></tr>
+<tr class="separator:a620a299bdb8d0d8785d7ddaebff7f86c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Function prototypes for the ADC driver. </p>
@@ -212,8 +226,8 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
 <dl class="bug"><dt><b><a class="el" href="bug.html#_bug000003">Bug</a></b></dt><dd>None, yet. </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a432a9dde0c2acd17dbe8100a648bb30a" name="a432a9dde0c2acd17dbe8100a648bb30a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a432a9dde0c2acd17dbe8100a648bb30a">&#9670;&#160;</a></span>ADC_</h2>
+<a id="af05e855b08a63eae6eaef378e1fb15c6" name="af05e855b08a63eae6eaef378e1fb15c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af05e855b08a63eae6eaef378e1fb15c6">&#9670;&#160;</a></span>ADC_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -221,19 +235,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">#define ADC_</td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>number</em></span></td><td>)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>NUM</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  (<span class="keyword">struct </span><a class="code hl_struct" href="structADCRegs.html">ADCRegs</a> *)(ADC1_BASE + (0x100UL * ((uint8_t)number - 1U)))</div>
-<div class="ttc" id="astructADCRegs_html"><div class="ttname"><a href="structADCRegs.html">ADCRegs</a></div><div class="ttdoc">Contains ADC registers.</div><div class="ttdef"><b>Definition</b> adc.h:29</div></div>
+<b>Value:</b><div class="fragment"><div class="line">(<span class="keyword">struct </span><a class="code hl_struct" href="structADCRegs.html">ADCRegs</a> *)(ADC1_BASE + (0x100UL * ((uint8_t)NUM)))</div>
+<div class="ttc" id="astructADCRegs_html"><div class="ttname"><a href="structADCRegs.html">ADCRegs</a></div><div class="ttdoc">Contains ADC registers.</div><div class="ttdef"><b>Definition</b> adc.h:28</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="abbb0c1d82c736fed24920f7f916b2400" name="abbb0c1d82c736fed24920f7f916b2400"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbb0c1d82c736fed24920f7f916b2400">&#9670;&#160;</a></span>adc_off()</h2>
+<a id="acc4fc086eaa6a8f530eb4d641e8d4a44" name="acc4fc086eaa6a8f530eb4d641e8d4a44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc4fc086eaa6a8f530eb4d641e8d4a44">&#9670;&#160;</a></span>adc_off()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -241,7 +255,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void adc_off </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>adc</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>adc</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -251,7 +265,7 @@ Functions</h2></td></tr>
 <p>The ADC will be powered off upon calling this command and instantly stop the conversion procedure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">adc</td><td>The selected ADC (1..ADC_NUM) </td></tr>
+    <tr><td class="paramname">adc</td><td>The selected ADC </td></tr>
   </table>
   </dd>
 </dl>
@@ -259,8 +273,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1efc1024ea81ff54636d50c1e2f5304b" name="a1efc1024ea81ff54636d50c1e2f5304b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1efc1024ea81ff54636d50c1e2f5304b">&#9670;&#160;</a></span>adc_on()</h2>
+<a id="af5f68b54ec814d60d816e5b7c6790460" name="af5f68b54ec814d60d816e5b7c6790460"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5f68b54ec814d60d816e5b7c6790460">&#9670;&#160;</a></span>adc_on()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -268,7 +282,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void adc_on </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>adc</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>adc</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -278,7 +292,7 @@ Functions</h2></td></tr>
 <p>The ADC will be powered on upon calling this command and start the conversion procedure as configured. Dummy reads are included.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">adc</td><td>The selected ADC (1..ADC_NUM) </td></tr>
+    <tr><td class="paramname">adc</td><td>The selected ADC </td></tr>
   </table>
   </dd>
 </dl>
@@ -286,8 +300,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3493396643667a305e63dfc8ffe860b3" name="a3493396643667a305e63dfc8ffe860b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3493396643667a305e63dfc8ffe860b3">&#9670;&#160;</a></span>adc_read()</h2>
+<a id="a620a299bdb8d0d8785d7ddaebff7f86c" name="a620a299bdb8d0d8785d7ddaebff7f86c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a620a299bdb8d0d8785d7ddaebff7f86c">&#9670;&#160;</a></span>adc_read()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -295,7 +309,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">uint16_t adc_read </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>adc</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>adc</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -304,7 +318,7 @@ Functions</h2></td></tr>
 <p>Reads the last ADC conversion result. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">adc</td><td>The selected ADC (1..ADC_NUM) </td></tr>
+    <tr><td class="paramname">adc</td><td>The selected ADC </td></tr>
   </table>
   </dd>
 </dl>
@@ -312,8 +326,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a508304374c9dba7c1f5681922e2fe2e1" name="a508304374c9dba7c1f5681922e2fe2e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a508304374c9dba7c1f5681922e2fe2e1">&#9670;&#160;</a></span>adc_set_modes()</h2>
+<a id="af35a9a05504a42f59183138faf1eb5a0" name="af35a9a05504a42f59183138faf1eb5a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af35a9a05504a42f59183138faf1eb5a0">&#9670;&#160;</a></span>adc_set_modes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -321,7 +335,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void adc_set_modes </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>adc</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>adc</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -335,7 +349,7 @@ Functions</h2></td></tr>
 <p>The configuration values are specified within the adc_config struct. Some modes may not work as expected yet.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">adc</td><td>The selected ADC (1..ADC_NUM) </td></tr>
+    <tr><td class="paramname">adc</td><td>The selected ADC </td></tr>
     <tr><td class="paramname">config</td><td>The ADC configuration </td></tr>
   </table>
   </dd>
@@ -353,7 +367,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void adc_set_prescaler </td>
           <td>(</td>
-          <td class="paramtype">const adc_prescaler_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#a4b541ef455f3a62ac2ef51347e117921">adc_prescaler_t</a></td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -371,8 +385,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a38a3d191c258d54ef099a03c5f4bb942" name="a38a3d191c258d54ef099a03c5f4bb942"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38a3d191c258d54ef099a03c5f4bb942">&#9670;&#160;</a></span>adc_set_resolution()</h2>
+<a id="a3bbde0c6d10ba0b901cc5a48e450ae13" name="a3bbde0c6d10ba0b901cc5a48e450ae13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bbde0c6d10ba0b901cc5a48e450ae13">&#9670;&#160;</a></span>adc_set_resolution()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -380,12 +394,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void adc_set_resolution </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>adc</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>adc</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const adc_res_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#a87e2393c3b4be47adb2d3ee1dd3f6f46">adc_res_t</a></td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -394,7 +408,7 @@ Functions</h2></td></tr>
 <p>The available resolutions for the ADC channel reads are specified in the adc_res_t enum. Any other value will be ignored.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">adc</td><td>The selected ADC (1..ADC_NUM) </td></tr>
+    <tr><td class="paramname">adc</td><td>The selected ADC </td></tr>
     <tr><td class="paramname">value</td><td>The resolution of the ADC conversions </td></tr>
   </table>
   </dd>
@@ -403,8 +417,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a277295eb7f7523478637e206fa082b0b" name="a277295eb7f7523478637e206fa082b0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a277295eb7f7523478637e206fa082b0b">&#9670;&#160;</a></span>adc_set_samplerate()</h2>
+<a id="ae7824573bf9df8005a2f8c52140d145e" name="ae7824573bf9df8005a2f8c52140d145e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7824573bf9df8005a2f8c52140d145e">&#9670;&#160;</a></span>adc_set_samplerate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -412,7 +426,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void adc_set_samplerate </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>adc</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>adc</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -422,7 +436,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const adc_samplerate_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#a1dc8ca1b8b76af313c51ecba2aa6117d">adc_samplerate_t</a></td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -431,7 +445,7 @@ Functions</h2></td></tr>
 <p>The available sampling rates for the ADC channel reads are specified in the adc_res_t enum (in clock cycles). Any other value will be ignored.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">adc</td><td>The selected ADC (1..ADC_NUM) </td></tr>
+    <tr><td class="paramname">adc</td><td>The selected ADC </td></tr>
     <tr><td class="paramname">channel</td><td>The selected channel (0..19) </td></tr>
     <tr><td class="paramname">value</td><td>The clock cycles of the ADC conversions </td></tr>
   </table>
@@ -441,8 +455,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa1f1a673889c40e5ea83e5d0c84b808e" name="aa1f1a673889c40e5ea83e5d0c84b808e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1f1a673889c40e5ea83e5d0c84b808e">&#9670;&#160;</a></span>adc_set_seq()</h2>
+<a id="aa7a57e5f8b11e9e5ef98982182aa3ccd" name="aa7a57e5f8b11e9e5ef98982182aa3ccd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7a57e5f8b11e9e5ef98982182aa3ccd">&#9670;&#160;</a></span>adc_set_seq()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -450,7 +464,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void adc_set_seq </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>adc</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#ac890f1a91e1b8569617cd846532cc536">adc_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>adc</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -469,7 +483,7 @@ Functions</h2></td></tr>
 <p>The sequence consists of 16 5-bit elements. Bits 6..8 will be ignored.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">adc</td><td>The selected ADC (1..ADC_NUM) </td></tr>
+    <tr><td class="paramname">adc</td><td>The selected ADC </td></tr>
     <tr><td class="paramname">seq</td><td>Pointer to channel conversion sequence array </td></tr>
     <tr><td class="paramname">count</td><td>The total amount of conversions </td></tr>
   </table>

@@ -21,18 +21,18 @@ int main(void) {
   mcu_init();
 
   /* Setup GPIO for USART TX communication */
-  gp_set_direction('A', 2, GP_DIR_AL);
-  gp_set_af('A', 2, 7U);
-  gp_set_speed('A', 2, GP_SPEED_HIG);
+  gp_set_direction(GP_BANK_A, 2, GP_DIR_AL);
+  gp_set_af(GP_BANK_A, 2, 7U);
+  gp_set_speed(GP_BANK_A, 2, GP_SPEED_HIG);
 
   /* Setup USART */
-  usart_set_dma(USART_SEL_2, TRUE, FALSE);
-  usart_set_databits(USART_SEL_2, USART_STOPBITS_SB1, USART_DATABITS_DB8);
-  usart_start(USART_SEL_2, 115200, USART_MODE_TX);
+  usart_set_dma(USART_PERIPH_2, TRUE, FALSE);
+  usart_set_databits(USART_PERIPH_2, USART_STOPBITS_SB1, USART_DATABITS_DB8);
+  usart_start(USART_PERIPH_2, 115200, USART_MODE_TX);
 
   /* MAIN CODE GOES HERE */
   while (TRUE) {
-    usart_tx_message(USART_SEL_2, message);
+    usart_tx_message(USART_PERIPH_2, message);
     delay_ms(1000U);
   }
 

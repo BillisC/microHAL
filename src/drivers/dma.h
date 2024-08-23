@@ -51,7 +51,7 @@ _Static_assert((sizeof(struct DMARegs)) ==
                    (sizeof(uint32_t) * (4U + (6U * 8U))),
                "DMA register struct size mismatch. Is it aligned?");
 
-#define DMA(x) (struct DMARegs *)(DMA1_BASE + ((x - 1) * 0x400UL))
+#define DMA(x) (struct DMARegs *)(DMA1_BASE + (x * 0x400UL))
 
 /**
  *  @brief Contains DMA stream options
@@ -82,6 +82,11 @@ _Static_assert((sizeof(struct DMAStreamISR)) == (sizeof(uint8_t) * 1U),
                "DMA Stream Interrupt struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
+typedef enum dma_peripheral {
+  DMA_PERIPH_1 = 0x00,
+  DMA_PERIPH_2 = 0x01
+} dma_peripheral_t;
+
 /**
  *  @brief Available DMA directions
  */
@@ -123,7 +128,7 @@ typedef enum dma_priority {
  * @param M1A The memory 1 address
  * @return None
  */
-void dma_set_addresses(const uint8_t dma, const uint8_t stream,
+void dma_set_addresses(const dma_peripheral_t dma, const uint8_t stream,
                        const uint32_t PA, const uint32_t M0A,
                        const uint32_t M1A);
 
@@ -133,14 +138,14 @@ void dma_set_addresses(const uint8_t dma, const uint8_t stream,
  * The DMA datasizes are specified in the dma_datasize_t enum.
  * Any other value will be ignored.
  *
- * @param dma The selected DMA (1..2)
+ * @param dma The selected DMA
  * @param stream The selected stream (0..7)
  * @param count The total number of data items
  * @param msize The size of data stored in memory
  * @param psize The size of data stored in the peripheral
  * @return None
  */
-void dma_configure_data(const uint8_t dma, const uint8_t stream,
+void dma_configure_data(const dma_peripheral_t dma, const uint8_t stream,
                         const uint16_t count, const dma_datasize_t msize,
                         const dma_datasize_t psize);
 
@@ -151,12 +156,12 @@ void dma_configure_data(const uint8_t dma, const uint8_t stream,
  * Any other value will be ignored. After that set the
  * addresses according to the chip's manual.
  *
- * @param dma The selected DMA (1..2)
+ * @param dma The selected DMA
  * @param stream The selected stream (0..7)
  * @param direction The transfer direction
  * @return None
  */
-void dma_set_direction(const uint8_t dma, const uint8_t stream,
+void dma_set_direction(const dma_peripheral_t dma, const uint8_t stream,
                        const dma_dir_t direction);
 
 /**
@@ -165,12 +170,12 @@ void dma_set_direction(const uint8_t dma, const uint8_t stream,
  * The DMA stream options are specified in the DMAStreamConfig
  * struct.
  *
- * @param dma The selected DMA (1..2)
+ * @param dma The selected DMA
  * @param stream The selected stream (0..7)
  * @param config The stream configuration
  * @return None
  */
-void dma_configure_stream(const uint8_t dma, const uint8_t stream,
+void dma_configure_stream(const dma_peripheral_t dma, const uint8_t stream,
                           const struct DMAStreamConfig config);
 
 /**
@@ -180,13 +185,13 @@ void dma_configure_stream(const uint8_t dma, const uint8_t stream,
  * enum. Any other value will be ignored. Refer to the chip's
  * manual for the channel function matrix.
  *
- * @param dma The selected DMA (1..2)
+ * @param dma The selected DMA
  * @param stream The selected stream (0..7)
  * @param channel The selected channel (0..7)
  * @param priority The stream priority level
  * @return None
  */
-void dma_set_channel(const uint8_t dma, const uint8_t stream,
+void dma_set_channel(const dma_peripheral_t dma, const uint8_t stream,
                      const uint8_t channel, const dma_priority_t priority);
 
 /**
@@ -195,30 +200,30 @@ void dma_set_channel(const uint8_t dma, const uint8_t stream,
  * The available DMA interrupts are located in the DMAStreamISR
  * struct.
  *
- * @param dma The selected DMA (1..2)
+ * @param dma The selected DMA
  * @param stream The selected stream (0..7)
  * @param config The interrupt configuration
  * @return None
  */
-void dma_set_interrupts(const uint8_t dma, const uint8_t stream,
+void dma_set_interrupts(const dma_peripheral_t dma, const uint8_t stream,
                         const struct DMAStreamISR config);
 
 /**
  * @brief Enables DMA stream transfers.
  *
- * @param dma The selected DMA (1..2)
+ * @param dma The selected DMA
  * @param stream The selected stream (0..7)
  * @return None
  */
-void dma_enable(const uint8_t dma, const uint8_t stream);
+void dma_enable(const dma_peripheral_t dma, const uint8_t stream);
 
 /**
  * @brief Disables DMA stream transfers.
  *
- * @param dma The selected DMA (1..2)
+ * @param dma The selected DMA
  * @param stream The selected stream (0..7)
  * @return None
  */
-void dma_disable(const uint8_t dma, const uint8_t stream);
+void dma_disable(const dma_peripheral_t dma, const uint8_t stream);
 
 #endif

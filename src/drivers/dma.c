@@ -14,11 +14,22 @@
 #include "dma.h"
 #include "defines.h"
 
-void dma_set_addresses(const uint8_t dma, const uint8_t stream,
+static inline _Bool verifyDMA(const dma_peripheral_t dma,
+                              const uint8_t stream) {
+  /* Make sure that the peripheral and stream exist */
+  if (!((dma != DMA_PERIPH_1) || (dma != DMA_PERIPH_2))) {
+    return FALSE;
+  } else if (!(stream < 8)) {
+    return FALSE;
+  }
+
+  return TRUE;
+}
+
+void dma_set_addresses(const dma_peripheral_t dma, const uint8_t stream,
                        const uint32_t PA, const uint32_t M0A,
                        const uint32_t M1A) {
-  /* Make sure that the stream exists */
-  if (!(stream < 8)) {
+  if (!(verifyDMA(dma, stream))) {
     return;
   } else {
     struct DMARegs *regs = DMA(dma);
@@ -30,7 +41,7 @@ void dma_set_addresses(const uint8_t dma, const uint8_t stream,
   }
 }
 
-void dma_configure_data(const uint8_t dma, const uint8_t stream,
+void dma_configure_data(const dma_peripheral_t dma, const uint8_t stream,
                         const uint16_t count, const dma_datasize_t msize,
                         const dma_datasize_t psize) {
   /* Check that datasizes are correct */
@@ -50,8 +61,7 @@ void dma_configure_data(const uint8_t dma, const uint8_t stream,
     default: return;
   }
 
-  /* Make sure that the stream exists */
-  if (!(stream < 8)) {
+  if (!(verifyDMA(dma, stream))) {
     return;
   } else {
     struct DMARegs *regs = DMA(dma);
@@ -69,7 +79,7 @@ void dma_configure_data(const uint8_t dma, const uint8_t stream,
   }
 }
 
-void dma_set_direction(const uint8_t dma, const uint8_t stream,
+void dma_set_direction(const dma_peripheral_t dma, const uint8_t stream,
                        const dma_dir_t direction) {
   switch (direction) {
     case DMA_DIR_PER2MEM:
@@ -79,8 +89,7 @@ void dma_set_direction(const uint8_t dma, const uint8_t stream,
     default: return;
   };
 
-  /* Make sure that the stream exists */
-  if (!(stream < 8)) {
+  if (!(verifyDMA(dma, stream))) {
     return;
   } else {
     struct DMARegs *regs = DMA(dma);
@@ -94,10 +103,9 @@ void dma_set_direction(const uint8_t dma, const uint8_t stream,
   }
 }
 
-void dma_configure_stream(const uint8_t dma, const uint8_t stream,
+void dma_configure_stream(const dma_peripheral_t dma, const uint8_t stream,
                           const struct DMAStreamConfig config) {
-  /* Make sure that the stream exists */
-  if (!(stream < 8)) {
+  if (!(verifyDMA(dma, stream))) {
     return;
   } else {
     struct DMARegs *regs = DMA(dma);
@@ -116,7 +124,7 @@ void dma_configure_stream(const uint8_t dma, const uint8_t stream,
   }
 }
 
-void dma_set_channel(const uint8_t dma, const uint8_t stream,
+void dma_set_channel(const dma_peripheral_t dma, const uint8_t stream,
                      const uint8_t channel, const dma_priority_t priority) {
   /* Make sure the priority is correct */
   switch (priority) {
@@ -128,8 +136,7 @@ void dma_set_channel(const uint8_t dma, const uint8_t stream,
     default: return;
   };
 
-  /* Make sure that the stream exists */
-  if (!(stream < 8)) {
+  if (!(verifyDMA(dma, stream))) {
     return;
   } else {
     /* Make sure that the channel exists */
@@ -149,10 +156,9 @@ void dma_set_channel(const uint8_t dma, const uint8_t stream,
   }
 }
 
-void dma_set_interrupts(const uint8_t dma, const uint8_t stream,
+void dma_set_interrupts(const dma_peripheral_t dma, const uint8_t stream,
                         const struct DMAStreamISR config) {
-  /* Make sure that the stream exists */
-  if (!(stream < 8)) {
+  if (!(verifyDMA(dma, stream))) {
     return;
   } else {
     struct DMARegs *regs = DMA(dma);
@@ -177,9 +183,8 @@ void dma_set_interrupts(const uint8_t dma, const uint8_t stream,
   }
 }
 
-void dma_enable(const uint8_t dma, const uint8_t stream) {
-  /* Make sure that the stream exists */
-  if (!(stream < 8)) {
+void dma_enable(const dma_peripheral_t dma, const uint8_t stream) {
+  if (!(verifyDMA(dma, stream))) {
     return;
   } else {
     struct DMARegs *regs = DMA(dma);
@@ -189,9 +194,8 @@ void dma_enable(const uint8_t dma, const uint8_t stream) {
   }
 }
 
-void dma_disable(const uint8_t dma, const uint8_t stream) {
-  /* Make sure that the stream exists */
-  if (!(stream < 8)) {
+void dma_disable(const dma_peripheral_t dma, const uint8_t stream) {
+  if (!(verifyDMA(dma, stream))) {
     return;
   } else {
     struct DMARegs *regs = DMA(dma);

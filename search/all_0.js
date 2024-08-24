@@ -23,5 +23,5 @@ var searchData=
   ['adccommonregs_20',['ADCCommonRegs',['../df/d36/structADCCommonRegs.html',1,'']]],
   ['adcmodes_21',['ADCModes',['../da/da5/structADCModes.html',1,'']]],
   ['adcregs_22',['ADCRegs',['../d2/d5a/structADCRegs.html',1,'']]],
-  ['and_20flash_23',['Compile and flash',['..//__w/microHAL/microHAL/README.md#autotoc_md3',1,'']]]
+  ['and_20flash_23',['Compile and flash',['../index.html#autotoc_md2',1,'']]]
 ];

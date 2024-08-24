@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['debugging_0',['Debugging',['..//__w/microHAL/microHAL/README.md#autotoc_md5',1,'']]],
+  ['debugging_0',['Debugging',['../index.html#autotoc_md4',1,'']]],
   ['defines_2eh_1',['defines.h',['../d8/db0/defines_8h.html',1,'']]],
   ['dma_2ec_2',['dma.c',['../d8/d51/dma_8c.html',1,'']]],
   ['dma_2eh_3',['dma.h',['../d9/d95/dma_8h.html',1,'']]],

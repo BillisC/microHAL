@@ -10,7 +10,7 @@ What's this repo about?
 - Serves as a library for future projects
 
 Can I use it for **any** STM32 F4 series MCU?
-- Probably, but its designed for F446RE so don't blame me if anything burns
+- Yes, but it's tested with an F446RE so don't blame me if anything burns
 
 ### Preparation
 Install the required tools (CMake **must** be >= 3.21):

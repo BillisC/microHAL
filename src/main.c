@@ -23,7 +23,7 @@ int main(void) {
   gp_set_speed(GP_BANK_A, 2, GP_SPEED_HIG);
 
   /* Setup USART */
-  usart_set_dma(USART_PERIPH_2, TRUE, FALSE);
+  usart_set_dma(USART_PERIPH_2, FALSE, FALSE);
   usart_set_databits(USART_PERIPH_2, USART_STOPBITS_SB1, USART_DATABITS_DB8);
   usart_start(USART_PERIPH_2, 115200, USART_MODE_TX);
 

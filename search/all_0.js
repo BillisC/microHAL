@@ -22,5 +22,6 @@ var searchData=
   ['adc_5ftrigger_5ft_19',['adc_trigger_t',['../d7/d19/adc_8h.html#a4febcf1b622069decb576e94f52f12b4',1,'adc.h']]],
   ['adccommonregs_20',['ADCCommonRegs',['../df/d36/structADCCommonRegs.html',1,'']]],
   ['adcmodes_21',['ADCModes',['../da/da5/structADCModes.html',1,'']]],
-  ['adcregs_22',['ADCRegs',['../d2/d5a/structADCRegs.html',1,'']]]
+  ['adcregs_22',['ADCRegs',['../d2/d5a/structADCRegs.html',1,'']]],
+  ['and_20flash_23',['Compile and flash',['..//__w/microHAL/microHAL/README.md#autotoc_md3',1,'']]]
 ];

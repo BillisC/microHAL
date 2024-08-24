@@ -1,38 +1,41 @@
+name: CI
+
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     container: billisch/cortexm_dev:v1.1
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
-    - name: Configure CMake
-      run: cmake -B build/debug/ . --toolchain=arm-toolchain.cmake
-    - name: Compile source
-      run: cmake --build build/debug/
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Configure CMake
+        run: cmake -B build/debug/ . --toolchain=arm-toolchain.cmake
+      - name: Compile source
+        run: cmake --build build/debug/
   static_analysis:
     runs-on: ubuntu-latest
     container: billisch/cortexm_dev:v1.1
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
-    - name: Configure CMake
-      run: cmake -B build/debug/ . --toolchain=arm-toolchain.cmake
-    - name: Perform static analysis
-      run: cmake --build build/debug/ --target analysis 
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Configure CMake
+        run: cmake -B build/debug/ . --toolchain=arm-toolchain.cmake
+      - name: Perform static analysis
+        run: cmake --build build/debug/ --target analysis
   unit_tests:
     runs-on: ubuntu-latest
     container: billisch/cortexm_dev:v1.1
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
-    - name: Configure CMake
-      run: cmake -B build/tests/
-    - name: Run all unit tests
-      run: cmake --build build/tests/ 
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Configure CMake
+        run: cmake -B build/tests/
+      - name: Run all unit tests
+        run: cmake --build build/tests/

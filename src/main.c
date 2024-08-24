@@ -14,9 +14,6 @@
 
 void delay_ms(const uint32_t milliseconds);
 
-/* Message to send */
-const char *message = "Just a test message!\r\n";
-
 int main(void) {
   mcu_init();
 
@@ -29,6 +26,9 @@ int main(void) {
   usart_set_dma(USART_PERIPH_2, TRUE, FALSE);
   usart_set_databits(USART_PERIPH_2, USART_STOPBITS_SB1, USART_DATABITS_DB8);
   usart_start(USART_PERIPH_2, 115200, USART_MODE_TX);
+
+  /* Message to send */
+  const char *message = "Just a test message!\r\n";
 
   /* MAIN CODE GOES HERE */
   while (TRUE) {

@@ -116,7 +116,7 @@ void usart_set_interrupts(const usart_peripheral_t usart,
     struct USARTRegs *regs = USART(USART_LUT[usart]);
 
     /* Set USART interrupts */
-    volatile uint8_t cr1 = regs->CR1;
+    REG32 cr1 = regs->CR1;
     cr1 &= ~(USART_CR1_PEIE_Msk | USART_CR1_TXEIE_Msk | USART_CR1_TCIE_Msk |
              USART_CR1_RXNEIE_Msk | USART_CR1_IDLEIE_Msk); // Clear first
     cr1 |= ((config.PEI << USART_CR1_PEIE_Pos) |
@@ -127,13 +127,13 @@ void usart_set_interrupts(const usart_peripheral_t usart,
 
     regs->CR1 = cr1;
 
-    volatile uint8_t cr2 = regs->CR2;
+    REG32 cr2 = regs->CR2;
     cr2 &= ~(USART_CR2_LBDIE_Msk); // Clear first
     cr2 |= (config.LBDI << USART_CR2_LBDIE_Pos);
 
     regs->CR2 = cr2;
 
-    volatile uint8_t cr3 = regs->CR3;
+    REG32 cr3 = regs->CR3;
     cr3 &= ~(USART_CR3_CTSIE_Msk | USART_CR3_EIE_Msk); // Clear first
     cr3 |= ((config.CTSI << USART_CR3_CTSIE_Pos) |
             (config.EI << USART_CR3_EIE_Pos)); //
@@ -235,7 +235,6 @@ uint16_t usart_rx_byte(const usart_peripheral_t usart) {
   if (!verifyUSART(usart)) {
     return '\0';
   } else {
-
     struct USARTRegs *regs = USART(USART_LUT[usart]);
 
     /* Read received data */

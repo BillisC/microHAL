@@ -39,3 +39,18 @@ jobs:
         run: cmake -B build/tests/
       - name: Run all unit tests
         run: cmake --build build/tests/
+  update_docs:
+    runs-on: ubuntu-latest
+    container: billisch/cortexm_dev:v1.2
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Generate docs
+        run: doxygen
+      - name: Deploy to GitHub pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/html/

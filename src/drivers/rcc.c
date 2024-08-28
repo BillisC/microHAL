@@ -5,7 +5,7 @@
  *  declared in rcc.h.
  *
  *  @author Vasileios Ch. (BillisC)
- *  @bug None, yet.
+ *  @bug None, yet.W
  */
 
 /* Includes */
@@ -28,7 +28,7 @@ void rcc_configure_ahb_prescaler(const rcc_ahb_prescaler_t value) {
   }
 
   /* Change the AHB prescaler */
-  struct RCCRegs *regs = RCC_;
+  struct RCCRegs *regs = RCC_PTR;
   REG32 cfgr = regs->CFGR;
   cfgr &= ~(RCC_CFGR_HPRE_Msk); // clear first
   cfgr |= (value << RCC_CFGR_HPRE_Pos);
@@ -49,18 +49,21 @@ void rcc_configure_apb_prescaler(const uint8_t apb,
     default: return;
   }
 
-  if (!(apb != 1 && apb != 2)) {
-    return;
+  /* Change the APB prescaler */
+  struct RCCRegs *regs = RCC_PTR;
+  REG32 cfgr = regs->CFGR;
+  if (apb == 1) {
+    cfgr &= ~(RCC_CFGR_PPRE1_Msk); // clear first
+    cfgr |= (value << RCC_CFGR_PPRE1_Pos);
+  } else if (apb == 2) {
+    cfgr &= ~(RCC_CFGR_PPRE2_Msk); // clear first
+    cfgr |= (value << RCC_CFGR_PPRE2_Pos);
   } else {
-    /* Change the APB prescaler */
-    struct RCCRegs *regs = RCC_;
-    REG32 cfgr = regs->CFGR;
-    cfgr &= ~(RCC_CFGR_HPRE_Msk); // clear first
-    cfgr |= (value << RCC_CFGR_HPRE_Pos);
-
-    regs->CFGR = cfgr;
-    ASM_DSB;
+    return;
   }
+
+  regs->CFGR = cfgr;
+  ASM_DSB;
 }
 
 void rcc_configure_pll_clk(const struct RCCPLLConfig config) {
@@ -74,14 +77,15 @@ void rcc_configure_pll_clk(const struct RCCPLLConfig config) {
   const uint32_t good_pllm = (config.PLLM >= 2) ? RCC_PLLCFGR_PLLM_Msk : 0U;
 
   /* Configure the PLL clock */
-  struct RCCRegs *regs = RCC_;
+  struct RCCRegs *regs = RCC_PTR;
   REG32 pllcfgr = regs->PLLCFGR;
   pllcfgr &= ~(good_pllr | good_pllq | good_plln | good_pllm |
-               RCC_PLLCFGR_PLLSRC_Msk); // clear first
+               RCC_PLLCFGR_PLLP_Msk | RCC_PLLCFGR_PLLSRC_Msk); // clear first
   pllcfgr |= (((config.PLLR << RCC_PLLCFGR_PLLR_Pos) & good_pllr) |
               ((config.PLLQ << RCC_PLLCFGR_PLLQ_Pos) & good_pllq) |
               ((config.PLLN << RCC_PLLCFGR_PLLN_Pos) & good_plln) |
               ((config.PLLM << RCC_PLLCFGR_PLLM_Pos) & good_pllm) |
+              (config.PLLP << RCC_PLLCFGR_PLLP_Pos) |
               (config.UseHSE << RCC_PLLCFGR_PLLSRC_Pos));
 
   regs->PLLCFGR = pllcfgr;
@@ -89,7 +93,7 @@ void rcc_configure_pll_clk(const struct RCCPLLConfig config) {
 }
 
 void rcc_enable_osc(const rcc_osc_t osc) {
-  struct RCCRegs *regs = RCC_;
+  struct RCCRegs *regs = RCC_PTR;
   switch (osc) {
     case RCC_OSC_HSI:
       regs->CR |= RCC_CR_HSION_Msk;
@@ -124,7 +128,7 @@ void rcc_enable_osc(const rcc_osc_t osc) {
 }
 
 void rcc_disable_osc(const rcc_osc_t osc) {
-  struct RCCRegs *regs = RCC_;
+  struct RCCRegs *regs = RCC_PTR;
   switch (osc) {
     case RCC_OSC_HSI: regs->CR &= ~(RCC_CR_HSION_Msk); break;
     case RCC_OSC_HSE: regs->CR &= ~(RCC_CR_HSEON_Msk); break;
@@ -149,7 +153,7 @@ void rcc_set_systemclock_src(const rcc_systemclock_src_t source) {
   }
 
   /* Set system clock source */
-  struct RCCRegs *regs = RCC_;
+  struct RCCRegs *regs = RCC_PTR;
   REG32 cfgr = regs->CFGR;
   cfgr &= ~(RCC_CFGR_SW_Msk);
   cfgr |= (source << RCC_CFGR_SW_Pos);
@@ -160,17 +164,17 @@ void rcc_set_systemclock_src(const rcc_systemclock_src_t source) {
 
 void rcc_enable_peripheral_clk(const rcc_clk_periph_t peripheral) {
   /* Set peripheral clock bit */
-  struct RCCRegs *regs = RCC_;
+  struct RCCRegs *regs = RCC_PTR;
   if (peripheral < BIT(5)) {
     regs->AHB1ENR |= BIT(peripheral);
   } else if (peripheral < BIT(6)) {
-    regs->AHB2ENR |= BIT(peripheral >> 5);
+    regs->AHB2ENR |= BIT(peripheral - BIT(5));
   } else if (peripheral < BIT(7)) {
-    regs->AHB3ENR |= BIT(peripheral >> 6);
+    regs->AHB3ENR |= BIT(peripheral - BIT(6));
   } else if (peripheral < BIT(8)) {
-    regs->APB1ENR |= BIT(peripheral >> 7);
+    regs->APB1ENR |= BIT(peripheral - BIT(7));
   } else if (peripheral < BIT(9)) {
-    regs->APB2ENR |= BIT(peripheral >> 8);
+    regs->APB2ENR |= BIT(peripheral - BIT(8));
   } else {
     return;
   }
@@ -179,17 +183,17 @@ void rcc_enable_peripheral_clk(const rcc_clk_periph_t peripheral) {
 
 void rcc_disable_peripheral_clk(const rcc_clk_periph_t peripheral) {
   /* Clear peripheral clock bit */
-  struct RCCRegs *regs = RCC_;
+  struct RCCRegs *regs = RCC_PTR;
   if (peripheral < BIT(5)) {
-    regs->AHB1ENR &= ~BIT(peripheral);
+    regs->AHB1RSTR &= ~BIT(peripheral);
   } else if (peripheral < BIT(6)) {
-    regs->AHB2ENR &= ~BIT(peripheral >> 5);
+    regs->AHB2RSTR &= ~BIT(peripheral - BIT(5));
   } else if (peripheral < BIT(7)) {
-    regs->AHB3ENR &= ~BIT(peripheral >> 6);
+    regs->AHB3RSTR &= ~BIT(peripheral - BIT(6));
   } else if (peripheral < BIT(8)) {
-    regs->APB1ENR &= ~BIT(peripheral >> 7);
+    regs->APB1RSTR &= ~BIT(peripheral - BIT(7));
   } else if (peripheral < BIT(9)) {
-    regs->APB2ENR &= ~BIT(peripheral >> 8);
+    regs->APB2RSTR &= ~BIT(peripheral - BIT(8));
   } else {
     return;
   }

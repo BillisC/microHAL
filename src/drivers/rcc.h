@@ -26,7 +26,9 @@ struct __attribute__((packed)) RCCRegs {
   REG32 PLLCFGR;
   REG32 CFGR;
   REG32 CIR;
-  REG32 AHBxRSTR[3];
+  REG32 AHB1RSTR;
+  REG32 AHB2RSTR;
+  REG32 AHB3RSTR;
   REG32 _reserved1;
   REG32 APB1RSTR;
   REG32 APB2RSTR;
@@ -59,14 +61,16 @@ struct __attribute__((packed)) RCCRegs {
 _Static_assert((sizeof(struct RCCRegs)) == (sizeof(uint32_t) * 38U),
                "RCC register struct size mismatch. Is it aligned?");
 
-#ifndef UTESTS
-#define RCC_ (struct RCCRegs *)RCC_BASE
-#else
-extern struct RCCRegs *RCC_;
-#endif
+#define RCC_PTR (struct RCCRegs *)RCC_BASE
 
 /**
  *  @brief Contains PLL configuration values
+ *
+ *  <b>PLLM</b> Must be 2..63
+ *  <b>PLLP</b> Must be 0..3
+ *  <b>PLLQ</b> Must be 2..15
+ *  <b>PLLR</b> Must be 2..7
+ *  <b>PLLN</b> Must be 50..432
  */
 struct __attribute__((packed)) RCCPLLConfig {
   uint8_t PLLM  : 6;

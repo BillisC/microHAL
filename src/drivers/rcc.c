@@ -165,16 +165,16 @@ void rcc_set_systemclock_src(const rcc_systemclock_src_t source) {
 void rcc_enable_peripheral_clk(const rcc_clk_periph_t peripheral) {
   /* Set peripheral clock bit */
   struct RCCRegs *regs = RCC_PTR;
-  if (peripheral < BIT(5)) {
+  if (peripheral < 32U) {
     regs->AHB1ENR |= BIT(peripheral);
-  } else if (peripheral < BIT(6)) {
-    regs->AHB2ENR |= BIT(peripheral - BIT(5));
-  } else if (peripheral < BIT(7)) {
-    regs->AHB3ENR |= BIT(peripheral - BIT(6));
-  } else if (peripheral < BIT(8)) {
-    regs->APB1ENR |= BIT(peripheral - BIT(7));
-  } else if (peripheral < BIT(9)) {
-    regs->APB2ENR |= BIT(peripheral - BIT(8));
+  } else if (peripheral < 64U) {
+    regs->AHB2ENR |= BIT(peripheral - 32U);
+  } else if (peripheral < 96U) {
+    regs->AHB3ENR |= BIT(peripheral - 64U);
+  } else if (peripheral < 128U) {
+    regs->APB1ENR |= BIT(peripheral - 96U);
+  } else if (peripheral < 160U) {
+    regs->APB2ENR |= BIT(peripheral - 128U);
   } else {
     return;
   }
@@ -184,16 +184,16 @@ void rcc_enable_peripheral_clk(const rcc_clk_periph_t peripheral) {
 void rcc_disable_peripheral_clk(const rcc_clk_periph_t peripheral) {
   /* Clear peripheral clock bit */
   struct RCCRegs *regs = RCC_PTR;
-  if (peripheral < BIT(5)) {
+  if (peripheral < 32U) {
     regs->AHB1RSTR &= ~BIT(peripheral);
-  } else if (peripheral < BIT(6)) {
-    regs->AHB2RSTR &= ~BIT(peripheral - BIT(5));
-  } else if (peripheral < BIT(7)) {
-    regs->AHB3RSTR &= ~BIT(peripheral - BIT(6));
-  } else if (peripheral < BIT(8)) {
-    regs->APB1RSTR &= ~BIT(peripheral - BIT(7));
-  } else if (peripheral < BIT(9)) {
-    regs->APB2RSTR &= ~BIT(peripheral - BIT(8));
+  } else if (peripheral < 64U) {
+    regs->AHB2RSTR &= ~BIT(peripheral - 32U);
+  } else if (peripheral < 96U) {
+    regs->AHB3RSTR &= ~BIT(peripheral - 64U);
+  } else if (peripheral < 128U) {
+    regs->APB1RSTR &= ~BIT(peripheral - 96U);
+  } else if (peripheral < 156U) {
+    regs->APB2RSTR &= ~BIT(peripheral - 128U);
   } else {
     return;
   }

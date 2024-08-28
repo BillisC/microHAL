@@ -128,18 +128,18 @@ typedef enum rcc_clk_periph {
   RCC_CLK_OTGHSULPI,
 
   /* ---------- AHB2 ---------- */
-  RCC_CLK_DCMI = BIT(5),
-  RCC_CLK_CRYP = BIT(5) + 4U,
+  RCC_CLK_DCMI = 32U,
+  RCC_CLK_CRYP = 32U + 4U,
   RCC_CLK_HASH,
   RCC_CLK_RNG,
   RCC_CLK_OTGFS,
 
   /* ---------- AHB3 ---------- */
-  RCC_CLK_FMC = BIT(6),
+  RCC_CLK_FMC = 64U,
   RCC_CLK_QSPI,
 
   /* ---------- APB1 ---------- */
-  RCC_CLK_TIM2 = BIT(7),
+  RCC_CLK_TIM2 = 96U,
   RCC_CLK_TIM3,
   RCC_CLK_TIM4,
   RCC_CLK_TIM5,
@@ -148,8 +148,8 @@ typedef enum rcc_clk_periph {
   RCC_CLK_TIM12,
   RCC_CLK_TIM13,
   RCC_CLK_TIM14,
-  RCC_CLK_WWDG = BIT(7) + 11U,
-  RCC_CLK_SPI2 = BIT(7) + 14U,
+  RCC_CLK_WWDG = 96U + 11U,
+  RCC_CLK_SPI2 = 96U + 14U,
   RCC_CLK_SPI3,
   RCC_CLK_SPDIFRX,
   RCC_CLK_USART2,
@@ -169,25 +169,25 @@ typedef enum rcc_clk_periph {
   RCC_CLK_UART8,
 
   /* ---------- APB2 ---------- */
-  RCC_CLK_TIM1 = BIT(8),
+  RCC_CLK_TIM1 = 128U,
   RCC_CLK_TIM8,
-  RCC_CLK_USART1 = BIT(8) + 4U,
+  RCC_CLK_USART1 = 128U + 4U,
   RCC_CLK_USART6,
-  RCC_CLK_ADC1 = BIT(8) + 8U,
+  RCC_CLK_ADC1 = 128U + 8U,
   RCC_CLK_ADC2,
   RCC_CLK_ADC3,
   RCC_CLK_SDIO,
   RCC_CLK_SPI1,
   RCC_CLK_SPI4,
   RCC_CLK_SYSCFG,
-  RCC_CLK_TIM9 = BIT(8) + 16U,
+  RCC_CLK_TIM9 = 128U + 16U,
   RCC_CLK_TIM10,
   RCC_CLK_TIM11,
-  RCC_CLK_SPI5 = BIT(8) + 20U,
+  RCC_CLK_SPI5 = 128U + 20U,
   RCC_CLK_SPI6,
   RCC_CLK_SAI1,
   RCC_CLK_SAI2,
-  RCC_CLK_LTDC = BIT(8) + 26U,
+  RCC_CLK_LTDC = 128U + 26U,
   RCC_CLK_DSI
 } rcc_clk_periph_t;
 

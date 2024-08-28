@@ -105,9 +105,6 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dea/structRCC__TypeDef.html">RCC_TypeDef</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains stubbed RCC registers.  <a href="../../d0/dea/structRCC__TypeDef.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d83/structPWR__TypeDef.html">PWR_TypeDef</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains stubbed PWR registers.  <a href="../../d2/d83/structPWR__TypeDef.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -402,9 +399,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a64611f0aa4ba3dcafb6d934e831279e9" id="r_a64611f0aa4ba3dcafb6d934e831279e9"><td class="memItemLeft" align="right" valign="top"><a id="a64611f0aa4ba3dcafb6d934e831279e9" name="a64611f0aa4ba3dcafb6d934e831279e9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>USART_SR_RXNE_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (5U))</td></tr>
 <tr class="separator:a64611f0aa4ba3dcafb6d934e831279e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74944438a086975793d26ae48d5882d4" id="r_a74944438a086975793d26ae48d5882d4"><td class="memItemLeft" align="right" valign="top"><a id="a74944438a086975793d26ae48d5882d4" name="a74944438a086975793d26ae48d5882d4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC</b>&#160;&#160;&#160;((<a class="el" href="../../d0/dea/structRCC__TypeDef.html">RCC_TypeDef</a> *)(0UL))</td></tr>
-<tr class="separator:a74944438a086975793d26ae48d5882d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e681b03f364532055d88f63fec0d99d" id="r_a0e681b03f364532055d88f63fec0d99d"><td class="memItemLeft" align="right" valign="top"><a id="a0e681b03f364532055d88f63fec0d99d" name="a0e681b03f364532055d88f63fec0d99d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_BASE</b>&#160;&#160;&#160;(0UL)</td></tr>
+<tr class="separator:a0e681b03f364532055d88f63fec0d99d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac04d2021b54bf9a1b66578c67a436b45" id="r_ac04d2021b54bf9a1b66578c67a436b45"><td class="memItemLeft" align="right" valign="top"><a id="ac04d2021b54bf9a1b66578c67a436b45" name="ac04d2021b54bf9a1b66578c67a436b45"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CR_HSEBYP_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (18U))</td></tr>
 <tr class="separator:ac04d2021b54bf9a1b66578c67a436b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -414,21 +411,66 @@ Macros</h2></td></tr>
 <tr class="memitem:a71f5167bea85df0b393de9d3846ea8d1" id="r_a71f5167bea85df0b393de9d3846ea8d1"><td class="memItemLeft" align="right" valign="top"><a id="a71f5167bea85df0b393de9d3846ea8d1" name="a71f5167bea85df0b393de9d3846ea8d1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CR_HSEON_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (16U))</td></tr>
 <tr class="separator:a71f5167bea85df0b393de9d3846ea8d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21adcb31640b6407baff549c0e7d1af0" id="r_a21adcb31640b6407baff549c0e7d1af0"><td class="memItemLeft" align="right" valign="top"><a id="a21adcb31640b6407baff549c0e7d1af0" name="a21adcb31640b6407baff549c0e7d1af0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CR_HSION_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (0U))</td></tr>
+<tr class="separator:a21adcb31640b6407baff549c0e7d1af0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55c613573a83b8399c228dca39063947" id="r_a55c613573a83b8399c228dca39063947"><td class="memItemLeft" align="right" valign="top"><a id="a55c613573a83b8399c228dca39063947" name="a55c613573a83b8399c228dca39063947"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CR_HSIRDY_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (1U))</td></tr>
+<tr class="separator:a55c613573a83b8399c228dca39063947"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe63b332158f8886948205ff9edcf248" id="r_abe63b332158f8886948205ff9edcf248"><td class="memItemLeft" align="right" valign="top"><a id="abe63b332158f8886948205ff9edcf248" name="abe63b332158f8886948205ff9edcf248"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CSR_LSION_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (0U))</td></tr>
+<tr class="separator:abe63b332158f8886948205ff9edcf248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49a5c93576efd3e5d284351db6125373" id="r_a49a5c93576efd3e5d284351db6125373"><td class="memItemLeft" align="right" valign="top"><a id="a49a5c93576efd3e5d284351db6125373" name="a49a5c93576efd3e5d284351db6125373"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CSR_LSIRDY_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (1U))</td></tr>
+<tr class="separator:a49a5c93576efd3e5d284351db6125373"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85556465021c4272f4788d52251b29f4" id="r_a85556465021c4272f4788d52251b29f4"><td class="memItemLeft" align="right" valign="top"><a id="a85556465021c4272f4788d52251b29f4" name="a85556465021c4272f4788d52251b29f4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_BDCR_LSEON_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (0U))</td></tr>
+<tr class="separator:a85556465021c4272f4788d52251b29f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35093bcccacfeda073a2fb815687549c" id="r_a35093bcccacfeda073a2fb815687549c"><td class="memItemLeft" align="right" valign="top"><a id="a35093bcccacfeda073a2fb815687549c" name="a35093bcccacfeda073a2fb815687549c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_BDCR_LSERDY_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (1U))</td></tr>
+<tr class="separator:a35093bcccacfeda073a2fb815687549c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24137aca54b5b9f2534e8519230fb88b" id="r_a24137aca54b5b9f2534e8519230fb88b"><td class="memItemLeft" align="right" valign="top"><a id="a24137aca54b5b9f2534e8519230fb88b" name="a24137aca54b5b9f2534e8519230fb88b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CR_PLLSAION_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (28U))</td></tr>
+<tr class="separator:a24137aca54b5b9f2534e8519230fb88b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0b937da39c4f364f7d1750f1ac07894" id="r_aa0b937da39c4f364f7d1750f1ac07894"><td class="memItemLeft" align="right" valign="top"><a id="aa0b937da39c4f364f7d1750f1ac07894" name="aa0b937da39c4f364f7d1750f1ac07894"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CR_PLLSAIRDY_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (29U))</td></tr>
+<tr class="separator:aa0b937da39c4f364f7d1750f1ac07894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82caf73e368dd6e0af79ffff40c4c158" id="r_a82caf73e368dd6e0af79ffff40c4c158"><td class="memItemLeft" align="right" valign="top"><a id="a82caf73e368dd6e0af79ffff40c4c158" name="a82caf73e368dd6e0af79ffff40c4c158"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CR_PLLI2SON_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (26U))</td></tr>
+<tr class="separator:a82caf73e368dd6e0af79ffff40c4c158"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac102f1739d82c9f002f6d107e37c6d63" id="r_ac102f1739d82c9f002f6d107e37c6d63"><td class="memItemLeft" align="right" valign="top"><a id="ac102f1739d82c9f002f6d107e37c6d63" name="ac102f1739d82c9f002f6d107e37c6d63"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CR_PLLI2SRDY_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (27U))</td></tr>
+<tr class="separator:ac102f1739d82c9f002f6d107e37c6d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60dd7c471ec3ba4587e0cecdc8238f87" id="r_a60dd7c471ec3ba4587e0cecdc8238f87"><td class="memItemLeft" align="right" valign="top"><a id="a60dd7c471ec3ba4587e0cecdc8238f87" name="a60dd7c471ec3ba4587e0cecdc8238f87"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CR_PLLON_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (24U))</td></tr>
 <tr class="separator:a60dd7c471ec3ba4587e0cecdc8238f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a237ae9216a3ae5c1f6833a52995413df" id="r_a237ae9216a3ae5c1f6833a52995413df"><td class="memItemLeft" align="right" valign="top"><a id="a237ae9216a3ae5c1f6833a52995413df" name="a237ae9216a3ae5c1f6833a52995413df"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CR_PLLRDY_Msk</b>&#160;&#160;&#160;(0x1UL &lt;&lt; (25U))</td></tr>
 <tr class="separator:a237ae9216a3ae5c1f6833a52995413df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2447eb7ab6388f0446e7550df8f50d90" id="r_a2447eb7ab6388f0446e7550df8f50d90"><td class="memItemLeft" align="right" valign="top"><a id="a2447eb7ab6388f0446e7550df8f50d90" name="a2447eb7ab6388f0446e7550df8f50d90"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CFGR_HPRE_Pos</b>&#160;&#160;&#160;(4U)</td></tr>
+<tr class="separator:a2447eb7ab6388f0446e7550df8f50d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65804e0ce7ec3204e9a56bb848428460" id="r_a65804e0ce7ec3204e9a56bb848428460"><td class="memItemLeft" align="right" valign="top"><a id="a65804e0ce7ec3204e9a56bb848428460" name="a65804e0ce7ec3204e9a56bb848428460"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CFGR_HPRE_Msk</b>&#160;&#160;&#160;(0xFUL &lt;&lt; RCC_CFGR_HPRE_Pos)</td></tr>
+<tr class="separator:a65804e0ce7ec3204e9a56bb848428460"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0f0825acc89712f58b97844fbac93ca" id="r_af0f0825acc89712f58b97844fbac93ca"><td class="memItemLeft" align="right" valign="top"><a id="af0f0825acc89712f58b97844fbac93ca" name="af0f0825acc89712f58b97844fbac93ca"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CFGR_PPRE1_Pos</b>&#160;&#160;&#160;(10U)</td></tr>
 <tr class="separator:af0f0825acc89712f58b97844fbac93ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48842716ad7c2280b8ddbac071cdc773" id="r_a48842716ad7c2280b8ddbac071cdc773"><td class="memItemLeft" align="right" valign="top"><a id="a48842716ad7c2280b8ddbac071cdc773" name="a48842716ad7c2280b8ddbac071cdc773"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CFGR_PPRE1_Msk</b>&#160;&#160;&#160;(0x3UL &lt;&lt; RCC_CFGR_PPRE1_Pos)</td></tr>
+<tr class="separator:a48842716ad7c2280b8ddbac071cdc773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a562db8b1e75fa862a3652b56a29b9fb6" id="r_a562db8b1e75fa862a3652b56a29b9fb6"><td class="memItemLeft" align="right" valign="top"><a id="a562db8b1e75fa862a3652b56a29b9fb6" name="a562db8b1e75fa862a3652b56a29b9fb6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CFGR_PPRE2_Pos</b>&#160;&#160;&#160;(13U)</td></tr>
 <tr class="separator:a562db8b1e75fa862a3652b56a29b9fb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a489e055e843ee5090c0174bbb9af9a67" id="r_a489e055e843ee5090c0174bbb9af9a67"><td class="memItemLeft" align="right" valign="top"><a id="a489e055e843ee5090c0174bbb9af9a67" name="a489e055e843ee5090c0174bbb9af9a67"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CFGR_PPRE2_Msk</b>&#160;&#160;&#160;(0x3UL &lt;&lt; RCC_CFGR_PPRE2_Pos)</td></tr>
+<tr class="separator:a489e055e843ee5090c0174bbb9af9a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cf9dd749ab13a3b9d55308e24f60160" id="r_a0cf9dd749ab13a3b9d55308e24f60160"><td class="memItemLeft" align="right" valign="top"><a id="a0cf9dd749ab13a3b9d55308e24f60160" name="a0cf9dd749ab13a3b9d55308e24f60160"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CFGR_SW_Pos</b>&#160;&#160;&#160;(0U)</td></tr>
 <tr class="separator:a0cf9dd749ab13a3b9d55308e24f60160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06ad7777386bbf5555ef8b02939197aa" id="r_a06ad7777386bbf5555ef8b02939197aa"><td class="memItemLeft" align="right" valign="top"><a id="a06ad7777386bbf5555ef8b02939197aa" name="a06ad7777386bbf5555ef8b02939197aa"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CFGR_SW_Msk</b>&#160;&#160;&#160;(0x3UL &lt;&lt; RCC_CFGR_SW_Pos)</td></tr>
+<tr class="separator:a06ad7777386bbf5555ef8b02939197aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87389cacb2eaf53730da13a2a33cd487" id="r_a87389cacb2eaf53730da13a2a33cd487"><td class="memItemLeft" align="right" valign="top"><a id="a87389cacb2eaf53730da13a2a33cd487" name="a87389cacb2eaf53730da13a2a33cd487"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_CFGR_SW_PLL</b>&#160;&#160;&#160;(0x00000002U)</td></tr>
 <tr class="separator:a87389cacb2eaf53730da13a2a33cd487"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -451,8 +493,20 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_PLLCFGR_PLLP_Pos</b>&#160;&#160;&#160;(16U)</td></tr>
 <tr class="separator:aa67d9c488f8ce7cc078b2c7ca607d742"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a944643170311f50335c87c581ee11eca" id="r_a944643170311f50335c87c581ee11eca"><td class="memItemLeft" align="right" valign="top"><a id="a944643170311f50335c87c581ee11eca" name="a944643170311f50335c87c581ee11eca"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_PLLCFGR_PLLP_Msk</b>&#160;&#160;&#160;(0x3UL &lt;&lt; (16U))</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_PLLCFGR_PLLP_Msk</b>&#160;&#160;&#160;(0x3UL &lt;&lt; RCC_PLLCFGR_PLLP_Pos)</td></tr>
 <tr class="separator:a944643170311f50335c87c581ee11eca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a5d83613de06413fea907a5a4df341b" id="r_a6a5d83613de06413fea907a5a4df341b"><td class="memItemLeft" align="right" valign="top"><a id="a6a5d83613de06413fea907a5a4df341b" name="a6a5d83613de06413fea907a5a4df341b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_PLLCFGR_PLLR_Pos</b>&#160;&#160;&#160;(28U)</td></tr>
+<tr class="separator:a6a5d83613de06413fea907a5a4df341b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf714d3c7a4109d65005b727a8e1d359" id="r_acf714d3c7a4109d65005b727a8e1d359"><td class="memItemLeft" align="right" valign="top"><a id="acf714d3c7a4109d65005b727a8e1d359" name="acf714d3c7a4109d65005b727a8e1d359"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_PLLCFGR_PLLR_Msk</b>&#160;&#160;&#160;(0x7UL &lt;&lt; RCC_PLLCFGR_PLLR_Pos)</td></tr>
+<tr class="separator:acf714d3c7a4109d65005b727a8e1d359"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac574324eee39c3dcee75b37d7728c9ae" id="r_ac574324eee39c3dcee75b37d7728c9ae"><td class="memItemLeft" align="right" valign="top"><a id="ac574324eee39c3dcee75b37d7728c9ae" name="ac574324eee39c3dcee75b37d7728c9ae"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_PLLCFGR_PLLQ_Pos</b>&#160;&#160;&#160;(24U)</td></tr>
+<tr class="separator:ac574324eee39c3dcee75b37d7728c9ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61e97c300a1e833572204b270398158f" id="r_a61e97c300a1e833572204b270398158f"><td class="memItemLeft" align="right" valign="top"><a id="a61e97c300a1e833572204b270398158f" name="a61e97c300a1e833572204b270398158f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_PLLCFGR_PLLQ_Msk</b>&#160;&#160;&#160;(0xFUL &lt;&lt; RCC_PLLCFGR_PLLQ_Pos)</td></tr>
+<tr class="separator:a61e97c300a1e833572204b270398158f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae44f5b0b3eaa9d6f11eac2a8b1328cd7" id="r_ae44f5b0b3eaa9d6f11eac2a8b1328cd7"><td class="memItemLeft" align="right" valign="top"><a id="ae44f5b0b3eaa9d6f11eac2a8b1328cd7" name="ae44f5b0b3eaa9d6f11eac2a8b1328cd7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RCC_PLLCFGR_PLLSRC_Pos</b>&#160;&#160;&#160;(22U)</td></tr>
 <tr class="separator:ae44f5b0b3eaa9d6f11eac2a8b1328cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>

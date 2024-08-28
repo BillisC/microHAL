@@ -100,7 +100,7 @@ $(function(){ initResizable(false); });
 <p>Can I use it for <b>any</b> STM32 F4 series MCU?</p><ul>
 <li>Yes, but it's tested with an F446RE so don't blame me if anything burns</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md1"></a>
+<h2><a class="anchor" id="autotoc_md2"></a>
 Preparation</h2>
 <p>Install the required tools (CMake <b>must</b> be &gt;= 3.21):</p>
 <p><b>Debian</b> <code>sudo apt install gcc-arm-none-eabi gdb-multiarch git cmake openocd cppcheck -y</code></p>
@@ -108,16 +108,16 @@ Preparation</h2>
 <p>Clone the repository: </p><div class="fragment"><div class="line">git clone --recursive https://github.com/BillisC/stm32f446xx-drivers.git</div>
 </div><!-- fragment --><p> Or initialize the submodules seperately: </p><div class="fragment"><div class="line">git submodule init</div>
 <div class="line">git submodule update</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md2"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
 Compile and flash</h2>
 <p>Available configurations: Debug / Release</p>
 <p>Initialize cmake configuration: </p><div class="fragment"><div class="line">cmake -B build/{config}/ . --toolchain arm-toolchain.cmake</div>
 </div><!-- fragment --><p> Finally compile and flash the project: </p><div class="fragment"><div class="line">cmake --build build/{config}/ --target flash</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
 Unit testing</h2>
 <p>Purely logical</p>
 <p>Just don't include the <code>--toolchain arm-toolchain.cmake</code>. Execute the build output <code>utest</code> to run all tests <b>natively</b>.</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Debugging</h2>
 <p>The following will launch a GDB server at port <b>3333</b>: </p><div class="fragment"><div class="line">cmake --build build/{config}/ --target debug</div>
 </div><!-- fragment --><p> To connect to it launch another GDB instance: </p><div class="fragment"><div class="line">gdb-multiarch -tui drivers.elf</div>

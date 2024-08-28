@@ -8,6 +8,9 @@
  *  @author Vasileios Ch. (BillisC)
  */
 
+#ifndef STM32F4XX_STUBS
+#define STM32F4XX_STUBS
+
 /* -- Includes -- */
 #include <stdint.h>
 #include "system_stm32f4xx.h"
@@ -115,31 +118,28 @@
 #define USART_SR_RXNE_Msk    (0x1UL << (5U))
 
 /* RCC */
-/**
- * @brief Contains stubbed RCC registers.
- */
-typedef struct {
-  volatile uint32_t CR;
-  volatile uint32_t PLLCFGR;
-  volatile uint32_t CFGR;
-  volatile uint32_t AHB1RSTR;
-  volatile uint32_t APB1RSTR;
-  volatile uint32_t APB2RSTR;
-  volatile uint32_t AHB1ENR;
-  volatile uint32_t APB1ENR;
-  volatile uint32_t APB2ENR;
-  volatile uint32_t CSR;
-} RCC_TypeDef;
-
-#define RCC                      ((RCC_TypeDef *)(0UL))
+#define RCC_BASE                 (0UL)
 #define RCC_CR_HSEBYP_Msk        (0x1UL << (18U))
 #define RCC_CR_HSERDY_Msk        (0x1UL << (17U))
 #define RCC_CR_HSEON_Msk         (0x1UL << (16U))
+#define RCC_CR_HSION_Msk         (0x1UL << (0U))
+#define RCC_CR_HSIRDY_Msk        (0x1UL << (1U))
+#define RCC_CSR_LSION_Msk        (0x1UL << (0U))
+#define RCC_CSR_LSIRDY_Msk       (0x1UL << (1U))
+#define RCC_BDCR_LSEON_Msk       (0x1UL << (0U))
+#define RCC_BDCR_LSERDY_Msk      (0x1UL << (1U))
+#define RCC_CR_PLLSAION_Msk      (0x1UL << (28U))
+#define RCC_CR_PLLSAIRDY_Msk     (0x1UL << (29U))
+#define RCC_CR_PLLI2SON_Msk      (0x1UL << (26U))
+#define RCC_CR_PLLI2SRDY_Msk     (0x1UL << (27U))
 #define RCC_CR_PLLON_Msk         (0x1UL << (24U))
 #define RCC_CR_PLLRDY_Msk        (0x1UL << (25U))
+#define RCC_CFGR_HPRE_Pos        (4U)
+#define RCC_CFGR_HPRE_Msk        (0xFUL << RCC_CFGR_HPRE_Pos)
 #define RCC_CFGR_PPRE1_Pos       (10U)
 #define RCC_CFGR_PPRE2_Pos       (13U)
 #define RCC_CFGR_SW_Pos          (0U)
+#define RCC_CFGR_SW_Msk          (0x3UL << RCC_CFGR_SW_Pos)
 #define RCC_CFGR_SW_PLL          (0x00000002U)
 #define RCC_CFGR_SWS_PLL         (0x00000008U)
 #define RCC_PLLCFGR_PLLM_Pos     (0U)
@@ -147,7 +147,11 @@ typedef struct {
 #define RCC_PLLCFGR_PLLN_Pos     (6U)
 #define RCC_PLLCFGR_PLLN_Msk     (0x1FFUL << RCC_PLLCFGR_PLLN_Pos)
 #define RCC_PLLCFGR_PLLP_Pos     (16U)
-#define RCC_PLLCFGR_PLLP_Msk     (0x3UL << (16U))
+#define RCC_PLLCFGR_PLLP_Msk     (0x3UL << RCC_PLLCFGR_PLLP_Pos)
+#define RCC_PLLCFGR_PLLR_Pos     (28U)
+#define RCC_PLLCFGR_PLLR_Msk     (0x7UL << RCC_PLLCFGR_PLLR_Pos)
+#define RCC_PLLCFGR_PLLQ_Pos     (24U)
+#define RCC_PLLCFGR_PLLQ_Msk     (0xFUL << RCC_PLLCFGR_PLLQ_Pos)
 #define RCC_PLLCFGR_PLLSRC_Pos   (22U)
 #define RCC_PLLCFGR_PLLSRC_Msk   (0x1UL << RCC_PLLCFGR_PLLSRC_Pos)
 #define RCC_AHB1ENR_GPIOAEN_Msk  (0x1UL << (0U))
@@ -217,3 +221,5 @@ SysTick_Config(uint32_t ticks) {
   (void)ticks;
   return 0UL;
 }
+
+#endif

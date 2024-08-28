@@ -9,8 +9,9 @@
 #define DEFINES_H
 
 /* LOGIC */
-#define TRUE  1
-#define FALSE 0
+#define TRUE     1
+#define FALSE    0
+#define BIT(pos) (1UL << (pos))
 
 /* ASM INSTRUCTIONS */
 #ifndef UTEST

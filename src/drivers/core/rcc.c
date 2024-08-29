@@ -66,7 +66,8 @@ void rcc_configure_apb_prescaler(const uint8_t apb,
   ASM_DSB;
 }
 
-void rcc_configure_pll_clk(const struct RCCPLLConfig config) {
+void rcc_configure_pll_clk(const struct RCCPLLConfig config,
+                           const rcc_pll_target_t target) {
   /* Check if the configuration is valid, and if it's not,
    * ignore the bad values. This is done because the user
    * may want to leave some values untouched (by leaving
@@ -78,7 +79,17 @@ void rcc_configure_pll_clk(const struct RCCPLLConfig config) {
 
   /* Configure the PLL clock */
   struct RCCRegs *regs = RCC_PTR;
-  REG32 pllcfgr = regs->PLLCFGR;
+  REG32 pllcfgr = 0U;
+  if (target == RCC_PLL_TARGET_PLL) {
+    pllcfgr = regs->PLLCFGR;
+  } else if (target == RCC_PLL_TARGET_I2S) {
+    pllcfgr = regs->PLLI2SCFGR;
+  } else if (target == RCC_PLL_TARGET_SAI) {
+    pllcfgr = regs->PLLSAICFGR;
+  } else {
+    return;
+  }
+
   pllcfgr &= ~(good_pllr | good_pllq | good_plln | good_pllm |
                RCC_PLLCFGR_PLLP_Msk | RCC_PLLCFGR_PLLSRC_Msk); // clear first
   pllcfgr |= (((config.PLLR << RCC_PLLCFGR_PLLR_Pos) & good_pllr) |
@@ -88,7 +99,13 @@ void rcc_configure_pll_clk(const struct RCCPLLConfig config) {
               (config.PLLP << RCC_PLLCFGR_PLLP_Pos) |
               (config.UseHSE << RCC_PLLCFGR_PLLSRC_Pos));
 
-  regs->PLLCFGR = pllcfgr;
+  if (target == RCC_PLL_TARGET_PLL) {
+    regs->PLLCFGR = pllcfgr;
+  } else if (target == RCC_PLL_TARGET_I2S) {
+    regs->PLLI2SCFGR = pllcfgr;
+  } else if (target == RCC_PLL_TARGET_SAI) {
+    regs->PLLSAICFGR = pllcfgr;
+  }
   ASM_DSB;
 }
 
@@ -108,7 +125,7 @@ void rcc_enable_osc(const rcc_osc_t osc) {
       while (!(regs->CSR & RCC_CSR_LSIRDY_Msk)) { ASM_NOP; };
       break;
     case RCC_OSC_LSE:
-      regs->BDCR |= RCC_BDCR_LSEON_Msk;
+      regs->BDCR |= (RCC_BDCR_LSEBYP_Msk | RCC_BDCR_LSEON_Msk);
       while (!(regs->BDCR & RCC_BDCR_LSERDY_Msk)) { ASM_NOP; };
       break;
     case RCC_OSC_PLL:
@@ -200,6 +217,25 @@ void rcc_disable_peripheral_clk(const rcc_clk_periph_t peripheral) {
   ASM_DSB;
 }
 
+void rcc_enable_lp_peripheral_clk(const rcc_clk_periph_t peripheral) {
+  /* Set lp peripheral clock bit */
+  struct RCCRegs *regs = RCC_PTR;
+  if (peripheral < 32U) {
+    regs->AHB1LPENR |= BIT(peripheral);
+  } else if (peripheral < 64U) {
+    regs->AHB2LPENR |= BIT(peripheral - 32U);
+  } else if (peripheral < 96U) {
+    regs->AHB3LPENR |= BIT(peripheral - 64U);
+  } else if (peripheral < 128U) {
+    regs->APB1LPENR |= BIT(peripheral - 96U);
+  } else if (peripheral < 160U) {
+    regs->APB2LPENR |= BIT(peripheral - 128U);
+  } else {
+    return;
+  }
+  ASM_DSB;
+}
+
 void rcc_set_mco1_src(const rcc_mco1_src_t source) {
   /* Make sure the source exists */
   switch (source) {
@@ -264,6 +300,30 @@ void rcc_configure_mco_prescaler(const uint8_t mco,
   }
 
   regs->CFGR = cfgr;
+}
+
+void rcc_enable_rtc(const rcc_rtc_src_t source) {
+  switch (source) {
+    case RCC_RTC_SRC_NON:
+    case RCC_RTC_SRC_LSE:
+    case RCC_RTC_SRC_LSI:
+    case RCC_RTC_SRC_HSE: break;
+    default: return;
+  }
+
+  /* Configure RTC bits and enable */
+  struct RCCRegs *regs = RCC_PTR;
+  REG32 bdcr = regs->BDCR;
+  bdcr &= ~(RCC_BDCR_RTCSEL_Msk);
+  bdcr |= ((source << RCC_BDCR_RTCSEL_Pos) | BIT(RCC_BDCR_RTCEN_Pos));
+
+  regs->BDCR = bdcr;
+}
+
+void rcc_disable_rtc(void) {
+  /* Configure RTC bits and disable */
+  struct RCCRegs *regs = RCC_PTR;
+  regs->BDCR &= ~(RCC_BDCR_RTCEN_Msk);
 }
 
 void rcc_configure_rtc_prescaler(const uint8_t value) {

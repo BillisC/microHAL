@@ -199,3 +199,66 @@ void rcc_disable_peripheral_clk(const rcc_clk_periph_t peripheral) {
   }
   ASM_DSB;
 }
+
+void rcc_set_mco1_src(const rcc_mco1_src_t source) {
+  switch (source) {
+    case RCC_MCO1_SRC_HSI:
+    case RCC_MCO1_SRC_LSE:
+    case RCC_MCO1_SRC_HSE:
+    case RCC_MCO1_SRC_PLL: break;
+    default: return;
+  }
+
+  /* Set MCO source bits */
+  struct RCCRegs *regs = RCC_PTR;
+  REG32 cfgr = regs->CFGR;
+  cfgr &= ~(RCC_CFGR_MCO1_Msk);
+  cfgr |= (source << RCC_CFGR_MCO1_Pos);
+
+  regs->CFGR = cfgr;
+}
+
+void rcc_set_mco2_src(const rcc_mco2_src_t source) {
+  switch (source) {
+    case RCC_MCO2_SRC_SYS:
+    case RCC_MCO2_SRC_I2S:
+    case RCC_MCO2_SRC_HSE:
+    case RCC_MCO2_SRC_PLL: break;
+    default: return;
+  }
+
+  /* Set MCO source bits */
+  struct RCCRegs *regs = RCC_PTR;
+  REG32 cfgr = regs->CFGR;
+  cfgr &= ~(RCC_CFGR_MCO2_Msk);
+  cfgr |= (source << RCC_CFGR_MCO2_Pos);
+
+  regs->CFGR = cfgr;
+}
+
+void rcc_configure_mco_prescaler(const uint8_t mco,
+                                 const rcc_mco_prescaler_t value) {
+  switch (value) {
+    case RCC_MCO_PRESCALER_DIV1:
+    case RCC_MCO_PRESCALER_DIV2:
+    case RCC_MCO_PRESCALER_DIV3:
+    case RCC_MCO_PRESCALER_DIV4:
+    case RCC_MCO_PRESCALER_DIV5: break;
+    default: return;
+  }
+
+  /* Set MCO prescaler divider */
+  struct RCCRegs *regs = RCC_PTR;
+  REG32 cfgr = regs->CFGR;
+  if (mco == 1) {
+    cfgr &= ~(RCC_CFGR_MCO1PRE_Msk);
+    cfgr |= (value << RCC_CFGR_MCO1PRE_Pos);
+  } else if (mco == 2) {
+    cfgr &= ~(RCC_CFGR_MCO2PRE_Msk);
+    cfgr |= (value << RCC_CFGR_MCO2PRE_Pos);
+  } else {
+    return;
+  }
+
+  regs->CFGR = cfgr;
+}

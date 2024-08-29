@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>microHAL: src/drivers/interrupts.h Source File</title>
+<title>microHAL: src/drivers/_init.c File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -89,24 +89,51 @@ $(function(){ initResizable(false); });
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
-  <div class="headertitle"><div class="title">interrupts.h</div></div>
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">_init.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="../../d6/ded/interrupts_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef INTERRUPTS_H</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define INTERRUPTS_H</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">/* -- Includes -- */</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">extern</span> <span class="keyword">volatile</span> uint32_t <a class="code hl_variable" href="../../d6/ded/interrupts_8h.html#aa7e25380b955a5364bf9bbd7f269cd00">ticks</a>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d6/ded/interrupts_8h.html#ab5e09814056d617c521549e542639b7e">SysTick_Handler</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="ainterrupts_8h_html_aa7e25380b955a5364bf9bbd7f269cd00"><div class="ttname"><a href="../../d6/ded/interrupts_8h.html#aa7e25380b955a5364bf9bbd7f269cd00">ticks</a></div><div class="ttdeci">volatile uint32_t ticks</div><div class="ttdoc">MCU tick count.</div><div class="ttdef"><b>Definition</b> interrupts.c:15</div></div>
-<div class="ttc" id="ainterrupts_8h_html_ab5e09814056d617c521549e542639b7e"><div class="ttname"><a href="../../d6/ded/interrupts_8h.html#ab5e09814056d617c521549e542639b7e">SysTick_Handler</a></div><div class="ttdeci">void SysTick_Handler(void)</div><div class="ttdoc">Systick interrupt handler.</div><div class="ttdef"><b>Definition</b> interrupts.c:16</div></div>
-</div><!-- fragment --></div><!-- contents -->
+
+<p>Function definitions for the MCU initializer.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../dc/dfd/stm32f4xx_8h_source.html">stm32f4xx.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/d89/__init_8h_source.html">_init.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a9af744358ff4b1e3e33d7dd170862f9b" id="r_a9af744358ff4b1e3e33d7dd170862f9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9af744358ff4b1e3e33d7dd170862f9b">mcu_init</a> (void)</td></tr>
+<tr class="memdesc:a9af744358ff4b1e3e33d7dd170862f9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">MCU initialization function.  <br /></td></tr>
+<tr class="separator:a9af744358ff4b1e3e33d7dd170862f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Function definitions for the MCU initializer. </p>
+<p>This file contains all of the function definitions declared in mcu_init.h.</p>
+<dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000001">Bug</a></b></dt><dd>None, yet. </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a9af744358ff4b1e3e33d7dd170862f9b" name="a9af744358ff4b1e3e33d7dd170862f9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9af744358ff4b1e3e33d7dd170862f9b">&#9670;&#160;</a></span>mcu_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mcu_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>MCU initialization function. </p>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>microHAL: src/drivers/interrupts.c File Reference</title>
+<title>microHAL: src/drivers/core/isr.h File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -84,7 +84,7 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c718a368270b13c54d94892d20736f45.html">drivers</a></li>  </ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c718a368270b13c54d94892d20736f45.html">drivers</a></li><li class="navelem"><a class="el" href="../../dir_08ab5d94d787b5443644dc1f87f07828.html">core</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
@@ -92,14 +92,16 @@ $(function(){ initResizable(false); });
   <div class="summary">
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
-  <div class="headertitle"><div class="title">interrupts.c File Reference</div></div>
+  <div class="headertitle"><div class="title">isr.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Function defines of the interrupt handlers.  
+<p>Function prototypes of the interrupt handlers.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d6/ded/interrupts_8h_source.html">interrupts.h</a>&quot;</code><br />
-</div><table class="memberdecls">
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="../../d8/da8/isr_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab5e09814056d617c521549e542639b7e" id="r_ab5e09814056d617c521549e542639b7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5e09814056d617c521549e542639b7e">SysTick_Handler</a> (void)</td></tr>
@@ -109,15 +111,15 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aa7e25380b955a5364bf9bbd7f269cd00" id="r_aa7e25380b955a5364bf9bbd7f269cd00"><td class="memItemLeft" align="right" valign="top"><a id="aa7e25380b955a5364bf9bbd7f269cd00" name="aa7e25380b955a5364bf9bbd7f269cd00"></a>
-volatile uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>ticks</b> = 0UL</td></tr>
+volatile uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>ticks</b></td></tr>
 <tr class="memdesc:aa7e25380b955a5364bf9bbd7f269cd00"><td class="mdescLeft">&#160;</td><td class="mdescRight">MCU tick count. <br /></td></tr>
 <tr class="separator:aa7e25380b955a5364bf9bbd7f269cd00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Function defines of the interrupt handlers. </p>
-<p>This file contains all of the function definitions declared in <a class="el" href="../../d6/ded/interrupts_8h.html" title="Function prototypes of the interrupt handlers.">interrupts.h</a>.</p>
+<div class="textblock"><p>Function prototypes of the interrupt handlers. </p>
+<p>This file contains all of the required externs and interrupt prototypes for a functional barebone MCU system.</p>
 <dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
-<dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000008">Bug</a></b></dt><dd>None, yet. </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000005">Bug</a></b></dt><dd>None, yet. </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="ab5e09814056d617c521549e542639b7e" name="ab5e09814056d617c521549e542639b7e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5e09814056d617c521549e542639b7e">&#9670;&#160;</a></span>SysTick_Handler()</h2>

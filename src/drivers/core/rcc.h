@@ -109,7 +109,10 @@ typedef enum rcc_clk_periph {
   RCC_CLK_GPIOJ,
   RCC_CLK_GPIOK,
   RCC_CLK_CRC = 12U,
-  RCC_CLK_BKPSRAM = 18U,
+  RCC_CLK_LP_FLITF = 15U, /** LOW POWER ONLY */
+  RCC_CLK_LP_SRAM1,       /** LOW POWER ONLY */
+  RCC_CLK_LP_SRAM2,       /** LOW POWER ONLY */
+  RCC_CLK_BKPSRAM,
   RCC_CLK_CCMDATARAM = 20U,
   RCC_CLK_DMA1,
   RCC_CLK_DMA2,
@@ -211,6 +214,12 @@ typedef enum rcc_ahb_prescaler {
   RCC_AHB_PRESCALER_DIV512 = 0xF,
 } rcc_ahb_prescaler_t;
 
+typedef enum rcc_pll_target {
+  RCC_PLL_TARGET_PLL = 0x0,
+  RCC_PLL_TARGET_I2S = 0x1,
+  RCC_PLL_TARGET_SAI = 0x2,
+} rcc_pll_target_t;
+
 /**
  *  @brief Contains RCC system clock sources
  */
@@ -252,6 +261,13 @@ typedef enum rcc_mco_prescaler {
   RCC_MCO_PRESCALER_DIV5 = 0x7,
 } rcc_mco_prescaler_t;
 
+typedef enum rcc_rtc_src {
+  RCC_RTC_SRC_NON = 0x0,
+  RCC_RTC_SRC_LSE = 0x1,
+  RCC_RTC_SRC_LSI = 0x2,
+  RCC_RTC_SRC_HSE = 0x3
+} rcc_rtc_src_t;
+
 /**
  *  @brief Set AHB prescaler to the desired value
  *
@@ -286,13 +302,16 @@ void rcc_configure_apb_prescaler(const uint8_t apb,
  *  The configuration values can be found in the
  *  RCCPLLConfig struct. Extra care must be taken with
  *  PLL values as their bits are not the same and
- *  wrapping may happen. A DSB instruction is inserted
+ *  wrapping may happen. Also a target (PLL, I2S, SAI)
+ *  must be specified. A DSB instruction is inserted
  *  after each RCC register write as per errata.
  *
  *  @param peripheral The peripheral clock
+ *  @param target The target PLL
  *  @return None
  */
-void rcc_configure_pll_clk(const struct RCCPLLConfig config);
+void rcc_configure_pll_clk(const struct RCCPLLConfig config,
+                           const rcc_pll_target_t target);
 
 /**
  *  @brief Enable the specified oscillator
@@ -363,6 +382,22 @@ void rcc_enable_peripheral_clk(const rcc_clk_periph_t peripheral);
 void rcc_disable_peripheral_clk(const rcc_clk_periph_t peripheral);
 
 /**
+ *  @brief Enables the peripheral in low power mode
+ *
+ *  The available peripherals can be found in the
+ *  rcc_clk_periph_t enum. Any other value will be
+ *  ignored. A DSB instruction is inserted after each
+ *  RCC register write as per errata.
+ *
+ *  DISCLAIMER: Only enable peripherals that actually
+ *  exist on hardware!
+ *
+ *  @param peripheral The peripheral clock
+ *  @return None
+ */
+void rcc_enable_lp_peripheral_clk(const rcc_clk_periph_t peripheral);
+
+/**
  *  @brief Set MCO1 to the specified clock source
  *
  *  The available source clocks are available in the
@@ -399,7 +434,24 @@ void rcc_configure_mco_prescaler(const uint8_t mco,
                                  const rcc_mco_prescaler_t value);
 
 /**
- *  @brief Set RTC prescaler to the desired value
+ *  @brief Enables the RTC with specified source
+ *
+ *  The available RTC sources can be found in the
+ *  rcc_rtc_src_t enum. Any other value will be
+ *  ignored.
+ *
+ *  @param source The RTC clock source
+ *  @return None
+ */
+void rcc_enable_rtc(const rcc_rtc_src_t source);
+
+/**
+ *  @brief Disables the RTC
+ */
+void rcc_disable_rtc(void);
+
+/**
+ *  @brief Set RTC HSE prescaler to the desired value
  *
  *  @param value The prescaler divide value (0..31)
  *  @return None

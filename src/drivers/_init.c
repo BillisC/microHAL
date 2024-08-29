@@ -10,6 +10,7 @@
 
 /* Includes */
 #include <stdint.h>
+#include "rcc.h"
 #include "stm32f4xx.h"
 #include "_init.h"
 
@@ -33,7 +34,7 @@ static void clock_init(void) {
   pll.PLLP = PLLP_VAL;
   pll.PLLN = PLLN_VAL;
   pll.UseHSE = PLLSRC_VAL;
-  rcc_configure_pll_clk(pll);
+  rcc_configure_pll_clk(pll, RCC_PLL_TARGET_PLL);
 
   /* Configure the APB clocks */
   rcc_configure_apb_prescaler(1, PPRE1_VAL);

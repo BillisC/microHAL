@@ -108,9 +108,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac12a2e9fa7ea8bf15f9dfb727c3b30b8" id="r_ac12a2e9fa7ea8bf15f9dfb727c3b30b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac12a2e9fa7ea8bf15f9dfb727c3b30b8">rcc_configure_apb_prescaler</a> (const uint8_t apb, const <a class="el" href="../../db/d65/rcc_8h.html#a41109820a01ff7d9c95bb1d221e1dee5">rcc_apb_prescaler_t</a> value)</td></tr>
 <tr class="memdesc:ac12a2e9fa7ea8bf15f9dfb727c3b30b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set APBx prescaler to the desired value.  <br /></td></tr>
 <tr class="separator:ac12a2e9fa7ea8bf15f9dfb727c3b30b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a093c2916ef5dd65bc3104ca7d3141c65" id="r_a093c2916ef5dd65bc3104ca7d3141c65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a093c2916ef5dd65bc3104ca7d3141c65">rcc_configure_pll_clk</a> (const struct <a class="el" href="../../d0/d46/structRCCPLLConfig.html">RCCPLLConfig</a> config)</td></tr>
-<tr class="memdesc:a093c2916ef5dd65bc3104ca7d3141c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the PLL clocks according to config.  <br /></td></tr>
-<tr class="separator:a093c2916ef5dd65bc3104ca7d3141c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae68fd31eb916c0e10e3b92f8816e845a" id="r_ae68fd31eb916c0e10e3b92f8816e845a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae68fd31eb916c0e10e3b92f8816e845a">rcc_configure_pll_clk</a> (const struct <a class="el" href="../../d0/d46/structRCCPLLConfig.html">RCCPLLConfig</a> config, const rcc_pll_target_t target)</td></tr>
+<tr class="memdesc:ae68fd31eb916c0e10e3b92f8816e845a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the PLL clocks according to config.  <br /></td></tr>
+<tr class="separator:ae68fd31eb916c0e10e3b92f8816e845a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad86b0cadf677636e998cfb64e62a8bc4" id="r_ad86b0cadf677636e998cfb64e62a8bc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad86b0cadf677636e998cfb64e62a8bc4">rcc_enable_osc</a> (const <a class="el" href="../../db/d65/rcc_8h.html#a3ff79645cce78c5b3c0d524481e0376b">rcc_osc_t</a> osc)</td></tr>
 <tr class="memdesc:ad86b0cadf677636e998cfb64e62a8bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable the specified oscillator.  <br /></td></tr>
 <tr class="separator:ad86b0cadf677636e998cfb64e62a8bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,6 +126,9 @@ Functions</h2></td></tr>
 <tr class="memitem:afee4df2cc68098ffc327517e4001d30e" id="r_afee4df2cc68098ffc327517e4001d30e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afee4df2cc68098ffc327517e4001d30e">rcc_disable_peripheral_clk</a> (const <a class="el" href="../../db/d65/rcc_8h.html#aaea78ee4b097586eabbcdae057e50510">rcc_clk_periph_t</a> peripheral)</td></tr>
 <tr class="memdesc:afee4df2cc68098ffc327517e4001d30e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the specified peripheral clock.  <br /></td></tr>
 <tr class="separator:afee4df2cc68098ffc327517e4001d30e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3abbd0a8ef0657c10f323c2bdb3ef66f" id="r_a3abbd0a8ef0657c10f323c2bdb3ef66f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3abbd0a8ef0657c10f323c2bdb3ef66f">rcc_enable_lp_peripheral_clk</a> (const <a class="el" href="../../db/d65/rcc_8h.html#aaea78ee4b097586eabbcdae057e50510">rcc_clk_periph_t</a> peripheral)</td></tr>
+<tr class="memdesc:a3abbd0a8ef0657c10f323c2bdb3ef66f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the peripheral in low power mode.  <br /></td></tr>
+<tr class="separator:a3abbd0a8ef0657c10f323c2bdb3ef66f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94b3f8c744b146dc781a7849c3bed28d" id="r_a94b3f8c744b146dc781a7849c3bed28d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94b3f8c744b146dc781a7849c3bed28d">rcc_set_mco1_src</a> (const <a class="el" href="../../db/d65/rcc_8h.html#a6d64aa6ea9e446b416581adc52152b59">rcc_mco1_src_t</a> source)</td></tr>
 <tr class="memdesc:a94b3f8c744b146dc781a7849c3bed28d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set MCO1 to the specified clock source.  <br /></td></tr>
 <tr class="separator:a94b3f8c744b146dc781a7849c3bed28d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,8 +138,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ae43790cd3be439553e0517ba6b30c6da" id="r_ae43790cd3be439553e0517ba6b30c6da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae43790cd3be439553e0517ba6b30c6da">rcc_configure_mco_prescaler</a> (const uint8_t mco, const <a class="el" href="../../db/d65/rcc_8h.html#a1ddc4c28117096da698952a012a4f3a2">rcc_mco_prescaler_t</a> value)</td></tr>
 <tr class="memdesc:ae43790cd3be439553e0517ba6b30c6da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set MCOx prescaler to the desired value.  <br /></td></tr>
 <tr class="separator:ae43790cd3be439553e0517ba6b30c6da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae1a5904a13a32e8aa5af54a0030a9f3" id="r_aae1a5904a13a32e8aa5af54a0030a9f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae1a5904a13a32e8aa5af54a0030a9f3">rcc_enable_rtc</a> (const rcc_rtc_src_t source)</td></tr>
+<tr class="memdesc:aae1a5904a13a32e8aa5af54a0030a9f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the RTC with specified source.  <br /></td></tr>
+<tr class="separator:aae1a5904a13a32e8aa5af54a0030a9f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3367392fa98524865e3b51d534ee1bbe" id="r_a3367392fa98524865e3b51d534ee1bbe"><td class="memItemLeft" align="right" valign="top"><a id="a3367392fa98524865e3b51d534ee1bbe" name="a3367392fa98524865e3b51d534ee1bbe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rcc_disable_rtc</b> (void)</td></tr>
+<tr class="memdesc:a3367392fa98524865e3b51d534ee1bbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the RTC. <br /></td></tr>
+<tr class="separator:a3367392fa98524865e3b51d534ee1bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a1444d89573d06221e0060ae278ed0f" id="r_a9a1444d89573d06221e0060ae278ed0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a1444d89573d06221e0060ae278ed0f">rcc_configure_rtc_prescaler</a> (const uint8_t value)</td></tr>
-<tr class="memdesc:a9a1444d89573d06221e0060ae278ed0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set RTC prescaler to the desired value.  <br /></td></tr>
+<tr class="memdesc:a9a1444d89573d06221e0060ae278ed0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set RTC HSE prescaler to the desired value.  <br /></td></tr>
 <tr class="separator:a9a1444d89573d06221e0060ae278ed0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -236,8 +246,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a093c2916ef5dd65bc3104ca7d3141c65" name="a093c2916ef5dd65bc3104ca7d3141c65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a093c2916ef5dd65bc3104ca7d3141c65">&#9670;&#160;</a></span>rcc_configure_pll_clk()</h2>
+<a id="ae68fd31eb916c0e10e3b92f8816e845a" name="ae68fd31eb916c0e10e3b92f8816e845a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae68fd31eb916c0e10e3b92f8816e845a">&#9670;&#160;</a></span>rcc_configure_pll_clk()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -245,17 +255,22 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void rcc_configure_pll_clk </td>
           <td>(</td>
-          <td class="paramtype">const struct <a class="el" href="../../d0/d46/structRCCPLLConfig.html">RCCPLLConfig</a></td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td class="paramtype">const struct <a class="el" href="../../d0/d46/structRCCPLLConfig.html">RCCPLLConfig</a></td>          <td class="paramname"><span class="paramname"><em>config</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const rcc_pll_target_t</td>          <td class="paramname"><span class="paramname"><em>target</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Sets the PLL clocks according to config. </p>
-<p>The configuration values can be found in the <a class="el" href="../../d0/d46/structRCCPLLConfig.html" title="Contains PLL configuration values.">RCCPLLConfig</a> struct. Extra care must be taken with PLL values as their bits are not the same and wrapping may happen. A DSB instruction is inserted after each RCC register write as per errata.</p>
+<p>The configuration values can be found in the <a class="el" href="../../d0/d46/structRCCPLLConfig.html" title="Contains PLL configuration values.">RCCPLLConfig</a> struct. Extra care must be taken with PLL values as their bits are not the same and wrapping may happen. Also a target (PLL, I2S, SAI) must be specified. A DSB instruction is inserted after each RCC register write as per errata.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">peripheral</td><td>The peripheral clock </td></tr>
+    <tr><td class="paramname">target</td><td>The target PLL </td></tr>
   </table>
   </dd>
 </dl>
@@ -278,7 +293,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set RTC prescaler to the desired value. </p>
+<p>Set RTC HSE prescaler to the desired value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>The prescaler divide value (0..31) </td></tr>
@@ -343,6 +358,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a3abbd0a8ef0657c10f323c2bdb3ef66f" name="a3abbd0a8ef0657c10f323c2bdb3ef66f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3abbd0a8ef0657c10f323c2bdb3ef66f">&#9670;&#160;</a></span>rcc_enable_lp_peripheral_clk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rcc_enable_lp_peripheral_clk </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../db/d65/rcc_8h.html#aaea78ee4b097586eabbcdae057e50510">rcc_clk_periph_t</a></td>          <td class="paramname"><span class="paramname"><em>peripheral</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables the peripheral in low power mode. </p>
+<p>The available peripherals can be found in the rcc_clk_periph_t enum. Any other value will be ignored. A DSB instruction is inserted after each RCC register write as per errata.</p>
+<p>DISCLAIMER: Only enable peripherals that actually exist on hardware!</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">peripheral</td><td>The peripheral clock </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
 <a id="ad86b0cadf677636e998cfb64e62a8bc4" name="ad86b0cadf677636e998cfb64e62a8bc4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad86b0cadf677636e998cfb64e62a8bc4">&#9670;&#160;</a></span>rcc_enable_osc()</h2>
 
@@ -391,6 +434,33 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">peripheral</td><td>The peripheral clock </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
+<a id="aae1a5904a13a32e8aa5af54a0030a9f3" name="aae1a5904a13a32e8aa5af54a0030a9f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae1a5904a13a32e8aa5af54a0030a9f3">&#9670;&#160;</a></span>rcc_enable_rtc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rcc_enable_rtc </td>
+          <td>(</td>
+          <td class="paramtype">const rcc_rtc_src_t</td>          <td class="paramname"><span class="paramname"><em>source</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables the RTC with specified source. </p>
+<p>The available RTC sources can be found in the rcc_rtc_src_t enum. Any other value will be ignored.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>The RTC clock source </td></tr>
   </table>
   </dd>
 </dl>

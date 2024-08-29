@@ -201,6 +201,7 @@ void rcc_disable_peripheral_clk(const rcc_clk_periph_t peripheral) {
 }
 
 void rcc_set_mco1_src(const rcc_mco1_src_t source) {
+  /* Make sure the source exists */
   switch (source) {
     case RCC_MCO1_SRC_HSI:
     case RCC_MCO1_SRC_LSE:
@@ -219,6 +220,7 @@ void rcc_set_mco1_src(const rcc_mco1_src_t source) {
 }
 
 void rcc_set_mco2_src(const rcc_mco2_src_t source) {
+  /* Make sure the source exists */
   switch (source) {
     case RCC_MCO2_SRC_SYS:
     case RCC_MCO2_SRC_I2S:
@@ -238,6 +240,7 @@ void rcc_set_mco2_src(const rcc_mco2_src_t source) {
 
 void rcc_configure_mco_prescaler(const uint8_t mco,
                                  const rcc_mco_prescaler_t value) {
+  /* Make sure prescaler value is valid */
   switch (value) {
     case RCC_MCO_PRESCALER_DIV1:
     case RCC_MCO_PRESCALER_DIV2:
@@ -261,4 +264,19 @@ void rcc_configure_mco_prescaler(const uint8_t mco,
   }
 
   regs->CFGR = cfgr;
+}
+
+void rcc_configure_rtc_prescaler(const uint8_t value) {
+  /* Make sure that the value is within range */
+  if (!(value < 32U)) {
+    return;
+  } else {
+    /* Set RTC prescaler divider */
+    struct RCCRegs *regs = RCC_PTR;
+    REG32 cfgr = regs->CFGR;
+    cfgr &= ~(RCC_CFGR_RTCPRE_Msk);
+    cfgr |= (value << RCC_CFGR_RTCPRE_Pos);
+
+    regs->CFGR = cfgr;
+  }
 }

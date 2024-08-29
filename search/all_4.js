@@ -23,5 +23,6 @@ var searchData=
   ['dmaregs_20',['DMARegs',['../dd/dd0/structDMARegs.html',1,'']]],
   ['dmastreamconfig_21',['DMAStreamConfig',['../d4/de8/structDMAStreamConfig.html',1,'']]],
   ['dmastreamisr_22',['DMAStreamISR',['../d2/dc6/structDMAStreamISR.html',1,'']]],
-  ['dmastreamregs_23',['DMAStreamRegs',['../da/dbb/structDMAStreamRegs.html',1,'']]]
+  ['dmastreamregs_23',['DMAStreamRegs',['../da/dbb/structDMAStreamRegs.html',1,'']]],
+  ['documentation_24',['Documentation',['../index.html#autotoc_md6',1,'']]]
 ];

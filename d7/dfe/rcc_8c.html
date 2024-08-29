@@ -135,6 +135,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae43790cd3be439553e0517ba6b30c6da" id="r_ae43790cd3be439553e0517ba6b30c6da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae43790cd3be439553e0517ba6b30c6da">rcc_configure_mco_prescaler</a> (const uint8_t mco, const <a class="el" href="../../db/d65/rcc_8h.html#a1ddc4c28117096da698952a012a4f3a2">rcc_mco_prescaler_t</a> value)</td></tr>
 <tr class="memdesc:ae43790cd3be439553e0517ba6b30c6da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set MCOx prescaler to the desired value.  <br /></td></tr>
 <tr class="separator:ae43790cd3be439553e0517ba6b30c6da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a1444d89573d06221e0060ae278ed0f" id="r_a9a1444d89573d06221e0060ae278ed0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a1444d89573d06221e0060ae278ed0f">rcc_configure_rtc_prescaler</a> (const uint8_t value)</td></tr>
+<tr class="memdesc:a9a1444d89573d06221e0060ae278ed0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set RTC prescaler to the desired value.  <br /></td></tr>
+<tr class="separator:a9a1444d89573d06221e0060ae278ed0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Function defines for the RCC driver. </p>
@@ -253,6 +256,32 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">peripheral</td><td>The peripheral clock </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
+<a id="a9a1444d89573d06221e0060ae278ed0f" name="a9a1444d89573d06221e0060ae278ed0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a1444d89573d06221e0060ae278ed0f">&#9670;&#160;</a></span>rcc_configure_rtc_prescaler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rcc_configure_rtc_prescaler </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set RTC prescaler to the desired value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The prescaler divide value (0..31) </td></tr>
   </table>
   </dd>
 </dl>

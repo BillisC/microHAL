@@ -1,4 +1,4 @@
-/** @file mcu_init.h
+/** @file _init.h
  *  @brief Function prototypes for the MCU initializer.
  *
  *  This file contains all of the enums, macros, and
@@ -15,6 +15,7 @@
 
 /* -- Includes -- */
 #include "defines.h"
+#include "isr.h"
 #include "rcc.h"
 
 /* -- Coprocessors -- */

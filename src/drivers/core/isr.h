@@ -1,4 +1,4 @@
-/** @file interrupts.h
+/** @file isr.h
  *  @brief Function prototypes of the interrupt handlers.
  *
  *  This file contains all of the required externs and

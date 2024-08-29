@@ -1,4 +1,4 @@
-/** @file mcu_init.c
+/** @file _init.c
  *  @brief Function definitions for the MCU initializer.
  *
  *  This file contains all of the function definitions
@@ -11,7 +11,7 @@
 /* Includes */
 #include <stdint.h>
 #include "stm32f4xx.h"
-#include "mcu_init.h"
+#include "_init.h"
 
 static void clock_init(void) {
   /* Enable 8 MHz HSE oscillator (Source: STLINK) */

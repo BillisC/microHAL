@@ -75,8 +75,11 @@ set(ALZ_FLAGS --enable=all
               --suppress=knownConditionTrueFalse # Issue with SysTick interrupt
               -DCPPCHECK
               -I ${CMAKE_SOURCE_DIR}/src/
-              -I ${CMAKE_SOURCE_DIR}/src/common/
               -I ${CMAKE_SOURCE_DIR}/src/drivers/
+              -I ${CMAKE_SOURCE_DIR}/src/drivers/common/
+              -I ${CMAKE_SOURCE_DIR}/src/drivers/core/
+              -I ${CMAKE_SOURCE_DIR}/src/drivers/peripherals/
+              -I ${CMAKE_SOURCE_DIR}/src/drivers/peripherals/communication/
               -I ${CMSIS_DEVICE})
 
 add_custom_target(analysis

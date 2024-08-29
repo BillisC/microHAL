@@ -7,8 +7,7 @@
 
 /* Includes */
 #include "defines.h"
-#include "interrupts.h"
-#include "mcu_init.h"
+#include "_init.h"
 #include "usart.h"
 #include "gpio.h"
 

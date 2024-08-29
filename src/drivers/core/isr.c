@@ -1,4 +1,4 @@
-/** @file interrupts.c
+/** @file isr.c
  *  @brief Function defines of the interrupt handlers.
  *
  *  This file contains all of the function definitions
@@ -9,7 +9,7 @@
  */
 
 /* -- Includes -- */
-#include "interrupts.h"
+#include "isr.h"
 
 /* SysTick interrupt routine override */
 volatile uint32_t ticks = 0UL;

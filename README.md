@@ -10,7 +10,7 @@ What's this repo about?
 - Serves as a library for future projects
 
 Can I use it for **any** STM32 F4 series MCU?
-- Yes, but it's tested with an F446RE so don't blame me if anything burns
+- Yes.
 
 ### Preparation
 Install the required tools (CMake **must** be >= 3.21):
@@ -57,3 +57,6 @@ To connect to it launch another GDB instance:
 gdb-multiarch -tui drivers.elf
 (gdb) target remote :3333
 ```
+
+### Documentation
+https://billisc.github.io/microHAL/

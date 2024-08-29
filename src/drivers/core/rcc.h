@@ -65,19 +65,13 @@ _Static_assert((sizeof(struct RCCRegs)) == (sizeof(uint32_t) * 38U),
 
 /**
  *  @brief Contains PLL configuration values
- *
- *  <b>PLLM</b> Must be 2..63
- *  <b>PLLP</b> Must be 0..3
- *  <b>PLLQ</b> Must be 2..15
- *  <b>PLLR</b> Must be 2..7
- *  <b>PLLN</b> Must be 50..432
  */
 struct __attribute__((packed)) RCCPLLConfig {
-  uint8_t PLLM  : 6;
-  uint8_t PLLP  : 2;
-  uint8_t PLLQ  : 4;
-  uint8_t PLLR  : 3;
-  uint16_t PLLN : 9;
+  uint8_t PLLM  : 6; /** Must be 2..63 */
+  uint8_t PLLP  : 2; /** Must be 0..3 */
+  uint8_t PLLQ  : 4; /** Must be 2..15 */
+  uint8_t PLLR  : 3; /** Must be 2..7 */
+  uint16_t PLLN : 9; /** Must be 50..432 */
   _Bool UseHSE  : 1;
 };
 
@@ -228,6 +222,37 @@ typedef enum rcc_systemclock_src {
 } rcc_systemclock_src_t;
 
 /**
+ *  @brief Contains MCO1 clock sources
+ */
+typedef enum rcc_mco1_src {
+  RCC_MCO1_SRC_HSI = 0x0,
+  RCC_MCO1_SRC_LSE = 0x1,
+  RCC_MCO1_SRC_HSE = 0x2,
+  RCC_MCO1_SRC_PLL = 0x3,
+} rcc_mco1_src_t;
+
+/**
+ *  @brief Contains MCO2 clock sources
+ */
+typedef enum rcc_mco2_src {
+  RCC_MCO2_SRC_SYS = 0x0,
+  RCC_MCO2_SRC_I2S = 0x1,
+  RCC_MCO2_SRC_HSE = 0x2,
+  RCC_MCO2_SRC_PLL = 0x3,
+} rcc_mco2_src_t;
+
+/**
+ *  @brief Contains MCO prescaler dividers
+ */
+typedef enum rcc_mco_prescaler {
+  RCC_MCO_PRESCALER_DIV1 = 0x0,
+  RCC_MCO_PRESCALER_DIV2 = 0x4,
+  RCC_MCO_PRESCALER_DIV3 = 0x5,
+  RCC_MCO_PRESCALER_DIV4 = 0x6,
+  RCC_MCO_PRESCALER_DIV5 = 0x7,
+} rcc_mco_prescaler_t;
+
+/**
  *  @brief Set AHB prescaler to the desired value
  *
  *  The available prescale dividers are available in
@@ -336,5 +361,41 @@ void rcc_enable_peripheral_clk(const rcc_clk_periph_t peripheral);
  *  @return None
  */
 void rcc_disable_peripheral_clk(const rcc_clk_periph_t peripheral);
+
+/**
+ *  @brief Set MCO1 to the specified clock source
+ *
+ *  The available source clocks are available in the
+ *  rcc_mco1_src_t enum. Any other value will be ignored.
+ *
+ *  @param source The specified clock source
+ *  @return None
+ */
+void rcc_set_mco1_src(const rcc_mco1_src_t source);
+
+/**
+ *  @brief Set MCO2 to the specified clock source
+ *
+ *  The available source clocks are available in the
+ *  rcc_mco2_src_t enum. Any other value will be ignored.
+ *
+ *  @param source The specified clock source
+ *  @return None
+ */
+void rcc_set_mco2_src(const rcc_mco2_src_t source);
+
+/**
+ *  @brief Set MCOx prescaler to the desired value
+ *
+ *  The available prescale dividers are available in
+ *  the rcc_mco_prescaler_t enum. Any other value will
+ *  be ignored.
+ *
+ *  @param mco The selected MCO (1..2)
+ *  @param value The prescaler divide value
+ *  @return None
+ */
+void rcc_configure_mco_prescaler(const uint8_t mco,
+                                 const rcc_mco_prescaler_t value);
 
 #endif

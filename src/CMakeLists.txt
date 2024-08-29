@@ -2,9 +2,7 @@ file(GLOB C_SRCS "*.c"
                  "*.S"
                  "${CMSIS_SYSTEM}")
 
-set(C_INCL "${CMAKE_CURRENT_SOURCE_DIR}/drivers/"
-           "${CMAKE_CURRENT_SOURCE_DIR}/common/"
-           "${CMSIS_CORE}"
+set(C_INCL "${CMSIS_CORE}"
            "${CMSIS_DEVICE}")
 
 # Target build

@@ -1,7 +1,6 @@
 file(GLOB CC_SRCS "${CMSIS_SYSTEM}")
 
-set(C_INCL "${CMAKE_SOURCE_DIR}/src/common/"
-           "${CMSIS_CORE}"
+set(C_INCL "${CMSIS_CORE}"
            "${CMSIS_DEVICE}")
 
 set(UTESTS "gpio" "adc")

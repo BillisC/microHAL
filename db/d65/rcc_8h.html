@@ -144,6 +144,18 @@ typedef enum <a class="el" href="#a8fbf48f9fd4d3d594dae411ece1ddc7f">rcc_ahb_pre
 typedef enum <a class="el" href="#a83218f05de3e76a52b6c290b9b575402">rcc_systemclock_src</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rcc_systemclock_src_t</b></td></tr>
 <tr class="memdesc:a4ad264d32f6c44b0f0c93ab94631dc5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains RCC system clock sources. <br /></td></tr>
 <tr class="separator:a4ad264d32f6c44b0f0c93ab94631dc5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d64aa6ea9e446b416581adc52152b59" id="r_a6d64aa6ea9e446b416581adc52152b59"><td class="memItemLeft" align="right" valign="top"><a id="a6d64aa6ea9e446b416581adc52152b59" name="a6d64aa6ea9e446b416581adc52152b59"></a>
+typedef enum <a class="el" href="#a29a1de2c40f7543ae76245c7cc218f9a">rcc_mco1_src</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rcc_mco1_src_t</b></td></tr>
+<tr class="memdesc:a6d64aa6ea9e446b416581adc52152b59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains MCO1 clock sources. <br /></td></tr>
+<tr class="separator:a6d64aa6ea9e446b416581adc52152b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e11a7385327b4f3428ab1b17252fd5c" id="r_a7e11a7385327b4f3428ab1b17252fd5c"><td class="memItemLeft" align="right" valign="top"><a id="a7e11a7385327b4f3428ab1b17252fd5c" name="a7e11a7385327b4f3428ab1b17252fd5c"></a>
+typedef enum <a class="el" href="#a52a1001a9d373a0853d82e46b24b3765">rcc_mco2_src</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rcc_mco2_src_t</b></td></tr>
+<tr class="memdesc:a7e11a7385327b4f3428ab1b17252fd5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains MCO2 clock sources. <br /></td></tr>
+<tr class="separator:a7e11a7385327b4f3428ab1b17252fd5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ddc4c28117096da698952a012a4f3a2" id="r_a1ddc4c28117096da698952a012a4f3a2"><td class="memItemLeft" align="right" valign="top"><a id="a1ddc4c28117096da698952a012a4f3a2" name="a1ddc4c28117096da698952a012a4f3a2"></a>
+typedef enum <a class="el" href="#a9647a442cd4f998b099a90038bdeb292">rcc_mco_prescaler</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rcc_mco_prescaler_t</b></td></tr>
+<tr class="memdesc:a1ddc4c28117096da698952a012a4f3a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains MCO prescaler dividers. <br /></td></tr>
+<tr class="separator:a1ddc4c28117096da698952a012a4f3a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -296,6 +308,31 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a83218f05de3e76a52b6c290b9b575402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains RCC system clock sources.  <a href="#a83218f05de3e76a52b6c290b9b575402">More...</a><br /></td></tr>
 <tr class="separator:a83218f05de3e76a52b6c290b9b575402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29a1de2c40f7543ae76245c7cc218f9a" id="r_a29a1de2c40f7543ae76245c7cc218f9a"><td class="memItemLeft" align="right" valign="top"><a id="a29a1de2c40f7543ae76245c7cc218f9a" name="a29a1de2c40f7543ae76245c7cc218f9a"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29a1de2c40f7543ae76245c7cc218f9a">rcc_mco1_src</a> { <b>RCC_MCO1_SRC_HSI</b> = 0x0
+, <b>RCC_MCO1_SRC_LSE</b> = 0x1
+, <b>RCC_MCO1_SRC_HSE</b> = 0x2
+, <b>RCC_MCO1_SRC_PLL</b> = 0x3
+ }</td></tr>
+<tr class="memdesc:a29a1de2c40f7543ae76245c7cc218f9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains MCO1 clock sources. <br /></td></tr>
+<tr class="separator:a29a1de2c40f7543ae76245c7cc218f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52a1001a9d373a0853d82e46b24b3765" id="r_a52a1001a9d373a0853d82e46b24b3765"><td class="memItemLeft" align="right" valign="top"><a id="a52a1001a9d373a0853d82e46b24b3765" name="a52a1001a9d373a0853d82e46b24b3765"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52a1001a9d373a0853d82e46b24b3765">rcc_mco2_src</a> { <b>RCC_MCO2_SRC_SYS</b> = 0x0
+, <b>RCC_MCO2_SRC_I2S</b> = 0x1
+, <b>RCC_MCO2_SRC_HSE</b> = 0x2
+, <b>RCC_MCO2_SRC_PLL</b> = 0x3
+ }</td></tr>
+<tr class="memdesc:a52a1001a9d373a0853d82e46b24b3765"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains MCO2 clock sources. <br /></td></tr>
+<tr class="separator:a52a1001a9d373a0853d82e46b24b3765"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9647a442cd4f998b099a90038bdeb292" id="r_a9647a442cd4f998b099a90038bdeb292"><td class="memItemLeft" align="right" valign="top"><a id="a9647a442cd4f998b099a90038bdeb292" name="a9647a442cd4f998b099a90038bdeb292"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9647a442cd4f998b099a90038bdeb292">rcc_mco_prescaler</a> { <br />
+&#160;&#160;<b>RCC_MCO_PRESCALER_DIV1</b> = 0x0
+, <b>RCC_MCO_PRESCALER_DIV2</b> = 0x4
+, <b>RCC_MCO_PRESCALER_DIV3</b> = 0x5
+, <b>RCC_MCO_PRESCALER_DIV4</b> = 0x6
+, <br />
+&#160;&#160;<b>RCC_MCO_PRESCALER_DIV5</b> = 0x7
+<br />
+ }</td></tr>
+<tr class="memdesc:a9647a442cd4f998b099a90038bdeb292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains MCO prescaler dividers. <br /></td></tr>
+<tr class="separator:a9647a442cd4f998b099a90038bdeb292"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -323,6 +360,15 @@ Functions</h2></td></tr>
 <tr class="memitem:afee4df2cc68098ffc327517e4001d30e" id="r_afee4df2cc68098ffc327517e4001d30e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afee4df2cc68098ffc327517e4001d30e">rcc_disable_peripheral_clk</a> (const <a class="el" href="#aaea78ee4b097586eabbcdae057e50510">rcc_clk_periph_t</a> peripheral)</td></tr>
 <tr class="memdesc:afee4df2cc68098ffc327517e4001d30e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the specified peripheral clock.  <br /></td></tr>
 <tr class="separator:afee4df2cc68098ffc327517e4001d30e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94b3f8c744b146dc781a7849c3bed28d" id="r_a94b3f8c744b146dc781a7849c3bed28d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94b3f8c744b146dc781a7849c3bed28d">rcc_set_mco1_src</a> (const <a class="el" href="#a6d64aa6ea9e446b416581adc52152b59">rcc_mco1_src_t</a> source)</td></tr>
+<tr class="memdesc:a94b3f8c744b146dc781a7849c3bed28d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set MCO1 to the specified clock source.  <br /></td></tr>
+<tr class="separator:a94b3f8c744b146dc781a7849c3bed28d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4294f966abf7215c48f3b30586a4de23" id="r_a4294f966abf7215c48f3b30586a4de23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4294f966abf7215c48f3b30586a4de23">rcc_set_mco2_src</a> (const <a class="el" href="#a7e11a7385327b4f3428ab1b17252fd5c">rcc_mco2_src_t</a> source)</td></tr>
+<tr class="memdesc:a4294f966abf7215c48f3b30586a4de23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set MCO2 to the specified clock source.  <br /></td></tr>
+<tr class="separator:a4294f966abf7215c48f3b30586a4de23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae43790cd3be439553e0517ba6b30c6da" id="r_ae43790cd3be439553e0517ba6b30c6da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae43790cd3be439553e0517ba6b30c6da">rcc_configure_mco_prescaler</a> (const uint8_t mco, const <a class="el" href="#a1ddc4c28117096da698952a012a4f3a2">rcc_mco_prescaler_t</a> value)</td></tr>
+<tr class="memdesc:ae43790cd3be439553e0517ba6b30c6da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set MCOx prescaler to the desired value.  <br /></td></tr>
+<tr class="separator:ae43790cd3be439553e0517ba6b30c6da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Function prototypes for the RCC driver. </p>
@@ -402,6 +448,38 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">apb</td><td>The selected APB (1..2) </td></tr>
+    <tr><td class="paramname">value</td><td>The prescaler divide value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
+<a id="ae43790cd3be439553e0517ba6b30c6da" name="ae43790cd3be439553e0517ba6b30c6da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae43790cd3be439553e0517ba6b30c6da">&#9670;&#160;</a></span>rcc_configure_mco_prescaler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rcc_configure_mco_prescaler </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>mco</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#a1ddc4c28117096da698952a012a4f3a2">rcc_mco_prescaler_t</a></td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set MCOx prescaler to the desired value. </p>
+<p>The available prescale dividers are available in the rcc_mco_prescaler_t enum. Any other value will be ignored.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mco</td><td>The selected MCO (1..2) </td></tr>
     <tr><td class="paramname">value</td><td>The prescaler divide value </td></tr>
   </table>
   </dd>
@@ -539,6 +617,60 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">peripheral</td><td>The peripheral clock </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
+<a id="a94b3f8c744b146dc781a7849c3bed28d" name="a94b3f8c744b146dc781a7849c3bed28d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94b3f8c744b146dc781a7849c3bed28d">&#9670;&#160;</a></span>rcc_set_mco1_src()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rcc_set_mco1_src </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a6d64aa6ea9e446b416581adc52152b59">rcc_mco1_src_t</a></td>          <td class="paramname"><span class="paramname"><em>source</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set MCO1 to the specified clock source. </p>
+<p>The available source clocks are available in the rcc_mco1_src_t enum. Any other value will be ignored.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>The specified clock source </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
+<a id="a4294f966abf7215c48f3b30586a4de23" name="a4294f966abf7215c48f3b30586a4de23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4294f966abf7215c48f3b30586a4de23">&#9670;&#160;</a></span>rcc_set_mco2_src()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rcc_set_mco2_src </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a7e11a7385327b4f3428ab1b17252fd5c">rcc_mco2_src_t</a></td>          <td class="paramname"><span class="paramname"><em>source</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set MCO2 to the specified clock source. </p>
+<p>The available source clocks are available in the rcc_mco2_src_t enum. Any other value will be ignored.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>The specified clock source </td></tr>
   </table>
   </dd>
 </dl>

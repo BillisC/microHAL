@@ -398,4 +398,12 @@ void rcc_set_mco2_src(const rcc_mco2_src_t source);
 void rcc_configure_mco_prescaler(const uint8_t mco,
                                  const rcc_mco_prescaler_t value);
 
+/**
+ *  @brief Set RTC prescaler to the desired value
+ *
+ *  @param value The prescaler divide value (0..31)
+ *  @return None
+ */
+void rcc_configure_rtc_prescaler(const uint8_t value);
+
 #endif

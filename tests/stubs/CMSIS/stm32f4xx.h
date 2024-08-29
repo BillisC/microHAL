@@ -152,6 +152,8 @@
 #define RCC_CFGR_MCO1PRE_Msk     (0x7UL << RCC_CFGR_MCO1PRE_Pos)
 #define RCC_CFGR_MCO2PRE_Pos     (27U)
 #define RCC_CFGR_MCO2PRE_Msk     (0x7UL << RCC_CFGR_MCO2PRE_Pos)
+#define RCC_CFGR_RTCPRE_Pos      (16U)
+#define RCC_CFGR_RTCPRE_Msk      (0x1FUL << RCC_CFGR_RTCPRE_Pos)
 #define RCC_PLLCFGR_PLLM_Pos     (0U)
 #define RCC_PLLCFGR_PLLM_Msk     (0x3FUL << RCC_PLLCFGR_PLLM_Pos)
 #define RCC_PLLCFGR_PLLN_Pos     (6U)

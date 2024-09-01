@@ -67,11 +67,11 @@ _Static_assert((sizeof(struct RCCRegs)) == (sizeof(uint32_t) * 38U),
  *  @brief Contains PLL configuration values
  */
 struct __attribute__((packed)) RCCPLLConfig {
-  uint8_t PLLM  : 6; /** Must be 2..63 */
-  uint8_t PLLP  : 2; /** Must be 0..3 */
-  uint8_t PLLQ  : 4; /** Must be 2..15 */
-  uint8_t PLLR  : 3; /** Must be 2..7 */
-  uint16_t PLLN : 9; /** Must be 50..432 */
+  uint8_t PLLM  : 6; /**< Must be 2..63 */
+  uint8_t PLLP  : 2; /**< Must be 0..3 */
+  uint8_t PLLQ  : 4; /**< Must be 2..15 */
+  uint8_t PLLR  : 3; /**< Must be 2..7 */
+  uint16_t PLLN : 9; /**< Must be 50..432 */
   _Bool UseHSE  : 1;
 };
 
@@ -214,6 +214,9 @@ typedef enum rcc_ahb_prescaler {
   RCC_AHB_PRESCALER_DIV512 = 0xF,
 } rcc_ahb_prescaler_t;
 
+/**
+ *  @brief Contains PLL targets
+ */
 typedef enum rcc_pll_target {
   RCC_PLL_TARGET_PLL = 0x0,
   RCC_PLL_TARGET_I2S = 0x1,

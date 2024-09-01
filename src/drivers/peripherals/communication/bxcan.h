@@ -14,6 +14,7 @@
 
 /* -- Includes -- */
 #include <stdint.h>
+#include "stm32f4xx.h"
 #include "defines.h"
 
 /* -- Structs -- */
@@ -71,6 +72,8 @@ struct __attribute__((packed)) bxCANRegs {
 _Static_assert((sizeof(struct bxCANRegs)) == (sizeof(uint32_t) * 199U),
                "bxCAN register struct size mismatch. Is it aligned?");
 
+#define CAN(NUM) (struct bxCANRegs *)(CAN1_BASE + (0x400UL * uint8_t(NUM)))
+
 /**
  *  @brief Contains bxCAN baudrate configuration
  */
@@ -84,6 +87,16 @@ _Static_assert((sizeof(struct bxCANBitrateConfig)) == (sizeof(uint8_t) * 3U),
                "bxCAN Bitrate config struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
+typedef enum bxcan_peripheral {
+#ifdef CAN1_BASE
+  BXCAN_PERIPH_1 = 0x0,
+#endif
+#ifdef CAN2_BASE
+  BXCAN_PERIPH_2 = 0x1,
+#endif
+  BXCAN_PERIPH_LEN
+} bxcan_peripheral_t;
+
 /**
  *  @brief Contains bxCAN operation modes
  */

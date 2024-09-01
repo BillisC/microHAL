@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>microHAL: src/main.c File Reference</title>
+<title>microHAL: bxCANBitrateConfig Struct Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -82,40 +82,81 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
-</div>
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">main.c File Reference</div></div>
+<a href="#pub-attribs">Data Fields</a>  </div>
+  <div class="headertitle"><div class="title">bxCANBitrateConfig Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Simple main function with example.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d8/db0/defines_8h_source.html">defines.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d2/d89/__init_8h_source.html">_init.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../db/de4/usart_8h_source.html">usart.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d6/d7c/gpio_8h_source.html">gpio.h</a>&quot;</code><br />
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ab21ca67d13588812bdcb488699f8f043" id="r_ab21ca67d13588812bdcb488699f8f043"><td class="memItemLeft" align="right" valign="top"><a id="ab21ca67d13588812bdcb488699f8f043" name="ab21ca67d13588812bdcb488699f8f043"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>delay_ms</b> (const uint32_t milliseconds)</td></tr>
-<tr class="separator:ab21ca67d13588812bdcb488699f8f043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe" id="r_a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top"><a id="a840291bc02cba5474a4cb46a9b9566fe" name="a840291bc02cba5474a4cb46a9b9566fe"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (void)</td></tr>
-<tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<p>Contains bxCAN baudrate configuration.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d1/d84/bxcan_8h_source.html">bxcan.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Data Fields</h2></td></tr>
+<tr class="memitem:abe2d227e645611d8d1a010877fe83c45" id="r_abe2d227e645611d8d1a010877fe83c45"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe2d227e645611d8d1a010877fe83c45">TimeSeg1</a>: 4</td></tr>
+<tr class="separator:abe2d227e645611d8d1a010877fe83c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8da4b2953a25f01ce4fe132c0385d712" id="r_a8da4b2953a25f01ce4fe132c0385d712"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8da4b2953a25f01ce4fe132c0385d712">TimeSeg2</a>: 3</td></tr>
+<tr class="separator:a8da4b2953a25f01ce4fe132c0385d712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3db3a68b5512c2986233df6ea044e2e" id="r_af3db3a68b5512c2986233df6ea044e2e"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3db3a68b5512c2986233df6ea044e2e">BaudPrescaler</a>: 10</td></tr>
+<tr class="separator:af3db3a68b5512c2986233df6ea044e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Simple main function with example. </p>
-<dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
-<dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000017">Bug</a></b></dt><dd>None, yet. </dd></dl>
-</div></div><!-- contents -->
+<div class="textblock"><p>Contains bxCAN baudrate configuration. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="af3db3a68b5512c2986233df6ea044e2e" name="af3db3a68b5512c2986233df6ea044e2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3db3a68b5512c2986233df6ea044e2e">&#9670;&#160;</a></span>BaudPrescaler</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t bxCANBitrateConfig::BaudPrescaler</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>tq = (BaudPrescaler + 1) x tPCLK </p>
+
+</div>
+</div>
+<a id="abe2d227e645611d8d1a010877fe83c45" name="abe2d227e645611d8d1a010877fe83c45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe2d227e645611d8d1a010877fe83c45">&#9670;&#160;</a></span>TimeSeg1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t bxCANBitrateConfig::TimeSeg1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>tBS1 = tq x (TimeSeg1 + 1) </p>
+
+</div>
+</div>
+<a id="a8da4b2953a25f01ce4fe132c0385d712" name="a8da4b2953a25f01ce4fe132c0385d712"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8da4b2953a25f01ce4fe132c0385d712">&#9670;&#160;</a></span>TimeSeg2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t bxCANBitrateConfig::TimeSeg2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>tBS2 = tq x (TimeSeg2 + 1) </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>src/drivers/peripherals/communication/<a class="el" href="../../d1/d84/bxcan_8h_source.html">bxcan.h</a></li>
+</ul>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0

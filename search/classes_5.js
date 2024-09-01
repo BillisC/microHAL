@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['rccpllconfig_0',['RCCPLLConfig',['../d0/d46/structRCCPLLConfig.html',1,'']]],
-  ['rccregs_1',['RCCRegs',['../d1/da1/structRCCRegs.html',1,'']]]
+  ['pwr_5ftypedef_0',['PWR_TypeDef',['../d2/d83/structPWR__TypeDef.html',1,'']]]
 ];

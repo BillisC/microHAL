@@ -141,7 +141,8 @@ typedef enum <a class="el" href="#a8fbf48f9fd4d3d594dae411ece1ddc7f">rcc_ahb_pre
 <tr class="memdesc:ae911e8261f6c34c28505688c4c155292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains RCC AHB prescaler dividers. <br /></td></tr>
 <tr class="separator:ae911e8261f6c34c28505688c4c155292"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8baa7ccd993e68813c2eef9cf5f1e9a4" id="r_a8baa7ccd993e68813c2eef9cf5f1e9a4"><td class="memItemLeft" align="right" valign="top"><a id="a8baa7ccd993e68813c2eef9cf5f1e9a4" name="a8baa7ccd993e68813c2eef9cf5f1e9a4"></a>
-typedef enum rcc_pll_target&#160;</td><td class="memItemRight" valign="bottom"><b>rcc_pll_target_t</b></td></tr>
+typedef enum <a class="el" href="#a149fa084ddffc47a2ad075efae20a68d">rcc_pll_target</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rcc_pll_target_t</b></td></tr>
+<tr class="memdesc:a8baa7ccd993e68813c2eef9cf5f1e9a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains PLL targets. <br /></td></tr>
 <tr class="separator:a8baa7ccd993e68813c2eef9cf5f1e9a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ad264d32f6c44b0f0c93ab94631dc5a" id="r_a4ad264d32f6c44b0f0c93ab94631dc5a"><td class="memItemLeft" align="right" valign="top"><a id="a4ad264d32f6c44b0f0c93ab94631dc5a" name="a4ad264d32f6c44b0f0c93ab94631dc5a"></a>
 typedef enum <a class="el" href="#a83218f05de3e76a52b6c290b9b575402">rcc_systemclock_src</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rcc_systemclock_src_t</b></td></tr>
@@ -311,10 +312,11 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a8fbf48f9fd4d3d594dae411ece1ddc7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains RCC AHB prescaler dividers. <br /></td></tr>
 <tr class="separator:a8fbf48f9fd4d3d594dae411ece1ddc7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a149fa084ddffc47a2ad075efae20a68d" id="r_a149fa084ddffc47a2ad075efae20a68d"><td class="memItemLeft" align="right" valign="top"><a id="a149fa084ddffc47a2ad075efae20a68d" name="a149fa084ddffc47a2ad075efae20a68d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>rcc_pll_target</b> { <b>RCC_PLL_TARGET_PLL</b> = 0x0
+<tr class="memitem:a149fa084ddffc47a2ad075efae20a68d" id="r_a149fa084ddffc47a2ad075efae20a68d"><td class="memItemLeft" align="right" valign="top"><a id="a149fa084ddffc47a2ad075efae20a68d" name="a149fa084ddffc47a2ad075efae20a68d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a149fa084ddffc47a2ad075efae20a68d">rcc_pll_target</a> { <b>RCC_PLL_TARGET_PLL</b> = 0x0
 , <b>RCC_PLL_TARGET_I2S</b> = 0x1
 , <b>RCC_PLL_TARGET_SAI</b> = 0x2
  }</td></tr>
+<tr class="memdesc:a149fa084ddffc47a2ad075efae20a68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains PLL targets. <br /></td></tr>
 <tr class="separator:a149fa084ddffc47a2ad075efae20a68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83218f05de3e76a52b6c290b9b575402" id="r_a83218f05de3e76a52b6c290b9b575402"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83218f05de3e76a52b6c290b9b575402">rcc_systemclock_src</a> { <b>RCC_SYSTEMCLOCK_SRC_HSI</b> = 0x0
 , <b>RCC_SYSTEMCLOCK_SRC_HSE</b> = 0x1
@@ -363,7 +365,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ac12a2e9fa7ea8bf15f9dfb727c3b30b8" id="r_ac12a2e9fa7ea8bf15f9dfb727c3b30b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac12a2e9fa7ea8bf15f9dfb727c3b30b8">rcc_configure_apb_prescaler</a> (const uint8_t apb, const <a class="el" href="#a41109820a01ff7d9c95bb1d221e1dee5">rcc_apb_prescaler_t</a> value)</td></tr>
 <tr class="memdesc:ac12a2e9fa7ea8bf15f9dfb727c3b30b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set APBx prescaler to the desired value.  <br /></td></tr>
 <tr class="separator:ac12a2e9fa7ea8bf15f9dfb727c3b30b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae68fd31eb916c0e10e3b92f8816e845a" id="r_ae68fd31eb916c0e10e3b92f8816e845a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae68fd31eb916c0e10e3b92f8816e845a">rcc_configure_pll_clk</a> (const struct <a class="el" href="../../d0/d46/structRCCPLLConfig.html">RCCPLLConfig</a> config, const rcc_pll_target_t target)</td></tr>
+<tr class="memitem:ae68fd31eb916c0e10e3b92f8816e845a" id="r_ae68fd31eb916c0e10e3b92f8816e845a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae68fd31eb916c0e10e3b92f8816e845a">rcc_configure_pll_clk</a> (const struct <a class="el" href="../../d0/d46/structRCCPLLConfig.html">RCCPLLConfig</a> config, const <a class="el" href="#a8baa7ccd993e68813c2eef9cf5f1e9a4">rcc_pll_target_t</a> target)</td></tr>
 <tr class="memdesc:ae68fd31eb916c0e10e3b92f8816e845a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the PLL clocks according to config.  <br /></td></tr>
 <tr class="separator:ae68fd31eb916c0e10e3b92f8816e845a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad86b0cadf677636e998cfb64e62a8bc4" id="r_ad86b0cadf677636e998cfb64e62a8bc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad86b0cadf677636e998cfb64e62a8bc4">rcc_enable_osc</a> (const <a class="el" href="#a3ff79645cce78c5b3c0d524481e0376b">rcc_osc_t</a> osc)</td></tr>
@@ -560,7 +562,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rcc_disable_rtc</b> (
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const rcc_pll_target_t</td>          <td class="paramname"><span class="paramname"><em>target</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#a8baa7ccd993e68813c2eef9cf5f1e9a4">rcc_pll_target_t</a></td>          <td class="paramname"><span class="paramname"><em>target</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

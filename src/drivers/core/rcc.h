@@ -80,7 +80,7 @@ _Static_assert((sizeof(struct RCCPLLConfig)) == (sizeof(uint8_t) * 4U),
 
 /* -- Enums -- */
 /**
- *  @brief Contains RCC oscillators
+ *  @brief Available RCC oscillators
  */
 typedef enum rcc_osc {
   RCC_OSC_HSI = 0x0,
@@ -93,7 +93,7 @@ typedef enum rcc_osc {
 } rcc_osc_t;
 
 /**
- *  @brief Contains AHB/APB peripheral clocks
+ *  @brief Available AHB/APB peripheral clocks
  */
 typedef enum rcc_clk_periph {
   /* ---------- AHB1 ---------- */
@@ -189,7 +189,7 @@ typedef enum rcc_clk_periph {
 } rcc_clk_periph_t;
 
 /**
- *  @brief Contains RCC APBx prescaler dividers
+ *  @brief Available RCC APBx prescaler dividers
  */
 typedef enum rcc_apb_prescaler {
   RCC_APB_PRESCALER_DIV1 = 0x0,
@@ -200,7 +200,7 @@ typedef enum rcc_apb_prescaler {
 } rcc_apb_prescaler_t;
 
 /**
- *  @brief Contains RCC AHB prescaler dividers
+ *  @brief Available RCC AHB prescaler dividers
  */
 typedef enum rcc_ahb_prescaler {
   RCC_AHB_PRESCALER_DIV1 = 0x0,
@@ -215,7 +215,7 @@ typedef enum rcc_ahb_prescaler {
 } rcc_ahb_prescaler_t;
 
 /**
- *  @brief Contains PLL targets
+ *  @brief Available PLL targets
  */
 typedef enum rcc_pll_target {
   RCC_PLL_TARGET_PLL = 0x0,
@@ -224,7 +224,7 @@ typedef enum rcc_pll_target {
 } rcc_pll_target_t;
 
 /**
- *  @brief Contains RCC system clock sources
+ *  @brief Available RCC system clock sources
  */
 typedef enum rcc_systemclock_src {
   RCC_SYSTEMCLOCK_SRC_HSI = 0x0,
@@ -234,7 +234,7 @@ typedef enum rcc_systemclock_src {
 } rcc_systemclock_src_t;
 
 /**
- *  @brief Contains MCO1 clock sources
+ *  @brief Available MCO1 clock sources
  */
 typedef enum rcc_mco1_src {
   RCC_MCO1_SRC_HSI = 0x0,
@@ -244,7 +244,7 @@ typedef enum rcc_mco1_src {
 } rcc_mco1_src_t;
 
 /**
- *  @brief Contains MCO2 clock sources
+ *  @brief Available MCO2 clock sources
  */
 typedef enum rcc_mco2_src {
   RCC_MCO2_SRC_SYS = 0x0,
@@ -254,7 +254,7 @@ typedef enum rcc_mco2_src {
 } rcc_mco2_src_t;
 
 /**
- *  @brief Contains MCO prescaler dividers
+ *  @brief Available MCO prescaler dividers
  */
 typedef enum rcc_mco_prescaler {
   RCC_MCO_PRESCALER_DIV1 = 0x0,

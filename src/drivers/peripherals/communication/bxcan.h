@@ -87,6 +87,9 @@ _Static_assert((sizeof(struct bxCANBitrateConfig)) == (sizeof(uint8_t) * 3U),
                "bxCAN Bitrate config struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
+/**
+ *  @brief Available bxCAN operation modes
+ */
 typedef enum bxcan_peripheral {
 #ifdef CAN1_BASE
   BXCAN_PERIPH_1 = 0x0,
@@ -98,7 +101,7 @@ typedef enum bxcan_peripheral {
 } bxcan_peripheral_t;
 
 /**
- *  @brief Contains bxCAN operation modes
+ *  @brief Available bxCAN operation modes
  */
 typedef enum bxcan_mode {
   BXCAN_MODE_INIT = 0x0,
@@ -107,7 +110,7 @@ typedef enum bxcan_mode {
 } bxcan_mode_t;
 
 /**
- *  @brief Contains bxCAN test modes
+ *  @brief Available bxCAN test modes
  */
 typedef enum bxcan_test_mode {
   BXCAN_TEST_MODE_NONE = 0x0,

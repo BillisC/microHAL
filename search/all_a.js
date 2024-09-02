@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['main_2ec_0',['main.c',['../d0/d29/main_8c.html',1,'']]],
-  ['mcu_5finit_1',['mcu_init',['../df/deb/__init_8c.html#a9af744358ff4b1e3e33d7dd170862f9b',1,'mcu_init(void):&#160;_init.c'],['../d2/d89/__init_8h.html#a9af744358ff4b1e3e33d7dd170862f9b',1,'mcu_init(void):&#160;_init.c']]],
-  ['microhal_2',['microHAL',['../index.html',1,'microHAL'],['../d9/d01/md_docs_2UPDATE.html',1,'Moved here: https://billisc.github.io/microHAL/']]],
-  ['moved_20here_3a_20https_3a_20billisc_20github_20io_20microhal_3',['Moved here: https://billisc.github.io/microHAL/',['../d9/d01/md_docs_2UPDATE.html',1,'']]]
+  ['lec_0',['LEC',['../d0/dfa/structbxCANISR.html#a9713ce329a0e429564f8033e2801dcdf',1,'bxCANISR']]],
+  ['list_1',['Bug List',['../de/da5/bug.html',1,'']]],
+  ['lr_2',['LR',['../d1/dfe/structbxCANMailboxRegs.html#a31638f9b6ae650ba39ec4ffa10f21057',1,'bxCANMailboxRegs']]]
 ];

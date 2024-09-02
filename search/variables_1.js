@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['pllm_0',['PLLM',['../d0/d46/structRCCPLLConfig.html#ad562a42a0f6ce3e09f580d5e024caaef',1,'RCCPLLConfig']]],
-  ['plln_1',['PLLN',['../d0/d46/structRCCPLLConfig.html#a2600105d747bf22b49bf25aa081558c4',1,'RCCPLLConfig']]],
-  ['pllp_2',['PLLP',['../d0/d46/structRCCPLLConfig.html#a3577148bfd2ae349e1abd38fa8cf0b5d',1,'RCCPLLConfig']]],
-  ['pllq_3',['PLLQ',['../d0/d46/structRCCPLLConfig.html#a53042242e793967bfed34a0df64e6a9a',1,'RCCPLLConfig']]],
-  ['pllr_4',['PLLR',['../d0/d46/structRCCPLLConfig.html#abfd44797a98bc2025d119bf1b1b2ee1c',1,'RCCPLLConfig']]]
+  ['epv_0',['EPV',['../d0/dfa/structbxCANISR.html#aa14ce9ada92f7c57658bf58d6422d573',1,'bxCANISR']]],
+  ['err_1',['ERR',['../d0/dfa/structbxCANISR.html#af562eb98dbdb1d6e3bba7b5387aad790',1,'bxCANISR']]],
+  ['ewg_2',['EWG',['../d0/dfa/structbxCANISR.html#ab9b39761ae83b9ee22498de753cdae88',1,'bxCANISR']]]
 ];

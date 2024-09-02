@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>microHAL: bxCANMailboxRegs Struct Reference</title>
+<title>microHAL: bxCANFrame Struct Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -87,90 +87,36 @@ $(function(){ initResizable(false); });
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
-  <div class="headertitle"><div class="title">bxCANMailboxRegs Struct Reference</div></div>
+  <div class="headertitle"><div class="title">bxCANFrame Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Contains bxCAN Mailbox registers.  
+<p>Contains bxCAN frame structure.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d1/d84/bxcan_8h_source.html">bxcan.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a79355a776b24c7f5c568560f5bb266cf" id="r_a79355a776b24c7f5c568560f5bb266cf"><td class="memItemLeft" align="right" valign="top">REG32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79355a776b24c7f5c568560f5bb266cf">IR</a></td></tr>
-<tr class="separator:a79355a776b24c7f5c568560f5bb266cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf9e723fc47d50945d5ab41e3fef3e71" id="r_adf9e723fc47d50945d5ab41e3fef3e71"><td class="memItemLeft" align="right" valign="top">REG32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf9e723fc47d50945d5ab41e3fef3e71">TR</a></td></tr>
-<tr class="separator:adf9e723fc47d50945d5ab41e3fef3e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31638f9b6ae650ba39ec4ffa10f21057" id="r_a31638f9b6ae650ba39ec4ffa10f21057"><td class="memItemLeft" align="right" valign="top">REG32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31638f9b6ae650ba39ec4ffa10f21057">LR</a></td></tr>
-<tr class="separator:a31638f9b6ae650ba39ec4ffa10f21057"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefb4885c714f45561465d027140a3648" id="r_aefb4885c714f45561465d027140a3648"><td class="memItemLeft" align="right" valign="top">REG32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefb4885c714f45561465d027140a3648">HR</a></td></tr>
-<tr class="separator:aefb4885c714f45561465d027140a3648"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ad3a602e7d9bcb64681d6aa5c9dc9ce" id="r_a5ad3a602e7d9bcb64681d6aa5c9dc9ce"><td class="memItemLeft" align="right" valign="top"><a id="a5ad3a602e7d9bcb64681d6aa5c9dc9ce" name="a5ad3a602e7d9bcb64681d6aa5c9dc9ce"></a>
+volatile uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>ID</b>: 29</td></tr>
+<tr class="separator:a5ad3a602e7d9bcb64681d6aa5c9dc9ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a9e874ba901bbbbe033e2d6d2dd1008" id="r_a7a9e874ba901bbbbe033e2d6d2dd1008"><td class="memItemLeft" align="right" valign="top"><a id="a7a9e874ba901bbbbe033e2d6d2dd1008" name="a7a9e874ba901bbbbe033e2d6d2dd1008"></a>
+volatile _Bool&#160;</td><td class="memItemRight" valign="bottom"><b>IDE</b>: 1</td></tr>
+<tr class="separator:a7a9e874ba901bbbbe033e2d6d2dd1008"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af86ec64cffa6151c8f209fefc92a6421" id="r_af86ec64cffa6151c8f209fefc92a6421"><td class="memItemLeft" align="right" valign="top"><a id="af86ec64cffa6151c8f209fefc92a6421" name="af86ec64cffa6151c8f209fefc92a6421"></a>
+volatile _Bool&#160;</td><td class="memItemRight" valign="bottom"><b>RTR</b>: 1</td></tr>
+<tr class="separator:af86ec64cffa6151c8f209fefc92a6421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3258899f6b6ea013e65d9547d4104ff" id="r_aa3258899f6b6ea013e65d9547d4104ff"><td class="memItemLeft" align="right" valign="top"><a id="aa3258899f6b6ea013e65d9547d4104ff" name="aa3258899f6b6ea013e65d9547d4104ff"></a>
+volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DLC</b>: 4</td></tr>
+<tr class="separator:aa3258899f6b6ea013e65d9547d4104ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8144312b5ce2e9f5cc2c8668093879c2" id="r_a8144312b5ce2e9f5cc2c8668093879c2"><td class="memItemLeft" align="right" valign="top"><a id="a8144312b5ce2e9f5cc2c8668093879c2" name="a8144312b5ce2e9f5cc2c8668093879c2"></a>
+volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DATA</b> [8]</td></tr>
+<tr class="separator:a8144312b5ce2e9f5cc2c8668093879c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Contains bxCAN Mailbox registers. </p>
-</div><h2 class="groupheader">Field Documentation</h2>
-<a id="aefb4885c714f45561465d027140a3648" name="aefb4885c714f45561465d027140a3648"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aefb4885c714f45561465d027140a3648">&#9670;&#160;</a></span>HR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">REG32 bxCANMailboxRegs::HR</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Data high </p>
-
-</div>
-</div>
-<a id="a79355a776b24c7f5c568560f5bb266cf" name="a79355a776b24c7f5c568560f5bb266cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79355a776b24c7f5c568560f5bb266cf">&#9670;&#160;</a></span>IR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">REG32 bxCANMailboxRegs::IR</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Identifier </p>
-
-</div>
-</div>
-<a id="a31638f9b6ae650ba39ec4ffa10f21057" name="a31638f9b6ae650ba39ec4ffa10f21057"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31638f9b6ae650ba39ec4ffa10f21057">&#9670;&#160;</a></span>LR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">REG32 bxCANMailboxRegs::LR</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Data low </p>
-
-</div>
-</div>
-<a id="adf9e723fc47d50945d5ab41e3fef3e71" name="adf9e723fc47d50945d5ab41e3fef3e71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf9e723fc47d50945d5ab41e3fef3e71">&#9670;&#160;</a></span>TR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">REG32 bxCANMailboxRegs::TR</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Timestamp and length </p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p>Contains bxCAN frame structure. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/drivers/peripherals/communication/<a class="el" href="../../d1/d84/bxcan_8h_source.html">bxcan.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['ticks_0',['ticks',['../d8/d78/isr_8c.html#aa7e25380b955a5364bf9bbd7f269cd00',1,'ticks:&#160;isr.c'],['../d8/da8/isr_8h.html#aa7e25380b955a5364bf9bbd7f269cd00',1,'ticks:&#160;isr.c']]],
-  ['timeseg1_1',['TimeSeg1',['../d9/d6b/structbxCANBitrateConfig.html#abe2d227e645611d8d1a010877fe83c45',1,'bxCANBitrateConfig']]],
-  ['timeseg2_2',['TimeSeg2',['../d9/d6b/structbxCANBitrateConfig.html#a8da4b2953a25f01ce4fe132c0385d712',1,'bxCANBitrateConfig']]]
+  ['ff0_0',['FF0',['../d0/dfa/structbxCANISR.html#aa5fffb849c2736f961ebd23b59724173',1,'bxCANISR']]],
+  ['ff1_1',['FF1',['../d0/dfa/structbxCANISR.html#ab820ab9f6cd2b38de0f08dffc07a0de9',1,'bxCANISR']]],
+  ['fmp0_2',['FMP0',['../d0/dfa/structbxCANISR.html#abc9a7d46782b6c6f3ceadde3ebb526d6',1,'bxCANISR']]],
+  ['fmp1_3',['FMP1',['../d0/dfa/structbxCANISR.html#a53aaa61104761d978bcbcdc5c1dacf57',1,'bxCANISR']]],
+  ['fov0_4',['FOV0',['../d0/dfa/structbxCANISR.html#a4981c83290b68c4be3f0496d125efcfb',1,'bxCANISR']]],
+  ['fov1_5',['FOV1',['../d0/dfa/structbxCANISR.html#a9b7853eebf784cebe858fe437acdbeb0',1,'bxCANISR']]]
 ];

@@ -10,8 +10,9 @@
 
 /* Includes */
 #include <stdint.h>
-#include "rcc.h"
+#include "stm32f446xx.h"
 #include "stm32f4xx.h"
+#include "rcc.h"
 #include "_init.h"
 
 static void clock_init(void) {
@@ -26,7 +27,8 @@ static void clock_init(void) {
 
   /* Configure flash controller for 3V3 and 180 MHz
    * system clock (5 wait states). */
-  FLASH->ACR |= FLASH_ACR_LATENCY_5WS;
+  FLASH->ACR |=
+      (FLASH_ACR_LATENCY_5WS | FLASH_ACR_ICEN_Msk | FLASH_ACR_PRFTEN_Msk);
 
   /* Configure the PLL clock */
   struct RCCPLLConfig pll = {0};

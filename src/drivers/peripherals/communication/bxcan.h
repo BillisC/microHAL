@@ -22,10 +22,10 @@
  *  @brief Contains bxCAN Mailbox registers
  */
 struct __attribute__((packed)) bxCANMailboxRegs {
-  REG32 IR;
-  REG32 TR;
-  REG32 LR;
-  REG32 HR;
+  REG32 IR; /**< Identifier */
+  REG32 TR; /**< Timestamp and length */
+  REG32 LR; /**< Data low */
+  REG32 HR; /**< Data high */
 };
 
 _Static_assert((sizeof(struct bxCANMailboxRegs)) == (sizeof(uint32_t) * 4U),
@@ -74,6 +74,26 @@ _Static_assert((sizeof(struct bxCANRegs)) == (sizeof(uint32_t) * 199U),
 
 #define CAN(NUM) (struct bxCANRegs *)(CAN1_BASE + (0x400UL * uint8_t(NUM)))
 
+struct __attribute__((packed)) bxCANISR {
+  _Bool TME  : 1; /**< Transmit mailbox empty */
+  _Bool FMP0 : 1; /**< FIFO0 pending message */
+  _Bool FF0  : 1; /**< FIFO0 full */
+  _Bool FOV0 : 1; /**< FIFO0 overrun */
+  _Bool FMP1 : 1; /**< FIFO1 pending message */
+  _Bool FF1  : 1; /**< FIFO1 full */
+  _Bool FOV1 : 1; /**< FIFO1 overrun */
+  _Bool EWG  : 1; /**< Error warning issued */
+  _Bool EPV  : 1; /**< Error passive state */
+  _Bool BOF  : 1; /**< Bus-off state */
+  _Bool LEC  : 1; /**< Last error code set */
+  _Bool ERR  : 1; /**< Error detected */
+  _Bool WKU  : 1; /**< Wakeup */
+  _Bool SLK  : 1; /**< Sleep */
+};
+
+_Static_assert((sizeof(struct bxCANISR)) == (sizeof(uint8_t) * 2U),
+               "bxCAN ISR struct size mismatch. Is it aligned?");
+
 /**
  *  @brief Contains bxCAN baudrate configuration
  */
@@ -85,6 +105,39 @@ struct __attribute__((packed)) bxCANBitrateConfig {
 
 _Static_assert((sizeof(struct bxCANBitrateConfig)) == (sizeof(uint8_t) * 3U),
                "bxCAN Bitrate config struct size mismatch. Is it aligned?");
+
+/**
+ *  @brief Contains bxCAN filter configuration
+ */
+struct __attribute__((packed)) bxCANFilterConfig {
+  uint16_t FilterID[2];
+  uint16_t FilterIDMask[2];
+  _Bool ListMode    : 1;
+  _Bool SingleScale : 1;
+  _Bool FIFO        : 1;
+  _Bool Activate    : 1;
+};
+
+_Static_assert((sizeof(struct bxCANFilterConfig)) == (sizeof(uint8_t) * 9U),
+               "bxCAN Filter config struct size mismatch. Is it aligned?");
+
+/**
+ *  @brief Contains bxCAN frame structure
+ */
+struct __attribute__((packed)) bxCANFrame {
+  /* --- Header --- */
+  volatile uint32_t ID : 29;
+  volatile _Bool IDE   : 1;
+  volatile _Bool RTR   : 1;
+  volatile uint8_t DLC : 4;
+  /* --- Data --- */
+  volatile uint8_t DATA[8];
+  // CRC handled by HW
+  // ACK handled by HW
+};
+
+_Static_assert((sizeof(struct bxCANFrame)) == (sizeof(uint8_t) * 13U),
+               "bxCAN Frame struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
 /**
@@ -120,16 +173,18 @@ typedef enum bxcan_test_mode {
 } bxcan_test_mode_t;
 
 /**
- * @brief Sets the bxCAN to the specified mode.
+ * @brief Sets the bxCAN to the specified mode
  *
  * The available operation modes for CAN are specified
  * in the bxcan_mode_t enum. Any other value will be
  * ignored.
  *
+ * @param can The selected CAN
  * @param mode The selected mode
  * @return None
  */
-void bxcan_set_current_mode(const bxcan_mode_t mode);
+void bxcan_set_current_mode(const bxcan_peripheral_t can,
+                            const bxcan_mode_t mode);
 
 /**
  * @brief Configures bxCAN test mode features
@@ -138,23 +193,90 @@ void bxcan_set_current_mode(const bxcan_mode_t mode);
  * in the bxcan_test_mode_t enum. Any other value
  * will be ignored.
  *
+ * @param can The selected CAN
  * @param mode The selected test mode
  * @return None
  */
-void bxcan_set_test_mode(const bxcan_test_mode_t mode);
+void bxcan_set_test_mode(const bxcan_peripheral_t can,
+                         const bxcan_test_mode_t mode);
 
 /**
- * @brief Configures the bxCAN bitrate according to config.
+ * @brief Configures the bxCAN bitrate according to config
  *
  * The configuration options for the baudrate is
- * located in the bx for CAN are specified in the
- * bxCANBitrateConfig struct. Make sure to not exceed
- * the bit limit of the values and calculate the expected
- * outcome beforehand.
+ * located in the bxCANBitrateConfig struct. Make sure
+ * to not exceed the bit limit of the values and to
+ * calculate the expected outcome beforehand.
  *
+ * @param can The selected CAN
  * @param config The baudrate configuration
  * @return None
  */
-void bxcan_configure_bitrate(const struct bxCANBitrateConfig config);
+void bxcan_configure_bitrate(const bxcan_peripheral_t can,
+                             const struct bxCANBitrateConfig config);
+
+/**
+ * @brief Sets the desired bxCAN filter start bank
+ *
+ * If the MCU has a single CAN this function does
+ * nothing. Otherwise a 6-bit filter number may be
+ * set to change the amount of filters allowed for
+ * CAN1 and CAN2 peripherals. Consult the reference
+ * manual to set this appropriately. Any value above
+ * six bits will be ignored.
+ *
+ * @param can The selected CAN
+ * @param filters The CAN start bank
+ * @return None
+ */
+void bxcan_set_filter_start(const bxcan_peripheral_t can,
+                            const uint8_t filters);
+
+/**
+ * @brief Configures the bxCAN filter according to config
+ *
+ * The configuration options for the filter banks are
+ * located in the bxCANFilterConfig struct. The ID and
+ * Mask ID fields are represented by two 16-bit uints
+ * each, with the 0 index being the lower nibble. The
+ * filter initialization mode will be termporarily
+ * enabled to apply the requested changes.
+ *
+ * @param can The selected CAN
+ * @param config The filter configuration
+ * @return None
+ */
+void bxcan_configure_filter(const bxcan_peripheral_t can,
+                            const struct bxCANFilterConfig config);
+
+/**
+ *  @brief Transmits the specified CAN frame
+ *
+ *  The frame is put in one of the transmit mailboxes
+ *  and gets sent afterwards in the bus. The frame
+ *  configuration can be found under the bxCANFrame
+ *  struct.
+ *
+ *  @param can The selected CAN
+ *  @param frame Pointer to the bxCAN frame
+ *  @return None
+ */
+void bxcan_tx_frame(const bxcan_peripheral_t can,
+                    const struct bxCANFrame *frame);
+
+/**
+ *  @brief Reads received CAN frame data
+ *
+ *  The data of the frame are extracted in the struct
+ *  as soon as one of the FIFOs have a pending message.
+ *  It is recommended to pair this with interrupts,
+ *  otherwise it might be too slow. The frame configuration
+ *  can be found under the bxCANFrame struct.
+ *
+ *  @param can The selected CAN
+ *  @param frame Pointer to the bxCAN frame
+ *  @return None
+ */
+void bxcan_rx_frame(const bxcan_peripheral_t can, struct bxCANFrame *frame);
 
 #endif

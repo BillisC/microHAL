@@ -242,6 +242,19 @@ void bxcan_set_time_triggered_mode(const bxcan_peripheral_t can,
                                    const _Bool state);
 
 /**
+ * @brief Enables the specified bxCAN interrupts
+ *
+ * The available interrupts are located in the bxCANISR
+ * struct.
+ *
+ * @param can The selected CAN
+ * @param config The ISR config
+ * @return None
+ */
+void bxcan_set_interrupts(const bxcan_peripheral_t can,
+                          const struct bxCANISR config);
+
+/**
  * @brief Configures the bxCAN bitrate according to config
  *
  * The configuration options for the baudrate is

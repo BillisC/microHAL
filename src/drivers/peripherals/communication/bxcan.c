@@ -92,6 +92,32 @@ void bxcan_set_time_triggered_mode(const bxcan_peripheral_t can,
   }
 }
 
+void bxcan_set_interrupts(const bxcan_peripheral_t can,
+                          const struct bxCANISR config) {
+  if (!validateBXCAN(can)) {
+    return;
+  } else {
+    struct bxCANRegs *regs = CAN(can);
+
+    /* Enable selected interrupt bits */
+    REG32 ier = 0UL;
+    ier |=
+        ((config.TME << CAN_IER_TMEIE_Pos) |
+         (config.FMP0 << CAN_IER_FMPIE0_Pos) |
+         (config.FF0 << CAN_IER_FFIE0_Pos) |
+         (config.FOV0 << CAN_IER_FOVIE0_Pos) |
+         (config.FMP1 << CAN_IER_FMPIE1_Pos) |
+         (config.FF1 << CAN_IER_FFIE1_Pos) |
+         (config.FOV1 << CAN_IER_FOVIE1_Pos) |
+         (config.EWG << CAN_IER_EWGIE_Pos) | (config.EPV << CAN_IER_EPVIE_Pos) |
+         (config.BOF << CAN_IER_BOFIE_Pos) | (config.LEC << CAN_IER_LECIE_Pos) |
+         (config.ERR << CAN_IER_ERRIE_Pos) | (config.WKU << CAN_IER_WKUIE_Pos) |
+         (config.SLK << CAN_IER_SLKIE_Pos));
+
+    regs->IER = ier;
+  }
+}
+
 void bxcan_configure_bitrate(const bxcan_peripheral_t can,
                              const struct bxCANBitrateConfig config) {
   if (!validateBXCAN(can)) {

@@ -49,8 +49,7 @@ struct __attribute__((packed)) bxCANRegs {
   REG32 MCR;
   REG32 MSR;
   REG32 TSR;
-  REG32 RF0R;
-  REG32 RF1R;
+  REG32 RFR[2];
   REG32 IER;
   REG32 ESR;
   REG32 BTR;
@@ -72,7 +71,7 @@ struct __attribute__((packed)) bxCANRegs {
 _Static_assert((sizeof(struct bxCANRegs)) == (sizeof(uint32_t) * 199U),
                "bxCAN register struct size mismatch. Is it aligned?");
 
-#define CAN(NUM) (struct bxCANRegs *)(CAN1_BASE + (0x400UL * uint8_t(NUM)))
+#define CAN(NUM) (struct bxCANRegs *)(CAN1_BASE + (0x400UL * (uint8_t)NUM))
 
 struct __attribute__((packed)) bxCANISR {
   _Bool TME  : 1; /**< Transmit mailbox empty */
@@ -121,23 +120,47 @@ struct __attribute__((packed)) bxCANFilterConfig {
 _Static_assert((sizeof(struct bxCANFilterConfig)) == (sizeof(uint8_t) * 9U),
                "bxCAN Filter config struct size mismatch. Is it aligned?");
 
+struct __attribute__((packed)) bxCANAutomationConfig {
+  _Bool AutoBusOff : 1;
+  _Bool AutoWakeUp : 1;
+  _Bool AutoReTx   : 1;
+};
+
 /**
  *  @brief Contains bxCAN frame structure
  */
 struct __attribute__((packed)) bxCANFrame {
   /* --- Header --- */
-  volatile uint32_t ID : 29;
-  volatile _Bool IDE   : 1;
-  volatile _Bool RTR   : 1;
-  volatile uint8_t DLC : 4;
+  volatile uint32_t ID;
+  volatile _Bool IDE;
+  volatile _Bool RTR;
+  volatile uint8_t DLC;
+  /* --- Time --- */
+  volatile uint16_t TIME;
+  volatile _Bool TGT;
   /* --- Data --- */
   volatile uint8_t DATA[8];
   // CRC handled by HW
   // ACK handled by HW
 };
 
-_Static_assert((sizeof(struct bxCANFrame)) == (sizeof(uint8_t) * 13U),
+_Static_assert((sizeof(struct bxCANFrame)) == (sizeof(uint8_t) * 18U),
                "bxCAN Frame struct size mismatch. Is it aligned?");
+
+/**
+ *  @brief Contains bxCAN error info
+ */
+struct __attribute__((packed)) bxCANErrorInfo {
+  uint8_t RxErrors;
+  uint8_t TxErrors;
+  uint8_t LastCode;
+  _Bool BusOff;
+  _Bool Passive;
+  _Bool Warning;
+};
+
+_Static_assert((sizeof(struct bxCANErrorInfo)) == (sizeof(uint8_t) * 6U),
+               "bxCAN Error info struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
 /**
@@ -167,10 +190,18 @@ typedef enum bxcan_mode {
  */
 typedef enum bxcan_test_mode {
   BXCAN_TEST_MODE_NONE = 0x0,
-  BXCAN_TEST_MODE_SLNT,
   BXCAN_TEST_MODE_LOOP,
+  BXCAN_TEST_MODE_SLNT,
   BXCAN_TEST_MODE_BOTH
 } bxcan_test_mode_t;
+
+/**
+ *  @brief Available bxCAN FIFO priorities
+ */
+typedef enum bxcan_fifo_priority {
+  BXCAN_FIFO_PRIORITY_ID = 0x0,
+  BXCAN_FIFO_PRIORITY_RQ,
+} bxcan_fifo_priority_t;
 
 /**
  * @brief Sets the bxCAN to the specified mode
@@ -201,6 +232,16 @@ void bxcan_set_test_mode(const bxcan_peripheral_t can,
                          const bxcan_test_mode_t mode);
 
 /**
+ * @brief Sets bxCAN time triggered communication
+ *
+ * @param can The selected CAN
+ * @param state On/off switch
+ * @return None
+ */
+void bxcan_set_time_triggered_mode(const bxcan_peripheral_t can,
+                                   const _Bool state);
+
+/**
  * @brief Configures the bxCAN bitrate according to config
  *
  * The configuration options for the baudrate is
@@ -214,6 +255,35 @@ void bxcan_set_test_mode(const bxcan_peripheral_t can,
  */
 void bxcan_configure_bitrate(const bxcan_peripheral_t can,
                              const struct bxCANBitrateConfig config);
+
+/**
+ * @brief Configures the bxCAN automation according to config
+ *
+ * The configuration options for the auto actions are
+ * located in the bxCANAutomationConfig struct. Please
+ * note that the AutoReTx is inverted when written in
+ * the register.
+ *
+ * @param can The selected CAN
+ * @param config The action configuration
+ * @return None
+ */
+void bxcan_configure_automation(const bxcan_peripheral_t can,
+                                const struct bxCANAutomationConfig config);
+
+/**
+ * @brief Configures the bxCAN FIFO according to config
+ *
+ * The available priorities for the FIFOs are
+ * available in the bxcan_fifo_priority_t enum.
+ *
+ * @param can The selected CAN
+ * @param lock Whether the FIFO locks on overrun
+ * @param priority The FIFO priority
+ * @return None
+ */
+void bxcan_configure_fifo(const bxcan_peripheral_t can, const _Bool lock,
+                          const bxcan_fifo_priority_t priority);
 
 /**
  * @brief Sets the desired bxCAN filter start bank
@@ -243,10 +313,11 @@ void bxcan_set_filter_start(const bxcan_peripheral_t can,
  * enabled to apply the requested changes.
  *
  * @param can The selected CAN
+ * @param filter The selected filter (0..27)
  * @param config The filter configuration
  * @return None
  */
-void bxcan_configure_filter(const bxcan_peripheral_t can,
+void bxcan_configure_filter(const bxcan_peripheral_t can, const uint8_t filter,
                             const struct bxCANFilterConfig config);
 
 /**
@@ -258,11 +329,12 @@ void bxcan_configure_filter(const bxcan_peripheral_t can,
  *  struct.
  *
  *  @param can The selected CAN
+ *  @param mailbox The selected mailbox (0..2)
  *  @param frame Pointer to the bxCAN frame
  *  @return None
  */
-void bxcan_tx_frame(const bxcan_peripheral_t can,
-                    const struct bxCANFrame *frame);
+void bxcan_tx_frame(const bxcan_peripheral_t can, const uint8_t mailbox,
+                    struct bxCANFrame *frame);
 
 /**
  *  @brief Reads received CAN frame data
@@ -274,9 +346,21 @@ void bxcan_tx_frame(const bxcan_peripheral_t can,
  *  can be found under the bxCANFrame struct.
  *
  *  @param can The selected CAN
+ *  @param FIFO The selected FIFO (Bool because it limits to 0..1)
  *  @param frame Pointer to the bxCAN frame
  *  @return None
  */
-void bxcan_rx_frame(const bxcan_peripheral_t can, struct bxCANFrame *frame);
+void bxcan_rx_frame(const bxcan_peripheral_t can, const _Bool FIFO,
+                    struct bxCANFrame *frame);
+
+/**
+ *  @brief Fetches all CAN errors
+ *
+ *  The error data are stored in a bxCANErrorInfo struct.
+ *
+ *  @param can The selected CAN
+ *  @return Error information data
+ */
+const struct bxCANErrorInfo bxcan_get_error_info(const bxcan_peripheral_t can);
 
 #endif

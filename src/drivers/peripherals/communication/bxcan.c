@@ -164,8 +164,8 @@ void bxcan_configure_fifo(const bxcan_peripheral_t can, const _Bool lock,
 
     /* Configure FIFO */
     REG32 mcr = regs->MCR;
-    mcr &= ~(CAN_MCR_NART_Msk | CAN_MCR_RFLM_Msk);
-    mcr |= ((priority << CAN_MCR_NART_Pos) | (lock << CAN_MCR_RFLM_Pos));
+    mcr &= ~(CAN_MCR_TXFP_Msk | CAN_MCR_RFLM_Msk);
+    mcr |= ((priority << CAN_MCR_TXFP_Pos) | (lock << CAN_MCR_RFLM_Pos));
 
     regs->MCR = mcr;
   }
@@ -298,7 +298,7 @@ void bxcan_tx_frame(const bxcan_peripheral_t can, struct bxCANFrame *frame) {
         ((frame->DLC) | (frame->TGT << CAN_TDT0R_TGT_Pos));
     regs->TxMailbox[mailbox].IR =
         ((frame->ID << ((frame->IDE) ? CAN_RI0R_EXID_Pos : CAN_RI0R_STID_Pos)) |
-         (frame->IDE << CAN_TI0R_IDE_Pos) | CAN_TI0R_TXRQ_Msk);
+         (frame->IDE << CAN_RI0R_IDE_Pos) | CAN_TI0R_TXRQ_Msk);
   }
 }
 

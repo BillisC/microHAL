@@ -10,9 +10,7 @@
 
 /* Includes */
 #include <stdint.h>
-#include "stm32f446xx.h"
 #include "stm32f4xx.h"
-#include "rcc.h"
 #include "_init.h"
 
 static void clock_init(void) {

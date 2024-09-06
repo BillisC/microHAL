@@ -10,7 +10,7 @@
 
 /* -- Includes -- */
 #include "bxcan.h"
-#include "stm32f446xx.h"
+#include "defines.h"
 
 inline _Bool validateBXCAN(const bxcan_peripheral_t can) {
   /* Make sure peripheral exists */
@@ -127,8 +127,8 @@ void bxcan_configure_bitrate(const bxcan_peripheral_t can,
 
     /* Configure timing bits */
     REG32 btr = regs->BTR;
-    btr &=
-        ~(CAN_BTR_TS1_Msk | CAN_BTR_TS2_Msk | CAN_BTR_BRP_Msk); // clear first
+    btr &= ~(CAN_BTR_TS1_Msk | CAN_BTR_TS2_Msk | CAN_BTR_BRP_Msk |
+             CAN_BTR_SJW_Msk); // clear first
     btr |= ((config.TimeSeg1 << CAN_BTR_TS1_Pos) |
             (config.TimeSeg2 << CAN_BTR_TS2_Pos) |
             (config.BaudPrescaler << CAN_BTR_BRP_Pos));
@@ -215,19 +215,19 @@ void bxcan_configure_filter(const bxcan_peripheral_t can, const uint8_t filter,
 
     /* 1. Configure masking mode */
     REG32 fm1r = regs->FM1R;
-    fm1r &= BIT(filter);
+    fm1r &= ~BIT(filter);
     fm1r |= (config.ListMode << filter);
     regs->FM1R = fm1r;
 
     /* 2. Configure scale bits */
     REG32 fs1r = regs->FS1R;
-    fs1r &= BIT(filter);
+    fs1r &= ~BIT(filter);
     fs1r |= (config.SingleScale << filter);
     regs->FS1R = fs1r;
 
     /* 3. Configure filter FIFO */
     REG32 ffa1r = regs->FFA1R;
-    ffa1r &= BIT(filter);
+    ffa1r &= ~BIT(filter);
     ffa1r |= (config.FIFO << filter);
     regs->FFA1R = ffa1r;
 
@@ -239,20 +239,30 @@ void bxcan_configure_filter(const bxcan_peripheral_t can, const uint8_t filter,
 
     /* 5. Enable filter */
     REG32 fa1r = regs->FA1R;
-    fa1r &= BIT(filter);
+    fa1r &= ~BIT(filter);
     fa1r |= (config.Activate << filter);
     regs->FA1R = fa1r;
 
     /* Exit filter init mode */
-    regs->FMR &= CAN_FMR_FINIT_Msk;
+    regs->FMR &= ~(CAN_FMR_FINIT_Msk);
   }
 }
 
-void bxcan_tx_frame(const bxcan_peripheral_t can, const uint8_t mailbox,
-                    struct bxCANFrame *frame) {
+static inline uint8_t get_empty_mailbox(struct bxCANRegs *regs) {
+  uint32_t tsr = regs->TSR;
+  if (tsr & CAN_TSR_TME0_Msk) {
+    return 0U;
+  } else if (tsr & CAN_TSR_TME1_Msk) {
+    return 1U;
+  } else if (tsr & CAN_TSR_TME2_Msk) {
+    return 2U;
+  } else {
+    return 0xFFU; // No empty mailbox found
+  }
+}
+
+void bxcan_tx_frame(const bxcan_peripheral_t can, struct bxCANFrame *frame) {
   if (!validateBXCAN(can)) {
-    return;
-  } else if (mailbox > 2U) {
     return;
   } else if (frame->DLC > 8U) {
     return;
@@ -260,7 +270,8 @@ void bxcan_tx_frame(const bxcan_peripheral_t can, const uint8_t mailbox,
     struct bxCANRegs *regs = CAN(can);
 
     /* Wait until the mailbox becomes empty */
-    while (!(regs->TxMailbox[mailbox].IR & CAN_TI0R_TXRQ_Msk)) { ASM_NOP; };
+    uint8_t mailbox = 0xFFU;
+    while (mailbox == 0xFFU) { mailbox = get_empty_mailbox(regs); }
 
     /* Correct global time transmission */
     if ((frame->TGT) && (CAN_MCR_TTCM_Msk & regs->MCR)) {
@@ -291,35 +302,41 @@ void bxcan_tx_frame(const bxcan_peripheral_t can, const uint8_t mailbox,
   }
 }
 
-void bxcan_rx_frame(const bxcan_peripheral_t can, const _Bool FIFO,
-                    struct bxCANFrame *frame) {
+inline void bxcan_rx_frame_fetch(const bxcan_peripheral_t can, const _Bool FIFO,
+                                 struct bxCANMailboxRegs *buffer) {
   if (!validateBXCAN(can)) {
     return;
   } else {
     struct bxCANRegs *regs = CAN(can);
 
-    /* Information gathering */
-    REG32 ir = regs->FIFOMailbox[FIFO].IR;
-    frame->IDE = ((ir >> CAN_RI0R_IDE_Pos) & 1U);
-    frame->ID = (ir >> ((frame->IDE) ? CAN_RI0R_EXID_Pos : CAN_RI0R_STID_Pos));
-    REG32 tr = regs->FIFOMailbox[FIFO].TR;
-    frame->DLC = (tr & 0xFU);
-    frame->TIME = (tr >> CAN_RDT0R_TIME_Pos);
-
-    /* Data gathering */
-    REG32 lr = regs->FIFOMailbox[FIFO].LR;
-    REG32 hr = regs->FIFOMailbox[FIFO].HR;
-    for (uint8_t i = 0U; i < frame->DLC; i++) {
-      if (i < 4U) {
-        frame->DATA[i] = (lr >> (i * 8));
-      } else {
-        frame->DATA[i] = (hr >> ((i - 4) * 8));
-      }
-    }
+    /* Register fetching */
+    buffer->IR = regs->FIFOMailbox[FIFO].IR;
+    buffer->TR = regs->FIFOMailbox[FIFO].TR;
+    buffer->LR = regs->FIFOMailbox[FIFO].LR;
+    buffer->HR = regs->FIFOMailbox[FIFO].HR;
 
     /* Release FIFO */
     regs->RFR[FIFO] |= CAN_RF0R_RFOM0_Msk;
   }
+}
+
+void bxcan_rx_frame_process(const struct bxCANMailboxRegs buffer,
+                            struct bxCANFrame *frame) {
+  frame->IDE = ((buffer.IR >> CAN_RI0R_IDE_Pos) & 1U);
+  frame->ID =
+      (buffer.IR >> ((frame->IDE) ? CAN_RI0R_EXID_Pos : CAN_RI0R_STID_Pos));
+  frame->DLC = (buffer.TR & 0xFU);
+  frame->TIME = (buffer.TR >> CAN_RDT0R_TIME_Pos);
+
+  /* Data gathering */
+  frame->DATA[0] = buffer.LR;
+  frame->DATA[1] = (buffer.LR >> 8);
+  frame->DATA[2] = (buffer.LR >> 16);
+  frame->DATA[3] = (buffer.LR >> 24);
+  frame->DATA[4] = buffer.HR;
+  frame->DATA[5] = (buffer.HR >> 8);
+  frame->DATA[6] = (buffer.HR >> 16);
+  frame->DATA[7] = (buffer.HR >> 24);
 }
 
 const struct bxCANErrorInfo bxcan_get_error_info(const bxcan_peripheral_t can) {

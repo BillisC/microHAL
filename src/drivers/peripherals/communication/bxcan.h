@@ -59,16 +59,17 @@ struct __attribute__((packed)) bxCANRegs {
   REG32 _reserved2[12];
   REG32 FMR;
   REG32 FM1R;
-  REG32 FS1R;
   REG32 _reserved3;
-  REG32 FFA1R;
+  REG32 FS1R;
   REG32 _reserved4;
+  REG32 FFA1R;
+  REG32 _reserved5;
   REG32 FA1R;
-  REG32 _reserved5[8];
+  REG32 _reserved6[8];
   struct bxCANFilterRegs FilterBank[28];
 };
 
-_Static_assert((sizeof(struct bxCANRegs)) == (sizeof(uint32_t) * 199U),
+_Static_assert((sizeof(struct bxCANRegs)) == (sizeof(uint32_t) * 200U),
                "bxCAN register struct size mismatch. Is it aligned?");
 
 #define CAN(NUM) (struct bxCANRegs *)(CAN1_BASE + (0x400UL * (uint8_t)NUM))
@@ -342,17 +343,15 @@ void bxcan_configure_filter(const bxcan_peripheral_t can, const uint8_t filter,
  *  struct.
  *
  *  @param can The selected CAN
- *  @param mailbox The selected mailbox (0..2)
  *  @param frame Pointer to the bxCAN frame
  *  @return None
  */
-void bxcan_tx_frame(const bxcan_peripheral_t can, const uint8_t mailbox,
-                    struct bxCANFrame *frame);
+void bxcan_tx_frame(const bxcan_peripheral_t can, struct bxCANFrame *frame);
 
 /**
- *  @brief Reads received CAN frame data
+ *  @brief Fetches received CAN frame data
  *
- *  The data of the frame are extracted in the struct
+ *  The data of the frame are fetched in the struct
  *  as soon as one of the FIFOs have a pending message.
  *  It is recommended to pair this with interrupts,
  *  otherwise it might be too slow. The frame configuration
@@ -360,11 +359,25 @@ void bxcan_tx_frame(const bxcan_peripheral_t can, const uint8_t mailbox,
  *
  *  @param can The selected CAN
  *  @param FIFO The selected FIFO (Bool because it limits to 0..1)
- *  @param frame Pointer to the bxCAN frame
+ *  @param buffer Pointer to the Mailbox buffer
  *  @return None
  */
-void bxcan_rx_frame(const bxcan_peripheral_t can, const _Bool FIFO,
-                    struct bxCANFrame *frame);
+void bxcan_rx_frame_fetch(const bxcan_peripheral_t can, const _Bool FIFO,
+                          struct bxCANMailboxRegs *buffer);
+
+/**
+ *  @brief Extracts received CAN frame data
+ *
+ *  The data of the register buffer are extracted
+ *  in the frame struct. The frame configuration
+ *  can be found under the bxCANFrame struct.
+ *
+ *  @param buffer The Mailbox buffer
+ *  @param frame Pointer to the frame structure
+ *  @return None
+ */
+void bxcan_rx_frame_process(const struct bxCANMailboxRegs buffer,
+                            struct bxCANFrame *frame);
 
 /**
  *  @brief Fetches all CAN errors

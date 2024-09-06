@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>microHAL: src/main.c File Reference</title>
+<title>microHAL: bxCANErrorInfo Struct Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -82,40 +82,47 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
-</div>
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">main.c File Reference</div></div>
+<a href="#pub-attribs">Data Fields</a>  </div>
+  <div class="headertitle"><div class="title">bxCANErrorInfo Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Simple main function with example.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d8/db0/defines_8h_source.html">defines.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d2/d89/__init_8h_source.html">_init.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../db/de4/usart_8h_source.html">usart.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d6/d7c/gpio_8h_source.html">gpio.h</a>&quot;</code><br />
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ab21ca67d13588812bdcb488699f8f043" id="r_ab21ca67d13588812bdcb488699f8f043"><td class="memItemLeft" align="right" valign="top"><a id="ab21ca67d13588812bdcb488699f8f043" name="ab21ca67d13588812bdcb488699f8f043"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>delay_ms</b> (const uint32_t milliseconds)</td></tr>
-<tr class="separator:ab21ca67d13588812bdcb488699f8f043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe" id="r_a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top"><a id="a840291bc02cba5474a4cb46a9b9566fe" name="a840291bc02cba5474a4cb46a9b9566fe"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (void)</td></tr>
-<tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<p>Contains bxCAN error info.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d1/d84/bxcan_8h_source.html">bxcan.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Data Fields</h2></td></tr>
+<tr class="memitem:ac00e55202b89cc4768842a9f0cb12826" id="r_ac00e55202b89cc4768842a9f0cb12826"><td class="memItemLeft" align="right" valign="top"><a id="ac00e55202b89cc4768842a9f0cb12826" name="ac00e55202b89cc4768842a9f0cb12826"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>RxErrors</b></td></tr>
+<tr class="separator:ac00e55202b89cc4768842a9f0cb12826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cf8ac7bab819d56d8ac9aa734fa5e2a" id="r_a7cf8ac7bab819d56d8ac9aa734fa5e2a"><td class="memItemLeft" align="right" valign="top"><a id="a7cf8ac7bab819d56d8ac9aa734fa5e2a" name="a7cf8ac7bab819d56d8ac9aa734fa5e2a"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>TxErrors</b></td></tr>
+<tr class="separator:a7cf8ac7bab819d56d8ac9aa734fa5e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9316af6c6b6fceccf03adb12f970a0e" id="r_ad9316af6c6b6fceccf03adb12f970a0e"><td class="memItemLeft" align="right" valign="top"><a id="ad9316af6c6b6fceccf03adb12f970a0e" name="ad9316af6c6b6fceccf03adb12f970a0e"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>LastCode</b></td></tr>
+<tr class="separator:ad9316af6c6b6fceccf03adb12f970a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50976b9b9e8b9c686aa1613509b7fa55" id="r_a50976b9b9e8b9c686aa1613509b7fa55"><td class="memItemLeft" align="right" valign="top"><a id="a50976b9b9e8b9c686aa1613509b7fa55" name="a50976b9b9e8b9c686aa1613509b7fa55"></a>
+_Bool&#160;</td><td class="memItemRight" valign="bottom"><b>BusOff</b></td></tr>
+<tr class="separator:a50976b9b9e8b9c686aa1613509b7fa55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a692c8ac3035b42141259a985ceb4aeb9" id="r_a692c8ac3035b42141259a985ceb4aeb9"><td class="memItemLeft" align="right" valign="top"><a id="a692c8ac3035b42141259a985ceb4aeb9" name="a692c8ac3035b42141259a985ceb4aeb9"></a>
+_Bool&#160;</td><td class="memItemRight" valign="bottom"><b>Passive</b></td></tr>
+<tr class="separator:a692c8ac3035b42141259a985ceb4aeb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aa152aa90f29d98d8b76e8ce66643a7" id="r_a2aa152aa90f29d98d8b76e8ce66643a7"><td class="memItemLeft" align="right" valign="top"><a id="a2aa152aa90f29d98d8b76e8ce66643a7" name="a2aa152aa90f29d98d8b76e8ce66643a7"></a>
+_Bool&#160;</td><td class="memItemRight" valign="bottom"><b>Warning</b></td></tr>
+<tr class="separator:a2aa152aa90f29d98d8b76e8ce66643a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Simple main function with example. </p>
-<dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
-<dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000018">Bug</a></b></dt><dd>None, yet. </dd></dl>
-</div></div><!-- contents -->
+<div class="textblock"><p>Contains bxCAN error info. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<li>src/drivers/peripherals/communication/<a class="el" href="../../d1/d84/bxcan_8h_source.html">bxcan.h</a></li>
+</ul>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0

@@ -160,7 +160,8 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a18f415dd930a0d3148104f4ee2637b4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available SPI communication directions. <br /></td></tr>
 <tr class="separator:a18f415dd930a0d3148104f4ee2637b4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3e5e2b6c6f822a67ff58ae40b5e5dc0" id="r_af3e5e2b6c6f822a67ff58ae40b5e5dc0"><td class="memItemLeft" align="right" valign="top"><a id="af3e5e2b6c6f822a67ff58ae40b5e5dc0" name="af3e5e2b6c6f822a67ff58ae40b5e5dc0"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3e5e2b6c6f822a67ff58ae40b5e5dc0">spi_nss_mode</a> { <b>SPI_NSS_SOFT</b> = 0x0
+<tr class="memitem:af3e5e2b6c6f822a67ff58ae40b5e5dc0" id="r_af3e5e2b6c6f822a67ff58ae40b5e5dc0"><td class="memItemLeft" align="right" valign="top"><a id="af3e5e2b6c6f822a67ff58ae40b5e5dc0" name="af3e5e2b6c6f822a67ff58ae40b5e5dc0"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3e5e2b6c6f822a67ff58ae40b5e5dc0">spi_nss_mode</a> { <b>SPI_NSS_SOFT_LO</b> = 0x0
+, <b>SPI_NSS_SOFT_HI</b>
 , <b>SPI_NSS_HARD_OE</b>
 , <b>SPI_NSS_HARD_OD</b>
  }</td></tr>
@@ -207,6 +208,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a53f994d94f79344736c46ab243dbf426" id="r_a53f994d94f79344736c46ab243dbf426"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53f994d94f79344736c46ab243dbf426">spi_rx_data</a> (const <a class="el" href="#a97e3e01c2df8497e95a694782dc1bec6">spi_peripheral_t</a> spi)</td></tr>
 <tr class="memdesc:a53f994d94f79344736c46ab243dbf426"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the received SPI data.  <br /></td></tr>
 <tr class="separator:a53f994d94f79344736c46ab243dbf426"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff8b4dd6dba7cd86a908e6fba1dc5696" id="r_aff8b4dd6dba7cd86a908e6fba1dc5696"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff8b4dd6dba7cd86a908e6fba1dc5696">spi_transceive_data</a> (const <a class="el" href="#a97e3e01c2df8497e95a694782dc1bec6">spi_peripheral_t</a> spi, const uint16_t data)</td></tr>
+<tr class="memdesc:aff8b4dd6dba7cd86a908e6fba1dc5696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmit data, receive answer.  <br /></td></tr>
+<tr class="separator:aff8b4dd6dba7cd86a908e6fba1dc5696"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6d48680dfda8f397fc97a1412446380" id="r_aa6d48680dfda8f397fc97a1412446380"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6d48680dfda8f397fc97a1412446380">spi_start</a> (const <a class="el" href="#a97e3e01c2df8497e95a694782dc1bec6">spi_peripheral_t</a> spi, const _Bool master)</td></tr>
 <tr class="memdesc:aa6d48680dfda8f397fc97a1412446380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates the SPI peripheral with specified options.  <br /></td></tr>
 <tr class="separator:aa6d48680dfda8f397fc97a1412446380"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -519,6 +523,38 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
+<a id="aff8b4dd6dba7cd86a908e6fba1dc5696" name="aff8b4dd6dba7cd86a908e6fba1dc5696"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff8b4dd6dba7cd86a908e6fba1dc5696">&#9670;&#160;</a></span>spi_transceive_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t spi_transceive_data </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a97e3e01c2df8497e95a694782dc1bec6">spi_peripheral_t</a></td>          <td class="paramname"><span class="paramname"><em>spi</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint16_t</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transmit data, receive answer. </p>
+<p>A combination of TX and RX functions.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spi</td><td>The selected SPI </td></tr>
+    <tr><td class="paramname">data</td><td>The data to transmit </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The received data </dd></dl>
 
 </div>
 </div>

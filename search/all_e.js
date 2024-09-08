@@ -21,12 +21,13 @@ var searchData=
   ['spi_5fset_5fprescaler_18',['spi_set_prescaler',['../da/d00/spi_8c.html#ad2674b769ffef8c74e8b7db7e5ad23b3',1,'spi_set_prescaler(const spi_peripheral_t spi, const spi_prescaler_t value):&#160;spi.c'],['../da/d87/spi_8h.html#ad2674b769ffef8c74e8b7db7e5ad23b3',1,'spi_set_prescaler(const spi_peripheral_t spi, const spi_prescaler_t value):&#160;spi.c']]],
   ['spi_5fstart_19',['spi_start',['../da/d00/spi_8c.html#aa6d48680dfda8f397fc97a1412446380',1,'spi_start(const spi_peripheral_t spi, const _Bool master):&#160;spi.c'],['../da/d87/spi_8h.html#aa6d48680dfda8f397fc97a1412446380',1,'spi_start(const spi_peripheral_t spi, const _Bool master):&#160;spi.c']]],
   ['spi_5fstop_20',['spi_stop',['../da/d00/spi_8c.html#a3a5aa46676f141ee26a527c772bd7498',1,'spi_stop(const spi_peripheral_t spi):&#160;spi.c'],['../da/d87/spi_8h.html#a3a5aa46676f141ee26a527c772bd7498',1,'spi_stop(const spi_peripheral_t spi):&#160;spi.c']]],
-  ['spi_5ftx_5fdata_21',['spi_tx_data',['../da/d00/spi_8c.html#aeb1c62c5c831d634141100da6b9b9336',1,'spi_tx_data(const spi_peripheral_t spi, const uint16_t data):&#160;spi.c'],['../da/d87/spi_8h.html#aeb1c62c5c831d634141100da6b9b9336',1,'spi_tx_data(const spi_peripheral_t spi, const uint16_t data):&#160;spi.c']]],
-  ['spiconfig_22',['SPIConfig',['../dd/d07/structSPIConfig.html',1,'']]],
-  ['spiisr_23',['SPIISR',['../de/d25/structSPIISR.html',1,'']]],
-  ['spiregs_24',['SPIRegs',['../d8/d4b/structSPIRegs.html',1,'']]],
-  ['stm32f4xx_2eh_25',['stm32f4xx.h',['../dc/dfd/stm32f4xx_8h.html',1,'']]],
-  ['system_5fstm32f4xx_2ec_26',['system_stm32f4xx.c',['../d4/d04/system__stm32f4xx_8c.html',1,'']]],
-  ['system_5fstm32f4xx_2eh_27',['system_stm32f4xx.h',['../d5/df2/system__stm32f4xx_8h.html',1,'']]],
-  ['systick_5fhandler_28',['SysTick_Handler',['../d8/d78/isr_8c.html#ab5e09814056d617c521549e542639b7e',1,'SysTick_Handler(void):&#160;isr.c'],['../d8/da8/isr_8h.html#ab5e09814056d617c521549e542639b7e',1,'SysTick_Handler(void):&#160;isr.c']]]
+  ['spi_5ftransceive_5fdata_21',['spi_transceive_data',['../da/d00/spi_8c.html#aff8b4dd6dba7cd86a908e6fba1dc5696',1,'spi_transceive_data(const spi_peripheral_t spi, const uint16_t data):&#160;spi.c'],['../da/d87/spi_8h.html#aff8b4dd6dba7cd86a908e6fba1dc5696',1,'spi_transceive_data(const spi_peripheral_t spi, const uint16_t data):&#160;spi.c']]],
+  ['spi_5ftx_5fdata_22',['spi_tx_data',['../da/d00/spi_8c.html#aeb1c62c5c831d634141100da6b9b9336',1,'spi_tx_data(const spi_peripheral_t spi, const uint16_t data):&#160;spi.c'],['../da/d87/spi_8h.html#aeb1c62c5c831d634141100da6b9b9336',1,'spi_tx_data(const spi_peripheral_t spi, const uint16_t data):&#160;spi.c']]],
+  ['spiconfig_23',['SPIConfig',['../dd/d07/structSPIConfig.html',1,'']]],
+  ['spiisr_24',['SPIISR',['../de/d25/structSPIISR.html',1,'']]],
+  ['spiregs_25',['SPIRegs',['../d8/d4b/structSPIRegs.html',1,'']]],
+  ['stm32f4xx_2eh_26',['stm32f4xx.h',['../dc/dfd/stm32f4xx_8h.html',1,'']]],
+  ['system_5fstm32f4xx_2ec_27',['system_stm32f4xx.c',['../d4/d04/system__stm32f4xx_8c.html',1,'']]],
+  ['system_5fstm32f4xx_2eh_28',['system_stm32f4xx.h',['../d5/df2/system__stm32f4xx_8h.html',1,'']]],
+  ['systick_5fhandler_29',['SysTick_Handler',['../d8/d78/isr_8c.html#ab5e09814056d617c521549e542639b7e',1,'SysTick_Handler(void):&#160;isr.c'],['../d8/da8/isr_8h.html#ab5e09814056d617c521549e542639b7e',1,'SysTick_Handler(void):&#160;isr.c']]]
 ];

@@ -106,7 +106,8 @@ typedef enum spi_direction {
  *  @brief Available SPI NSS pin modes
  */
 typedef enum spi_nss_mode {
-  SPI_NSS_SOFT = 0x0,
+  SPI_NSS_SOFT_LO = 0x0,
+  SPI_NSS_SOFT_HI,
   SPI_NSS_HARD_OE,
   SPI_NSS_HARD_OD
 } spi_nss_mode_t;
@@ -225,6 +226,17 @@ void spi_tx_data(const spi_peripheral_t spi, const uint16_t data);
  *  @return The received data
  */
 uint16_t spi_rx_data(const spi_peripheral_t spi);
+
+/**
+ *  @brief Transmit data, receive answer
+ *
+ *  A combination of TX and RX functions.
+ *
+ *  @param spi The selected SPI
+ *  @param data The data to transmit
+ *  @return The received data
+ */
+uint16_t spi_transceive_data(const spi_peripheral_t spi, const uint16_t data);
 
 /**
  *  @brief Initiates the SPI peripheral with specified options.

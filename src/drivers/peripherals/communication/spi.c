@@ -10,6 +10,8 @@
 
 /* -- Includes -- */
 #include "spi.h"
+#include "defines.h"
+#include "stm32f446xx.h"
 
 /**
  *  @brief SPI address look up table
@@ -129,7 +131,8 @@ void spi_set_nss_mode(const spi_peripheral_t spi, const spi_nss_mode_t mode) {
     cr1 &= ~(SPI_CR1_SSM_Msk);
     cr2 &= ~(SPI_CR2_SSOE_Msk);
     switch (mode) {
-      case SPI_NSS_SOFT: cr1 |= (SPI_CR1_SSM_Msk); break;
+      case SPI_NSS_SOFT_LO: cr1 |= (SPI_CR1_SSM_Msk); break;
+      case SPI_NSS_SOFT_HI: cr1 |= (SPI_CR1_SSM_Msk | SPI_CR1_SSI_Msk); break;
       case SPI_NSS_HARD_OD: break;
       case SPI_NSS_HARD_OE: cr2 |= (SPI_CR2_SSOE_Msk); break;
       default: return;
@@ -207,6 +210,22 @@ uint16_t spi_rx_data(const spi_peripheral_t spi) {
   }
 }
 
+uint16_t spi_transceive_data(const spi_peripheral_t spi, const uint16_t data) {
+  if (!validateSPI(spi)) {
+    return 0UL;
+  } else {
+    struct SPIRegs *regs = SPI(SPI_LUT[spi]);
+
+    /* Wait for available TX buffer */
+    while (!(regs->SR & SPI_SR_TXE_Msk)) { ASM_NOP; }
+    regs->DR = data;
+
+    /* Wait for available data in RX buffer */
+    while (!(regs->SR & SPI_SR_RXNE_Msk)) { ASM_NOP; }
+    return (regs->DR & 0xFFFFUL);
+  }
+}
+
 void spi_start(const spi_peripheral_t spi, const _Bool master) {
   if (!validateSPI(spi)) {
     return;
@@ -216,8 +235,7 @@ void spi_start(const spi_peripheral_t spi, const _Bool master) {
     /* Procedure to enable SPI */
     REG32 cr1 = regs->CR1;
     cr1 &= ~(SPI_CR1_MSTR_Msk);
-    cr1 |= (SPI_CR1_SPE_Msk | (master << SPI_CR1_MSTR_Pos));
-
+    cr1 |= ((master << SPI_CR1_MSTR_Pos) | SPI_CR1_SPE_Msk);
     regs->CR1 = cr1;
   }
 }

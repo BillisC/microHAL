@@ -12,7 +12,7 @@
 #include "bxcan.h"
 #include "defines.h"
 
-inline _Bool validateBXCAN(const bxcan_peripheral_t can) {
+static inline _Bool validateBXCAN(const bxcan_peripheral_t can) {
   /* Make sure peripheral exists */
   if (can < BXCAN_PERIPH_LEN) {
     return TRUE;

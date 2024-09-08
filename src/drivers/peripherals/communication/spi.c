@@ -11,7 +11,6 @@
 /* -- Includes -- */
 #include "spi.h"
 #include "defines.h"
-#include "stm32f446xx.h"
 
 /**
  *  @brief SPI address look up table

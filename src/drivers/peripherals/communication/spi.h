@@ -5,6 +5,9 @@
  *  function prototypes required for a functional SPI
  *  interface.
  *
+ *  Multi-slave switching is not available, so please
+ *  handle GPIOs manually.
+ *
  *  @author Vasileios Ch. (BillisC)
  *  @bug None, yet.
  */
@@ -33,7 +36,7 @@ struct __attribute__((packed)) SPIRegs {
 _Static_assert((sizeof(struct SPIRegs)) == (sizeof(uint32_t) * 9U),
                "SPI Register struct size mismatch. Is it aligned?");
 
-#define SPI(ADDR) (struct SPIRegs *)(addr);
+#define SPI(ADDR) (struct SPIRegs *)(ADDR);
 
 /**
  *  @brief Contains SPI interrupt configuration
@@ -93,9 +96,10 @@ typedef enum spi_peripheral {
  */
 typedef enum spi_direction {
   SPI_DIR_FULL_DUPLEX = 0x0,
-  SPI_DIR_HALF_FUPLEX,
-  SPI_DIR_RX_SIMPLEX,
-  SPI_DIR_TX_SIMPLEX
+  SPI_DIR_HALF_DUPLEX_RX,
+  SPI_DIR_HALF_DUPLEX_TX,
+  SPI_DIR_SIMPLEX_RX,
+  SPI_DIR_SIMPLEX_TX
 } spi_direction_t;
 
 /**

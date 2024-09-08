@@ -191,7 +191,7 @@
 #define SPI_CR1_BR_Msk       (0x7UL << SPI_CR1_BR_Pos)
 #define SPI_CR1_LSBFIRST_Pos (7U)
 #define SPI_CR1_LSBFIRST_Msk (0x1UL << SPI_CR1_LSBFIRST_Pos)
-#define SPI_CR1_SSM_Msk      (0x1UL << (8U))
+#define SPI_CR1_SSI_Msk      (0x1UL << (8U))
 #define SPI_CR1_SSM_Msk      (0x1UL << (9U))
 #define SPI_CR1_RXONLY_Msk   (0x1UL << (10U))
 #define SPI_CR1_DFF_Pos      (11U)

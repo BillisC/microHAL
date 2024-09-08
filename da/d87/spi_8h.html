@@ -149,10 +149,14 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a0955bf68fd198e381017fa222fd32caf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available SPI peripherals. <br /></td></tr>
 <tr class="separator:a0955bf68fd198e381017fa222fd32caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18f415dd930a0d3148104f4ee2637b4e" id="r_a18f415dd930a0d3148104f4ee2637b4e"><td class="memItemLeft" align="right" valign="top"><a id="a18f415dd930a0d3148104f4ee2637b4e" name="a18f415dd930a0d3148104f4ee2637b4e"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18f415dd930a0d3148104f4ee2637b4e">spi_direction</a> { <b>SPI_DIR_FULL_DUPLEX</b> = 0x0
-, <b>SPI_DIR_HALF_FUPLEX</b>
-, <b>SPI_DIR_RX_SIMPLEX</b>
-, <b>SPI_DIR_TX_SIMPLEX</b>
+<tr class="memitem:a18f415dd930a0d3148104f4ee2637b4e" id="r_a18f415dd930a0d3148104f4ee2637b4e"><td class="memItemLeft" align="right" valign="top"><a id="a18f415dd930a0d3148104f4ee2637b4e" name="a18f415dd930a0d3148104f4ee2637b4e"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18f415dd930a0d3148104f4ee2637b4e">spi_direction</a> { <br />
+&#160;&#160;<b>SPI_DIR_FULL_DUPLEX</b> = 0x0
+, <b>SPI_DIR_HALF_DUPLEX_RX</b>
+, <b>SPI_DIR_HALF_DUPLEX_TX</b>
+, <b>SPI_DIR_SIMPLEX_RX</b>
+, <br />
+&#160;&#160;<b>SPI_DIR_SIMPLEX_TX</b>
+<br />
  }</td></tr>
 <tr class="memdesc:a18f415dd930a0d3148104f4ee2637b4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available SPI communication directions. <br /></td></tr>
 <tr class="separator:a18f415dd930a0d3148104f4ee2637b4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,6 +217,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Function prototypes for the SPI interface. </p>
 <p>This file contains all of the enums, macros, and function prototypes required for a functional SPI interface.</p>
+<p>Multi-slave switching is not available, so please handle GPIOs manually.</p>
 <dl class="section author"><dt>Author</dt><dd>Vasileios Ch. (BillisC) </dd></dl>
 <dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000013">Bug</a></b></dt><dd>None, yet. </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
@@ -230,8 +235,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">(<span class="keyword">struct </span><a class="code hl_struct" href="../../d8/d4b/structSPIRegs.html">SPIRegs</a> *)(addr);</div>
-<div class="ttc" id="astructSPIRegs_html"><div class="ttname"><a href="../../d8/d4b/structSPIRegs.html">SPIRegs</a></div><div class="ttdoc">Contains SPI/I2S registers.</div><div class="ttdef"><b>Definition</b> spi.h:21</div></div>
+<b>Value:</b><div class="fragment"><div class="line">(<span class="keyword">struct </span><a class="code hl_struct" href="../../d8/d4b/structSPIRegs.html">SPIRegs</a> *)(ADDR);</div>
+<div class="ttc" id="astructSPIRegs_html"><div class="ttname"><a href="../../d8/d4b/structSPIRegs.html">SPIRegs</a></div><div class="ttdoc">Contains SPI/I2S registers.</div><div class="ttdef"><b>Definition</b> spi.h:24</div></div>
 </div><!-- fragment -->
 </div>
 </div>

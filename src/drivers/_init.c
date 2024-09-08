@@ -10,6 +10,7 @@
 
 /* Includes */
 #include <stdint.h>
+#include "rcc.h"
 #include "stm32f4xx.h"
 #include "_init.h"
 
@@ -64,7 +65,10 @@ static void clock_init(void) {
 static void peripheral_init(void) {
   /* Enable peripherals */
   rcc_enable_peripheral_clk(RCC_CLK_GPIOA);
+  rcc_enable_peripheral_clk(RCC_CLK_GPIOB);
   rcc_enable_peripheral_clk(RCC_CLK_USART2);
+  rcc_enable_peripheral_clk(RCC_CLK_SPI1);
+  rcc_enable_peripheral_clk(RCC_CLK_SPI2);
 }
 
 void mcu_init(void) {

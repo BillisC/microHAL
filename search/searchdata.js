@@ -4,9 +4,9 @@ var indexSectionsWithContent =
   1: "abdfgprsu",
   2: "_abdgimrstu",
   3: "abdgmrsu",
-  4: "befhilpstw",
-  5: "abdgru",
-  6: "abdgru",
+  4: "bcefhilprstuw",
+  5: "abdgrsu",
+  6: "abdgrsu",
   7: "r",
   8: "bghilm"
 };

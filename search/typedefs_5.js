@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['usart_5fdatabits_5ft_0',['usart_databits_t',['../db/de4/usart_8h.html#a646bb5cdc2347b4c446474ed4d800b28',1,'usart.h']]],
-  ['usart_5fmode_5ft_1',['usart_mode_t',['../db/de4/usart_8h.html#af9cb6192f394ebde038a7b64527eb5e9',1,'usart.h']]],
-  ['usart_5fparity_5ft_2',['usart_parity_t',['../db/de4/usart_8h.html#a9b924d5756332a7f8773403d0dd6b708',1,'usart.h']]],
-  ['usart_5fperipheral_5ft_3',['usart_peripheral_t',['../db/de4/usart_8h.html#a84089acfdd6cff2f2d8a844e76bbf655',1,'usart.h']]],
-  ['usart_5fstopbits_5ft_4',['usart_stopbits_t',['../db/de4/usart_8h.html#aec2fddd4341bdbc1ca7e36b9d543d6f9',1,'usart.h']]]
+  ['spi_5fdirection_5ft_0',['spi_direction_t',['../da/d87/spi_8h.html#a099c0952725896438ebbc5a48e122e80',1,'spi.h']]],
+  ['spi_5fnss_5fmode_5ft_1',['spi_nss_mode_t',['../da/d87/spi_8h.html#a0feb9fe92703df8a8301644d584ff5b5',1,'spi.h']]],
+  ['spi_5fperipheral_5ft_2',['spi_peripheral_t',['../da/d87/spi_8h.html#a97e3e01c2df8497e95a694782dc1bec6',1,'spi.h']]],
+  ['spi_5fprescaler_5ft_3',['spi_prescaler_t',['../da/d87/spi_8h.html#ab03986d2a9ca55e00b005c9b1750f896',1,'spi.h']]]
 ];

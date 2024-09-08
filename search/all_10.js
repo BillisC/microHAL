@@ -22,5 +22,7 @@ var searchData=
   ['usart_5fstopbits_5ft_19',['usart_stopbits_t',['../db/de4/usart_8h.html#aec2fddd4341bdbc1ca7e36b9d543d6f9',1,'usart.h']]],
   ['usart_5ftx_5fmessage_20',['usart_tx_message',['../dc/d08/usart_8c.html#af5c553a09e20287a276c4d553ba33483',1,'usart_tx_message(const usart_peripheral_t usart, const char *message):&#160;usart.c'],['../db/de4/usart_8h.html#af5c553a09e20287a276c4d553ba33483',1,'usart_tx_message(const usart_peripheral_t usart, const char *message):&#160;usart.c']]],
   ['usartisr_21',['USARTISR',['../d0/de7/structUSARTISR.html',1,'']]],
-  ['usartregs_22',['USARTRegs',['../d7/d3f/structUSARTRegs.html',1,'']]]
+  ['usartregs_22',['USARTRegs',['../d7/d3f/structUSARTRegs.html',1,'']]],
+  ['use16bits_23',['Use16Bits',['../dd/d07/structSPIConfig.html#a681a295ac83f83c248ca14ca235df083',1,'SPIConfig']]],
+  ['usecrc_24',['UseCRC',['../dd/d07/structSPIConfig.html#a4f869f6aec3f6f80c39c56b855a67f2c',1,'SPIConfig']]]
 ];

@@ -40,5 +40,6 @@ var searchData=
   ['rcc_5fsystemclock_5fsrc_5fplr_37',['RCC_SYSTEMCLOCK_SRC_PLR',['../db/d65/rcc_8h.html#a83218f05de3e76a52b6c290b9b575402a8befbcf536af1ef9f7a681bbc2264636',1,'rcc.h']]],
   ['rcc_5fsystemclock_5fsrc_5ft_38',['rcc_systemclock_src_t',['../db/d65/rcc_8h.html#a4ad264d32f6c44b0f0c93ab94631dc5a',1,'rcc.h']]],
   ['rccpllconfig_39',['RCCPLLConfig',['../d0/d46/structRCCPLLConfig.html',1,'']]],
-  ['rccregs_40',['RCCRegs',['../d1/da1/structRCCRegs.html',1,'']]]
+  ['rccregs_40',['RCCRegs',['../d1/da1/structRCCRegs.html',1,'']]],
+  ['rxne_41',['RXNE',['../de/d25/structSPIISR.html#afcf3a8492afeb6bf54208624d419cf8a',1,'SPIISR']]]
 ];

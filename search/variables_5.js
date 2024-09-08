@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['lec_0',['LEC',['../d0/dfa/structbxCANISR.html#a9713ce329a0e429564f8033e2801dcdf',1,'bxCANISR']]],
-  ['lr_1',['LR',['../d1/dfe/structbxCANMailboxRegs.html#a31638f9b6ae650ba39ec4ffa10f21057',1,'bxCANMailboxRegs']]]
+  ['ir_0',['IR',['../d1/dfe/structbxCANMailboxRegs.html#a79355a776b24c7f5c568560f5bb266cf',1,'bxCANMailboxRegs']]]
 ];

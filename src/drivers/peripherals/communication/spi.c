@@ -230,7 +230,7 @@ void spi_stop(const spi_peripheral_t spi) {
 
     REG32 cr1 = regs->CR1;
     if (((cr1 & SPI_CR1_BIDIMODE_Msk) && !(cr1 & SPI_CR1_BIDIOE_Msk)) ||
-        (cr1 & SPI_CR1_RXONLY)) {
+        (cr1 & SPI_CR1_RXONLY_Msk)) {
       /* If receive only mode is detected */
       cr1 &= ~(SPI_CR1_SPE_Msk);
       regs->CR1 = cr1;

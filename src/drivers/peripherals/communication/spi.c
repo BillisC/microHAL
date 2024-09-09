@@ -65,42 +65,56 @@ void spi_set_interrupts(const spi_peripheral_t spi,
   }
 }
 
-void spi_set_direction(const spi_peripheral_t spi, const spi_direction_t dir) {
+void spi_configure_communication(const spi_peripheral_t spi,
+                                 const spi_communication_t com,
+                                 const spi_nss_mode_t nss) {
   if (!validateSPI(spi)) {
     return;
   } else {
     struct SPIRegs *regs = SPI(SPI_LUT[spi]);
 
-    /* Configure communication way */
+    /* Configure communication direction */
     REG32 cr1 = regs->CR1;
     cr1 &= ~(SPI_CR1_BIDIMODE_Msk | SPI_CR1_BIDIOE_Msk | SPI_CR1_RXONLY_Msk);
-    switch (dir) {
-      case SPI_DIR_FULL_DUPLEX: break;
-      case SPI_DIR_HALF_DUPLEX_RX: cr1 |= (SPI_CR1_BIDIMODE_Msk); break;
-      case SPI_DIR_HALF_DUPLEX_TX:
+    switch (com) {
+      case SPI_COMM_FULLDUPLEX: break;
+      case SPI_COMM_HALFDUPLEX_RX: cr1 |= (SPI_CR1_BIDIMODE_Msk); break;
+      case SPI_COMM_HALFDUPLEX_TX:
         cr1 |= (SPI_CR1_BIDIMODE_Msk | SPI_CR1_BIDIOE_Msk);
         break;
-      case SPI_DIR_SIMPLEX_RX: cr1 |= (SPI_CR1_RXONLY_Msk); break;
-      case SPI_DIR_SIMPLEX_TX: break;
+      case SPI_COMM_SIMPLEX_RX: cr1 |= (SPI_CR1_RXONLY_Msk); break;
+      case SPI_COMM_SIMPLEX_TX: break;
+      default: return;
+    }
+
+    /* Configure NSS state */
+    cr1 &= ~(SPI_CR1_SSM_Msk);
+    REG32 cr2 = regs->CR2;
+    cr2 &= ~(SPI_CR2_SSOE_Msk);
+    switch (nss) {
+      case SPI_NSS_SOFT: cr1 |= (SPI_CR1_SSM_Msk); break;
+      case SPI_NSS_HARD_OD: break;
+      case SPI_NSS_HARD_OE: cr2 |= (SPI_CR2_SSOE_Msk); break;
       default: return;
     }
 
     regs->CR1 = cr1;
+    regs->CR2 = cr2;
   }
 }
 
-void spi_set_prescaler(const spi_peripheral_t spi,
-                       const spi_prescaler_t value) {
+void spi_configure_clk(const spi_peripheral_t spi, const spi_prescaler_t div,
+                       _Bool polarity, _Bool phase) {
   /* Make sure the divide value is valid */
-  switch (value) {
-    case SPI_PRESCALER_DIV_2:
-    case SPI_PRESCALER_DIV_4:
-    case SPI_PRESCALER_DIV_8:
-    case SPI_PRESCALER_DIV_16:
-    case SPI_PRESCALER_DIV_32:
-    case SPI_PRESCALER_DIV_64:
-    case SPI_PRESCALER_DIV_128:
-    case SPI_PRESCALER_DIV_256: break;
+  switch (div) {
+    case SPI_PRESC_DIV2:
+    case SPI_PRESC_DIV4:
+    case SPI_PRESC_DIV8:
+    case SPI_PRESC_DIV16:
+    case SPI_PRESC_DIV32:
+    case SPI_PRESC_DIV64:
+    case SPI_PRESC_DIV128:
+    case SPI_PRESC_DIV256: break;
     default: return;
   }
 
@@ -109,36 +123,28 @@ void spi_set_prescaler(const spi_peripheral_t spi,
   } else {
     struct SPIRegs *regs = SPI(SPI_LUT[spi]);
 
-    /* Write the new divider value */
+    /* Configure the clock polarity, phase and baudrate */
     REG32 cr1 = regs->CR1;
-    cr1 &= ~(SPI_CR1_BR_Msk);
-    cr1 |= (value << SPI_CR1_BR_Pos);
+    cr1 &= ~(SPI_CR1_BR_Msk | SPI_CR1_CPOL_Msk | SPI_CR1_CPHA_Msk);
+    cr1 |= ((div << SPI_CR1_BR_Pos) | (polarity << SPI_CR1_CPOL_Pos) |
+            (phase << SPI_CR1_CPHA_Pos));
 
     regs->CR1 = cr1;
   }
 }
 
-void spi_set_nss_mode(const spi_peripheral_t spi, const spi_nss_mode_t mode) {
+void spi_set_ssi_state(const spi_peripheral_t spi, const _Bool state) {
   if (!validateSPI(spi)) {
     return;
   } else {
     struct SPIRegs *regs = SPI(SPI_LUT[spi]);
 
-    /* Configure NSS mode */
-    REG32 cr1 = regs->CR1;
-    REG32 cr2 = regs->CR2;
-    cr1 &= ~(SPI_CR1_SSM_Msk);
-    cr2 &= ~(SPI_CR2_SSOE_Msk);
-    switch (mode) {
-      case SPI_NSS_SOFT_LO: cr1 |= (SPI_CR1_SSM_Msk); break;
-      case SPI_NSS_SOFT_HI: cr1 |= (SPI_CR1_SSM_Msk | SPI_CR1_SSI_Msk); break;
-      case SPI_NSS_HARD_OD: break;
-      case SPI_NSS_HARD_OE: cr2 |= (SPI_CR2_SSOE_Msk); break;
-      default: return;
+    /* Configure SSI state */
+    if (state == TRUE) {
+      regs->CR1 |= SPI_CR1_SSI_Msk;
+    } else {
+      regs->CR1 &= ~(SPI_CR1_SSI_Msk);
     }
-
-    regs->CR1 = cr1;
-    regs->CR2 = cr2;
   }
 }
 
@@ -158,7 +164,8 @@ void spi_set_dma(const spi_peripheral_t spi, const _Bool forTX,
   }
 }
 
-void spi_configure(const spi_peripheral_t spi, const struct SPIConfig config) {
+void spi_configure_options(const spi_peripheral_t spi,
+                           const struct SPIConfig config) {
   if (!validateSPI(spi)) {
     return;
   } else {
@@ -166,20 +173,22 @@ void spi_configure(const spi_peripheral_t spi, const struct SPIConfig config) {
 
     /* Configuration in CR1  */
     REG32 cr1 = regs->CR1;
-    cr1 &= ~(SPI_CR1_CRCEN_Msk | SPI_CR1_DFF_Msk | SPI_CR1_LSBFIRST_Msk |
-             SPI_CR1_CPOL_Msk | SPI_CR1_CPHA_Msk);
+    cr1 &= ~(SPI_CR1_CRCEN_Msk | SPI_CR1_DFF_Msk | SPI_CR1_LSBFIRST_Msk);
     cr1 |= ((config.UseCRC << SPI_CR1_CRCEN_Pos) |
             (config.Use16Bits << SPI_CR1_DFF_Pos) |
-            (config.LSBFirst << SPI_CR1_LSBFIRST_Pos) |
-            (config.ClockPolarity << SPI_CR1_CPOL_Pos) |
-            (config.ClockPhase << SPI_CR1_CPHA_Pos));
+            (config.LSBFirst << SPI_CR1_LSBFIRST_Pos));
 
     regs->CR1 = cr1;
 
-    /* Configure TI mode in CR2*/
+    /* Configure TI mode in CR2 */
     REG32 cr2 = regs->CR2;
     cr2 &= ~(SPI_CR2_FRF_Msk);
     cr2 |= (config.TIMode << SPI_CR2_FRF_Pos);
+
+    /* Configure CRC polynomial */
+    if (config.CRCPoly != 0U) {
+      regs->CRCPR = config.CRCPoly;
+    }
 
     regs->CR2 = cr2;
   }
@@ -209,7 +218,7 @@ uint16_t spi_rx_data(const spi_peripheral_t spi) {
   }
 }
 
-uint16_t spi_transceive_data(const spi_peripheral_t spi, const uint16_t data) {
+uint16_t spi_trx_data(const spi_peripheral_t spi, const uint16_t data) {
   if (!validateSPI(spi)) {
     return 0UL;
   } else {

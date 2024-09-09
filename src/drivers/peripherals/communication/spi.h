@@ -54,15 +54,16 @@ _Static_assert((sizeof(struct SPIISR)) == (sizeof(uint8_t) * 1U),
  *  @brief Contains additional SPI configuration
  */
 struct __attribute__((packed)) SPIConfig {
-  _Bool UseCRC        : 1; /**< CRC checks */
-  _Bool Use16Bits     : 1; /**< Otherwise 8 bits */
-  _Bool LSBFirst      : 1; /**< Otherwise MSB */
-  _Bool ClockPolarity : 1; /**< Idle clock state */
-  _Bool ClockPhase    : 1; /**< Data capture at second phase when true */
-  _Bool TIMode        : 1; /**< Otherwise Motorola */
+  /* Data */
+  _Bool Use16Bits : 1; /**< Otherwise 8 bits */
+  _Bool LSBFirst  : 1; /**< Otherwise MSB */
+  _Bool TIMode    : 1; /**< Otherwise Motorola */
+  /* CRC */
+  _Bool UseCRC : 1; /**< CRC checks */
+  uint16_t CRCPoly; /**< CRC Polynomial (zero is ignored) */
 };
 
-_Static_assert((sizeof(struct SPIConfig)) == (sizeof(uint8_t) * 1U),
+_Static_assert((sizeof(struct SPIConfig)) == (sizeof(uint8_t) * 3U),
                "SPI Config struct size mismatch. Is it aligned?");
 
 /* -- Enums -- */
@@ -92,38 +93,37 @@ typedef enum spi_peripheral {
 } spi_peripheral_t;
 
 /**
- *  @brief Available SPI communication directions
+ *  @brief Available SPI communication modes
  */
-typedef enum spi_direction {
-  SPI_DIR_FULL_DUPLEX = 0x0,
-  SPI_DIR_HALF_DUPLEX_RX,
-  SPI_DIR_HALF_DUPLEX_TX,
-  SPI_DIR_SIMPLEX_RX,
-  SPI_DIR_SIMPLEX_TX
-} spi_direction_t;
+typedef enum spi_communication {
+  SPI_COMM_FULLDUPLEX = 0x0,
+  SPI_COMM_HALFDUPLEX_RX,
+  SPI_COMM_HALFDUPLEX_TX,
+  SPI_COMM_SIMPLEX_RX,
+  SPI_COMM_SIMPLEX_TX
+} spi_communication_t;
 
 /**
  *  @brief Available SPI NSS pin modes
  */
 typedef enum spi_nss_mode {
-  SPI_NSS_SOFT_LO = 0x0,
-  SPI_NSS_SOFT_HI,
+  SPI_NSS_SOFT = 0x0,
   SPI_NSS_HARD_OE,
   SPI_NSS_HARD_OD
 } spi_nss_mode_t;
 
 /**
- *  @brief Available SPI prescaler dividers
+ *  @brief Available SPI clock dividers
  */
 typedef enum spi_prescaler {
-  SPI_PRESCALER_DIV_2 = 0x0,
-  SPI_PRESCALER_DIV_4,
-  SPI_PRESCALER_DIV_8,
-  SPI_PRESCALER_DIV_16,
-  SPI_PRESCALER_DIV_32,
-  SPI_PRESCALER_DIV_64,
-  SPI_PRESCALER_DIV_128,
-  SPI_PRESCALER_DIV_256
+  SPI_PRESC_DIV2 = 0x0,
+  SPI_PRESC_DIV4,
+  SPI_PRESC_DIV8,
+  SPI_PRESC_DIV16,
+  SPI_PRESC_DIV32,
+  SPI_PRESC_DIV64,
+  SPI_PRESC_DIV128,
+  SPI_PRESC_DIV256
 } spi_prescaler_t;
 
 /**
@@ -139,16 +139,20 @@ typedef enum spi_prescaler {
 void spi_set_interrupts(const spi_peripheral_t spi, const struct SPIISR config);
 
 /**
- *  @brief Sets the SPI to the specified comm direction
+ *  @brief Configures the SPI communication / wiring
  *
- *  The available directions can be located under the
- *  spi_direction_t enum. Any other value will be ignored.
+ *  The available communication and nss modes can be located
+ *  under the spi_communication_t and spi_nss_mode_t enums.
+ *  Any other value will be ignored.
  *
  *  @param spi The selected SPI
- *  @param dir The SPI direction
+ *  @param dir The communication mode
+ *  @param nss The NSS pin mode
  *  @return None
  */
-void spi_set_direction(const spi_peripheral_t spi, const spi_direction_t dir);
+void spi_configure_communication(const spi_peripheral_t spi,
+                                 const spi_communication_t com,
+                                 const spi_nss_mode_t nss);
 
 /**
  *  @brief Configures the SPI prescale divider
@@ -160,22 +164,22 @@ void spi_set_direction(const spi_peripheral_t spi, const spi_direction_t dir);
  *  resulting clock will be the baudrate of the SPI.
  *
  *  @param spi The selected SPI
- *  @param value The prescale divider
+ *  @param div The prescale divider
+ *  @param polarity The default state of the clock
+ *  @param phase Capture data on first or second pulse
  *  @return None
  */
-void spi_set_prescaler(const spi_peripheral_t spi, const spi_prescaler_t value);
+void spi_configure_clk(const spi_peripheral_t spi, const spi_prescaler_t div,
+                       _Bool polarity, _Bool phase);
 
 /**
- *  @brief Sets the SPI NSS pin to the specified mode
- *
- *  The available NSS modes for the SPI are specified in
- *  the spi_nss_mode_t enum. Any other value will be ignored.
+ *  @brief Sets the internal SS to the desired state
  *
  *  @param spi The selected SPI
- *  @param mode The NSS pin mode
+ *  @param state The SSI state
  *  @return None
  */
-void spi_set_nss_mode(const spi_peripheral_t spi, const spi_nss_mode_t mode);
+void spi_set_ssi_state(const spi_peripheral_t spi, const _Bool state);
 
 /**
  *  @brief Enables DMA for SPI RX and/or TX
@@ -199,7 +203,8 @@ void spi_set_dma(const spi_peripheral_t spi, const _Bool forTX,
  *  @param config The SPI configuration
  *  @return None
  */
-void spi_configure(const spi_peripheral_t spi, const struct SPIConfig config);
+void spi_configure_options(const spi_peripheral_t spi,
+                           const struct SPIConfig config);
 
 /**
  *  @brief Transmits specified SPI data
@@ -236,7 +241,7 @@ uint16_t spi_rx_data(const spi_peripheral_t spi);
  *  @param data The data to transmit
  *  @return The received data
  */
-uint16_t spi_transceive_data(const spi_peripheral_t spi, const uint16_t data);
+uint16_t spi_trx_data(const spi_peripheral_t spi, const uint16_t data);
 
 /**
  *  @brief Initiates the SPI peripheral with specified options.
